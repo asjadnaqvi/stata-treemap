@@ -2,12 +2,12 @@
 *! Asjad Naqvi (asjadnaqvi@gmail.com)
 *
 * 
-*
+
 
 
 cap prog drop treemap
 
-prog def treemap, // eclass sortpreserve
+prog def treemap, sortpreserve
 
 	version 15
 	
@@ -19,15 +19,6 @@ prog def treemap, // eclass sortpreserve
 	
 	marksample touse, strok
 	
-	// preserve here
-	
-	
-	
-
-	
-	// ADD CHECKS IF THEY ARE NUMERIC OR STRINGS OR HAVE VALUE LABELS
-	
-	// di "`by'"
 	
 qui {	
   preserve	
