@@ -1,0 +1,11 @@
+v 1.0 
+d 'TREEMAP': A Stata package for treemaps
+d
+d Distribution-Date: 20220908
+d
+d Asjad Naqvi, 
+d asjadnaqvi@gmail.com
+d
+d https://medium.com/the-stata-guide
+d https://github.com/asjadnaqvi/Stata-schemes
+
