@@ -130,10 +130,11 @@ treemap y_TOT, by(NUTS0) labsize(4) title("Population of EU 27 countries") noval
 
 
 ```
-treemap y_TOT, by(NUTS0) labsize(5) title("Population of EU 27 countries") noval wid(6) hei(1)
+treemap y_TOT, by(NUTS0) labsize(5) ///
+	title("Population of EU 27 countries") noval wid(6) hei(1)
 ```
 
-<img src="/figures/treemap5.png" height="400">
+<img src="/figures/treemap5.png" height="200">
 
 ```
 treemap y_TOT, by(NUTS1 NUTS0) labsize(2) format(%15.0fc) noval
@@ -142,44 +143,54 @@ treemap y_TOT, by(NUTS1 NUTS0) labsize(2) format(%15.0fc) noval
 <img src="/figures/treemap6.png" height="600">
 
 ```
-treemap y_TOT if NUTS0=="AT", by(NUTS3 NUTS2) addtitles noval labsize(2) format(%15.0fc) title("Population of Austria at NUTS2 and NUTS3 level") 
+treemap y_TOT if NUTS0=="AT", by(NUTS3 NUTS2) ///
+	addtitles noval labsize(2) format(%15.0fc) ///
+	title("Population of Austria at NUTS2 and NUTS3 level") 
 ```
 
 <img src="/figures/treemap7.png" height="600">
 
 ```
-treemap y_TOT if NUTS0=="NL", by(NUTS3 NUTS2) addtitles labsize(2) format(%15.0fc) title("Population of Netherlands at NUTS2 and NUTS3 level")
+treemap y_TOT if NUTS0=="NL", by(NUTS3 NUTS2) addtitles labsize(2) format(%15.0fc) ///
+	title("Population of Netherlands at NUTS2 and NUTS3 level")
 ```
 
 <img src="/figures/treemap8.png" height="600">
 
 
 ```
-treemap y_TOT if NUTS0=="NL", by(NUTS3 NUTS2) addtitles labsize(1.3) format(%15.0fc) title("Population of Netherlands at NUTS2 and NUTS3 level") palette(CET L07, reverse) wid(3) hei(3)
+treemap y_TOT if NUTS0=="NL", by(NUTS3 NUTS2) addtitles labsize(1.3) format(%15.0fc) ///
+	title("Population of Netherlands at NUTS2 and NUTS3 level") palette(CET L07, reverse) wid(3) hei(3)
 ```
 
 <img src="/figures/treemap9.png" height="600">
 
 ```
-treemap y_TOT if NUTS0=="NL", by(NUTS3 NUTS2)  addtitles noval labsize(1.3) format(%15.0fc) title("Population of Netherlands at NUTS2 and NUTS3 level") palette(CET L10) wid(3) hei(3)
+treemap y_TOT if NUTS0=="NL", by(NUTS3 NUTS2) ///
+	addtitles noval labsize(1.3) format(%15.0fc) title("Population of Netherlands at NUTS2 and NUTS3 level") ///
+	palette(CET L10) wid(3) hei(3)
 ```
 
 <img src="/figures/treemap10.png" height="600">
 
 ```
-treemap y_TOT if NUTS0=="NL", by(NUTS3 NUTS2 NUTS1)  addtitles noval labsize(1.3) format(%15.0fc) title("Population of Netherlands at NUTS1-NUTS3 level") palette(CET L10) wid(3) hei(3)
+treemap y_TOT if NUTS0=="NL", by(NUTS3 NUTS2 NUTS1)  addtitles noval labsize(1.3) format(%15.0fc) ///
+	title("Population of Netherlands at NUTS1-NUTS3 level") palette(CET L10) wid(3) hei(3)
 ```
 
 <img src="/figures/treemap11.png" height="600">
 
 ```
-treemap y_TOT if NUTS0=="NO", by(NUTS3 NUTS2)  addtitles labsize(1.3) format(%15.0fc) title("Population of Norway at NUTS2 and NUTS3 level") palette(CET L17) wid(3) hei(3) 
+treemap y_TOT if NUTS0=="NO", by(NUTS3 NUTS2) ///
+	addtitles labsize(1.3) format(%15.0fc) title("Population of Norway at NUTS2 and NUTS3 level") ///
+	palette(CET L17) wid(3) hei(3) 
 ```
 
 <img src="/figures/treemap12.png" height="600">
 
 ```
-treemap y_TOT if NUTS0=="NO", by(NUTS3)  addtitles labsize(2) format(%15.0fc) title("Population of Norway at NUTS2 and NUTS3 level") palette(CET L19) wid(5) hei(3) scheme(neon)
+treemap y_TOT if NUTS0=="NO", by(NUTS3)  addtitles labsize(2) format(%15.0fc) ///
+	title("Population of Norway at NUTS2 and NUTS3 level") palette(CET L19) wid(5) hei(3) scheme(neon)
 ```
 
 <img src="/figures/treemap13.png" height="600">
