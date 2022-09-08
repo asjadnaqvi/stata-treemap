@@ -69,7 +69,7 @@ treemap numvar, over(variable(s))
 ```
 
 
-where `numvar` is a numeric variable, and `over()` are upto three variables, defined from finer to higher aggregation units.
+where `numvar` is a numeric variable, and `over()` are upto three variables, defined from finer to higher aggregation units. The algorithm changes the layout based on the `width()` and `height()` defintions. See examples below.
 
 
 
@@ -82,7 +82,7 @@ clear
 set scheme white_tableau
 graph set window fontface "Arial Narrow"
 
-use "hXXX", clear
+use "https://github.com/asjadnaqvi/stata-treemap/blob/main/data/demo_r_pjangrp3_clean.dta?raw=true", clear
 
 
 drop year
@@ -126,14 +126,14 @@ treemap y_TOT, by(NUTS0) labsize(2) title("Population of EU 27 countries") noval
 treemap y_TOT, by(NUTS0) labsize(4) title("Population of EU 27 countries") noval wid(5) hei(2)
 ```
 
-<img src="/figures/treemap4.png" height="600">
+<img src="/figures/treemap4.png" height="400">
 
 
 ```
 treemap y_TOT, by(NUTS0) labsize(5) title("Population of EU 27 countries") noval wid(6) hei(1)
 ```
 
-<img src="/figures/treemap5.png" height="600">
+<img src="/figures/treemap5.png" height="400">
 
 ```
 treemap y_TOT, by(NUTS1 NUTS0) labsize(2) format(%15.0fc) noval
