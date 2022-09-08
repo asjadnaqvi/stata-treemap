@@ -75,7 +75,7 @@ Even if you have these installed, it is highly recommended to check for updates:
 
 {ul:{it:Set up the data}}
 
-use "D:\Programs\Dropbox\Dropbox\STATA - MEDIUM\Webinar - Stata UK Maps 2\GIS\demo_r_pjangrp3_clean.dta", clear
+use "https://github.com/asjadnaqvi/stata-circlepack/blob/main/data/demo_r_pjangrp3_clean.dta?raw=true", clear
 
 drop year
 keep NUTS_ID y_TOT
