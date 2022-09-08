@@ -134,7 +134,7 @@ treemap y_TOT, by(NUTS0) labsize(5) ///
 	title("Population of EU 27 countries") noval wid(6) hei(1)
 ```
 
-<img src="/figures/treemap5.png" height="200">
+<img src="/figures/treemap5.png" height="100">
 
 ```
 treemap y_TOT, by(NUTS1 NUTS0) labsize(2) format(%15.0fc) noval
