@@ -1,9 +1,8 @@
-*! Treemap v1.0 beta
+*! Treemap v1.1 (13 Sep 2022)
 *! Asjad Naqvi (asjadnaqvi@gmail.com)
-*
-* 
 
-
+* v1.1 (13 Sep 2022): Label, color, title scaling. More options for controls. More checks. Better defaults.
+* v1.0 (08 Sep 2022): First release
 
 cap prog drop treemap
 
@@ -12,16 +11,21 @@ prog def treemap, sortpreserve
 	version 15
 	
 	syntax varlist(numeric max=1) [if] [in], by(varlist min=1 max=3)	 ///   
-		[ WIDth(real 5) HEIght(real 3) pad(real 0.012) format(str) palette(string) ADDTitles NOVALues NOLABels cond(string) ]		///
-		[ LABSize(real 2.2) title(passthru) subtitle(passthru) note(passthru) scheme(passthru) name(passthru) ]
+		[ XSize(real 5) YSize(real 3) format(str) palette(string) ADDTitles NOVALues NOLABels cond(string) ]		///
+		[ title(passthru) subtitle(passthru) note(passthru) scheme(passthru) name(passthru) 			   ]		///
+		[ pad(numlist max=3) labprop labscale(real 0.333) labcond(real 0) colorprop titlegap(real 0.1) titleprop LINEWidth(string) LINEColor(string) LABSize(string) ] 		// v1.1 options. labscale is undocumented labprop scaling
 		
-	
-	
 	marksample touse, strok
+
+	// check for dependencies
+	cap findfile carryforward.ado
+	if _rc != 0 {
+		qui ssc install carryforward, replace
+	}	
 	
 	
 qui {	
-  preserve	
+	preserve	
 	keep if `touse'
 	
 	local length : word count `by'
@@ -108,7 +112,7 @@ qui {
 	egen var0_o = group(var0_v) 
 	levelsof var0_o
 	replace var0_o = r(r) - var0_o + 1
-	
+		
 	if `length' > 1 {
 		cap drop var1_t
 		egen var1_t = tag(`var0' `var1')
@@ -126,12 +130,106 @@ qui {
 	}
 
 	sort id
-	
+
 	// set up the base values
 	
-	mata: xmin = 0; xmax = `width'; ymin = 0; ymax = `height'; dy = ymax - ymin; dx = xmax - xmin
+	if "`pad'" != "" {
+		tokenize `pad'
+		local plen : word count `pad'
+			local pad0 `1'
+			local pad1 `1'
+			local pad2 `1'
+
+			if `plen' > 1 {
+				local pad1 `2'
+				local pad2 `2'
+			}
+			
+			if `plen' > 2 {
+				local pad1 `2'
+				local pad2 `3'
+			}
+	}
+	else {
+		local pad0 0.012
+		local pad1 0.01
+		local pad2 0.01
+	}
 	
-	if "`format'" == "" local format %9.0fc
+	if "`linewidth'" != "" {
+		tokenize `linewidth'
+		local lwlen : word count `linewidth'
+		
+		local lw0 `1'
+		local lw1 `1'
+		local lw2 `1'
+
+		if `lwlen' > 1 {
+			local lw1 `2'
+			local lw2 `2'
+		}
+			
+		if `lwlen' > 2 {
+			local lw1 `2'
+			local lw2 `3'
+		}
+	}
+	else {
+		local lw0 0.03
+		local lw1 0.03
+		local lw2 0.03
+	}
+	
+	if "`linecolor'" != "" {
+		tokenize `linecolor'
+		local lclen : word count `linecolor'
+		
+		local lc0 `1'
+		local lc1 `1'
+		local lc2 `1'
+
+		if `lclen' > 1 {
+			local lc1 `2'
+			local lc2 `2'
+		}
+			
+		if `lclen' > 2 {
+			local lc1 `2'
+			local lc2 `3'
+		}
+	}
+	else {
+		local lc0 black
+		local lc1 black
+		local lc2 black
+	}
+
+	if "`labsize'" != "" {
+		tokenize `labsize'
+		local lslen : word count `labsize'
+		
+		local ls0 `1'
+		local ls1 `1'
+		local ls2 `1'
+
+		if `lslen' > 1 {
+			local ls1 `2'
+			local ls2 `2'
+		}
+			
+		if `lslen' > 2 {
+			local ls1 `2'
+			local ls2 `3'
+		}
+	}
+	else {
+		local ls0 1.6
+		local ls1 1.6
+		local ls2 1.6
+	}	
+	
+	mata: xmin = 0; xmax = `xsize'; ymin = 0; ymax = `ysize'; dy = ymax - ymin; dx = xmax - xmin
+
 	
 	**************
 	**  layer0  **
@@ -139,15 +237,14 @@ qui {
 	
 	
 	mata: data = select(st_data(., ("var0_v")), st_data(., "var0_t=1"))
-	mata: padb = `pad'; padt = `pad'; padl = `pad'; padr = `pad'
+	mata: padb = `pad0'; padt = `pad0'; padl = `pad0'; padr = `pad0'
 	
-	mata: normlist = normdata(data, dx, dy); b0 = squarify(normlist, xmin, ymin, dx, dy); c0 = getcoords2(data, b0, padb, padt, padl, padr)
+	mata: normlist = normdata(data, dx, dy); b0 = squarify(normlist, xmin, ymin, dx, dy), normlist; c0 = getcoords2(data, b0, padb, padt, padl, padr)
 	mata: st_matrix("c0", c0)
-	
-	cap drop _*
+
 	local varlist 
 	
-	mat colnames c0 = "_l0_x" "_l0_y" "_l0_id" "_l0_val" "_l0_xmid" "_l0_ymid" "_l0_xmax" "_l0_ymax"
+	mat colnames c0 = "_l0_x" "_l0_y" "_l0_id" "_l0_val" "_l0_xmid" "_l0_ymid" "_l0_xmax" "_l0_ymax" "_l0_wgt"
 	
 	mat li c0
 	svmat c0, n(col)
@@ -161,9 +258,9 @@ qui {
 		summ id if var0_o==`i' & var0_t==1, meanonly
 		replace  _l0_lab1 = `var0'[r(mean)] in `i'	
 	}	
-				
-		gen  _l0_lab0 = "{it:" + _l0_lab1 + " (" + string(_l0_val, "`format'") + ")}"  in 1/`item0'
-		gen  _l0_lab2 = string(_l0_val, "`format'") in 1/`item0'
+
+		gen  _l0_lab0 = "{it:" + _l0_lab1 + " (" + string(_l0_val, "`format'") + ")}" in 1/`item0' 
+		gen  _l0_lab2 = string(_l0_val, "`format'") in 1/`item0' 
 		
 
 		
@@ -174,25 +271,24 @@ qui {
 
 	if `length' > 1 {
 		
-		if "`addtitles'" != "" mata b0[.,4] = b0[.,4] :- 0.1
-		local pad = `pad' * 1.5
+		if "`addtitles'" != "" mata b0[.,4] = b0[.,4] :- (`titlegap' :* (b0[.,4]  :> `titlegap' * 2.5))
 		
 		local l0
 		local l1
 		
-		levelsof var0_o, local(l0)
+		qui levelsof var0_o, local(l0)
 
 		foreach z of local l0 {
 				
 				mata: mydata = select(st_data(., ("var1_v", "var0_o")), st_data(., "var1_t = 1"))
 				mata: mydata = select(mydata, mydata[.,2] :== `z')		
-				mata: padb = `pad'; padt = `pad'; padl = `pad'; padr = `pad'
+				mata: padb = `pad1'; padt = `pad1'; padl = `pad1'; padr = `pad1'
 
-				mata: b1_`z' = processchildren(`z', mydata[.,1], b0, padb, padt, padl, padr)
-				mata: c1_`z' = getcoords2(mydata[.,1], b1_`z', padb, padt, padl, padr)
+				mata: b1_`z' = processchildren(`z', mydata[.,1], b0    , padb, padt, padl, padr)
+				mata: c1_`z' = getcoords2(          mydata[.,1], b1_`z', padb, padt, padl, padr)
 				mata: st_matrix("c1_`z'", c1_`z')
 
-			mat colnames c1_`z' = "_l1_`z'_x" "_l1_`z'_y" "_l1_`z'_id" "_l1_`z'_val" "_l1_`z'_xmid" "_l1_`z'_ymid" "_l1_`z'_xmax" "_l1_`z'_ymax"			
+			mat colnames c1_`z' = "_l1_`z'_x" "_l1_`z'_y" "_l1_`z'_id" "_l1_`z'_val" "_l1_`z'_xmid" "_l1_`z'_ymid" "_l1_`z'_xmax" "_l1_`z'_ymax" "_l1_`z'_wgt"			
 			svmat c1_`z', n(col)
 
 			gen _l1_`z'_lab1  = ""
@@ -204,8 +300,8 @@ qui {
 				replace  _l1_`z'_lab1 = `var1'[r(mean)] in `i'	
 			}
 			
-			gen  _l1_`z'_lab0 = "{it:" + _l1_`z'_lab1 + " (" + string(_l1_`z'_val, "`format'") + ")}"  in 1/`item1'
-			gen  _l1_`z'_lab2 = string(_l1_`z'_val, "`format'") in 1/`item1'
+			gen  _l1_`z'_lab0 = "{it:" + _l1_`z'_lab1 + " (" + string(_l1_`z'_val, "`format'") + ")}"  in 1/`item1' 
+			gen  _l1_`z'_lab2 = string(_l1_`z'_val, "`format'")  in 1/`item1' 
 
 		}
 		
@@ -218,8 +314,6 @@ qui {
 		
 	if `length' > 2 {	
 		
-		local pad = `pad' * 1.5
-		
 		local l0
 		local l1
 		local l2
@@ -228,35 +322,36 @@ qui {
 
 		foreach z of local l0 {
 			
-			if "`addtitles'" != "" mata b1_`z'[.,4] = b1_`z'[.,4] :- 0.1
+			if "`addtitles'" != "" {
+				
+				mata b1_`z'[.,4] = b1_`z'[.,4] :- (`titlegap' :* (b1_`z'[.,4] :> `titlegap' * 2.5))
+			}
 			
 			qui levelsof var1_o if var0_o==`z', local(l1)
 			foreach y of local l1 {
 				
 					mata: mydata = select(st_data(., ("var2_v", "var0_o", "var1_o")), st_data(., "var2_t = 1"))
 					mata: mydata = select(mydata, mydata[.,2] :== `z' :& mydata[.,3] :== `y')				
-					mata: padb = `pad'; padt = `pad'; padl = `pad'; padr = `pad'
+					mata: padb = `pad2'; padt = `pad2'; padl = `pad2'; padr = `pad2'
 					mata: b2_`z'_`y' = processchildren(`y', mydata[.,1], b1_`z', padb, padt, padl, padr)
 					mata: c2_`z'_`y' = getcoords2(mydata[.,1], b2_`z'_`y', padb, padt, padl, padr)
 					mata: st_matrix("c2_`z'_`y'", c2_`z'_`y')		
 				
-
-				mat colnames c2_`z'_`y' = "_l2_`z'_`y'_x" "_l2_`z'_`y'_y" "_l2_`z'_`y'_id" "_l2_`z'_`y'_val" "_l2_`z'_`y'_xmid" "_l2_`z'_`y'_ymid" "_l2_`z'_`y'_xmax" "_l2_`z'_`y'_ymax"
+				mat colnames c2_`z'_`y' = "_l2_`z'_`y'_x" "_l2_`z'_`y'_y" "_l2_`z'_`y'_id" "_l2_`z'_`y'_val" "_l2_`z'_`y'_xmid" "_l2_`z'_`y'_ymid" "_l2_`z'_`y'_xmax" "_l2_`z'_`y'_ymax" "_l2_`z'_`y'_wgt"
 				svmat c2_`z'_`y', n(col)
 					
 				// get the labels	
-				
 				gen  _l2_`z'_`y'_lab1 = ""
 				levelsof var2_o if var0_o==`z' & var1_o==`y', local(l2)
 				local item2 = `r(r)'
 				foreach i of local l2 {
 		
-					qui summ id if var2_o==`i' & var1_o==`y' & var0_o==`z' & var2_t==1 , meanonly
+					qui summ id if var2_o==`i' & var1_o==`y' & var0_o==`z' & var2_t==1, meanonly
 					replace  _l2_`z'_`y'_lab1 = `var2'[r(mean)] in `i'						
 				}
 				
-				gen  _l2_`z'_`y'_lab0 = "{it:" + _l2_`z'_`y'_lab1 + " (" + string(_l2_`z'_`y'_val, "`format'") + ")}"  in 1/`item2'
-				gen  _l2_`z'_`y'_lab2 = string(_l2_`z'_`y'_val, "`format'") in 1/`item2'
+				gen  _l2_`z'_`y'_lab0 = "{it:" + _l2_`z'_`y'_lab1 + " (" + string(_l2_`z'_`y'_val, "`format'") + ")}"  in 1/`item2' if _l2_`z'_`y'_val > `labcond'
+				gen  _l2_`z'_`y'_lab2 = string(_l2_`z'_`y'_val, "`format'") in 1/`item2'  if _l2_`z'_`y'_val > `labcond'
 			}
 		}		
 	}	
@@ -267,12 +362,14 @@ qui {
 	//   draw   //
     **************	
 
+	if "`format'"  == "" local format %9.0fc
+	
 	if "`palette'" == "" {
 		local palette tableau
 	}
 	else {
 		tokenize "`palette'", p(",")
-		local palette `1'
+		local palette  `1'
 		local poptions `3'
 	}
 	
@@ -299,14 +396,29 @@ qui {
 	
 		forval i = 1/`lvl0' {
 			
+			if "`titleprop'" != "" {
+				local labt0 = max((`ls0' * _l0_wgt[`i']^`labscale'),0)
+			}
+			else {
+				local labt0 = `ls0'
+			}	
+			
+			if "`labprop'" != "" {
+				local labs0 = (`ls0' * _l0_wgt[`i']^`labscale')
+			}
+			else {
+				local labs0 = `ls0'
+			}
+			
 			colorpalette `palette', n(`lvl0') `poptions' nograph 
-			local box0 `box0' (area _l0_y _l0_x if _l0_id==`i', nodropbase fi(`fi0') fc("`r(p`i')'") lw(0.03) lc(black))  ||
+					
+			local box0 `box0' (area _l0_y _l0_x if _l0_id==`i', nodropbase fi(`fi0') fc("`r(p`i')'") lw(`lw0') lc(`lc0'))  ||
 			
-			local lab0_box `lab0_box' (scatter _l0_ymax _l0_xmax in `i', mc(none) mlab(_l0_lab0) mlabpos(4) mlabsize(`labsize') mlabc(black) )
+			local lab0_box `lab0_box' (scatter _l0_ymax _l0_xmax in `i'  if _l0_val > `labcond', mc(none) mlab(_l0_lab0) mlabpos(4) mlabsize(`labt0') mlabc(black) )
 			
-			local lab0 `lab0' (scatter _l0_ymid _l0_xmid in `i', mc(none) mlab(_l0_lab1) mlabpos(0) mlabsize(`labsize') mlabc(black) ) || 
+			local lab0 `lab0' (scatter _l0_ymid _l0_xmid in `i'  if _l0_val > `labcond', mc(none) mlab(_l0_lab1) mlabpos(0) mlabsize(`labs0') mlabc(black) ) || 
 			
-			if "`novalues'" == "" local lab0 `lab0' (scatter _l0_ymid _l0_xmid in `i', mc(none) mlab(_l0_lab2) mlabpos(6) mlabsize(`labsize') mlabc(black) ) ||
+			if "`novalues'" == "" local lab0 `lab0' (scatter _l0_ymid _l0_xmid in `i' if _l0_val > `labcond', mc(none) mlab(_l0_lab2) mlabpos(6) mlabsize(`labs0') mlabgap(*0.1) mlabc(black) ) ||
 			
 			***************
 			*** layer 1 ***
@@ -315,18 +427,39 @@ qui {
 			if `length' > 1 {
 			
 				qui levelsof var1_o if var0_o==`i'
-				local lvl1 = `r(r)'
+				local lvl1 = r(r)
 					
 				forval j = 1/`lvl1' {
-						
-					colorpalette `palette', n(`lvl0') `poptions' nograph 
-					local box1 `box1' (area _l1_`i'_y _l1_`i'_x if _l1_`i'_id==`j', nodropbase fi(`fi1') fc("`r(p`i')'") lw(0.03) lc(black))  ||    //  lw(vthin) lc("`r(p`i')'"))
-					
-					local lab1_box `lab1_box' (scatter _l1_`i'_ymax _l1_`i'_xmax in `j', mc(none) mlab(_l1_`i'_lab0) mlabpos(4) mlabsize(`labsize') mlabc(black) )
-					
-					local lab1 `lab1' (scatter _l1_`i'_ymid _l1_`i'_xmid in `j', mc(none) mlab(_l1_`i'_lab1) mlabpos(0) mlabsize(`labsize') mlabc(black) ) || 
+
+					if "`titleprop'" != "" {
+						local labt1 = max((`ls1' * _l1_`i'_wgt[`j']^`labscale'),0)
+					}
+					else {
+						local labt1 = `ls1'
+					}				
 							
-					if "`novalues'" == "" local lab1 `lab1' (scatter _l1_`i'_ymid _l1_`i'_xmid  in `j', mc(none) mlab(_l1_`i'_lab2) mlabpos(6) mlabsize(`labsize') mlabc(black) ) ||
+					if "`labprop'" != "" {
+						local labs1 = max((`ls1' * _l1_`i'_wgt[`j']^`labscale'),0)
+					}
+					else {
+						local labs1 = `ls1'
+					}
+						
+					colorpalette `palette', n(`lvl0') `poptions' nograph
+					local clr `r(p`i')'
+					
+					if "`colorprop'" != "" {			
+						colorpalette "`r(p`i')'" gs14, n(`lvl1') `poptions' nograph  //  "`r(p`i')'%10"	
+						local clr `r(p`j')'
+					}					
+							
+					local box1 `box1' (area _l1_`i'_y _l1_`i'_x if _l1_`i'_id==`j', nodropbase fi(`fi1') fc("`clr'") lw(`lw1') lc(`lc1'))  ||    //  lw(vthin) lc("`r(p`i')'"))
+					
+					local lab1_box `lab1_box' (scatter _l1_`i'_ymax _l1_`i'_xmax in `j' if _l1_`i'_val > `labcond', mc(none) mlab(_l1_`i'_lab0) mlabpos(4) mlabsize(`labt1') mlabc(black) )
+					
+					local lab1 `lab1' (scatter _l1_`i'_ymid _l1_`i'_xmid in `j' if _l1_`i'_val > `labcond', mc(none) mlab(_l1_`i'_lab1) mlabpos(0) mlabsize(`labs1') mlabc(black) ) || 
+							
+					if "`novalues'" == "" local lab1 `lab1' (scatter _l1_`i'_ymid _l1_`i'_xmid  in `j' if _l1_`i'_val > `labcond', mc(none) mlab(_l1_`i'_lab2) mlabpos(6) mlabsize(`labs1') mlabgap(*0.05) mlabc(black) ) ||
 					
 					
 					***************
@@ -336,16 +469,30 @@ qui {
 					if `length' > 2 {
 				
 						qui levelsof var2_o if var0_o==`i' & var1_o==`j'
-						local lvl2 = `r(r)'
+						local lvl2 = r(r)
 							
 						forval k = 1/`lvl2' {
-				
-							colorpalette `palette', n(`lvl0') `poptions' nograph						
-							local box2 `box2' (area _l2_`i'_`j'_y _l2_`i'_`j'_x if _l2_`i'_`j'_id==`k', nodropbase fi(`fi2') fc("`r(p`i')'") lw(0.03) lc(black))   ||
+	
+							if "`labprop'" != "" {
+								local labs2 = max((`ls2' * _l2_`i'_`j'_wgt[`k']^`labscale'),0)
+							}
+							else {
+								local labs2 = `ls2'
+							}						
+						
+							colorpalette `palette', n(`lvl0') `poptions' nograph
+							local clr `r(p`i')'
 							
-							local lab2 `lab2' (scatter _l2_`i'_`j'_ymid _l2_`i'_`j'_xmid in `k' , mc(none) mlab(_l2_`i'_`j'_lab1) mlabpos(0) mlabsize(`labsize') mlabc(black) ) ||	
+							if "`colorprop'" != "" {			
+								colorpalette "`r(p`i')'" gs14, n(`lvl2') `poptions' nograph 	// "`r(p`i')'%10"
+								local clr `r(p`k')'
+							}								
 							
-							if "`novalues'" == "" local lab2 `lab2' (scatter _l2_`i'_`j'_ymid _l2_`i'_`j'_xmid in `k', mc(none) mlab(_l2_`i'_`j'_lab2) mlabpos(6) mlabsize(`labsize') mlabc(black) ) ||			
+							local box2 `box2' (area _l2_`i'_`j'_y _l2_`i'_`j'_x if _l2_`i'_`j'_id==`k', nodropbase fi(`fi2') fc("`clr'") lw(`lw2') lc(`lc2'))   ||
+							
+							local lab2 `lab2' (scatter _l2_`i'_`j'_ymid _l2_`i'_`j'_xmid in `k' , mc(none) mlab(_l2_`i'_`j'_lab1) mlabpos(0) mlabsize(`labs2') mlabc(black) ) ||	
+							
+							if "`novalues'" == "" local lab2 `lab2' (scatter _l2_`i'_`j'_ymid _l2_`i'_`j'_xmid in `k', mc(none) mlab(_l2_`i'_`j'_lab2) mlabpos(6) mlabsize(`labs2') mlabgap(*0.05) mlabc(black) ) ||			
 						
 						}
 					}
@@ -382,7 +529,7 @@ qui {
 				legend(off)  ///
 				xscale(off) yscale(off) ///
 				xlabel(, nogrid) ylabel(, nogrid) ///
-				xsize(`width') ysize(`height')	///
+				xsize(`xsize') ysize(`ysize')	///
 				`title' `subtitle' `note' `scheme'
 
 restore		
@@ -397,7 +544,7 @@ end
 
 
 *********************
-// 	  normdata     //  normalize list where sum of values equal 1
+// 	  normdata     //  
 *********************
 
 cap mata mata drop normdata()
@@ -599,13 +746,26 @@ cap mata mata drop processchildren()
 mata:
 	function processchildren(index, data, bounds, padb, padt, padl, padr) 
 	{	
+		
+	
+	//	if (bounds[index,.][3] - padr - bounds[index,.][1] - padl < 0) {	
+	//		xdiff = 0 
+	//		padr = padr - xdiff; padl =  padl - xdiff
+	//	}
+		
+
+	//	if (bounds[index,.][4] - padt - bounds[index,.][4] - padb < 0) {		
+	//		ydiff = 0 
+	//		padt = padt - ydiff; padb = padb - ydiff
+	//	}		
+		
 		xmin  = bounds[index,.][1] + padl
 		ymin  = bounds[index,.][2] + padb 
 		dx 	  = bounds[index,.][3] - padl - padr
 		dy 	  = bounds[index,.][4] - padb - padt
 
 		normlist = normdata(data, dx, dy)
-		return (squarify(normlist, xmin, ymin, dx, dy))
+		return (squarify(normlist, xmin, ymin, dx, dy), normlist)
 	}
 end
 
@@ -643,7 +803,7 @@ cap mata mata drop getcoords2()
 mata:
 	real matrix getcoords2(data, b2, padb, padt, padl, padr) // data, bounds, padding
 	{
-	coords = J(5 * rows(b2), 8, .)  // rows = 4x coordinates + 1 empty, 8 cols = x,y,index,value, xmean, ymean, xmax, ymax 
+	coords = J(5 * rows(b2), 9, .)  // rows = 4x coordinates + 1 empty, 8 cols = x,y,index,value, xmean, ymean, xmax, ymax, weight 
 	
 		for (i=1; i<= rows(b2); i++) {	
 			
@@ -656,11 +816,12 @@ mata:
 				coords[i, 5] = mean(select(coords[.,1], coords[.,3] :== i))
 				coords[i, 6] = mean(select(coords[.,2], coords[.,3] :== i))
 				coords[i, 7] =  min(select(coords[.,1], coords[.,3] :== i)) 
-				coords[i, 8] =  max(select(coords[.,2], coords[.,3] :== i))		
+				coords[i, 8] =  max(select(coords[.,2], coords[.,3] :== i))	
+				coords[i, 9] = b2[i,5]
 		}
 
 	return (coords)		
-	}
+}
 end
 
 
