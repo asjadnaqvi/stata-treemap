@@ -161,31 +161,31 @@ treemap y_TOT if NUTS0=="NL", by(NUTS3 NUTS2) addtitles labsize(1.3) format(%15.
 	title("Population of Netherlands at NUTS2 and NUTS3 level") palette(CET L07, reverse) wid(3) hei(3)
 ```
 
-<img src="/figures/treemap9.png" height="500">
+<img src="/figures/treemap9.png" height="600">
 
 ```
 treemap y_TOT if NUTS0=="NL", by(NUTS3 NUTS2) addtitles labsize(1.3) format(%15.0fc) title("Population of Netherlands at NUTS2 and NUTS3 level") palette(CET L07, reverse) xsize(3) ysize(3)
 ```
 
-<img src="/figures/treemap10.png" height="500">
+<img src="/figures/treemap10.png" height="600">
 
 ```
 treemap y_TOT if NUTS0=="NL", by(NUTS3 NUTS2) addtitles noval labsize(1.3) format(%15.0fc) title("Population of Netherlands at NUTS2 and NUTS3 level") palette(CET L10) xsize(3) ysize(3)
 ```
 
-<img src="/figures/treemap11.png" height="500">
+<img src="/figures/treemap11.png" height="600">
 
 ```
 treemap y_TOT if NUTS0=="NO", by(NUTS3 NUTS2) addtitles labsize(2) format(%15.0fc) title("Population of Norway at NUTS2 and NUTS3 level") palette(CET L17) xsize(3) ysize(3) 
 ```
 
-<img src="/figures/treemap12.png" height="500">
+<img src="/figures/treemap12.png" height="600">
 
 ```
 treemap y_TOT if NUTS0=="NO", by(NUTS3) addtitles labsize(2) format(%15.0fc) title("Population of Norway at NUTS3 level") palette(CET L19) xsize(5) ysize(3) scheme(neon)
 ```
 
-<img src="/figures/treemap13.png" height="500">
+<img src="/figures/treemap13.png" height="600">
 
 ### v1.1 updates
 
@@ -248,13 +248,13 @@ treemap y_TOT, by(NUTS2 NUTS0) labsize(2.2) format(%15.0fc) title("Population of
 treemap y_TOT, by(NUTS2 NUTS1 NUTS0) linew(none 0.1 none) linec(white black white) labsize(1.0 0.8 0.6) format(%15.0fc) title("Population of European countries") pad(0.015 0.015 0.01) titlegap(0.09) labprop labcond(2000000) addtitles xsize(5) ysize(4)
 ```
 
-<img src="/figures/treemap23.png" height="500">
+<img src="/figures/treemap23.png" height="600">
 
 ```
 treemap y_TOT, by(NUTS2 NUTS1 NUTS0) linew(none 0.1 none) linec(white black white) labsize(1.0 1.2 1.8) format(%15.0fc) title("Population of European countries") pad(0.015 0.015 0.01) titlegap(0.09) labprop colorprop titleprop labcond(2000000) addtitles xsize(5) ysize(4)
 ```
 
-<img src="/figures/treemap24.png" height="500">
+<img src="/figures/treemap24.png" height="600">
 
 ## Feedback
 
