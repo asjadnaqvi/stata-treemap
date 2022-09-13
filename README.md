@@ -245,7 +245,7 @@ treemap y_TOT, by(NUTS2 NUTS0) labsize(2.2) format(%15.0fc) title("Population of
 <img src="/figures/treemap22.png" height="500">
 
 ```
-treemap y_TOT, by(NUTS2 NUTS1 NUTS0) linew(none 0.1 none) linec(white black white) labsize(1.0 0.8 0.6) format(%15.0fc) title("Population of European countries") pad(0.015 0.015 0.01) titlegap(0.09) labprop labcond(2000000) addtitles xsize(5) ysize(4)
+treemap y_TOT, by(NUTS2 NUTS1 NUTS0) linew(none 0.1 none) linec(white black white) labsize(1.8 1.8 2.4) format(%15.0fc) title("Population of European countries") pad(0.015 0.015 0.01) labprop titleprop palette(CET C6) addtitle noval
 ```
 
 <img src="/figures/treemap23.png" height="600">
