@@ -53,7 +53,7 @@ graph set window fontface "Arial Narrow"
 
 ## Syntax
 
-The syntax for v1.0 is as follows:
+The syntax for v1.2 is as follows:
 
 ```
 treemap numvar [if] [in], by(variables (min=1, max=3)) 
