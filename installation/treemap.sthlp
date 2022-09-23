@@ -1,16 +1,16 @@
 {smcl}
-{* 13Sep2022}{...}
+{* 22Sep2022}{...}
 {hi:help treemap}{...}
-{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.1 (GitHub)}}
+{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.2 (GitHub)}}
 
 {hline}
 
 
 {title:treemap}: is a Stata package for plotting hierarchical data as a {browse "https://en.wikipedia.org/wiki/Treemapping":tree map}.
 This program implements the {it:squarify} tiling algorithm (Bruls et. al. 2000). 
-This algorithm is highly robust and aims to optimize the aspect ratio of rectangles relative to the overall graph dimensions. 
+The algorithm attempts to optimize the aspect ratio of rectangles relative to the overall graph dimensions. 
 
-Squarify is currently the most widely-used tiling method for treemaps. 
+Squarify is one of the most widely-used tiling method for treemaps. 
 
 The Stata implementation is based on D3's {browse "https://observablehq.com/@d3/treemap":treemap} and on the Python's {browse "https://github.com/laserson/squarify":squarify} algorithms.
 
@@ -19,8 +19,8 @@ The Stata implementation is based on D3's {browse "https://observablehq.com/@d3/
 {p 8 15 2}
 
 {cmd:treemap} {it:numvar} {ifin}, {cmd:by}({it:variables (min=1, max=3})) 
-		{cmd:[} {cmdab:xs:ize}({it:num}) {cmdab:ys:ize}({it:num}) {cmd:format}(str) {cmd:labcond}({it:num}) {cmd:pad}({it:list}) 
-		  {cmdab:labs:ize}({it:list}) {cmdab:linew:idth}({it:list}) {cmdab:linec:olor}({it:list}) 
+		{cmd:[} {cmdab:xs:ize}({it:num}) {cmdab:ys:ize}({it:num}) {cmd:format}(str) {cmd:labcond}({it:num})
+		  {cmd:pad}({it:list}) {cmdab:labs:ize}({it:list}) {cmdab:linew:idth}({it:list}) {cmdab:linec:olor}({it:list}) {cmd:fi}({it:list}) 
 		  {cmdab:addt:itles} {cmdab:noval:ues} {cmdab:nolab:els} {cmdab:labs:ize}({it:num}) {cmd:titlegap}({it:num})
 		  {cmd:labprop} {cmd:titleprop} {cmd:colorprop}  {cmd:labscale}({it:num}) {cmd:title}({it:str}) {cmd:subtitle}({it:str})
 		  {cmd:note}({it:str}) {cmd:scheme}({it:str}) {cmd:name}({it:str}) {cmd:palette}(str) {cmd:]} 
@@ -64,6 +64,8 @@ If you change the {opt xsize} and {opt ysize} substantially, then you might also
 {p2coldent : {opt linew:idth(string max=3)}}The line width of the boxes. The default values are {opt linew(0.03 0.03 0.03)}. If only one value is specified, it will passed on to all the layers.{p_end}
 
 {p2coldent : {opt linec:olor(string max=3)}}The line color of the boxes. The default values are {opt linec(black black black)}. If only one value is specified, it will passed on to all the layers.{p_end}
+
+{p2coldent : {opt fi(numlist max=3)}}The fill intensity of the layers. The default values are {opt fi(100 75 50)}.{p_end}
 
 {p2coldent : {opt titlegap(num)}}Change the space between the title text and the boxes. Default value is {opt titlegap(0.1)}.{p_end}
 
@@ -124,8 +126,8 @@ See {browse "https://github.com/asjadnaqvi/treemap":GitHub} for a comprehensive 
 
 {title:Package details}
 
-Version      : {bf:treemap} v1.1
-This release : 13 Sep 2022
+Version      : {bf:treemap} v1.2
+This release : 25 Sep 2022
 First release: 08 Sep 2022
 Repository   : {browse "https://github.com/asjadnaqvi/treemap":GitHub}
 Keywords     : Stata, graph, treemap, squarify

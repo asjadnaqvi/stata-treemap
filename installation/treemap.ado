@@ -1,6 +1,7 @@
-*! Treemap v1.1 (13 Sep 2022)
+*! Treemap v1.2 (22 Sep 2022)
 *! Asjad Naqvi (asjadnaqvi@gmail.com)
 
+* v1.2 (22 Sep 2022): Negative values check. Control over fill intensity.
 * v1.1 (13 Sep 2022): Label, color, title scaling. More options for controls. More checks. Better defaults.
 * v1.0 (08 Sep 2022): First release
 
@@ -13,7 +14,8 @@ prog def treemap, sortpreserve
 	syntax varlist(numeric max=1) [if] [in], by(varlist min=1 max=3)	 ///   
 		[ XSize(real 5) YSize(real 3) format(str) palette(string) ADDTitles NOVALues NOLABels cond(string) ]		///
 		[ title(passthru) subtitle(passthru) note(passthru) scheme(passthru) name(passthru) 			   ]		///
-		[ pad(numlist max=3) labprop labscale(real 0.333) labcond(real 0) colorprop titlegap(real 0.1) titleprop LINEWidth(string) LINEColor(string) LABSize(string) ] 		// v1.1 options. labscale is undocumented labprop scaling
+		[ pad(numlist max=3) labprop labscale(real 0.3333) labcond(real 0) colorprop titlegap(real 0.1) titleprop LINEWidth(string) LINEColor(string) LABSize(string) ] /// // v1.1 options. labscale is undocumented labprop scaling
+		[ fi(numlist max=3) ]    // v1.2 options. 
 		
 	marksample touse, strok
 
@@ -23,6 +25,13 @@ prog def treemap, sortpreserve
 		qui ssc install carryforward, replace
 	}	
 	
+	qui summ `varlist' if `touse', meanonly
+	if r(min) < 0 {
+		di as error "`varlist' contains negative values. Either drop them or make them positive and generate a variable that marks positive and negative values."
+		exit
+	}
+	
+
 	
 qui {	
 	preserve	
@@ -228,7 +237,45 @@ qui {
 		local ls2 1.6
 	}	
 	
-	mata: xmin = 0; xmax = `xsize'; ymin = 0; ymax = `ysize'; dy = ymax - ymin; dx = xmax - xmin
+	
+	if "`fi'" != "" {
+		tokenize `fi'
+		local filen : word count `fi'
+		
+		local fi2 `1'
+		local fi1 `1'
+		local fi0 `1'
+
+		if `filen' > 1 {
+			local fi1 `2'
+			local fi0 `2'
+		}
+			
+		if `filen' > 2 {
+			local fi1 `2'
+			local fi0 `3'
+		}
+	}
+	else {
+		local fi0 100
+		
+		if `length' == 2 {
+			local fi1 = 90
+			local fi0 = 60
+		}	
+		
+		if `length' == 3 {
+			local fi2 = 100
+			local fi1 = 75
+			local fi0 = 50
+		}	
+	}		
+	
+
+	local ratio = (1 + sqrt(5)) / 2
+	
+	
+	mata: xmin = 0; xmax = `xsize'; ymin = 0; ymax = `ysize'; dy = ymax - ymin; dx = xmax - xmin; myratio = `ratio'
 
 	
 	**************
@@ -239,7 +286,7 @@ qui {
 	mata: data = select(st_data(., ("var0_v")), st_data(., "var0_t=1"))
 	mata: padb = `pad0'; padt = `pad0'; padl = `pad0'; padr = `pad0'
 	
-	mata: normlist = normdata(data, dx, dy); b0 = squarify(normlist, xmin, ymin, dx, dy), normlist; c0 = getcoords2(data, b0, padb, padt, padl, padr)
+	mata: normlist = normdata(data, dx, dy); b0 = squarify(normlist, xmin, ymin, dx, dy, myratio), normlist; c0 = getcoords2(data, b0, padb, padt, padl, padr)
 	mata: st_matrix("c0", c0)
 
 	local varlist 
@@ -284,7 +331,7 @@ qui {
 				mata: mydata = select(mydata, mydata[.,2] :== `z')		
 				mata: padb = `pad1'; padt = `pad1'; padl = `pad1'; padr = `pad1'
 
-				mata: b1_`z' = processchildren(`z', mydata[.,1], b0    , padb, padt, padl, padr)
+				mata: b1_`z' = processchildren(`z', mydata[.,1], b0    , padb, padt, padl, padr, myratio)
 				mata: c1_`z' = getcoords2(          mydata[.,1], b1_`z', padb, padt, padl, padr)
 				mata: st_matrix("c1_`z'", c1_`z')
 
@@ -333,7 +380,7 @@ qui {
 					mata: mydata = select(st_data(., ("var2_v", "var0_o", "var1_o")), st_data(., "var2_t = 1"))
 					mata: mydata = select(mydata, mydata[.,2] :== `z' :& mydata[.,3] :== `y')				
 					mata: padb = `pad2'; padt = `pad2'; padl = `pad2'; padr = `pad2'
-					mata: b2_`z'_`y' = processchildren(`y', mydata[.,1], b1_`z', padb, padt, padl, padr)
+					mata: b2_`z'_`y' = processchildren(`y', mydata[.,1], b1_`z', padb, padt, padl, padr, myratio)
 					mata: c2_`z'_`y' = getcoords2(mydata[.,1], b2_`z'_`y', padb, padt, padl, padr)
 					mata: st_matrix("c2_`z'_`y'", c2_`z'_`y')		
 				
@@ -371,19 +418,6 @@ qui {
 		tokenize "`palette'", p(",")
 		local palette  `1'
 		local poptions `3'
-	}
-	
-	local fi0 = 100
-	
-	if `length' == 2 {
-		local fi0 = 60
-		local fi1 = 90
-	}	
-	
-	if `length' == 3 {
-		local fi0 = 50
-		local fi1 = 75
-		local fi2 = 100
 	}
 	
 
@@ -501,7 +535,6 @@ qui {
 		}
 
 
-		
 		if `length' == 3 {
 			local mylab  `lab2'	
 			if "`addtitles'" != "" local boxlab `lab1_box' || `lab0_box'
@@ -530,7 +563,7 @@ qui {
 				xscale(off) yscale(off) ///
 				xlabel(, nogrid) ylabel(, nogrid) ///
 				xsize(`xsize') ysize(`ysize')	///
-				`title' `subtitle' `note' `scheme'
+				`title' `subtitle' `note' `scheme' `name'
 
 restore		
 }		
@@ -631,11 +664,11 @@ mata:
 real matrix leftoverrow(data, x, y, dx, dy)
 	{
 		covered_area = sum(data)
-		width = covered_area / dy
-		leftover_x = x + width
-		leftover_y = y
-		leftover_dx = dx - width
-		leftover_dy = dy
+		width        = covered_area / dy
+		leftover_x   = x  + width
+		leftover_y   = y
+		leftover_dx  = dx - width
+		leftover_dy  = dy
 		return (leftover_x, leftover_y, leftover_dx, leftover_dy)
 	}
 end
@@ -651,11 +684,11 @@ mata:
 real matrix leftovercol(data, x, y, dx, dy)
 	{
 		covered_area = sum(data)
-		height = covered_area / dx
-		leftover_x = x
-		leftover_y = y + height
-		leftover_dx = dx
-		leftover_dy = dy - height
+		height       = covered_area / dx
+		leftover_x   = x
+		leftover_y   = y  + height
+		leftover_dx  = dx
+		leftover_dy  = dy - height
 		return (leftover_x, leftover_y, leftover_dx, leftover_dy)
 	}
 
@@ -682,21 +715,32 @@ end
 
 
 *************************
-// 	  worst_ratio     //  
+// 	  worst_ratio      //  
 *************************
 
 cap mata mata drop worst_ratio()
 
 mata:
-real scalar worst_ratio(data, x, y, dx, dy)
+real scalar worst_ratio(data, x, y, dx, dy, rat)
 	{
-	temp = layout(data, x, y, dx, dy)
+	sumval 	  = sum(data) 
+	minval    = sumval
+	maxval    = sumval
+	temp      = layout(data, x, y, dx, dy)
 	ratiolist = J(rows(temp), 1, .)
 	
-	for (i=1; i<= rows(data); i++) ratiolist[i] = max((temp[i,3] :/ temp[i,4], temp[i,4] :/ temp[i,3]))
+	for (i=1; i<= rows(data); i++) {
+		ratiolist[i] = max((temp[i,3] :/ temp[i,4], temp[i,4] :/ temp[i,3])) 
+		
+		if (data[i] < minval) minval = data[i]
+		if (data[i] > maxval) maxval = data[i]	
+	}
 	
-
-	return (max(ratiolist))
+	// alph = max(ratiolist) 
+	// beta = sumval :* sumval :* alph
+	// return (max((maxval / beta, beta / minval)))
+	
+	 return (max(ratiolist))
 }
 end
 
@@ -709,7 +753,7 @@ end
 cap mata mata drop squarify()
 
 mata:
-function squarify(data, x, y, dx, dy)
+function squarify(data, x, y, dx, dy, myratio)
 {
 	if (rows(data) == 1) return (layout(data, x, y, dx, dy))
 
@@ -720,7 +764,7 @@ function squarify(data, x, y, dx, dy)
 	
 	i = 1
 
-	while ((i < rows(data)) & (worst_ratio(data[1 .. i], x, y, dx, dy) >= worst_ratio(data[1 .. i + 1], x, y, dx, dy))) i = i + 1	
+	while ((i < rows(data)) & (worst_ratio(data[1 .. i], x, y, dx, dy, myratio) >= worst_ratio(data[1 .. i + 1], x, y, dx, dy, myratio))) i = i + 1	
 		
 	current 	= data[1   ..          i]
 	remaining 	= data[i+1 .. rows(data)]
@@ -730,7 +774,7 @@ function squarify(data, x, y, dx, dy)
 	leftover_dx = leftover(current, x, y, dx, dy)[3]
 	leftover_dy = leftover(current, x, y, dx, dy)[4]
 	 
-	return (layout(current, x, y, dx, dy) \ squarify(remaining, leftover_x, leftover_y, leftover_dx, leftover_dy)) 
+	return (layout(current, x, y, dx, dy) \ squarify(remaining, leftover_x, leftover_y, leftover_dx, leftover_dy, myratio)) 
 }	
 
 end
@@ -744,28 +788,15 @@ end
 cap mata mata drop processchildren()
 
 mata:
-	function processchildren(index, data, bounds, padb, padt, padl, padr) 
+	function processchildren(index, data, bounds, padb, padt, padl, padr, myratio) 
 	{	
-		
-	
-	//	if (bounds[index,.][3] - padr - bounds[index,.][1] - padl < 0) {	
-	//		xdiff = 0 
-	//		padr = padr - xdiff; padl =  padl - xdiff
-	//	}
-		
-
-	//	if (bounds[index,.][4] - padt - bounds[index,.][4] - padb < 0) {		
-	//		ydiff = 0 
-	//		padt = padt - ydiff; padb = padb - ydiff
-	//	}		
-		
 		xmin  = bounds[index,.][1] + padl
 		ymin  = bounds[index,.][2] + padb 
 		dx 	  = bounds[index,.][3] - padl - padr
 		dy 	  = bounds[index,.][4] - padb - padt
 
 		normlist = normdata(data, dx, dy)
-		return (squarify(normlist, xmin, ymin, dx, dy), normlist)
+		return (squarify(normlist, xmin, ymin, dx, dy, myratio), normlist)
 	}
 end
 

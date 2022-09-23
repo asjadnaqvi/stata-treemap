@@ -1,7 +1,7 @@
 ![StataMin](https://img.shields.io/badge/stata-2015-blue) ![issues](https://img.shields.io/github/issues/asjadnaqvi/stata-treemap) ![license](https://img.shields.io/github/license/asjadnaqvi/stata-treemap) ![Stars](https://img.shields.io/github/stars/asjadnaqvi/stata-treemap) ![version](https://img.shields.io/github/v/release/asjadnaqvi/stata-treemap) ![release](https://img.shields.io/github/release-date/asjadnaqvi/stata-treemap)
 
 
-# treemap v1.1
+# treemap v1.2
 
 
 This package provides the ability to draw treemaps Stata.
@@ -13,13 +13,13 @@ It is based on D3's [treemap](https://observablehq.com/@d3/treemap) and Python's
 
 The package can be installed via SSC or GitHub. The GitHub version, *might* be more recent due to bug fixes, feature updates etc, and *may* contain syntax improvements and changes in *default* values. See version numbers below. Eventually the GitHub version is published on SSC.
 
-The SSC version (**v1.0**):
+The SSC version (**v1.1**):
 
 ```
 ssc intall treemap, replace
 ```
 
-Or it can be installed from GitHub (**v1.1**):
+Or it can be installed from GitHub (**v1.2**):
 
 ```
 net install treemap, from("https://raw.githubusercontent.com/asjadnaqvi/stata-treemap/main/installation/") replace
@@ -57,7 +57,7 @@ The syntax for v1.0 is as follows:
 
 ```
 treemap numvar [if] [in], by(variables (min=1, max=3)) 
-                [ xsize(num) ysize(num) format(str) labcond(num) pad(list) 
+                [ xsize(num) ysize(num) format(str) labcond(num) pad(list) fi(list) 
                   labsize(list) linewidth(list) linecolor(list) 
                   addtitles novalues nolabels labsize(num) titlegap(num)
                   labprop titleprop colorprop  labscale(num) title(str) subtitle(str)
@@ -73,7 +73,7 @@ treemap numvar, by(variable(s))
 ```
 
 
-where `numvar` is a numeric variable, and `by()` is upto three string variables, ordered by finer to higher aggregation units. The algorithm changes the layout based on the `width()` and `height()` defintions. See examples below.
+where `numvar` is a numeric variable, and `by()` is upto three string variables, ordered by finer to higher aggregation units. The algorithm changes the layout based on `xsize()` and `ysize()`. See examples below.
 
 
 
@@ -256,6 +256,14 @@ treemap y_TOT, by(NUTS2 NUTS1 NUTS0) linew(none 0.1 none) linec(white black whit
 
 <img src="/figures/treemap24.png" height="600">
 
+### v1.2 updates
+
+```
+treemap y_TOT if NUTS0=="DE", by(NUTS3 NUTS2 NUTS1) linew(none 0.1 none) linec(white black white) labsize(1.4 1.8 2.4) format(%15.0fc) title("Population of Germany") pad(0.015 0.015 0.01) labprop titleprop palette(CET C6) addtitle noval fi(100 50 20)
+```
+
+<img src="/figures/treemap25.png" height="600">
+
 ## Feedback
 
 Please open an [issue](https://github.com/asjadnaqvi/stata-treemap/issues) to report errors, feature enhancements, and/or other requests. 
@@ -263,14 +271,19 @@ Please open an [issue](https://github.com/asjadnaqvi/stata-treemap/issues) to re
 
 ## Versions
 
-**v1.1 (13 September 2022)**
+**v1.2 (25 Sep 2022)**
+- Fill intensity control added.
+- Error checks for negative values.
+- Minor code cleanups.
+
+**v1.1 (13 Sep 2022)**
 - Major update to the package
 - Scaling options added for labels, titles, and colors
 - Better checking for thresholds in how boxes are drawn
 - Several bug fixes and clean ups to the code.
 
-**v1.0 (08 September 2022)**
-- First release
+**v1.0 (08 Sep 2022)**
+- First release.
 
 
 
