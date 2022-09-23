@@ -16,7 +16,7 @@ The package can be installed via SSC or GitHub. The GitHub version, *might* be m
 The SSC version (**v1.1**):
 
 ```
-ssc intall treemap, replace
+ssc install treemap, replace
 ```
 
 Or it can be installed from GitHub (**v1.2**):
