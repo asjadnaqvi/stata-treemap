@@ -1,7 +1,7 @@
 {smcl}
-{* 22Sep2022}{...}
+{* 22Nov2022}{...}
 {hi:help treemap}{...}
-{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.2 (GitHub)}}
+{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.21 (GitHub)}}
 
 {hline}
 

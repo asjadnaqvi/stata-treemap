@@ -1,9 +1,10 @@
-*! Treemap v1.2 (22 Sep 2022)
+*! Treemap v1.21 (22 Nov 2022)
 *! Asjad Naqvi (asjadnaqvi@gmail.com)
 
-* v1.2 (22 Sep 2022): Negative values check. Control over fill intensity.
-* v1.1 (13 Sep 2022): Label, color, title scaling. More options for controls. More checks. Better defaults.
-* v1.0 (08 Sep 2022): First release
+* v1.21 (22 Nov 2022): fixed a bug where duplicate values were causing categories to be dropped.
+* v1.2  (22 Sep 2022): Negative values check. Control over fill intensity.
+* v1.1  (13 Sep 2022): Label, color, title scaling. More options for controls. More checks. Better defaults.
+* v1.0  (08 Sep 2022): First release
 
 cap prog drop treemap
 
@@ -34,8 +35,10 @@ prog def treemap, sortpreserve
 
 	
 qui {	
-	preserve	
+preserve	
 	keep if `touse'
+	
+
 	
 	local length : word count `by'
 	
@@ -50,8 +53,8 @@ qui {
 		
 		collapse (sum) `varlist', by(`var0') 
 		
-		gen var0_v = `varlist'
-		gsort -var0_v
+		gen double var0_v = `varlist'
+		gsort -var0_v `var0'  // stabilize the sort
 	}
 
 	if `length' == 2 {
@@ -75,7 +78,7 @@ qui {
 		collapse (sum) `varlist', by(`var0' `var1') 
 		
 		bysort `var0': egen var0_v = sum(`varlist')
-		gen var1_v = `varlist'
+		gen double var1_v = `varlist'
 		
 		gsort -var0_v -var1_v
 	}	
@@ -109,7 +112,7 @@ qui {
 		
 		bysort `var0': egen var0_v = sum(`varlist')
 		bysort `var1': egen var1_v = sum(`varlist')
-		gen var2_v = `varlist'
+		gen double var2_v = `varlist'
 		
 		gsort -var0_v -var1_v -var2_v
 	}
@@ -118,10 +121,9 @@ qui {
 	gen id = _n		
 
 	egen var0_t = tag(`var0')
-	egen var0_o = group(var0_v) 
-	levelsof var0_o
-	replace var0_o = r(r) - var0_o + 1
-		
+	gen  double var0_o = sum(`var0' != `var0'[_n-1]) 
+	
+	
 	if `length' > 1 {
 		cap drop var1_t
 		egen var1_t = tag(`var0' `var1')
@@ -565,6 +567,7 @@ qui {
 				xsize(`xsize') ysize(`ysize')	///
 				`title' `subtitle' `note' `scheme' `name'
 
+				
 restore		
 }		
 

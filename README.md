@@ -1,7 +1,7 @@
 ![StataMin](https://img.shields.io/badge/stata-2015-blue) ![issues](https://img.shields.io/github/issues/asjadnaqvi/stata-treemap) ![license](https://img.shields.io/github/license/asjadnaqvi/stata-treemap) ![Stars](https://img.shields.io/github/stars/asjadnaqvi/stata-treemap) ![version](https://img.shields.io/github/v/release/asjadnaqvi/stata-treemap) ![release](https://img.shields.io/github/release-date/asjadnaqvi/stata-treemap)
 
 
-# treemap v1.2
+# treemap v1.21
 
 
 This package provides the ability to draw treemaps Stata.
@@ -270,6 +270,10 @@ Please open an [issue](https://github.com/asjadnaqvi/stata-treemap/issues) to re
 
 
 ## Versions
+
+**v1.21 (22 Nov 2022)**
+- Removed error where duplicate values were causing categories to be dropped.
+- Stablized the sort order to prevent random trees across different runs.
 
 **v1.2 (25 Sep 2022)**
 - Fill intensity control added.
