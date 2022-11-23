@@ -19,7 +19,7 @@ The SSC version (**v1.1**):
 ssc install treemap, replace
 ```
 
-Or it can be installed from GitHub (**v1.2**):
+Or it can be installed from GitHub (**v1.21**):
 
 ```
 net install treemap, from("https://raw.githubusercontent.com/asjadnaqvi/stata-treemap/main/installation/") replace
@@ -53,7 +53,7 @@ graph set window fontface "Arial Narrow"
 
 ## Syntax
 
-The syntax for v1.2 is as follows:
+The syntax for v1.21 is as follows:
 
 ```
 treemap numvar [if] [in], by(variables (min=1, max=3)) 
