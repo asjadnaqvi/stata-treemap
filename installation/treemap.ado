@@ -4,7 +4,7 @@
 * v1.21 (22 Nov 2022): fixed a bug where duplicate values were causing categories to be dropped.
 * v1.2  (22 Sep 2022): Negative values check. Control over fill intensity.
 * v1.1  (13 Sep 2022): Label, color, title scaling. More options for controls. More checks. Better defaults.
-* v1.0  (08 Sep 2022): First release
+* v1.0  (08 Sep 2022): First release.
 
 cap prog drop treemap
 
@@ -26,11 +26,7 @@ prog def treemap, sortpreserve
 		qui ssc install carryforward, replace
 	}	
 	
-	qui summ `varlist' if `touse', meanonly
-	if r(min) < 0 {
-		di as error "`varlist' contains negative values. Either drop them or make them positive and generate a variable that marks positive and negative values."
-		exit
-	}
+
 	
 
 	
@@ -38,7 +34,12 @@ qui {
 preserve	
 	keep if `touse'
 	
-
+	qui summ `varlist', meanonly
+	if r(min) <= 0 di in yellow "`varlist' contains zeros or negative values. These values have been dropped."
+		
+	}
+	
+	drop if `varlist' <= 0
 	
 	local length : word count `by'
 	

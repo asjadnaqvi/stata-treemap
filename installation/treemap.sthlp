@@ -122,12 +122,12 @@ See {browse "https://github.com/asjadnaqvi/treemap":GitHub} for a comprehensive 
 
 {title:Acknowledgements}
 
-
+Fayssal Ayad found errors with duplicate and zero values that was causing the layers to be drawn improperly (v1.21).
 
 {title:Package details}
 
-Version      : {bf:treemap} v1.2
-This release : 25 Sep 2022
+Version      : {bf:treemap} v1.21
+This release : 22 Nov 2022
 First release: 08 Sep 2022
 Repository   : {browse "https://github.com/asjadnaqvi/treemap":GitHub}
 Keywords     : Stata, graph, treemap, squarify

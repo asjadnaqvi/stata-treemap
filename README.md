@@ -274,6 +274,7 @@ Please open an [issue](https://github.com/asjadnaqvi/stata-treemap/issues) to re
 **v1.21 (22 Nov 2022)**
 - Removed error where duplicate values were causing categories to be dropped.
 - Stablized the sort order to prevent random trees across different runs.
+- Better variable precision and code cleanup.
 
 **v1.2 (25 Sep 2022)**
 - Fill intensity control added.
