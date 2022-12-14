@@ -1,12 +1,12 @@
 {smcl}
-{* 22Nov2022}{...}
+{* 14Dec2022}{...}
 {hi:help treemap}{...}
-{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.21 (GitHub)}}
+{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.3 (GitHub)}}
 
 {hline}
 
 
-{title:treemap}: is a Stata package for plotting hierarchical data as a {browse "https://en.wikipedia.org/wiki/Treemapping":tree map}.
+{title:treemap}: is a Stata package for plotting hierarchical data as a {browse "https://en.wikipedia.org/wiki/Treemapping":treemap}. 
 This program implements the {it:squarify} tiling algorithm (Bruls et. al. 2000). 
 The algorithm attempts to optimize the aspect ratio of rectangles relative to the overall graph dimensions. 
 
@@ -19,11 +19,11 @@ The Stata implementation is based on D3's {browse "https://observablehq.com/@d3/
 {p 8 15 2}
 
 {cmd:treemap} {it:numvar} {ifin}, {cmd:by}({it:variables (min=1, max=3})) 
-		{cmd:[} {cmdab:xs:ize}({it:num}) {cmdab:ys:ize}({it:num}) {cmd:format}(str) {cmd:labcond}({it:num})
+		{cmd:[} {cmdab:xs:ize}({it:num}) {cmdab:ys:ize}({it:num}) {cmd:format}({it:str}) {cmd:percent} {cmd:labcond}({it:num}) {cmd:palette}(str)
 		  {cmd:pad}({it:list}) {cmdab:labs:ize}({it:list}) {cmdab:linew:idth}({it:list}) {cmdab:linec:olor}({it:list}) {cmd:fi}({it:list}) 
-		  {cmdab:addt:itles} {cmdab:noval:ues} {cmdab:nolab:els} {cmdab:labs:ize}({it:num}) {cmd:titlegap}({it:num})
+		  {cmdab:addt:itles} {cmdab:noval:ues} {cmdab:nolab:els} {cmdab:labs:ize}({it:num}) {cmd:titlegap}({it:num}) {cmdab:labg:ap}({it:str})
 		  {cmd:labprop} {cmd:titleprop} {cmd:colorprop}  {cmd:labscale}({it:num}) {cmd:title}({it:str}) {cmd:subtitle}({it:str})
-		  {cmd:note}({it:str}) {cmd:scheme}({it:str}) {cmd:name}({it:str}) {cmd:palette}(str) {cmd:]} 
+		  {cmd:note}({it:str}) {cmd:scheme}({it:str}) {cmd:name}({it:str}) {cmd:]} 
 
 
 {p 4 4 2}
@@ -43,6 +43,8 @@ Note that changing the {opt xsize} and {opt ysize} will change the layout of the
 
 {p2coldent : {opt palette(name)}}Color name is any named scheme defined in the {stata help colorpalette:colorpalette} package. Default is {stata colorpalette tableau:{it:tableau}}.{p_end}
 
+{p2coldent : {opt percent}}Show percentage shares of the total instead of the actual values for all the layers.{p_end}
+
 {p2coldent : {opt addt:itles}}Add titles to rectangles of higher layers. This adds the name and value in the top left corner of the boxes.{p_end}
 
 {p2coldent : {opt noval:ues}}Do not add the values to the lowest-level rectangles. If the graph is too crowded, this option might help.{p_end}
@@ -53,7 +55,7 @@ Note that changing the {opt xsize} and {opt ysize} will change the layout of the
 
 {p2coldent : {opt labcond(value)}}The minimum value for showing the value labels. For example, {opt labcond(20)} will only plot values greater than 20.{p_end}
 
-{p2coldent : {opt format(fmt)}}Format the values of the labels. The default option is {opt format(%9.0fc)}.{p_end}
+{p2coldent : {opt format(fmt)}}Format the values of the labels. The default option is {opt format(%9.0fc)} for values and {opt format(%5.2f)} for the {opt percent} option.{p_end}
 
 {p2coldent : {opt pad(numlist max=3)}}The padding of the boxes, which can be defined as a list. 
 The default values are {opt :pad(0.012 0.01 0.01)} for the three layers. A value of 0 implies no padding. 
@@ -68,6 +70,9 @@ If you change the {opt xsize} and {opt ysize} substantially, then you might also
 {p2coldent : {opt fi(numlist max=3)}}The fill intensity of the layers. The default values are {opt fi(100 75 50)}.{p_end}
 
 {p2coldent : {opt titlegap(num)}}Change the space between the title text and the boxes. Default value is {opt titlegap(0.1)}.{p_end}
+
+{p2coldent : {opt labgap(num)}}Change the space between the box text and the values. Default value is {opt labgap(0.6)}.
+This option might be use if {opt labelprop} is used which might make some labels overlap with each other.{p_end}
 
 {p2coldent : {opt titleprop}}Make the size of the box titles proportional to the area.{p_end}
 
@@ -126,8 +131,8 @@ Fayssal Ayad found errors with duplicate and zero values that was causing the la
 
 {title:Package details}
 
-Version      : {bf:treemap} v1.21
-This release : 22 Nov 2022
+Version      : {bf:treemap} v1.3
+This release : 14 Dec 2022
 First release: 08 Sep 2022
 Repository   : {browse "https://github.com/asjadnaqvi/treemap":GitHub}
 Keywords     : Stata, graph, treemap, squarify
@@ -147,3 +152,10 @@ Twitter      : {browse "https://twitter.com/AsjadNaqvi":@AsjadNaqvi}
 {p 4 8 2}Jann, B. (2018). {browse "https://www.stata-journal.com/article.html?article=gr0075":Color palettes for Stata graphics}. The Stata Journal 18(4): 765-785.
 
 {p 4 8 2}Laserson, U. (2022). {browse "https://github.com/agatheblues/squarify":Python squarify}.
+
+
+{title:Other visualization packages}
+
+{psee}
+    {helpb sankey}, {helpb alluvial}, {helpb circlebar}, {helpb spider}, {helpb treemap}, {helpb circlepack}, {helpb arcplot},
+	{helpb marimekko}, {helpb bimap}, {helpb joyplot}, {helpb streamplot}, {helpb delaunay}, {helpb clipgeo},  {helpb schemepack}

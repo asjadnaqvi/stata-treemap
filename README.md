@@ -1,7 +1,7 @@
 ![StataMin](https://img.shields.io/badge/stata-2015-blue) ![issues](https://img.shields.io/github/issues/asjadnaqvi/stata-treemap) ![license](https://img.shields.io/github/license/asjadnaqvi/stata-treemap) ![Stars](https://img.shields.io/github/stars/asjadnaqvi/stata-treemap) ![version](https://img.shields.io/github/v/release/asjadnaqvi/stata-treemap) ![release](https://img.shields.io/github/release-date/asjadnaqvi/stata-treemap)
 
 
-# treemap v1.21
+# treemap v1.3
 
 
 This package provides the ability to draw treemaps Stata.
@@ -13,13 +13,13 @@ It is based on D3's [treemap](https://observablehq.com/@d3/treemap) and Python's
 
 The package can be installed via SSC or GitHub. The GitHub version, *might* be more recent due to bug fixes, feature updates etc, and *may* contain syntax improvements and changes in *default* values. See version numbers below. Eventually the GitHub version is published on SSC.
 
-The SSC version (**v1.1**):
+The SSC version (**v1.21**):
 
 ```
 ssc install treemap, replace
 ```
 
-Or it can be installed from GitHub (**v1.21**):
+Or it can be installed from GitHub (**v1.3**):
 
 ```
 net install treemap, from("https://raw.githubusercontent.com/asjadnaqvi/stata-treemap/main/installation/") replace
@@ -53,14 +53,14 @@ graph set window fontface "Arial Narrow"
 
 ## Syntax
 
-The syntax for v1.21 is as follows:
+The syntax for **v1.3** is as follows:
 
 ```
 treemap numvar [if] [in], by(variables (min=1, max=3)) 
-                [ xsize(num) ysize(num) format(str) labcond(num) pad(list) fi(list) 
+                [ xsize(num) ysize(num) format(str) labcond(num) pad(list) fi(list) percent
                   labsize(list) linewidth(list) linecolor(list) 
-                  addtitles novalues nolabels labsize(num) titlegap(num)
-                  labprop titleprop colorprop  labscale(num) title(str) subtitle(str)
+                  addtitles novalues nolabels labsize(num) titlegap(num) labgap(str)
+                  labprop titleprop colorprop labscale(num) title(str) subtitle(str)
                   note(str) scheme(str) name(str) palette(str) ] 
 ```
 
@@ -264,12 +264,33 @@ treemap y_TOT if NUTS0=="DE", by(NUTS3 NUTS2 NUTS1) linew(none 0.1 none) linec(w
 
 <img src="/figures/treemap25.png" height="600">
 
+### v1.3 updates
+
+```
+treemap y_TOT if NUTS0=="DK", by(NUTS3 NUTS2) addtitles labsize(2) ///
+title("Population of Denmark at NUTS2 and NUTS3 level") subtitle("% of total") percent
+```
+
+<img src="/figures/treemap26.png" height="600">
+
+```
+treemap y_TOT if NUTS0=="DK", by(NUTS3 NUTS2) addtitles labsize(2) title("Population of Denmark at NUTS2 and NUTS3 level") subtitle("% of total") ///
+percent format(%3.1f) palette(CET C7) labgap(1)
+```
+
+<img src="/figures/treemap27.png" height="600">
+
 ## Feedback
 
 Please open an [issue](https://github.com/asjadnaqvi/stata-treemap/issues) to report errors, feature enhancements, and/or other requests. 
 
 
 ## Versions
+
+**v1.3 (14 Dec 2022)**
+- Fixed issue with the defaults in value formatting.
+- Add `percent` option that shows percentage share of the total value rather than actual values.
+- Added a `labgap()` option that allows the distance of the labels and the values in boxes to be adjusted.
 
 **v1.21 (22 Nov 2022)**
 - Removed error where duplicate values were causing categories to be dropped.

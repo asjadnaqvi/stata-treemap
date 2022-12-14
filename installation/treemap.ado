@@ -1,6 +1,7 @@
-*! Treemap v1.21 (22 Nov 2022)
+*! Treemap v1.3 (14 Dec 2022)
 *! Asjad Naqvi (asjadnaqvi@gmail.com)
 
+* v1.3  (14 Dec 2022): fixed formatting of labels. Added percent option. Add labgap option.
 * v1.21 (22 Nov 2022): fixed a bug where duplicate values were causing categories to be dropped.
 * v1.2  (22 Sep 2022): Negative values check. Control over fill intensity.
 * v1.1  (13 Sep 2022): Label, color, title scaling. More options for controls. More checks. Better defaults.
@@ -8,7 +9,7 @@
 
 cap prog drop treemap
 
-prog def treemap, sortpreserve
+prog def treemap, // sortpreserve
 
 	version 15
 	
@@ -16,7 +17,8 @@ prog def treemap, sortpreserve
 		[ XSize(real 5) YSize(real 3) format(str) palette(string) ADDTitles NOVALues NOLABels cond(string) ]		///
 		[ title(passthru) subtitle(passthru) note(passthru) scheme(passthru) name(passthru) 			   ]		///
 		[ pad(numlist max=3) labprop labscale(real 0.3333) labcond(real 0) colorprop titlegap(real 0.1) titleprop LINEWidth(string) LINEColor(string) LABSize(string) ] /// // v1.1 options. labscale is undocumented labprop scaling
-		[ fi(numlist max=3) ]    // v1.2 options. 
+		[ fi(numlist max=3) ] 		///   	// v1.2 options
+		[ percent LABGap(string) ] 			// v1.3	 options
 		
 	marksample touse, strok
 
@@ -27,9 +29,7 @@ prog def treemap, sortpreserve
 	}	
 	
 
-	
 
-	
 qui {	
 preserve	
 	keep if `touse'
@@ -280,6 +280,22 @@ preserve
 	
 	mata: xmin = 0; xmax = `xsize'; ymin = 0; ymax = `ysize'; dy = ymax - ymin; dx = xmax - xmin; myratio = `ratio'
 
+	*** calculate the percentage variable
+	
+	*summ var0_v, meanonly
+	*gen double _percent = (var0_v / r(sum)) * 100	
+	
+	*** define format options
+	if "`format'"  == "" {
+		if "`percent'"  == "" {
+			local format %9.0fc
+		}
+		else {
+			local format %5.2f
+		}
+	}
+	
+	
 	
 	**************
 	**  layer0  **
@@ -287,14 +303,15 @@ preserve
 	
 	
 	mata: data = select(st_data(., ("var0_v")), st_data(., "var0_t=1"))
+	mata: datasum = sum(data)
 	mata: padb = `pad0'; padt = `pad0'; padl = `pad0'; padr = `pad0'
 	
-	mata: normlist = normdata(data, dx, dy); b0 = squarify(normlist, xmin, ymin, dx, dy, myratio), normlist; c0 = getcoords2(data, b0, padb, padt, padl, padr)
+	mata: normlist = normdata(data, dx, dy); b0 = squarify(normlist, xmin, ymin, dx, dy, myratio), normlist; c0 = getcoords2(data, b0, padb, padt, padl, padr, datasum)
 	mata: st_matrix("c0", c0)
 
 	local varlist 
 	
-	mat colnames c0 = "_l0_x" "_l0_y" "_l0_id" "_l0_val" "_l0_xmid" "_l0_ymid" "_l0_xmax" "_l0_ymax" "_l0_wgt"
+	mat colnames c0 = "_l0_x" "_l0_y" "_l0_id" "_l0_val" "_l0_xmid" "_l0_ymid" "_l0_xmax" "_l0_ymax" "_l0_wgt" "_l0_pct"
 	
 	mat li c0
 	svmat c0, n(col)
@@ -308,9 +325,11 @@ preserve
 		summ id if var0_o==`i' & var0_t==1, meanonly
 		replace  _l0_lab1 = `var0'[r(mean)] in `i'	
 	}	
-
-		gen  _l0_lab0 = "{it:" + _l0_lab1 + " (" + string(_l0_val, "`format'") + ")}" in 1/`item0' 
-		gen  _l0_lab2 = string(_l0_val, "`format'") in 1/`item0' 
+	
+		local mylab cond("`percent'"=="", _l0_val, _l0_pct)
+	
+		gen  _l0_lab0 = "{it:" + _l0_lab1 + " (" + string(`mylab', "`format'") + ")}" in 1/`item0' 
+		gen  _l0_lab2 = string(`mylab', "`format'") in 1/`item0' 
 		
 
 		
@@ -335,10 +354,10 @@ preserve
 				mata: padb = `pad1'; padt = `pad1'; padl = `pad1'; padr = `pad1'
 
 				mata: b1_`z' = processchildren(`z', mydata[.,1], b0    , padb, padt, padl, padr, myratio)
-				mata: c1_`z' = getcoords2(          mydata[.,1], b1_`z', padb, padt, padl, padr)
+				mata: c1_`z' = getcoords2(          mydata[.,1], b1_`z', padb, padt, padl, padr, datasum)
 				mata: st_matrix("c1_`z'", c1_`z')
 
-			mat colnames c1_`z' = "_l1_`z'_x" "_l1_`z'_y" "_l1_`z'_id" "_l1_`z'_val" "_l1_`z'_xmid" "_l1_`z'_ymid" "_l1_`z'_xmax" "_l1_`z'_ymax" "_l1_`z'_wgt"			
+			mat colnames c1_`z' = "_l1_`z'_x" "_l1_`z'_y" "_l1_`z'_id" "_l1_`z'_val" "_l1_`z'_xmid" "_l1_`z'_ymid" "_l1_`z'_xmax" "_l1_`z'_ymax" "_l1_`z'_wgt" "_l1_`z'_pct"		
 			svmat c1_`z', n(col)
 
 			gen _l1_`z'_lab1  = ""
@@ -350,8 +369,10 @@ preserve
 				replace  _l1_`z'_lab1 = `var1'[r(mean)] in `i'	
 			}
 			
-			gen  _l1_`z'_lab0 = "{it:" + _l1_`z'_lab1 + " (" + string(_l1_`z'_val, "`format'") + ")}"  in 1/`item1' 
-			gen  _l1_`z'_lab2 = string(_l1_`z'_val, "`format'")  in 1/`item1' 
+			local mylab cond("`percent'"=="", _l1_`z'_val, _l1_`z'_pct)			
+			
+			gen  _l1_`z'_lab0 = "{it:" + _l1_`z'_lab1 + " (" + string(`mylab', "`format'") + ")}"  in 1/`item1' 
+			gen  _l1_`z'_lab2 = string(`mylab', "`format'")  in 1/`item1' 
 
 		}
 		
@@ -384,10 +405,10 @@ preserve
 					mata: mydata = select(mydata, mydata[.,2] :== `z' :& mydata[.,3] :== `y')				
 					mata: padb = `pad2'; padt = `pad2'; padl = `pad2'; padr = `pad2'
 					mata: b2_`z'_`y' = processchildren(`y', mydata[.,1], b1_`z', padb, padt, padl, padr, myratio)
-					mata: c2_`z'_`y' = getcoords2(mydata[.,1], b2_`z'_`y', padb, padt, padl, padr)
+					mata: c2_`z'_`y' = getcoords2(mydata[.,1], b2_`z'_`y', padb, padt, padl, padr, datasum)
 					mata: st_matrix("c2_`z'_`y'", c2_`z'_`y')		
 				
-				mat colnames c2_`z'_`y' = "_l2_`z'_`y'_x" "_l2_`z'_`y'_y" "_l2_`z'_`y'_id" "_l2_`z'_`y'_val" "_l2_`z'_`y'_xmid" "_l2_`z'_`y'_ymid" "_l2_`z'_`y'_xmax" "_l2_`z'_`y'_ymax" "_l2_`z'_`y'_wgt"
+				mat colnames c2_`z'_`y' = "_l2_`z'_`y'_x" "_l2_`z'_`y'_y" "_l2_`z'_`y'_id" "_l2_`z'_`y'_val" "_l2_`z'_`y'_xmid" "_l2_`z'_`y'_ymid" "_l2_`z'_`y'_xmax" "_l2_`z'_`y'_ymax" "_l2_`z'_`y'_wgt"  "_l2_`z'_`y'_pct"
 				svmat c2_`z'_`y', n(col)
 					
 				// get the labels	
@@ -400,11 +421,16 @@ preserve
 					replace  _l2_`z'_`y'_lab1 = `var2'[r(mean)] in `i'						
 				}
 				
-				gen  _l2_`z'_`y'_lab0 = "{it:" + _l2_`z'_`y'_lab1 + " (" + string(_l2_`z'_`y'_val, "`format'") + ")}"  in 1/`item2' if _l2_`z'_`y'_val > `labcond'
-				gen  _l2_`z'_`y'_lab2 = string(_l2_`z'_`y'_val, "`format'") in 1/`item2'  if _l2_`z'_`y'_val > `labcond'
+				local mylab cond("`percent'"=="", _l2_`z'_`y'_val, _l2_`z'_`y'_pct)	
+				
+				gen  _l2_`z'_`y'_lab0 = "{it:" + _l2_`z'_`y'_lab1 + " (" + string(`mylab', "`format'") + ")}"  in 1/`item2' if _l2_`z'_`y'_val > `labcond'
+				gen  _l2_`z'_`y'_lab2 = string(`mylab', "`format'") in 1/`item2'  if _l2_`z'_`y'_val > `labcond'
 			}
 		}		
 	}	
+	
+	
+
 	
 	
 	
@@ -412,7 +438,7 @@ preserve
 	//   draw   //
     **************	
 
-	if "`format'"  == "" local format %9.0fc
+
 	
 	if "`palette'" == "" {
 		local palette tableau
@@ -423,6 +449,7 @@ preserve
 		local poptions `3'
 	}
 	
+	if "`labgap'" == "" local labgap 0.6
 
 	***************
 	*** layer 0 ***
@@ -455,7 +482,7 @@ preserve
 			
 			local lab0 `lab0' (scatter _l0_ymid _l0_xmid in `i'  if _l0_val > `labcond', mc(none) mlab(_l0_lab1) mlabpos(0) mlabsize(`labs0') mlabc(black) ) || 
 			
-			if "`novalues'" == "" local lab0 `lab0' (scatter _l0_ymid _l0_xmid in `i' if _l0_val > `labcond', mc(none) mlab(_l0_lab2) mlabpos(6) mlabsize(`labs0') mlabgap(*0.1) mlabc(black) ) ||
+			if "`novalues'" == "" local lab0 `lab0' (scatter _l0_ymid _l0_xmid in `i' if _l0_val > `labcond', mc(none) mlab(_l0_lab2) mlabpos(6) mlabsize(`labs0') mlabgap(`labgap') mlabc(black) ) ||
 			
 			***************
 			*** layer 1 ***
@@ -496,7 +523,7 @@ preserve
 					
 					local lab1 `lab1' (scatter _l1_`i'_ymid _l1_`i'_xmid in `j' if _l1_`i'_val > `labcond', mc(none) mlab(_l1_`i'_lab1) mlabpos(0) mlabsize(`labs1') mlabc(black) ) || 
 							
-					if "`novalues'" == "" local lab1 `lab1' (scatter _l1_`i'_ymid _l1_`i'_xmid  in `j' if _l1_`i'_val > `labcond', mc(none) mlab(_l1_`i'_lab2) mlabpos(6) mlabsize(`labs1') mlabgap(*0.05) mlabc(black) ) ||
+					if "`novalues'" == "" local lab1 `lab1' (scatter _l1_`i'_ymid _l1_`i'_xmid  in `j' if _l1_`i'_val > `labcond', mc(none) mlab(_l1_`i'_lab2) mlabpos(6) mlabsize(`labs1') mlabgap(`labgap') mlabc(black) ) ||
 					
 					
 					***************
@@ -529,7 +556,7 @@ preserve
 							
 							local lab2 `lab2' (scatter _l2_`i'_`j'_ymid _l2_`i'_`j'_xmid in `k' , mc(none) mlab(_l2_`i'_`j'_lab1) mlabpos(0) mlabsize(`labs2') mlabc(black) ) ||	
 							
-							if "`novalues'" == "" local lab2 `lab2' (scatter _l2_`i'_`j'_ymid _l2_`i'_`j'_xmid in `k', mc(none) mlab(_l2_`i'_`j'_lab2) mlabpos(6) mlabsize(`labs2') mlabgap(*0.05) mlabc(black) ) ||			
+							if "`novalues'" == "" local lab2 `lab2' (scatter _l2_`i'_`j'_ymid _l2_`i'_`j'_xmid in `k', mc(none) mlab(_l2_`i'_`j'_lab2) mlabpos(6) mlabsize(`labs2') mlabgap(`labgap') mlabc(black) ) ||			
 						
 						}
 					}
@@ -836,9 +863,9 @@ end
 cap mata mata drop getcoords2()
 
 mata:
-	real matrix getcoords2(data, b2, padb, padt, padl, padr) // data, bounds, padding
+	real matrix getcoords2(data, b2, padb, padt, padl, padr, mysum) // data, bounds, padding
 	{
-	coords = J(5 * rows(b2), 9, .)  // rows = 4x coordinates + 1 empty, 8 cols = x,y,index,value, xmean, ymean, xmax, ymax, weight 
+	coords = J(5 * rows(b2), 10, .)  // rows = 4x coordinates + 1 empty, 8 cols = x,y,index, value, xmean, ymean, xmax, ymax, weight, percentage // add percentage here
 	
 		for (i=1; i<= rows(b2); i++) {	
 			
@@ -853,6 +880,7 @@ mata:
 				coords[i, 7] =  min(select(coords[.,1], coords[.,3] :== i)) 
 				coords[i, 8] =  max(select(coords[.,2], coords[.,3] :== i))	
 				coords[i, 9] = b2[i,5]
+				coords[i,10] = (data[i] / mysum) * 100
 		}
 
 	return (coords)		
