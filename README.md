@@ -332,7 +332,7 @@ Please open an [issue](https://github.com/asjadnaqvi/stata-treemap/issues) to re
 
 
 **v1.4 (13 Jan 2023)**
-- **IMPORTANT**: The order now need to be specified from highest tier to lowest tier. This reversal is (a) just logical, and (b) it aligns `treemap` with other hierarchy packages.
+- **IMPORTANT**: The order now need to be specified from highest tier to lowest tier. This reversal in categories is (a) just logical, and (b) aligns `treemap` with other hierarchy packages.
 - **IMPORTANT**: the `percent` (from v1.3) has been renamed to `share` (v1.4). This is to align `treemap` with other hierarchy packages.
 - Updated defaults in `labgap()` to improve the spacing.
 - Fixed a bug where the children were not respecting the boundary of the parents.
