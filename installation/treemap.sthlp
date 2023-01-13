@@ -1,29 +1,29 @@
 {smcl}
-{* 14Dec2022}{...}
+{* 13Jan2023}{...}
 {hi:help treemap}{...}
-{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.3 (GitHub)}}
+{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.4 (GitHub)}}
 
 {hline}
 
 
-{title:treemap}: is a Stata package for plotting hierarchical data as a {browse "https://en.wikipedia.org/wiki/Treemapping":treemap}. 
-This program implements the {it:squarify} tiling algorithm (Bruls et. al. 2000). 
+{title:treemap}: is a Stata package for plotting hierarchical data as a gridded {browse "https://en.wikipedia.org/wiki/Treemapping":tree map}. 
+
+{p 4 4 2}
+This program implements the {it:squarify} tiling algorithm ({browse "https://link.springer.com/chapter/10.1007/978-3-7091-6783-0_4":Bruls et. al. 2000}).
 The algorithm attempts to optimize the aspect ratio of rectangles relative to the overall graph dimensions. 
-
-Squarify is one of the most widely-used tiling method for treemaps. 
-
-The Stata implementation is based on D3's {browse "https://observablehq.com/@d3/treemap":treemap} and on the Python's {browse "https://github.com/laserson/squarify":squarify} algorithms.
+Squarify is one of the most widely-used tiling method for treemaps. The Stata implementation is based on D3's {browse "https://observablehq.com/@d3/treemap":treemap}
+and on the Python's {browse "https://github.com/laserson/squarify":squarify} algorithms.
 
 
 {marker syntax}{title:Syntax}
 {p 8 15 2}
 
-{cmd:treemap} {it:numvar} {ifin}, {cmd:by}({it:variables (min=1, max=3})) 
-		{cmd:[} {cmdab:xs:ize}({it:num}) {cmdab:ys:ize}({it:num}) {cmd:format}({it:str}) {cmd:percent} {cmd:labcond}({it:num}) {cmd:palette}(str)
+{cmd:treemap} {it:numvar} {ifin}, {cmd:by}({it:variables (min=1 max=3})) 
+		{cmd:[} {cmdab:xs:ize}({it:num}) {cmdab:ys:ize}({it:num}) {cmd:format}({it:str}) {cmd:share} {cmd:labcond}({it:num}) {cmd:palette}(str)
 		  {cmd:pad}({it:list}) {cmdab:labs:ize}({it:list}) {cmdab:linew:idth}({it:list}) {cmdab:linec:olor}({it:list}) {cmd:fi}({it:list}) 
 		  {cmdab:addt:itles} {cmdab:noval:ues} {cmdab:nolab:els} {cmdab:labs:ize}({it:num}) {cmd:titlegap}({it:num}) {cmdab:labg:ap}({it:str})
-		  {cmd:labprop} {cmd:titleprop} {cmd:colorprop}  {cmd:labscale}({it:num}) {cmd:title}({it:str}) {cmd:subtitle}({it:str})
-		  {cmd:note}({it:str}) {cmd:scheme}({it:str}) {cmd:name}({it:str}) {cmd:]} 
+		  {cmdab:thresh:old}({it:num}) {cmd:face}({it:num}) {cmd:labprop} {cmd:titleprop} {cmd:colorprop} {cmd:labscale}({it:num})  
+		  {cmd:title}({it:str}) {cmd:subtitle}({it:str}) {cmd:note}({it:str}) {cmd:scheme}({it:str}) {cmd:name}({it:str}) {cmd:]} 
 
 
 {p 4 4 2}
@@ -36,14 +36,14 @@ The options are described as follows:
 {p2coldent : {opt treemap} numvar}The command requires a {it:numeric variable} that contains the values.{p_end}
 
 {p2coldent : {opt by(group vars)}}At least one {it:by()} string variable needs to be specified, and a maximum of three string variables are allowed. These also are used as labels.
-The order is inner-most layer first and top-most layer last.{p_end}
+The order is parent layer first followed by child layer or more aggregated layers should be specified first.{p_end}
 
 {p2coldent : {opt xs:ize(num)}, {opt ys:ize(num)}}The width and height of the bounding box. Default values are {it:xsize(5) and ysize(3)}.
 Note that changing the {opt xsize} and {opt ysize} will change the layout of the treemap.{p_end}
 
 {p2coldent : {opt palette(name)}}Color name is any named scheme defined in the {stata help colorpalette:colorpalette} package. Default is {stata colorpalette tableau:{it:tableau}}.{p_end}
 
-{p2coldent : {opt percent}}Show percentage shares of the total instead of the actual values for all the layers.{p_end}
+{p2coldent : {opt share}}Show percentage shares of the total instead of the actual values for all the layers.{p_end}
 
 {p2coldent : {opt addt:itles}}Add titles to rectangles of higher layers. This adds the name and value in the top left corner of the boxes.{p_end}
 
@@ -78,7 +78,10 @@ This option might be use if {opt labelprop} is used which might make some labels
 
 {p2coldent : {opt labprop}}Make the size of the labels proportional to the area.{p_end}
 
-{p2coldent : {opt colorprop}}Add color gradient to the box colors. The colors are interpolated from the default level color to white.{p_end}
+{p2coldent : {opt colorprop}}Add color gradient to the box colors. The colors are interpolated from the assigned level color to a 10% value of the color.
+This can be changed using the {opt fade()} described below.{p_end}
+
+{p2coldent : {opt face(num)}}Change the end color used for interpolation in the {opt colorprop}. Default value is {opt face(10)} or 10% of the color.{p_end}
 
 {p2coldent : {opt labscale(num)}}This option changes how the labels are scaled. This is an advanced option and should be used cautiously. Default value is {opt labscale(0.3333)}.
 The formula for scaling is {it:((height x width x area) / sum of values)^labscale}.{p_end}
@@ -104,7 +107,7 @@ Even if you have these installed, it is highly recommended to check for updates:
 
 See {browse "https://github.com/asjadnaqvi/treemap":GitHub} for a comprehensive set of examples. Basic use below:
 
-- use "https://github.com/asjadnaqvi/stata-circlepack/blob/main/data/demo_r_pjangrp3_clean.dta?raw=true", clear
+- use "https://github.com/asjadnaqvi/stata-treemap/blob/main/data/demo_r_pjangrp3_clean.dta?raw=true", clear
 
 - {stata drop year}
 - {stata keep NUTS_ID y_TOT}
@@ -120,7 +123,7 @@ See {browse "https://github.com/asjadnaqvi/treemap":GitHub} for a comprehensive 
 
 - {stata treemap y_TOT, by(NUTS0) addtitles labsize(2) format(%15.0fc)}
 
-- {stata treemap y_TOT if NUTS0=="AT", by(NUTS3 NUTS2) addtitles noval labsize(1.6) format(%15.0fc)}
+- {stata treemap y_TOT if NUTS0=="AT", by(NUTS2 NUTS3) addtitles noval labsize(1.6) format(%15.0fc)}
 
 
 {hline}
@@ -129,10 +132,14 @@ See {browse "https://github.com/asjadnaqvi/treemap":GitHub} for a comprehensive 
 
 Fayssal Ayad found errors with duplicate and zero values that was causing the layers to be drawn improperly (v1.21).
 
+{title:Feedback}
+
+Please submit bugs, errors, feature requests on {browse "https://github.com/asjadnaqvi/stata-treemap/issues":GitHub} by opening a new issue.
+
 {title:Package details}
 
-Version      : {bf:treemap} v1.3
-This release : 14 Dec 2022
+Version      : {bf:treemap} v1.4
+This release : 13 Jan 2023
 First release: 08 Sep 2022
 Repository   : {browse "https://github.com/asjadnaqvi/treemap":GitHub}
 Keywords     : Stata, graph, treemap, squarify
@@ -157,5 +164,5 @@ Twitter      : {browse "https://twitter.com/AsjadNaqvi":@AsjadNaqvi}
 {title:Other visualization packages}
 
 {psee}
-    {helpb sankey}, {helpb alluvial}, {helpb circlebar}, {helpb spider}, {helpb treemap}, {helpb circlepack}, {helpb arcplot},
-	{helpb marimekko}, {helpb bimap}, {helpb joyplot}, {helpb streamplot}, {helpb delaunay}, {helpb clipgeo},  {helpb schemepack}
+    {helpb sunburst}, {helpb sankey}, {helpb alluvial}, {helpb circlebar}, {helpb spider}, {helpb treemap}, {helpb circlepack}, {helpb arcplot},
+	{helpb marimekko}, {helpb bimap}, {helpb joyplot}, {helpb streamplot}, {helpb delaunay}, {helpb clipgeo}, {helpb schemepack}
