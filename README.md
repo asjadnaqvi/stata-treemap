@@ -9,8 +9,11 @@ This package provides the ability to draw treemaps Stata.
 It is based on D3's [treemap](https://observablehq.com/@d3/treemap) and Python's [squarify](https://github.com/laserson/squarify) algorithms.
 
 
-[Installation](#Installation)
+---
 
+[Installation](#Installation) | [Syntax](#Syntax) | [Examples](#Examples) | [Feedback](#Feedback) | [Change log](#Change log)
+
+---
 
 ## Installation
 
@@ -18,20 +21,20 @@ The package can be installed via SSC or GitHub. The GitHub version, *might* be m
 
 The SSC version (**v1.21**):
 
-```
+```stata
 ssc install treemap, replace
 ```
 
 Or it can be installed from GitHub (**v1.4**):
 
-```
+```stata
 net install treemap, from("https://raw.githubusercontent.com/asjadnaqvi/stata-treemap/main/installation/") replace
 ```
 
 
 The `palettes` package is required to run this command:
 
-```
+```stata
 ssc install palettes, replace
 ssc install colrspace, replace
 ```
@@ -40,7 +43,7 @@ Even if you have the package installed, make sure that it is updated `ado update
 
 If you want to make a clean figure, then it is advisable to load a clean scheme. These are several available and I personally use the following:
 
-```
+```stata
 ssc install schemepack, replace
 set scheme white_tableau  
 ```
@@ -49,7 +52,7 @@ You can also push the scheme directly into the graph using the `scheme(schemenam
 
 I also prefer narrow fonts in figures with long labels. You can change this as follows:
 
-```
+```stata
 graph set window fontface "Arial Narrow"
 ```
 
@@ -58,7 +61,7 @@ graph set window fontface "Arial Narrow"
 
 The syntax for **v1.4** is as follows:
 
-```
+```stata
 treemap numvar [if] [in], by(variables (min=1 max=3)) 
                 [ xsize(num) ysize(num) format(str) share labcond(num) palette(str)
                   pad(list) labsize(list) linewidth(list) linecolor(list) fi(list) 
@@ -326,7 +329,7 @@ threshold(200000) labprop colorprop fade(40)
 Please open an [issue](https://github.com/asjadnaqvi/stata-treemap/issues) to report errors, feature enhancements, and/or other requests. 
 
 
-## Versions
+## Change log
 
 
 **v1.4 (13 Jan 2023)**
