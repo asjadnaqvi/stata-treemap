@@ -1,7 +1,7 @@
 v 1.4
 d 'TREEMAP': A Stata package for gridded tree maps.
 d
-d Distribution-Date: 20230113
+d Distribution-Date: 20230122
 d
 d Asjad Naqvi
 d asjadnaqvi@gmail.com

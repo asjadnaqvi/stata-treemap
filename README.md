@@ -62,7 +62,7 @@ The syntax for **v1.4** is as follows:
 
 ```stata
 treemap numvar [if] [in], by(variables (min=1 max=3)) 
-                [ xsize(num) ysize(num) format(str) share labcond(num) palette(str)
+                [ xsize(num) ysize(num) format(str) share labcond(num) palette(str) colorby(name)
                   pad(list) labsize(list) linewidth(list) linecolor(list) fi(list) 
                   addtitles novalues nolabels labsize(num) titlegap(num) labgap(str)
                   threshold(num) face(num) labprop titleprop colorprop labscale(num)  
@@ -331,15 +331,16 @@ Please open an [issue](https://github.com/asjadnaqvi/stata-treemap/issues) to re
 ## Change log
 
 
-**v1.4 (13 Jan 2023)**
+**v1.4 (22 Jan 2023)**
 - **IMPORTANT**: The order now need to be specified from highest tier to lowest tier. This reversal in categories is (a) just logical, and (b) aligns `treemap` with other hierarchy packages.
 - **IMPORTANT**: the `percent` (from v1.3) has been renamed to `share` (v1.4). This is to align `treemap` with other hierarchy packages.
 - Updated defaults in `labgap()` to improve the spacing.
 - Fixed a bug where the children were not respecting the boundary of the parents.
-- Added a threshold option to collapse values below the threshold into one. The collapsed category is renamed to "Rest of <parent>". For just one layer, this category is renamed to "Other"
+- Added a `threshold()` option to collapse values below the defined threshold as one category. The collapsed category is renamed to "Rest of <parent>". If only one layer is specified, this category is renamed to "Other"
 - `colorprop` now fades to 10% of category color. Previously this was a light shade of grey and didn't look as nice.
 - A new `fade(val)` option added to change the fade value.
 - Fixed issue with numeric variables with labels not properly showing up in the labels.
+- Added the `colorby(name)` option to allow users to define colors by category names rather than the order defined by relative values. This option might be useful if comparing the same categories over time, especially if their ranking is changing.
 
 **v1.3 (14 Dec 2022)**
 - Fixed issue with the defaults in value formatting.

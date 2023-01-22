@@ -1,5 +1,5 @@
 {smcl}
-{* 13Jan2023}{...}
+{* 22Jan2023}{...}
 {hi:help treemap}{...}
 {right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.4 (GitHub)}}
 
@@ -19,7 +19,7 @@ and on the Python's {browse "https://github.com/laserson/squarify":squarify} alg
 {p 8 15 2}
 
 {cmd:treemap} {it:numvar} {ifin}, {cmd:by}({it:variables (min=1 max=3})) 
-		{cmd:[} {cmdab:xs:ize}({it:num}) {cmdab:ys:ize}({it:num}) {cmd:format}({it:str}) {cmd:share} {cmd:labcond}({it:num}) {cmd:palette}(str)
+		{cmd:[} {cmdab:xs:ize}({it:num}) {cmdab:ys:ize}({it:num}) {cmd:format}({it:str}) {cmd:share} {cmd:labcond}({it:num}) {cmd:palette}(it:str) {cmd:colorby}({it:name})
 		  {cmd:pad}({it:list}) {cmdab:labs:ize}({it:list}) {cmdab:linew:idth}({it:list}) {cmdab:linec:olor}({it:list}) {cmd:fi}({it:list}) 
 		  {cmdab:addt:itles} {cmdab:noval:ues} {cmdab:nolab:els} {cmdab:labs:ize}({it:num}) {cmd:titlegap}({it:num}) {cmdab:labg:ap}({it:str})
 		  {cmdab:thresh:old}({it:num}) {cmd:face}({it:num}) {cmd:labprop} {cmd:titleprop} {cmd:colorprop} {cmd:labscale}({it:num})  
@@ -41,7 +41,10 @@ The order is parent layer first followed by child layer or more aggregated layer
 {p2coldent : {opt xs:ize(num)}, {opt ys:ize(num)}}The width and height of the bounding box. Default values are {it:xsize(5) and ysize(3)}.
 Note that changing the {opt xsize} and {opt ysize} will change the layout of the treemap.{p_end}
 
-{p2coldent : {opt palette(name)}}Color name is any named scheme defined in the {stata help colorpalette:colorpalette} package. Default is {stata colorpalette tableau:{it:tableau}}.{p_end}
+{p2coldent : {opt palette(str)}}Here one can use an named color scheme defined in the {stata help colorpalette:colorpalette} package. Default is {stata colorpalette tableau:{it:tableau}}.{p_end}
+
+{p2coldent : {opt colorby(name)}}The option allows us to preserve the color order by alphabetical order of the {opt by()} variables rather than values. This is useful if multiple 
+treemaps are drawn for the same data over time, and colors are likely to change across the same {opt by()} categories if their relative order changes.{p_end}
 
 {p2coldent : {opt share}}Show percentage shares of the total instead of the actual values for all the layers.{p_end}
 
@@ -96,7 +99,7 @@ The formula for scaling is {it:((height x width x area) / sum of values)^labscal
 
 {title:Dependencies}
 
-The {browse "http://repec.sowi.unibe.ch/stata/palettes/index.html":palette} package (Jann 2018) is required for {cmd:streamplot}:
+The {browse "http://repec.sowi.unibe.ch/stata/palettes/index.html":palette} package (Jann 2018, 2022) is required for {cmd:treemap}:
 
 {stata ssc install palettes, replace}
 {stata ssc install colrspace, replace}
@@ -130,7 +133,7 @@ See {browse "https://github.com/asjadnaqvi/treemap":GitHub} for a comprehensive 
 
 {title:Acknowledgements}
 
-Fayssal Ayad found errors with duplicate and zero values that was causing the layers to be drawn improperly (v1.21).
+Fayssal Ayad found errors with duplicate and zero values that was causing the layers to be drawn improperly (v1.21). Marc Kaulisch suggested adding the {opt colorby()} category. 
 
 {title:Feedback}
 
@@ -139,7 +142,7 @@ Please submit bugs, errors, feature requests on {browse "https://github.com/asja
 {title:Package details}
 
 Version      : {bf:treemap} v1.4
-This release : 13 Jan 2023
+This release : 22 Jan 2023
 First release: 08 Sep 2022
 Repository   : {browse "https://github.com/asjadnaqvi/treemap":GitHub}
 Keywords     : Stata, graph, treemap, squarify
@@ -157,6 +160,8 @@ Twitter      : {browse "https://twitter.com/AsjadNaqvi":@AsjadNaqvi}
 {p 4 8 2}Bostock, M. (2022). {browse "https://observablehq.com/@d3/treemap":D3 Treemap}. {browse "https://observablehq.com/":Observable HQ}.
 
 {p 4 8 2}Jann, B. (2018). {browse "https://www.stata-journal.com/article.html?article=gr0075":Color palettes for Stata graphics}. The Stata Journal 18(4): 765-785.
+
+{p 4 8 2}Jann, B. (2022). {browse "https://ideas.repec.org/p/bss/wpaper/43.html":Color palettes for Stata graphics: an update}. University of Bern Social Sciences Working Papers No. 43. 
 
 {p 4 8 2}Laserson, U. (2022). {browse "https://github.com/agatheblues/squarify":Python squarify}.
 

@@ -1,9 +1,9 @@
-*! treemap v1.4 (13 Jan 2023)
+*! treemap v1.4 (22 Jan 2023)
 *! Asjad Naqvi (asjadnaqvi@gmail.com)
 
-* v1.4  (13 Jan 2023): added threshold option, order is now larger to smaller. percent renamed to share to align it with other hierarchy packages.
-*					   labelgap default improved. fix a bug where was not respecting the boundary of the parent. colorprop fixed. ///
-*					    fade() option added to control color scales. fixed string checks.
+* v1.4  (22 Jan 2023): added threshold option, order is now larger to smaller. percent renamed to share to align it with other hierarchy packages.
+*					   labelgap default improved. fix a bug where was not respecting the boundary of the parent. colorprop fixed. 
+*					    fade() option added to control color scales. fixed string checks. colorby(name) added. threshold added for collapsing datasets
 * v1.3  (14 Dec 2022): fixed formatting of labels. Added percent option. Add labgap option.
 * v1.21 (22 Nov 2022): fixed a bug where duplicate values were causing categories to be dropped.
 * v1.2  (22 Sep 2022): Negative values check. Control over fill intensity.
@@ -22,7 +22,7 @@ prog def treemap, sortpreserve
 		[ pad(numlist max=3) labprop labscale(real 0.3333) labcond(real 0) colorprop titlegap(real 0.1) titleprop LINEWidth(string) LINEColor(string) LABSize(string) ] /// // v1.1 options. labscale is undocumented labprop scaling
 		[ fi(numlist max=3) ] 		///   			// v1.2 options
 		[ LABGap(string) 	] 	   /// 				// v1.3	options
-		[ share  THRESHold(numlist max=1 >=0) fade(real 10)  ]	// v1.4	options
+		[ share  THRESHold(numlist max=1 >=0) fade(real 10) colorby(string)  ]	// v1.4	options
 		
 	marksample touse, strok
 
@@ -64,12 +64,19 @@ preserve
 	
 	if `length' == 1 {
 		local var0 `by'
-				
+		
+		collapse (sum) `varlist', by(`var0') 
+		
+		if "`threshold'"!="" {
+			replace `var0' = "Rest of `var0'" if `varlist' <= `threshold'
+		}
+		
 		collapse (sum) `varlist', by(`var0') 
 		
 		gen double var0_v = `varlist'
 		gsort -var0_v `var0'  // stabilize the sort
-		
+
+
 	
 	}
 
@@ -77,6 +84,8 @@ preserve
 		tokenize `by'
 		local var0 `1'
 		local var1 `2'
+		
+		collapse (sum) `varlist', by(`var0' `var1') 
 		
 		if "`threshold'"!="" {
 			levelsof `var0', local(lvls)
@@ -122,7 +131,15 @@ preserve
 	egen var0_t = tag(`var0')
 	gen  double var0_o = sum(`var0' != `var0'[_n-1]) 
 	
+	if "`colorby'" == "name" {
+		egen var0_c = group(`var0') // namewise color ordering	
+	}
+	else {
+		gen  var0_c = var0_o
+	}
 	
+	
+		
 	if `length' > 1 {
 		cap drop var1_t
 		egen var1_t = tag(`var0' `var1')
@@ -141,6 +158,9 @@ preserve
 
 	sort id
 
+	
+	
+	
 	// set up the base values
 	
 	if "`pad'" != "" {
@@ -282,7 +302,7 @@ preserve
 	*** define format options
 	if "`format'"  == "" {
 		if "`share'"  == "" {
-			local format %9.0fc
+			local format %12.0fc
 		}
 		else {
 			local format %5.2f
@@ -297,7 +317,8 @@ preserve
 	
 	
 	mata: data = select(st_data(., ("var0_v")), st_data(., "var0_t=1"))
-	mata: datasum = sum(data)
+	mata: data
+	mata: datasum = sum(data[.,1])
 	mata: pad0b = `pad0'; pad0t = `pad0'; pad0l = `pad0'; pad0r = `pad0'
 	
 	mata: normlist = normdata(data, dx, dy); b0 = squarify(normlist, xmin, ymin, dx, dy, myratio), normlist; c0 = getcoords2(data, b0, pad0b, pad0t, pad0l, pad0r, datasum)
@@ -307,8 +328,8 @@ preserve
 	
 	mat colnames c0 = "_l0_x" "_l0_y" "_l0_id" "_l0_val" "_l0_xmid" "_l0_ymid" "_l0_xmax" "_l0_ymax" "_l0_wgt" "_l0_pct"
 	
-	mat li c0
 	svmat c0, n(col)
+	
 	
 	gen _l0_lab1  = ""
 
@@ -331,7 +352,7 @@ preserve
 			gen  _l0_lab2 = string(`mylab', "`format'") + "%" in 1/`item0'  if _l0_val >= `labcond' 
 		}
 		
-		
+	
 	**************
 	**  layer1  **
     **************	
@@ -382,7 +403,7 @@ preserve
 		
 	}
 	
-		
+	
 	**************
 	**  layer2  **
     **************		
@@ -458,6 +479,7 @@ preserve
 	
 	if "`labgap'" == "" local labgap 0.2
 
+	
 	***************
 	*** layer 0 ***
 	***************
@@ -481,9 +503,17 @@ preserve
 				local labs0 = `ls0'
 			}
 			
+			
+			
+			local clr0 `i'
+			if "`colorby'" == "name" {
+				summ var0_c if var0_o==`i', meanonly
+				local clr0 `r(mean)'
+			}
+			
 			colorpalette `palette', n(`lvl0') `poptions' nograph 
-					
-			local box0 `box0' (area _l0_y _l0_x if _l0_id==`i', nodropbase fi(`fi0') fc("`r(p`i')'") lw(`lw0') lc(`lc0'))  ||
+			
+			local box0 `box0' (area _l0_y _l0_x if _l0_id==`i', nodropbase fi(`fi0') fc("`r(p`clr0')'") lw(`lw0') lc(`lc0'))  ||
 			
 			local lab0_box `lab0_box' (scatter _l0_ymax _l0_xmax in `i'  if _l0_val >= `labcond', mc(none) mlab(_l0_lab0) mlabpos(4) mlabsize(`labt0') mlabc(black) )
 			
@@ -517,10 +547,10 @@ preserve
 					}
 						
 					colorpalette `palette', n(`lvl0') `poptions' nograph
-					local clr `r(p`i')'
+					local clr `r(p`clr0')'
 					
 					if "`colorprop'" != "" & `length'==2 {			
-						colorpalette "`r(p`i')'" "`r(p`i')'%`fade'", n(`lvl1') `poptions' nograph  
+						colorpalette "`r(p`clr0')'" "`r(p`clr0')'%`fade'", n(`lvl1') `poptions' nograph  
 						local clr `r(p`j')'
 					}
 
@@ -553,10 +583,10 @@ preserve
 							}						
 						
 							colorpalette `palette', n(`lvl0') `poptions' nograph
-							local clr `r(p`i')'
+							local clr `r(p`clr0')'
 							
 							if "`colorprop'" != "" {			
-								colorpalette "`r(p`i')'" "`r(p`i')'%`fade'", n(`lvl2') `poptions' nograph 	// "`r(p`i')'%10"
+								colorpalette "`r(p`clr0')'" "`r(p`clr0')'%`fade'", n(`lvl2') `poptions' nograph 	// "`r(p`i')'%10"
 								local clr `r(p`k')'
 							}								
 							
@@ -617,6 +647,7 @@ end
 ***************************
 *** Mata sub-routines   ***
 ***************************
+
 
 
 *********************
@@ -822,7 +853,6 @@ function squarify(data, x, y, dx, dy, myratio)
 
 end
 
-
 *************************
 // 	  processchildren  //  
 *************************
@@ -844,28 +874,6 @@ mata:
 end
 
 
-*************************
-// 	    getcoords      //   
-*************************
-
-
-cap mata mata drop getcoords()
-
-mata:
-	real matrix getcoords(b2, padb, padt, padl, padr)
-	{
-		coords = J(5, rows(b2) * 2, .)  
-		
-		for (i=1; i<= rows(b2); i++) {			
-			b = i * 2
-			a = b - 1
-			coords[.,a..b] = (b2[i,1] + padl, b2[i,2] + padb \ b2[i,1] + padl, b2[i,2] + b2[i,4] - padt \ b2[i,1] + b2[i,3] - padr, b2[i,2] + b2[i,4] - padt \ b2[i,1] + b2[i,3] - padr, b2[i,2] + padb \ b2[i,1] + padl, b2[i,2] + padb)	
-		}	
-
-	return (coords)	
-		
-	}
-end
 
 *************************
 // 	    getcoords2     //   
