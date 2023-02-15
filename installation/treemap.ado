@@ -1,6 +1,7 @@
-*! treemap v1.4 (22 Jan 2023)
+*! treemap v1.41 (15 Feb 2023)
 *! Asjad Naqvi (asjadnaqvi@gmail.com)
 
+* v1.41 (15 Feb 2023): "Rest of ..." fix.
 * v1.4  (22 Jan 2023): added threshold option, order is now larger to smaller. percent renamed to share to align it with other hierarchy packages.
 *					   labelgap default improved. fix a bug where was not respecting the boundary of the parent. colorprop fixed. 
 *					    fade() option added to control color scales. fixed string checks. colorby(name) added. threshold added for collapsing datasets
@@ -90,7 +91,7 @@ preserve
 		if "`threshold'"!="" {
 			levelsof `var0', local(lvls)
 			foreach x of local lvls {
-				replace `var1' = "Rest of `x'" if `varlist' <= `threshold'
+				replace `var1' = "Rest of `x'" if `varlist' <= `threshold' & `var0'=="`x'"
 			}
 		}
 		
@@ -112,7 +113,7 @@ preserve
 		if "`threshold'"!="" {
 			levelsof `var1', local(lvls)
 			foreach x of local lvls {
-				replace `var2' = "Rest of `x'" if `varlist' <= `threshold'
+				replace `var2' = "Rest of `x'" if `varlist' <= `threshold' & `var1'=="`x'"
 			}
 		}
 		
@@ -637,7 +638,7 @@ restore
 }		
 
 // drop the Mata junk
-mata mata drop data datasum dx dy myratio normlist xmax ymax xmin ymin pad* b* c* 
+mata mata drop data datasum dx dy myratio normlist xmax ymax xmin ymin pad* b* c* mydata
 	
 
 

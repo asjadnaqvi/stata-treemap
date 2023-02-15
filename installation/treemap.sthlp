@@ -1,7 +1,7 @@
 {smcl}
-{* 22Jan2023}{...}
+{* 15Feb2023}{...}
 {hi:help treemap}{...}
-{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.4 (GitHub)}}
+{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.41 (GitHub)}}
 
 {hline}
 
@@ -141,8 +141,8 @@ Please submit bugs, errors, feature requests on {browse "https://github.com/asja
 
 {title:Package details}
 
-Version      : {bf:treemap} v1.4
-This release : 22 Jan 2023
+Version      : {bf:treemap} v1.41
+This release : 15 Feb 2023
 First release: 08 Sep 2022
 Repository   : {browse "https://github.com/asjadnaqvi/treemap":GitHub}
 Keywords     : Stata, graph, treemap, squarify

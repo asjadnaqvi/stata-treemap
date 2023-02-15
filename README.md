@@ -7,7 +7,7 @@
 
 ---
 
-# treemap v1.4
+# treemap v1.41
 
 This package provides the ability to draw treemaps Stata.
 
@@ -24,7 +24,7 @@ The SSC version (**v1.4**):
 ssc install treemap, replace
 ```
 
-Or it can be installed from GitHub (**v1.4**):
+Or it can be installed from GitHub (**v1.41**):
 
 ```stata
 net install treemap, from("https://raw.githubusercontent.com/asjadnaqvi/stata-treemap/main/installation/") replace
@@ -58,7 +58,7 @@ graph set window fontface "Arial Narrow"
 
 ## Syntax
 
-The syntax for **v1.4** is as follows:
+The syntax for **v1.41** is as follows:
 
 ```stata
 treemap numvar [if] [in], by(variables (min=1 max=3)) 
@@ -330,6 +330,8 @@ Please open an [issue](https://github.com/asjadnaqvi/stata-treemap/issues) to re
 
 ## Change log
 
+**v1.41 (15 Feb 2023)**
+- Fixed the "Rest of ..." bug.
 
 **v1.4 (22 Jan 2023)**
 - **IMPORTANT**: The order now need to be specified from highest tier to lowest tier. This reversal in categories is (a) just logical, and (b) aligns `treemap` with other hierarchy packages.
