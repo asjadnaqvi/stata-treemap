@@ -18,7 +18,7 @@ It is based on D3's [treemap](https://observablehq.com/@d3/treemap) and Python's
 
 The package can be installed via SSC or GitHub. The GitHub version, *might* be more recent due to bug fixes, feature updates etc, and *may* contain syntax improvements and changes in *default* values. See version numbers below. Eventually the GitHub version is published on SSC.
 
-The SSC version (**v1.4**):
+The SSC version (**v1.41**):
 
 ```stata
 ssc install treemap, replace
