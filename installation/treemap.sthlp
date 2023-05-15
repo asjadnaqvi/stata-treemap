@@ -22,7 +22,7 @@ and on the Python's {browse "https://github.com/laserson/squarify":squarify} alg
 		{cmd:[} {cmdab:xs:ize}({it:num}) {cmdab:ys:ize}({it:num}) {cmd:format}({it:str}) {cmd:share} {cmd:labcond}({it:num}) {cmd:palette}(it:str) {cmd:colorby}({it:name})
 		  {cmd:pad}({it:list}) {cmdab:labs:ize}({it:list}) {cmdab:linew:idth}({it:list}) {cmdab:linec:olor}({it:list}) {cmd:fi}({it:list}) 
 		  {cmdab:addt:itles} {cmdab:noval:ues} {cmdab:nolab:els} {cmdab:labs:ize}({it:num}) {cmd:titlegap}({it:num}) {cmdab:labg:ap}({it:str})
-		  {cmdab:thresh:old}({it:num}) {cmd:face}({it:num}) {cmd:labprop} {cmd:titleprop} {cmd:colorprop} {cmd:labscale}({it:num})  
+		  {cmdab:thresh:old}({it:num}) {cmd:fade}({it:num}) {cmd:labprop} {cmd:titleprop} {cmd:colorprop} {cmd:labscale}({it:num})  
 		  {cmd:title}({it:str}) {cmd:subtitle}({it:str}) {cmd:note}({it:str}) {cmd:scheme}({it:str}) {cmd:name}({it:str}) {cmd:]} 
 
 
@@ -56,6 +56,8 @@ treemaps are drawn for the same data over time, and colors are likely to change 
 
 {p2coldent : {ul:Fine tuning}}
 
+{p2coldent : {opt thresh:old(num)}}The value below which categories are combined in a "Rest of ..." category. Default is {opt thresh(0)}.{p_end}
+
 {p2coldent : {opt labcond(value)}}The minimum value for showing the value labels. For example, {opt labcond(20)} will only plot values greater than 20.{p_end}
 
 {p2coldent : {opt format(fmt)}}Format the values of the labels. The default option is {opt format(%9.0fc)} for values and {opt format(%5.2f)} for the {opt percent} option.{p_end}
@@ -84,7 +86,7 @@ This option might be use if {opt labelprop} is used which might make some labels
 {p2coldent : {opt colorprop}}Add color gradient to the box colors. The colors are interpolated from the assigned level color to a 10% value of the color.
 This can be changed using the {opt fade()} described below.{p_end}
 
-{p2coldent : {opt face(num)}}Change the end color used for interpolation in the {opt colorprop}. Default value is {opt face(10)} or 10% of the color.{p_end}
+{p2coldent : {opt fade(num)}}Change the end color used for interpolation in the {opt colorprop}. Default value is {opt fade(10)} or 10% of the color.{p_end}
 
 {p2coldent : {opt labscale(num)}}This option changes how the labels are scaled. This is an advanced option and should be used cautiously. Default value is {opt labscale(0.3333)}.
 The formula for scaling is {it:((height x width x area) / sum of values)^labscale}.{p_end}
