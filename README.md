@@ -7,7 +7,7 @@
 
 ---
 
-# treemap v1.41
+# treemap v1.5
 
 This package provides the ability to draw treemaps Stata.
 
@@ -24,12 +24,11 @@ The SSC version (**v1.41**):
 ssc install treemap, replace
 ```
 
-Or it can be installed from GitHub (**v1.41**):
+Or it can be installed from GitHub (**v1.5**):
 
 ```stata
 net install treemap, from("https://raw.githubusercontent.com/asjadnaqvi/stata-treemap/main/installation/") replace
 ```
-
 
 The `palettes` package is required to run this command:
 
@@ -61,13 +60,13 @@ graph set window fontface "Arial Narrow"
 The syntax for **v1.41** is as follows:
 
 ```stata
+
 treemap numvar [if] [in], by(variables (min=1 max=3)) 
-                [ xsize(num) ysize(num) format(str) share labcond(num) palette(str) colorby(name)
+                [ xsize(num) ysize(num) percent format(str) sformat(str) labcond(num) palette(it:str) colorby(name)
                   pad(list) labsize(list) linewidth(list) linecolor(list) fi(list) 
                   addtitles novalues nolabels labsize(num) titlegap(num) labgap(str)
-                  threshold(num) face(num) labprop titleprop colorprop labscale(num)  
-                  title(str) subtitle(str) note(str) scheme(str) name(str) ] 
-
+                  threshold(num) fade(num) labprop titleprop labscale(num) colorprop  
+                  title(str) subtitle(str) note(str) scheme(str) name(str) saving(str) ] 
 ```
 
 See the help file `help treemap` for details.
@@ -289,14 +288,14 @@ treemap y_TOT if NUTS0=="DE", by(NUTS1 NUTS2 NUTS3  ) linew(none 0.1 none) linec
 
 ```
 treemap y_TOT if NUTS0=="DK", by(NUTS2 NUTS3 ) addtitles labsize(2) ///
-title("Population of Denmark at NUTS2 and NUTS3 level") subtitle("% of total") share
+title("Population of Denmark at NUTS2 and NUTS3 level") subtitle("% of total") percent
 ```
 
 <img src="/figures/treemap26.png" height="600">
 
 ```
 treemap y_TOT if NUTS0=="DK", by(NUTS2 NUTS3 ) addtitles labsize(2) title("Population of Denmark at NUTS2 and NUTS3 level") ///
-subtitle("% of total") share format(%3.1f) palette(CET C7) labgap(1)
+subtitle("% of total") percent format(%3.1f) palette(CET C7) labgap(1)
 ```
 
 <img src="/figures/treemap27.png" height="600">
@@ -323,12 +322,58 @@ threshold(200000) labprop colorprop fade(40)
 
 <img src="/figures/treemap30.png" height="600">
 
+
+### v1.5 updates (new label options)
+
+```
+treemap y_TOT if NUTS0=="IT", by(NUTS1 NUTS2) addtitles labsize(2) labprop
+```
+
+<img src="/figures/treemap31_1.png" height="600">
+
+```
+treemap y_TOT if NUTS0=="IT", by(NUTS1 NUTS2) addtitles labsize(2) share labprop
+```
+
+<img src="/figures/treemap31_2.png" height="600">
+
+```
+treemap y_TOT if NUTS0=="IT", by(NUTS1 NUTS2) addtitles labsize(2) share labprop format(%10.0f) sformat(%5.2f)
+```
+
+<img src="/figures/treemap31_3.png" height="600">
+
+```
+treemap y_TOT if NUTS0=="IT", by(NUTS1 NUTS2) addtitles labsize(2) share labprop noval
+```
+
+<img src="/figures/treemap31_4.png" height="600">
+
+```
+treemap y_TOT if NUTS0=="IT", by(NUTS1 NUTS2) addtitles labsize(2) share labprop noval labcond(5)
+```
+
+<img src="/figures/treemap31_5.png" height="600">
+
+```
+treemap y_TOT if NUTS0=="IT", by(NUTS1 NUTS2) addtitles labsize(2) noval 
+```
+
+<img src="/figures/treemap31_6.png" height="600">
+
 ## Feedback
 
 Please open an [issue](https://github.com/asjadnaqvi/stata-treemap/issues) to report errors, feature enhancements, and/or other requests. 
 
 
 ## Change log
+
+**v1.5 (22 Jul 2023)**
+- Added ability to plot both values and shares.
+- `sformat()` option added to format shares.
+- `saving()` option added.
+- `labcond()` defaults to percentage shares if both `noval` and `share` are specified.
+- Minor bug fixes.
 
 **v1.41 (15 Feb 2023)**
 - Fixed the "Rest of ..." bug.
