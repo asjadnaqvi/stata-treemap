@@ -1,3 +1,7 @@
+
+![treemap-1](https://github.com/asjadnaqvi/stata-treemap/assets/38498046/9b282b3f-8647-4f8d-9ef9-fb7f6ceb8e9e)
+
+
 ![StataMin](https://img.shields.io/badge/stata-2015-blue) ![issues](https://img.shields.io/github/issues/asjadnaqvi/stata-treemap) ![license](https://img.shields.io/github/license/asjadnaqvi/stata-treemap) ![Stars](https://img.shields.io/github/stars/asjadnaqvi/stata-treemap) ![version](https://img.shields.io/github/v/release/asjadnaqvi/stata-treemap) ![release](https://img.shields.io/github/release-date/asjadnaqvi/stata-treemap)
 
 
@@ -57,7 +61,7 @@ graph set window fontface "Arial Narrow"
 
 ## Syntax
 
-The syntax for **v1.41** is as follows:
+The syntax for **v1.5** is as follows:
 
 ```stata
 
