@@ -269,7 +269,7 @@ treemap y_TOT, by(NUTS0 NUTS1 NUTS2  ) linew(none 0.1 none) linec(white black wh
 format(%15.0fc) title("Population of European countries") pad(0.015 0.015 0.01) labprop titleprop palette(CET C6) addtitle noval
 ```
 
-<img src="/figures/treemap23.png" height="600">
+<img src="/figures/treemap23.png" height="500">
 
 ```
 treemap y_TOT, by(NUTS0 NUTS1 NUTS2  ) linew(none 0.1 none) linec(white black white) labsize(1.0 1.2 1.8) ///
@@ -277,7 +277,7 @@ format(%15.0fc) title("Population of European countries") pad(0.015 0.015 0.01) 
 labprop colorprop titleprop labcond(2000000) addtitles xsize(5) ysize(4)
 ```
 
-<img src="/figures/treemap24.png" height="600">
+<img src="/figures/treemap24.png" height="500">
 
 ### v1.2 updates
 
@@ -286,7 +286,7 @@ treemap y_TOT if NUTS0=="DE", by(NUTS1 NUTS2 NUTS3  ) linew(none 0.1 none) linec
  format(%15.0fc) title("Population of Germany") pad(0.015 0.015 0.01) labprop titleprop palette(CET C6) addtitle noval fi(100 50 20)
 ```
 
-<img src="/figures/treemap25.png" height="600">
+<img src="/figures/treemap25.png" height="500">
 
 ### v1.3 updates
 
@@ -295,14 +295,14 @@ treemap y_TOT if NUTS0=="DK", by(NUTS2 NUTS3 ) addtitles labsize(2) ///
 title("Population of Denmark at NUTS2 and NUTS3 level") subtitle("% of total") percent
 ```
 
-<img src="/figures/treemap26.png" height="600">
+<img src="/figures/treemap26.png" height="500">
 
 ```
 treemap y_TOT if NUTS0=="DK", by(NUTS2 NUTS3 ) addtitles labsize(2) title("Population of Denmark at NUTS2 and NUTS3 level") ///
 subtitle("% of total") percent format(%3.1f) palette(CET C7) labgap(1)
 ```
 
-<img src="/figures/treemap27.png" height="600">
+<img src="/figures/treemap27.png" height="500">
 
 ### v1.4 updates
 
@@ -310,21 +310,21 @@ subtitle("% of total") percent format(%3.1f) palette(CET C7) labgap(1)
 treemap y_TOT if NUTS0=="ES", by(NUTS1 NUTS3 ) addtitles labsize(2) title("Population of Spain at NUTS1 and NUTS3 level")
 ```
 
-<img src="/figures/treemap28.png" height="600">
+<img src="/figures/treemap28.png" height="500">
 
 ```
 treemap y_TOT if NUTS0=="ES", by(NUTS1 NUTS3 ) addtitles labsize(2) title("Population of Spain at NUTS1 and NUTS3 level") ///
 threshold(200000) labprop colorprop
 ```
 
-<img src="/figures/treemap29.png" height="600">
+<img src="/figures/treemap29.png" height="500">
 
 ```
 treemap y_TOT if NUTS0=="ES", by(NUTS1 NUTS3 ) addtitles labsize(2) title("Population of Spain at NUTS1 and NUTS3 level") ///
 threshold(200000) labprop colorprop fade(40) 
 ```
 
-<img src="/figures/treemap30.png" height="600">
+<img src="/figures/treemap30.png" height="500">
 
 
 ### v1.5 updates (new label options)
@@ -333,37 +333,37 @@ threshold(200000) labprop colorprop fade(40)
 treemap y_TOT if NUTS0=="IT", by(NUTS1 NUTS2) addtitles labsize(2) labprop
 ```
 
-<img src="/figures/treemap31_1.png" height="600">
+<img src="/figures/treemap31_1.png" height="500">
 
 ```
 treemap y_TOT if NUTS0=="IT", by(NUTS1 NUTS2) addtitles labsize(2) share labprop
 ```
 
-<img src="/figures/treemap31_2.png" height="600">
+<img src="/figures/treemap31_2.png" height="500">
 
 ```
 treemap y_TOT if NUTS0=="IT", by(NUTS1 NUTS2) addtitles labsize(2) share labprop format(%10.0f) sformat(%5.2f)
 ```
 
-<img src="/figures/treemap31_3.png" height="600">
+<img src="/figures/treemap31_3.png" height="500">
 
 ```
 treemap y_TOT if NUTS0=="IT", by(NUTS1 NUTS2) addtitles labsize(2) share labprop noval
 ```
 
-<img src="/figures/treemap31_4.png" height="600">
+<img src="/figures/treemap31_4.png" height="500">
 
 ```
 treemap y_TOT if NUTS0=="IT", by(NUTS1 NUTS2) addtitles labsize(2) share labprop noval labcond(5)
 ```
 
-<img src="/figures/treemap31_5.png" height="600">
+<img src="/figures/treemap31_5.png" height="500">
 
 ```
 treemap y_TOT if NUTS0=="IT", by(NUTS1 NUTS2) addtitles labsize(2) noval 
 ```
 
-<img src="/figures/treemap31_6.png" height="600">
+<img src="/figures/treemap31_6.png" height="500">
 
 ## Feedback
 
