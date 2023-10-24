@@ -1,6 +1,7 @@
-*! treemap v1.5 (22 Jul 2023)
+*! treemap v1.51 (24 Oct 2023)
 *! Asjad Naqvi (asjadnaqvi@gmail.com)
 
+* v1.51 (24 Oct 2023): further stabilized the sort for categories with same totals that was causing a crash.
 * v1.5  (22 Jul 2023): saving() added. Option to specify both values and shares. performat() added. noval + share defaults labcond to percent values only.
 * v1.42 (15 May 2023): Help file fix. Minor corrections.
 * v1.41 (15 Feb 2023): "Rest of ..." fix.
@@ -68,7 +69,6 @@ preserve
 	if `length' == 1 {
 		local var0 `by'
 		
-		*collapse (sum) `varlist', by(`var0') 
 		
 		if "`threshold'"!="" {
 			replace `var0' = "Rest of `var0'" if `varlist' <= `threshold'
@@ -102,7 +102,7 @@ preserve
 		bysort `var0': egen var0_v = sum(`varlist')
 		gen double var1_v = `varlist'
 		
-		gsort -var0_v -var1_v
+		gsort -var0_v `var0' -var1_v `var1'
 	}	
 	
 	if `length' == 3 {
@@ -125,10 +125,11 @@ preserve
 		bysort `var1': egen var1_v = sum(`varlist')
 		gen double var2_v = `varlist'
 		
-		gsort -var0_v -var1_v -var2_v
+		gsort -var0_v `var0' -var1_v `var1' -var2_v `var2'
 	}
 	
-
+	
+	
 	gen id = _n		
 
 	egen var0_t = tag(`var0')
@@ -152,6 +153,9 @@ preserve
 		sort id
 		carryforward var1_o, replace
 	}
+	
+	
+	
 
 	if `length' > 2 {	
 		sort `var1' id 
@@ -160,7 +164,8 @@ preserve
 	}
 
 	sort id
-
+	
+	
 	
 	// set up the base values
 	
@@ -294,6 +299,8 @@ preserve
 	}		
 	
 
+	
+	
 	local ratio = (1 + sqrt(5)) / 2
 	
 	
@@ -360,6 +367,8 @@ preserve
 		if "`novalues'"!="" & "`share'"=="" {
 			replace  _l0_lab0 = "{it:" + _l0_lab1 + "}" if _l0_val >= `labcond'  
 		}	
+		
+	
 		
 	**************
 	**  layer1  **
@@ -669,7 +678,8 @@ preserve
 				xlabel(, nogrid) ylabel(, nogrid) ///
 				xsize(`xsize') ysize(`ysize')	///
 				`title' `subtitle' `note' `scheme' `name' `saving'
-			
+		
+	*/	
 restore		
 }		
 

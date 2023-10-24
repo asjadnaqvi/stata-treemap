@@ -11,7 +11,7 @@
 
 ---
 
-# treemap v1.5
+# treemap v1.51
 
 This package provides the ability to draw treemaps Stata.
 
@@ -28,7 +28,7 @@ The SSC version (**v1.41**):
 ssc install treemap, replace
 ```
 
-Or it can be installed from GitHub (**v1.5**):
+Or it can be installed from GitHub (**v1.51**):
 
 ```stata
 net install treemap, from("https://raw.githubusercontent.com/asjadnaqvi/stata-treemap/main/installation/") replace
@@ -61,7 +61,7 @@ graph set window fontface "Arial Narrow"
 
 ## Syntax
 
-The syntax for **v1.5** is as follows:
+The syntax for the latest version is as follows:
 
 ```stata
 
@@ -371,6 +371,10 @@ Please open an [issue](https://github.com/asjadnaqvi/stata-treemap/issues) to re
 
 
 ## Change log
+
+**v1.51 (24 Oct 2023)**
+- Further stabilized the sort. Categories with same totals were ending up in a random order (reported by Cesar Lopez). This has been fixed.
+- Minor code cleanups.
 
 **v1.5 (22 Jul 2023)**
 - Added ability to plot both values and shares.

@@ -1,7 +1,7 @@
 {smcl}
-{* 22Jul2023}{...}
+{* 24Oct2023}{...}
 {hi:help treemap}{...}
-{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.5 (GitHub)}}
+{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.51 (GitHub)}}
 
 {hline}
 
@@ -137,18 +137,14 @@ See {browse "https://github.com/asjadnaqvi/treemap":GitHub} for a comprehensive 
 
 {hline}
 
-{title:Acknowledgements}
-
-Fayssal Ayad found errors with duplicate and zero values that was causing the layers to be drawn improperly (v1.21). Marc Kaulisch suggested adding the {opt colorby()} category. 
-
 {title:Feedback}
 
 Please submit bugs, errors, feature requests on {browse "https://github.com/asjadnaqvi/stata-treemap/issues":GitHub} by opening a new issue.
 
 {title:Package details}
 
-Version      : {bf:treemap} v1.5
-This release : 22 Jul 2023
+Version      : {bf:treemap} v1.51
+This release : 24 Oct 2023
 First release: 08 Sep 2022
 Repository   : {browse "https://github.com/asjadnaqvi/treemap":GitHub}
 Keywords     : Stata, graph, treemap, squarify
