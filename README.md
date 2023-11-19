@@ -22,7 +22,7 @@ It is based on D3's [treemap](https://observablehq.com/@d3/treemap) and Python's
 
 The package can be installed via SSC or GitHub. The GitHub version, *might* be more recent due to bug fixes, feature updates etc, and *may* contain syntax improvements and changes in *default* values. See version numbers below. Eventually the GitHub version is published on SSC.
 
-The SSC version (**v1.5**):
+The SSC version (**v1.51**):
 
 ```stata
 ssc install treemap, replace
@@ -113,7 +113,7 @@ ren NUTS_ID NUTS3
 
 
 ```
-treemap y_TOT, by(NUTS0) labsize(2.5) format(15.0fc) title("Population of European countries")
+treemap y_TOT, by(NUTS0) labsize(2.5) title("Population of European countries")
 ```
 
 <img src="/figures/treemap1.png" height="500">
