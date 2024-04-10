@@ -1,6 +1,8 @@
-*! treemap v1.51 (24 Oct 2023)
+*! treemap v1.53 (10 Apr 2024)
 *! Asjad Naqvi (asjadnaqvi@gmail.com)
 
+* v1.53	(10 Apr 2024): Critical bug fix which was messing up the drawings if a third layer was defined.
+* v1.52	(20 Jan 2024): If by() variables had empty rows, the program was giving an error. These are now dropped by default.
 * v1.51 (24 Oct 2023): further stabilized the sort for categories with same totals that was causing a crash.
 * v1.5  (22 Jul 2023): saving() added. Option to specify both values and shares. performat() added. noval + share defaults labcond to percent values only.
 * v1.42 (15 May 2023): Help file fix. Minor corrections.
@@ -38,7 +40,7 @@ prog def treemap, sortpreserve
 	
 
 
-qui {	
+quietly {	
 preserve	
 	keep if `touse'
 	if "`threshold'"=="" local threshold = 0
@@ -66,9 +68,12 @@ preserve
 	}	
 	
 	
+	
+	
 	if `length' == 1 {
 		local var0 `by'
 		
+		drop if `var0' == ""
 		
 		if "`threshold'"!="" {
 			replace `var0' = "Rest of `var0'" if `varlist' <= `threshold'
@@ -79,14 +84,17 @@ preserve
 		gen double var0_v = `varlist'
 		gsort -var0_v `var0'  // stabilize the sort
 
-
-	
 	}
+	
+	
 
 	if `length' == 2 {
 		tokenize `by'
 		local var0 `1'
 		local var1 `2'
+		
+		drop if `var0' == ""
+		drop if `var1' == ""
 		
 		collapse (sum) `varlist', by(`var0' `var1') 
 		
@@ -105,12 +113,17 @@ preserve
 		gsort -var0_v `var0' -var1_v `var1'
 	}	
 	
+	
+	
 	if `length' == 3 {
 		tokenize `by'
 		local var0 `1'
 		local var1 `2'
 		local var2 `3'
 		
+		drop if `var0' == ""
+		drop if `var1' == ""		
+		drop if `var2' == ""
 		
 		if "`threshold'"!="" {
 			levelsof `var1', local(lvls)
@@ -122,7 +135,7 @@ preserve
 		collapse (sum) `varlist', by(`var0' `var1' `var2')
 		
 		bysort `var0': egen var0_v = sum(`varlist')
-		bysort `var1': egen var1_v = sum(`varlist')
+		bysort `var0' `var1': egen var1_v = sum(`varlist')
 		gen double var2_v = `varlist'
 		
 		gsort -var0_v `var0' -var1_v `var1' -var2_v `var2'
@@ -142,7 +155,6 @@ preserve
 		gen  var0_c = var0_o
 	}
 	
-	
 		
 	if `length' > 1 {
 		cap drop var1_t
@@ -154,19 +166,17 @@ preserve
 		carryforward var1_o, replace
 	}
 	
-	
-	
 
 	if `length' > 2 {	
-		sort `var1' id 
-		by `var1': gen var2_o = _n
+		sort `var0' `var1' id 
+		by `var0' `var1': gen var2_o = _n
 		gen var2_t = 1	
 	}
 
 	sort id
 	
 	
-	
+
 	// set up the base values
 	
 	if "`pad'" != "" {
@@ -299,10 +309,7 @@ preserve
 	}		
 	
 
-	
-	
 	local ratio = (1 + sqrt(5)) / 2
-	
 	
 	mata: xmin = 0; xmax = `xsize'; ymin = 0; ymax = `ysize'; dy = ymax - ymin; dx = xmax - xmin; myratio = `ratio'
 
@@ -312,14 +319,12 @@ preserve
 	if "`sormat'"  == "" local sformat %5.1f    // percentages
 
 	
-	
 	**************
 	**  layer0  **
     **************
 	
 	
 	mata: data = select(st_data(., ("var0_v")), st_data(., "var0_t=1"))
-	mata: data
 	mata: datasum = sum(data[.,1])
 	mata: pad0b = `pad0'; pad0t = `pad0'; pad0l = `pad0'; pad0r = `pad0'
 	
@@ -331,8 +336,7 @@ preserve
 	mat colnames c0 = "_l0_x" "_l0_y" "_l0_id" "_l0_val" "_l0_xmid" "_l0_ymid" "_l0_xmax" "_l0_ymax" "_l0_wgt" "_l0_pct"
 	
 	svmat c0, n(col)
-	
-	
+
 	gen _l0_lab1 = ""
 
 	levelsof var0_o, local(lvls)
@@ -401,7 +405,7 @@ preserve
 			local item1 = `r(r)'
 			
 			foreach i of local l1 {
-				summ id if var1_o==`i' & var0_o==`z' & var1_t==1 , meanonly
+				summ id if var0_o==`z' & var1_o==`i' &  var1_t==1 , meanonly
 				replace  _l1_`z'_lab1 = `var1'[r(mean)] in `i'	
 			}
 			
@@ -472,7 +476,6 @@ preserve
 				levelsof var2_o if var0_o==`z' & var1_o==`y', local(l2)
 				local item2 = `r(r)'
 				foreach i of local l2 {
-		
 					summ id if var2_o==`i' & var1_o==`y' & var0_o==`z' & var2_t==1, meanonly
 					replace  _l2_`z'_`y'_lab1 = `var2'[r(mean)] in `i'						
 				}
@@ -507,6 +510,8 @@ preserve
 	}	
 	
 
+	
+	
 	
 	**************
 	//   draw   //
@@ -686,7 +691,6 @@ restore
 // drop the Mata junk
 mata mata drop data datasum dx dy myratio normlist xmax ymax xmin ymin pad* b* c* 
 	
-
 
 end
 

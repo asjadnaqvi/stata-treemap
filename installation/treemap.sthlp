@@ -1,7 +1,7 @@
 {smcl}
-{* 24Oct2023}{...}
+{* 10Apr2024}{...}
 {hi:help treemap}{...}
-{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.51 (GitHub)}}
+{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.53 (GitHub)}}
 
 {hline}
 
@@ -114,25 +114,9 @@ Even if you have these installed, it is highly recommended to check for updates:
 
 {title:Examples}
 
-See {browse "https://github.com/asjadnaqvi/treemap":GitHub} for a comprehensive set of examples. Basic use below:
+See {browse "https://github.com/asjadnaqvi/treemap":GitHub} for a comprehensive set of examples.
 
-- use "https://github.com/asjadnaqvi/stata-treemap/blob/main/data/demo_r_pjangrp3_clean.dta?raw=true", clear
 
-- {stata drop year}
-- {stata keep NUTS_ID y_TOT}
-- {stata drop if y_TOT==0}
-- {stata keep if length(NUTS_ID)==5}
-
-- {stata gen NUTS2 = substr(NUTS_ID, 1, 4)}
-- {stata gen NUTS1 = substr(NUTS_ID, 1, 3)}
-- {stata gen NUTS0 = substr(NUTS_ID, 1, 2)}
-- {stata ren NUTS_ID NUTS3}
-
-- {stata treemap y_TOT, by(NUTS0)}
-
-- {stata treemap y_TOT, by(NUTS0) addtitles labsize(2) format(%15.0fc)}
-
-- {stata treemap y_TOT if NUTS0=="AT", by(NUTS2 NUTS3) addtitles noval labsize(1.6) format(%15.0fc)}
 
 
 {hline}
@@ -143,8 +127,8 @@ Please submit bugs, errors, feature requests on {browse "https://github.com/asja
 
 {title:Package details}
 
-Version      : {bf:treemap} v1.51
-This release : 24 Oct 2023
+Version      : {bf:treemap} v1.53
+This release : 10 Apr 2024
 First release: 08 Sep 2022
 Repository   : {browse "https://github.com/asjadnaqvi/treemap":GitHub}
 Keywords     : Stata, graph, treemap, squarify
@@ -172,4 +156,4 @@ Twitter      : {browse "https://twitter.com/AsjadNaqvi":@AsjadNaqvi}
 
 {psee}
     {helpb arcplot}, {helpb alluvial}, {helpb bimap}, {helpb bumparea}, {helpb bumpline}, {helpb circlebar}, {helpb circlepack}, {helpb clipgeo}, {helpb delaunay}, {helpb joyplot}, 
-	{helpb marimekko}, {helpb sankey}, {helpb schemepack}, {helpb spider}, {helpb streamplot}, {helpb sunburst}, {helpb treecluster}, {helpb treemap}
+	{helpb marimekko}, {helpb sankey}, {helpb schemepack}, {helpb spider}, {helpb streamplot}, {helpb sunburst}, {helpb treecluster}, {helpb treemap}, {helpb waffle}

@@ -11,7 +11,7 @@
 
 ---
 
-# treemap v1.51
+# treemap v1.53
 
 This package provides the ability to draw treemaps Stata.
 
@@ -28,7 +28,7 @@ The SSC version (**v1.51**):
 ssc install treemap, replace
 ```
 
-Or it can be installed from GitHub (**v1.51**):
+Or it can be installed from GitHub (**v1.53**):
 
 ```stata
 net install treemap, from("https://raw.githubusercontent.com/asjadnaqvi/stata-treemap/main/installation/") replace
@@ -64,7 +64,6 @@ graph set window fontface "Arial Narrow"
 The syntax for the latest version is as follows:
 
 ```stata
-
 treemap numvar [if] [in], by(variables (min=1 max=3)) 
                 [ xsize(num) ysize(num) percent format(str) sformat(str) labcond(num) palette(it:str) colorby(name)
                   pad(list) labsize(list) linewidth(list) linecolor(list) fi(list) 
@@ -371,6 +370,13 @@ Please open an [issue](https://github.com/asjadnaqvi/stata-treemap/issues) to re
 
 
 ## Change log
+
+**v1.53 (04 Apr 2024)**
+- Fixed a critical bug where adding three layers was causing errors in the drawing of the second and third layers (reported by Aurelio Tobias)
+- Some minor code cleanups.
+
+**v1.52 (10 Jan 2024)** (unreleased internal version subsumed in v1.53)
+- If `by()` variables had empty rows, the program was giving an error. These are now dropped by default.
 
 **v1.51 (24 Oct 2023)**
 - Further stabilized the sort. Categories with same totals were ending up in a random order (reported by Cesar Lopez). This has been fixed.
