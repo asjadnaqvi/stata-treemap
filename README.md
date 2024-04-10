@@ -12,6 +12,7 @@
 ---
 
 # treemap v1.53
+(10 Apr 2024)
 
 This package provides the ability to draw treemaps Stata.
 
