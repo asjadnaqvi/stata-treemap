@@ -28,7 +28,7 @@ prog def treemap, sortpreserve
 		[ pad(numlist max=3) labprop labscale(real 0.3333) labcond(real 0) colorprop titlegap(real 0.1) titleprop LINEWidth(string) LINEColor(string) LABSize(string) ] /// // v1.1 options. labscale is undocumented labprop scaling
 		[ fi(numlist max=3) ] 		///   			// v1.2 options
 		[ LABGap(string) 	] 	   /// 				// v1.3	options
-		[ Share SFORmat(str) THRESHold(numlist max=1 >=0) fade(real 10) colorby(string)  ]	// v1.4, v1.5	options
+		[ Share SFORmat(str) THRESHold(numlist max=1 >=0) fade(real 10) colorby(string) percent ]	// v1.4, v1.5	options
 		
 	marksample touse, strok
 
@@ -318,6 +318,7 @@ preserve
 	if "`format'"  == "" local format %12.0fc  // values
 	if "`sormat'"  == "" local sformat %5.1f    // percentages
 
+	if "`percent'" != "" local share pewpew
 	
 	**************
 	**  layer0  **

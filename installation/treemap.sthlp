@@ -46,7 +46,7 @@ Note that changing the {opt xsize} and {opt ysize} will change the layout of the
 {p2coldent : {opt colorby(name)}}The option allows us to preserve the color order by alphabetical order of the {opt by()} variables rather than values. This is useful if multiple 
 treemaps are drawn for the same data over time, and colors are likely to change across the same {opt by()} categories if their relative order changes.{p_end}
 
-{p2coldent : {opt share}}Show percentage shares.{p_end}
+{p2coldent : {opt share}}Show percentages as a share of the overall total. Users can also use the undocumented option {opt percent} as a substitute.{p_end}
 
 {p2coldent : {opt addt:itles}}Add titles to rectangles of higher layers. This adds the name and value in the top left corner of the boxes.{p_end}
 
