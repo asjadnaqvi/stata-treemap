@@ -1,6 +1,7 @@
-*! treemap v1.53 (10 Apr 2024)
+*! treemap v1.54 (20 Apr 2024)
 *! Asjad Naqvi (asjadnaqvi@gmail.com)
 
+* v1.54	(20 Apr 2024): colorby() fixed. Now requires a variable name for the color order.
 * v1.53	(10 Apr 2024): Critical bug fix which was messing up the drawings if a third layer was defined.
 * v1.52	(20 Jan 2024): If by() variables had empty rows, the program was giving an error. These are now dropped by default.
 * v1.51 (24 Oct 2023): further stabilized the sort for categories with same totals that was causing a crash.
@@ -28,7 +29,8 @@ prog def treemap, sortpreserve
 		[ pad(numlist max=3) labprop labscale(real 0.3333) labcond(real 0) colorprop titlegap(real 0.1) titleprop LINEWidth(string) LINEColor(string) LABSize(string) ] /// // v1.1 options. labscale is undocumented labprop scaling
 		[ fi(numlist max=3) ] 		///   			// v1.2 options
 		[ LABGap(string) 	] 	   /// 				// v1.3	options
-		[ Share SFORmat(str) THRESHold(numlist max=1 >=0) fade(real 10) colorby(string) percent ]	// v1.4, v1.5	options
+		[ Share SFORmat(str) THRESHold(numlist max=1 >=0) fade(real 10) percent ] ///	// v1.4, v1.5	options
+		[ colorby(varname) sharevar(varname) ]
 		
 	marksample touse, strok
 
@@ -67,9 +69,7 @@ preserve
 		}
 	}	
 	
-	
-	
-	
+
 	if `length' == 1 {
 		local var0 `by'
 		
@@ -148,8 +148,8 @@ preserve
 	egen var0_t = tag(`var0')
 	gen  double var0_o = sum(`var0' != `var0'[_n-1]) 
 	
-	if "`colorby'" == "name" {
-		egen var0_c = group(`var0') // namewise color ordering	
+	if "`colorby'" != "" {
+		egen var0_c = group(`colorby') // namewise color ordering	
 	}
 	else {
 		gen  var0_c = var0_o
@@ -174,8 +174,6 @@ preserve
 	}
 
 	sort id
-	
-	
 
 	// set up the base values
 	
@@ -309,14 +307,16 @@ preserve
 	}		
 	
 
+	
+	
 	local ratio = (1 + sqrt(5)) / 2
 	
 	mata: xmin = 0; xmax = `xsize'; ymin = 0; ymax = `ysize'; dy = ymax - ymin; dx = xmax - xmin; myratio = `ratio'
 
 	
 	*** define format options
-	if "`format'"  == "" local format %12.0fc  // values
-	if "`sormat'"  == "" local sformat %5.1f    // percentages
+	if "`format'"  == "" local format  %12.0fc  // values
+	if "`sformat'" == "" local sformat %5.1f    // percentages
 
 	if "`percent'" != "" local share pewpew
 	
@@ -434,7 +434,6 @@ preserve
 				replace  _l1_`z'_lab0= "{it:" + _l1_`z'_lab1 + "}" if _l1_`z'_val >= `labcond'  
 			}			
 			
-			
 		}
 		
 	}
@@ -512,8 +511,6 @@ preserve
 	
 
 	
-	
-	
 	**************
 	//   draw   //
     **************	
@@ -555,13 +552,12 @@ preserve
 				local labs0 = `ls0'
 			}
 			
-			
-			
+						
 			local clr0 `i'
-			if "`colorby'" == "name" {
-				summ var0_c if var0_o==`i', meanonly
-				local clr0 `r(mean)'
-			}
+
+			summ var0_c if var0_o==`i', meanonly
+			local clr0 `r(mean)'
+
 			
 			colorpalette `palette', n(`lvl0') `poptions' nograph 
 			

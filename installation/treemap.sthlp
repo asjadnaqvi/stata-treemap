@@ -1,7 +1,7 @@
 {smcl}
-{* 10Apr2024}{...}
+{* 20Apr2024}{...}
 {hi:help treemap}{...}
-{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.53 (GitHub)}}
+{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.54 (GitHub)}}
 
 {hline}
 
@@ -19,7 +19,7 @@ and on the Python's {browse "https://github.com/laserson/squarify":squarify} alg
 {p 8 15 2}
 
 {cmd:treemap} {it:numvar} {ifin}, {cmd:by}({it:variables (min=1 max=3})) 
-		{cmd:[} {cmdab:xs:ize}({it:num}) {cmdab:ys:ize}({it:num}) {cmd:format}({it:str}) {cmd:share} {cmd:sformat}({it:str}) {cmd:palette}(it:str) {cmd:colorby}({it:name})
+		{cmd:[} {cmdab:xs:ize}({it:num}) {cmdab:ys:ize}({it:num}) {cmd:format}({it:str}) {cmd:share} {cmd:sformat}({it:str}) {cmd:palette}(it:str) {cmd:colorby}({it:var})
 		  {cmd:pad}({it:list}) {cmdab:labs:ize}({it:list}) {cmdab:linew:idth}({it:list}) {cmdab:linec:olor}({it:list}) {cmd:fi}({it:list}) {cmd:labcond}({it:num})  
 		  {cmdab:addt:itles} {cmdab:noval:ues} {cmdab:nolab:els} {cmdab:labs:ize}({it:num}) {cmd:titlegap}({it:num}) {cmdab:labg:ap}({it:str})
 		  {cmdab:thresh:old}({it:num}) {cmd:fade}({it:num}) {cmd:labprop} {cmd:titleprop} {cmd:labscale}({it:num}) {cmd:colorprop}  
@@ -43,8 +43,9 @@ Note that changing the {opt xsize} and {opt ysize} will change the layout of the
 
 {p2coldent : {opt palette(str)}}Here one can use an named color scheme defined in the {stata help colorpalette:colorpalette} package. Default is {stata colorpalette tableau:{it:tableau}}.{p_end}
 
-{p2coldent : {opt colorby(name)}}The option allows us to preserve the color order by alphabetical order of the {opt by()} variables rather than values. This is useful if multiple 
-treemaps are drawn for the same data over time, and colors are likely to change across the same {opt by()} categories if their relative order changes.{p_end}
+{p2coldent : {opt colorby(var)}}Here one can define a variable to control the sequence of the colors drawn. This is useful if box positions are changing across
+different treemaps which might make them confusing to compare. The color order is defined by alpha or numeric sorting, so numeric variables are ideal
+for maximum control.{p_end}
 
 {p2coldent : {opt share}}Show percentages as a share of the overall total. Users can also use the undocumented option {opt percent} as a substitute.{p_end}
 
@@ -127,8 +128,8 @@ Please submit bugs, errors, feature requests on {browse "https://github.com/asja
 
 {title:Package details}
 
-Version      : {bf:treemap} v1.53
-This release : 10 Apr 2024
+Version      : {bf:treemap} v1.54
+This release : 20 Apr 2024
 First release: 08 Sep 2022
 Repository   : {browse "https://github.com/asjadnaqvi/treemap":GitHub}
 Keywords     : Stata, graph, treemap, squarify

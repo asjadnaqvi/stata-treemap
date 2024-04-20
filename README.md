@@ -11,8 +11,8 @@
 
 ---
 
-# treemap v1.53
-(10 Apr 2024)
+# treemap v1.54
+(20 Apr 2024)
 
 This package provides the ability to draw treemaps Stata.
 
@@ -29,7 +29,7 @@ The SSC version (**v1.51**):
 ssc install treemap, replace
 ```
 
-Or it can be installed from GitHub (**v1.53**):
+Or it can be installed from GitHub (**v1.54**):
 
 ```stata
 net install treemap, from("https://raw.githubusercontent.com/asjadnaqvi/stata-treemap/main/installation/") replace
@@ -66,7 +66,7 @@ The syntax for the latest version is as follows:
 
 ```stata
 treemap numvar [if] [in], by(variables (min=1 max=3)) 
-                [ xsize(num) ysize(num) percent format(str) sformat(str) labcond(num) palette(it:str) colorby(name)
+                [ xsize(num) ysize(num) percent format(str) sformat(str) labcond(num) palette(it:str) colorby(var)
                   pad(list) labsize(list) linewidth(list) linecolor(list) fi(list) 
                   addtitles novalues nolabels labsize(num) titlegap(num) labgap(str)
                   threshold(num) fade(num) labprop titleprop labscale(num) colorprop  
@@ -372,8 +372,12 @@ Please open an [issue](https://github.com/asjadnaqvi/stata-treemap/issues) to re
 
 ## Change log
 
-**v1.53 (04 Apr 2024)**
-- Fixed a critical bug where adding three layers was causing errors in the drawing of the second and third layers (reported by Aurelio Tobias)
+**v1.54 (20 Apr 2024)**
+- `colorby()` fixed. This option now requires a variable name that determines the color order (reported by Adam Okulicz-Kozaryn).
+- Minor fixes.
+
+**v1.53 (10 Apr 2024)**
+- Fixed a critical bug where adding three layers was causing errors in the drawing of the second and third layers (reported by Aurelio Tobias).
 - Some minor code cleanups.
 
 **v1.52 (10 Jan 2024)** (unreleased internal version subsumed in v1.53)
