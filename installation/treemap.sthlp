@@ -1,7 +1,7 @@
 {smcl}
-{* 20Apr2024}{...}
+{* 10Jun2024}{...}
 {hi:help treemap}{...}
-{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.54 (GitHub)}}
+{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.55 (GitHub)}}
 
 {hline}
 
@@ -22,7 +22,7 @@ and on the Python's {browse "https://github.com/laserson/squarify":squarify} alg
 		{cmd:[} {cmdab:xs:ize}({it:num}) {cmdab:ys:ize}({it:num}) {cmd:format}({it:str}) {cmd:share} {cmd:sformat}({it:str}) {cmd:palette}(it:str) {cmd:colorby}({it:var})
 		  {cmd:pad}({it:list}) {cmdab:labs:ize}({it:list}) {cmdab:linew:idth}({it:list}) {cmdab:linec:olor}({it:list}) {cmd:fi}({it:list}) {cmd:labcond}({it:num})  
 		  {cmdab:addt:itles} {cmdab:noval:ues} {cmdab:nolab:els} {cmdab:labs:ize}({it:num}) {cmd:titlegap}({it:num}) {cmdab:labg:ap}({it:str})
-		  {cmdab:thresh:old}({it:num}) {cmd:fade}({it:num}) {cmd:labprop} {cmd:titleprop} {cmd:labscale}({it:num}) {cmd:colorprop}  
+		  {cmdab:thresh:old}({it:num}) {cmd:fade}({it:num}) {cmd:labprop} {cmd:titleprop} {cmd:labscale}({it:num}) {cmd:colorprop} {cmd:wrap}({it:num})  
 		  {cmd:title}({it:str}) {cmd:subtitle}({it:str}) {cmd:note}({it:str}) {cmd:scheme}({it:str}) {cmd:name}({it:str}) {cmd:saving}({it:str}) {cmd:]} 
 
 
@@ -68,6 +68,8 @@ in combination with {opt percent} then the threshold will use the percentage val
 
 {p2coldent : {opt pad(numlist max=3)}}The padding of the boxes, which can be defined as a list. The default values are {opt :pad(0.012 0.01 0.01)} for the three layers. A value of 0 
 implies no padding. If you change the {opt xsize} and {opt ysize} substantially, then you might also need to update the padding.{p_end}
+
+{p2coldent : {opt wrap(num)}}Wrap the labels after a number of characters. A good starting point for very long labels is {opt wrap(50)}.{p_end}
 
 {p2coldent : {opt labs:ize(string max=3)}}The size of the labels. The default values are {opt labs(1.6 1.6 1.6)}. If only one value is specified, it will passed on to all the layers.{p_end}
 
@@ -128,8 +130,8 @@ Please submit bugs, errors, feature requests on {browse "https://github.com/asja
 
 {title:Package details}
 
-Version      : {bf:treemap} v1.54
-This release : 20 Apr 2024
+Version      : {bf:treemap} v1.55
+This release : 10 Jun 2024
 First release: 08 Sep 2022
 Repository   : {browse "https://github.com/asjadnaqvi/treemap":GitHub}
 Keywords     : Stata, graph, treemap, squarify
@@ -138,6 +140,23 @@ License      : {browse "https://opensource.org/licenses/MIT":MIT}
 Author       : {browse "https://github.com/asjadnaqvi":Asjad Naqvi}
 E-mail       : asjadnaqvi@gmail.com
 Twitter      : {browse "https://twitter.com/AsjadNaqvi":@AsjadNaqvi}
+
+
+
+{title:Citation guidelines}
+
+Suggested citation guidlines for this package:
+
+Naqvi, A. (2024). Stata package "treemap" version 1.55. Release date 10 June 2024. https://github.com/asjadnaqvi/stata-treemap.
+
+@software{treemap,
+   author = {Naqvi, Asjad},
+   title = {Stata package ``treemap''},
+   url = {https://github.com/asjadnaqvi/stata-treemap},
+   version = {1.55},
+   date = {2024-06-10}
+}
+
 
 
 {title:References}
@@ -157,4 +176,6 @@ Twitter      : {browse "https://twitter.com/AsjadNaqvi":@AsjadNaqvi}
 
 {psee}
     {helpb arcplot}, {helpb alluvial}, {helpb bimap}, {helpb bumparea}, {helpb bumpline}, {helpb circlebar}, {helpb circlepack}, {helpb clipgeo}, {helpb delaunay}, {helpb joyplot}, 
-	{helpb marimekko}, {helpb sankey}, {helpb schemepack}, {helpb spider}, {helpb streamplot}, {helpb sunburst}, {helpb treecluster}, {helpb treemap}, {helpb waffle}
+	{helpb marimekko}, {helpb polarspike}, {helpb sankey}, {helpb schemepack}, {helpb spider}, {helpb streamplot}, {helpb sunburst}, {helpb treecluster}, {helpb treemap}, {helpb waffle}
+	
+or visit {browse "https://github.com/asjadnaqvi":GitHub} for detailed documentation and examples.		

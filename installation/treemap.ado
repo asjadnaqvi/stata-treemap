@@ -1,6 +1,7 @@
-*! treemap v1.54 (20 Apr 2024)
+*! treemap v1.55 (10 Jun 2024)
 *! Asjad Naqvi (asjadnaqvi@gmail.com)
 
+* v1.55 (10 Jun 2024): wrap() for label wraps.
 * v1.54	(20 Apr 2024): colorby() fixed. Now requires a variable name for the color order.
 * v1.53	(10 Apr 2024): Critical bug fix which was messing up the drawings if a third layer was defined.
 * v1.52	(20 Jan 2024): If by() variables had empty rows, the program was giving an error. These are now dropped by default.
@@ -25,12 +26,11 @@ prog def treemap, sortpreserve
 	
 	syntax varlist(numeric max=1) [if] [in], by(varlist min=1 max=3)	 ///   
 		[ XSize(real 5) YSize(real 3) format(str) palette(string) ADDTitles NOVALues NOLABels  ]		///
-		[ title(passthru) subtitle(passthru) note(passthru) scheme(passthru) name(passthru) saving(passthru)	   ]		///
 		[ pad(numlist max=3) labprop labscale(real 0.3333) labcond(real 0) colorprop titlegap(real 0.1) titleprop LINEWidth(string) LINEColor(string) LABSize(string) ] /// // v1.1 options. labscale is undocumented labprop scaling
 		[ fi(numlist max=3) ] 		///   			// v1.2 options
 		[ LABGap(string) 	] 	   /// 				// v1.3	options
 		[ Share SFORmat(str) THRESHold(numlist max=1 >=0) fade(real 10) percent ] ///	// v1.4, v1.5	options
-		[ colorby(varname) sharevar(varname) ]
+		[ colorby(varname) sharevar(varname) wrap(numlist >=0 max=1) * ]
 		
 	marksample touse, strok
 
@@ -374,6 +374,42 @@ preserve
 		}	
 		
 	
+		// wrap
+		if "`wrap'" != "" {
+			
+			// layer 0
+			gen _length0 = length(_l0_lab0) if _l0_lab0!= ""
+			summ _length0, meanonly		
+			local _wraprounds0 = floor(`r(max)' / `wrap')
+			
+			forval i = 1 / `_wraprounds0' {
+				local wraptag = `wrap' * `i'
+				replace _l0_lab0 = substr(_l0_lab0, 1, `wraptag') + "`=char(10)'" + substr(_l0_lab0, `=`wraptag' + 1', .) if _length0 > `wraptag' & _length0!=. 
+			}
+			
+			// layer 1
+			gen _length1 = length(_l0_lab1) if _l0_lab1!= ""
+			summ _length1, meanonly		
+			local _wraprounds1 = floor(`r(max)' / `wrap')
+			
+			forval i = 1 / `_wraprounds0' {
+				local wraptag = `wrap' * `i'
+				replace _l0_lab1 = substr(_l0_lab1, 1, `wraptag') + "`=char(10)'" + substr(_l0_lab1, `=`wraptag' + 1', .) if _length1 > `wraptag' & _length1!=. 
+			}
+			
+			// layer 2
+			gen _length2 = length(_l0_lab2) if _l0_lab2!= ""
+			summ _length2, meanonly		
+			local _wraprounds2 = floor(`r(max)' / `wrap')
+			
+			forval i = 1 / `_wraprounds2' {
+				local wraptag = `wrap' * `i'
+				replace _l0_lab2 = substr(_l0_lab2, 1, `wraptag') + "`=char(10)'" + substr(_l0_lab2, `=`wraptag' + 1', .) if _length2 > `wraptag' & _length2!=. 
+			}
+			
+			drop _length*
+		}	
+	
 		
 	**************
 	**  layer1  **
@@ -434,6 +470,43 @@ preserve
 				replace  _l1_`z'_lab0= "{it:" + _l1_`z'_lab1 + "}" if _l1_`z'_val >= `labcond'  
 			}			
 			
+			
+			// wrap
+			if "`wrap'" != "" {
+				
+				// layer 0
+				gen _length0 = length(_l1_`z'_lab0) if _l1_`z'_lab0!= ""
+				summ _length0, meanonly		
+				local _wraprounds0 = floor(`r(max)' / `wrap')
+				
+				forval i = 1 / `_wraprounds0' {
+					local wraptag = `wrap' * `i'
+					replace _l1_`z'_lab0 = substr(_l1_`z'_lab0, 1, `wraptag') + "`=char(10)'" + substr(_l1_`z'_lab0, `=`wraptag' + 1', .) if _length0 > `wraptag' & _length0!=. 
+				}
+				
+				// layer 1
+				gen _length1 = length(_l1_`z'_lab1) if _l1_`z'_lab1!= ""
+				summ _length1, meanonly		
+				local _wraprounds1 = floor(`r(max)' / `wrap')
+				
+				forval i = 1 / `_wraprounds0' {
+					local wraptag = `wrap' * `i'
+					replace _l1_`z'_lab1 = substr(_l1_`z'_lab1, 1, `wraptag') + "`=char(10)'" + substr(_l1_`z'_lab1, `=`wraptag' + 1', .) if _length1 > `wraptag' & _length1!=. 
+				}
+				
+				// layer 2
+				gen _length2 = length(_l1_`z'_lab2) if _l1_`z'_lab2!= ""
+				summ _length2, meanonly		
+				local _wraprounds2 = floor(`r(max)' / `wrap')
+				
+				forval i = 1 / `_wraprounds2' {
+					local wraptag = `wrap' * `i'
+					replace _l1_`z'_lab2 = substr(_l1_`z'_lab2, 1, `wraptag') + "`=char(10)'" + substr(_l1_`z'_lab2, `=`wraptag' + 1', .) if _length2 > `wraptag' & _length2!=. 
+				}			
+				
+				drop _length*
+			}
+
 		}
 		
 	}
@@ -504,6 +577,43 @@ preserve
 					replace  _l2_`z'_`y'_lab0 = "{it:" + _l2_`z'_`y'_lab1 + "}" in 1/`item2' if _l2_`z'_`y'_val >= `labcond' 
 				}								
 				
+			
+				// wrap
+				if "`wrap'" != "" {
+					
+					// layer 0
+					gen _length0 = length(_l2_`z'_`y'_lab0) if _l2_`z'_`y'_lab0 != ""
+					summ _length0, meanonly		
+					local _wraprounds0 = floor(`r(max)' / `wrap')
+					
+					forval i = 1 / `_wraprounds0' {
+						local wraptag = `wrap' * `i'
+						replace _l2_`z'_`y'_lab0  = substr(_l2_`z'_`y'_lab0, 1, `wraptag') + "`=char(10)'" + substr(_l2_`z'_`y'_lab0, `=`wraptag' + 1', .) if _length0 > `wraptag' & _length0!=. 
+					}
+					
+					// layer 1
+					gen _length1 = length(_l2_`z'_`y'_lab1) if _l2_`z'_`y'_lab1 != ""
+					summ _length1, meanonly		
+					local _wraprounds0 = floor(`r(max)' / `wrap')
+					
+					forval i = 1 / `_wraprounds0' {
+						local wraptag = `wrap' * `i'
+						replace _l2_`z'_`y'_lab1  = substr(_l2_`z'_`y'_lab1, 1, `wraptag') + "`=char(10)'" + substr(_l2_`z'_`y'_lab1, `=`wraptag' + 1', .) if _length1 > `wraptag' & _length1!=. 
+					}					
+					
+					
+					// layer 2
+					gen _length2 = length(_l2_`z'_`y'_lab2) if _l2_`z'_`y'_lab2!= ""
+					summ _length2, meanonly		
+					local _wraprounds2 = floor(`r(max)' / `wrap')
+					
+					forval i = 1 / `_wraprounds2' {
+						local wraptag = `wrap' * `i'
+						replace _l2_`z'_`y'_lab2 = substr(_l2_`z'_`y'_lab2, 1, `wraptag') + "`=char(10)'" + substr(_l2_`z'_`y'_lab2, `=`wraptag' + 1', .) if _length2 > `wraptag' & _length2!=. 
+					}		
+					
+					drop _length*
+				}
 				
 			}
 		}		
@@ -679,7 +789,7 @@ preserve
 				xscale(off) yscale(off) ///
 				xlabel(, nogrid) ylabel(, nogrid) ///
 				xsize(`xsize') ysize(`ysize')	///
-				`title' `subtitle' `note' `scheme' `name' `saving'
+				`options'
 		
 	*/	
 restore		

@@ -3,6 +3,6 @@ authors:
 - family-names: "Naqvi"
   given-names: "Asjad"
 title: "Stata package ``treemap''"
-version: 1.54
-date-released: 2024-04-20
+version: 1.55
+date-released: 2024-06-10
 url: "https://github.com/asjadnaqvi/stata-treemap"

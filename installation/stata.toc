@@ -1,7 +1,7 @@
-v 1.54
+v 1.55
 d 'TREEMAP': A Stata package for tree maps.
 d
-d Distribution-Date: 20240420
+d Distribution-Date: 20240610
 d
 d Asjad Naqvi
 d asjadnaqvi@gmail.com

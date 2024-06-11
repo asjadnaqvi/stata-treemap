@@ -11,8 +11,8 @@
 
 ---
 
-# treemap v1.54
-(20 Apr 2024)
+# treemap v1.55
+(10 Jun 2024)
 
 This package provides the ability to draw treemaps Stata.
 
@@ -29,7 +29,7 @@ The SSC version (**v1.54**):
 ssc install treemap, replace
 ```
 
-Or it can be installed from GitHub (**v1.54**):
+Or it can be installed from GitHub (**v1.55**):
 
 ```stata
 net install treemap, from("https://raw.githubusercontent.com/asjadnaqvi/stata-treemap/main/installation/") replace
@@ -69,8 +69,7 @@ treemap numvar [if] [in], by(variables (min=1 max=3))
                 [ xsize(num) ysize(num) percent format(str) sformat(str) labcond(num) palette(it:str) colorby(var)
                   pad(list) labsize(list) linewidth(list) linecolor(list) fi(list) 
                   addtitles novalues nolabels labsize(num) titlegap(num) labgap(str)
-                  threshold(num) fade(num) labprop titleprop labscale(num) colorprop  
-                  title(str) subtitle(str) note(str) scheme(str) name(str) saving(str) ] 
+                  threshold(num) fade(num) labprop titleprop labscale(num) colorprop  wrap(num) * ] 
 ```
 
 See the help file `help treemap` for details.
@@ -83,6 +82,34 @@ treemap numvar, by(variable(s))
 
 
 where `numvar` is a numeric variable, and `by()` is upto three string variables, ordered by higher aggregated levels to finer units. The algorithm changes the layout based on `xsize()` and `ysize()`. See examples below.
+
+
+
+## Citation guidelines
+Software packages take countless hours of programming, testing, and bug fixing. If you use this package, then a citation would be highly appreciated. Suggested citations:
+
+
+*in BibTeX*
+
+```
+@software{treemap,
+   author = {Naqvi, Asjad},
+   title = {Stata package ``treemap''},
+   url = {https://github.com/asjadnaqvi/stata-treemap},
+   version = {1.55},
+   date = {2024-06-10}
+}
+```
+
+*or simple text*
+
+```
+Naqvi, A. (2024). Stata package "treemap" version 1.55. Release date 10 June 2024. https://github.com/asjadnaqvi/stata-treemap.
+```
+
+
+*or see [SSC citation](https://ideas.repec.org/c/boc/bocode/s459123.html) (updated once a new version is submitted)*
+
 
 
 
@@ -371,6 +398,10 @@ Please open an [issue](https://github.com/asjadnaqvi/stata-treemap/issues) to re
 
 
 ## Change log
+
+**v1.55 (10 Jun 2024)**
+- Added `wrap()` for label wrapping.
+- Minor fixes.
 
 **v1.54 (20 Apr 2024)**
 - `colorby()` fixed. This option now requires a variable name that determines the color order (reported by Adam Okulicz-Kozaryn).
