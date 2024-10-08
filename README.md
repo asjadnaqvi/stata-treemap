@@ -432,9 +432,10 @@ Please open an [issue](https://github.com/asjadnaqvi/stata-treemap/issues) to re
 ## Change log
 
 **v1.6 (09 Oct 2024)**
-- `wrap()` now takes on a list of each layer and requires the latest `graphfunctions` package (requested by Marc Kaulish).
+- `wrap()` now takes on a list of each layer and requires `labsplit` from the latest [graphfunctions](https://github.com/asjadnaqvi/stata-graphfunctions) package (requested by Marc Kaulisch).
 - Added `titlestyle()` that takes on a list with options `italic` or `bold`.
 - Weights are now allowed.
+- `sformat()` removed. Now there is only `format()`.
 - Major cleanup to remove a lot of redunduncies in the code.
 
 **v1.55 (10 Jun 2024)**
