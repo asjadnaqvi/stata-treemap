@@ -1,6 +1,7 @@
-*! treemap v1.55 (10 Jun 2024)
+*! treemap v1.6 (08 Oct 2024)
 *! Asjad Naqvi (asjadnaqvi@gmail.com)
 
+* v1.6  (08 Oct 2024): wrap() list integration via graphfunctions. weights allowed. titlestyle(bold italic)
 * v1.55 (10 Jun 2024): wrap() for label wraps.
 * v1.54	(20 Apr 2024): colorby() fixed. Now requires a variable name for the color order.
 * v1.53	(10 Apr 2024): Critical bug fix which was messing up the drawings if a third layer was defined.
@@ -24,22 +25,23 @@ prog def treemap, sortpreserve
 
 	version 15
 	
-	syntax varlist(numeric max=1) [if] [in], by(varlist min=1 max=3)	 ///   
+	syntax varlist(numeric max=1) [if] [in] [aw fw pw iw/], by(varlist min=1 max=3)	 ///   
 		[ XSize(real 5) YSize(real 3) format(str) palette(string) ADDTitles NOVALues NOLABels  ]		///
 		[ pad(numlist max=3) labprop labscale(real 0.3333) labcond(real 0) colorprop titlegap(real 0.1) titleprop LINEWidth(string) LINEColor(string) LABSize(string) ] /// // v1.1 options. labscale is undocumented labprop scaling
 		[ fi(numlist max=3) ] 		///   			// v1.2 options
 		[ LABGap(string) 	] 	   /// 				// v1.3	options
-		[ Share SFORmat(str) THRESHold(numlist max=1 >=0) fade(real 10) percent ] ///	// v1.4, v1.5	options
-		[ colorby(varname) sharevar(varname) wrap(numlist >=0 max=1) * ]
+		[ share THRESHold(numlist max=1 >=0) fade(real 10) percent ] ///	// v1.4, v1.5	options
+		[ colorby(varname) sharevar(varname)  * ] ///
+		[ wrap(numlist >=0 ) TITLESTYle(string) ]
 		
 	marksample touse, strok
 
 	// check for dependencies
 	cap findfile carryforward.ado
-	if _rc != 0 {
-		qui ssc install carryforward, replace
-	}	
+	if _rc != 0 quietly ssc install carryforward, replace
 	
+	cap findfile labsplit.ado
+	if _rc != 0 quietly ssc install graphfunctions, replace	
 
 
 quietly {	
@@ -50,6 +52,7 @@ preserve
 	qui summ `varlist', meanonly
 	if r(min) <= 0 noi di in yellow "`varlist' contains zeros or negative values. These values have been dropped."
 	drop if `varlist' <= 0
+	drop if missing(`varlist')
 	
 	local length : word count `by'
 	
@@ -87,7 +90,6 @@ preserve
 	}
 	
 	
-
 	if `length' == 2 {
 		tokenize `by'
 		local var0 `1'
@@ -96,7 +98,9 @@ preserve
 		drop if `var0' == ""
 		drop if `var1' == ""
 		
-		collapse (sum) `varlist', by(`var0' `var1') 
+		if "`weight'" != "" local myweight  [`weight' = `exp']
+		
+		collapse (sum) `varlist' `myweight', by(`var0' `var1') 
 		
 		if "`threshold'"!="" {
 			levelsof `var0', local(lvls)
@@ -272,6 +276,26 @@ preserve
 		local ls2 1.6
 	}	
 	
+	if "`titlestyle'" != "" {
+		tokenize `titlestyle'
+		local stylen : word count `titlestyle'
+		
+		if `stylen' == 1 {
+			local st0 `1'
+		}
+
+		if `stylen' == 2 {
+			local st0 `1'
+			local st1 `2'
+		}
+			
+		if `stylen' == 3 {
+			local st0 `1'
+			local st1 `2'
+			local st2 `3'
+		}
+	}
+
 	
 	if "`fi'" != "" {
 		tokenize `fi'
@@ -305,18 +329,21 @@ preserve
 			local fi2 = 100
 		}	
 	}		
-	
 
-	
-	
 	local ratio = (1 + sqrt(5)) / 2
 	
 	mata: xmin = 0; xmax = `xsize'; ymin = 0; ymax = `ysize'; dy = ymax - ymin; dx = xmax - xmin; myratio = `ratio'
 
 	
 	*** define format options
-	if "`format'"  == "" local format  %12.0fc  // values
-	if "`sformat'" == "" local sformat %5.1f    // percentages
+	if "`format'" == "" {
+		if "`shares'"!="" | "`percent'"!="" {
+			local format "%4.2f"	
+		}
+		else {
+			local format "%12.0fc"	
+		}
+	}	
 
 	if "`percent'" != "" local share pewpew
 	
@@ -349,67 +376,61 @@ preserve
 	}	
 	
 
-		gen  _l0_lab0 = ""
-		gen  _l0_lab2 = ""
-		
-		if "`novalues'"=="" & "`share'"=="" {
-			replace  _l0_lab0 = "{it:" + _l0_lab1 + " (" + string(_l0_val, "`format'") + ")}" in 1/`item0' if _l0_val >= `labcond'  
-			replace  _l0_lab2 = string(_l0_val, "`format'") in 1/`item0'  if _l0_val >= `labcond' 
+		gen  _l0_lab0 = ""		
+
+		if "`novalues'"=="" {
+			if "`share'"=="" {
+				replace  _l0_lab0 = _l0_lab1 + " (" + string(_l0_val, "`format'") + ")" if _l0_val >= `labcond'
+			}		
+			else {
+				replace  _l0_lab0 = _l0_lab1 + " (" + string(_l0_val, "`format'") + ", " + string(_l0_pct, "`format'") + "%)" if _l0_val >= `labcond'
+			}
 		}
-		
-		
-		if "`novalues'"=="" & "`share'"!="" {
-			replace  _l0_lab0 = "{it:" + _l0_lab1 + " (" + string(_l0_val, "`format'") + ", " + string(_l0_pct, "`sformat'") + "%)}" in 1/`item0' if _l0_val >= `labcond'
-			replace  _l0_lab2 = string(_l0_val, "`format'") + " (" + string(_l0_pct, "`sformat'") + "%)" in 1/`item0'  if _l0_val >= `labcond' 
+		else {
+			if "`share'"!="" {
+				replace  _l0_lab0 = _l0_lab1 + " (" + string(_l0_pct, "`format'") + "%)" if _l0_pct >= `labcond'  
+			}
+			else  {
+				replace  _l0_lab0 = _l0_lab1 if _l0_val >= `labcond'  
+			}
 		}
-		
-		if "`novalues'"!="" & "`share'"!="" {
-			replace  _l0_lab0 = "{it:" + _l0_lab1 + " (" + string(_l0_pct, "`sformat'") + "%)}" in 1/`item0' if _l0_pct >= `labcond'  
-			replace  _l0_lab2 = string(_l0_pct, "`sformat'") + "%"  in 1/`item0'  if _l0_pct >= `labcond' 
-		}
-		
-		
-		if "`novalues'"!="" & "`share'"=="" {
-			replace  _l0_lab0 = "{it:" + _l0_lab1 + "}" if _l0_val >= `labcond'  
-		}	
 		
 	
 		// wrap
+		
+		local wrap0 = 0
+		local wrap1 = 0
+		local wrap2 = 0
+		
 		if "`wrap'" != "" {
+			tokenize `wrap'
+			local wraplen : word count `wrap'
 			
-			// layer 0
-			gen _length0 = length(_l0_lab0) if _l0_lab0!= ""
-			summ _length0, meanonly		
-			local _wraprounds0 = floor(`r(max)' / `wrap')
-			
-			forval i = 1 / `_wraprounds0' {
-				local wraptag = `wrap' * `i'
-				replace _l0_lab0 = substr(_l0_lab0, 1, `wraptag') + "`=char(10)'" + substr(_l0_lab0, `=`wraptag' + 1', .) if _length0 > `wraptag' & _length0!=. 
+			local wrap0 `1'
+			local wrap1 `1'
+			local wrap2 `1'
+
+			if `wraplen' > 1 {
+				local wrap1 `2'
+				local wrap2 `2'
 			}
-			
-			// layer 1
-			gen _length1 = length(_l0_lab1) if _l0_lab1!= ""
-			summ _length1, meanonly		
-			local _wraprounds1 = floor(`r(max)' / `wrap')
-			
-			forval i = 1 / `_wraprounds0' {
-				local wraptag = `wrap' * `i'
-				replace _l0_lab1 = substr(_l0_lab1, 1, `wraptag') + "`=char(10)'" + substr(_l0_lab1, `=`wraptag' + 1', .) if _length1 > `wraptag' & _length1!=. 
+				
+			if `wraplen' > 2 {
+				local wrap1 `2'
+				local wrap2 `3'
 			}
-			
-			// layer 2
-			gen _length2 = length(_l0_lab2) if _l0_lab2!= ""
-			summ _length2, meanonly		
-			local _wraprounds2 = floor(`r(max)' / `wrap')
-			
-			forval i = 1 / `_wraprounds2' {
-				local wraptag = `wrap' * `i'
-				replace _l0_lab2 = substr(_l0_lab2, 1, `wraptag') + "`=char(10)'" + substr(_l0_lab2, `=`wraptag' + 1', .) if _length2 > `wraptag' & _length2!=. 
-			}
-			
-			drop _length*
-		}	
+		}
 	
+		
+		if `wrap0' > 0 {
+			rename _l0_lab0 _l0_lab0_temp
+			labsplit _l0_lab0_temp, wrap(`wrap0') gen(_l0_lab0)		
+			drop *_temp
+		}	
+		
+		if inlist("`st0'", "bold", "b") 	replace _l0_lab0 = "{bf:" + _l0_lab0 + "}"
+		if inlist("`st0'", "italic", "i") 	replace _l0_lab0 = "{it:" + _l0_lab0 + "}"
+		
 		
 	**************
 	**  layer1  **
@@ -447,68 +468,38 @@ preserve
 			}
 			
 			
-			gen  _l1_`z'_lab0=""
-			gen  _l1_`z'_lab2=""
-			
-			if "`novalues'"=="" & "`share'"=="" {
-				replace  _l1_`z'_lab0 = "{it:" + _l1_`z'_lab1 + " (" + string(_l1_`z'_val, "`format'") + ")}" in 1/`item1' if _l1_`z'_val >= `labcond'  
-				replace  _l1_`z'_lab2 = string(_l1_`z'_val, "`format'") in 1/`item1'  if _l1_`z'_val >= `labcond' 
-			}
-			
-			
-			if "`novalues'"=="" & "`share'"!="" {
-				replace  _l1_`z'_lab0 = "{it:" + _l1_`z'_lab1 + " (" + string(_l1_`z'_val, "`format'") + ", " + string(_l1_`z'_pct, "`sformat'") + "%)}" in 1/`item1' if _l1_`z'_val >= `labcond'
-				replace  _l1_`z'_lab2 = string(_l1_`z'_val, "`format'") + " (" + string(_l1_`z'_pct, "`sformat'") + "%)" in 1/`item1'  if _l1_`z'_val >= `labcond' 
-			}
-			
-			if "`novalues'"!="" & "`share'"!="" {
-				replace  _l1_`z'_lab0 = "{it:" + _l1_`z'_lab1 + " (" + string(_l1_`z'_pct, "`sformat'") + "%)}" in 1/`item1' if _l1_`z'_pct >= `labcond'  
-				replace  _l1_`z'_lab2 = string(_l1_`z'_pct, "`sformat'") + "%" in 1/`item1'  if _l1_`z'_pct >= `labcond' 
-			}
+			gen  _l1_`z'_lab0 = ""		
 
-			if "`novalues'"!="" & "`share'"=="" {
-				replace  _l1_`z'_lab0= "{it:" + _l1_`z'_lab1 + "}" if _l1_`z'_val >= `labcond'  
+			if "`novalues'"=="" {
+				if "`share'"=="" {
+					replace  _l1_`z'_lab0 = _l1_`z'_lab1 + " (" + string(_l1_`z'_val, "`format'") + ")" if _l1_`z'_val >= `labcond'
+				}		
+				else {
+					replace  _l1_`z'_lab0 = _l1_`z'_lab1 + " (" + string(_l1_`z'_val, "`format'") + ", " + string(_l1_`z'_pct, "`format'") + "%)" if _l1_`z'_val >= `labcond'
+				}
+			}
+			else {
+				if "`share'"!="" {
+					replace  _l1_`z'_lab0 = _l1_`z'_lab1 + " (" + string(_l1_`z'_pct, "`format'") + "%)" if _l1_`z'_pct >= `labcond'  
+				}
+				else  {
+					replace  _l1_`z'_lab0 = _l1_`z'_lab1 if _l1_`z'_val >= `labcond'  
+				}
 			}			
 			
 			
+			
 			// wrap
-			if "`wrap'" != "" {
-				
-				// layer 0
-				gen _length0 = length(_l1_`z'_lab0) if _l1_`z'_lab0!= ""
-				summ _length0, meanonly		
-				local _wraprounds0 = floor(`r(max)' / `wrap')
-				
-				forval i = 1 / `_wraprounds0' {
-					local wraptag = `wrap' * `i'
-					replace _l1_`z'_lab0 = substr(_l1_`z'_lab0, 1, `wraptag') + "`=char(10)'" + substr(_l1_`z'_lab0, `=`wraptag' + 1', .) if _length0 > `wraptag' & _length0!=. 
-				}
-				
-				// layer 1
-				gen _length1 = length(_l1_`z'_lab1) if _l1_`z'_lab1!= ""
-				summ _length1, meanonly		
-				local _wraprounds1 = floor(`r(max)' / `wrap')
-				
-				forval i = 1 / `_wraprounds0' {
-					local wraptag = `wrap' * `i'
-					replace _l1_`z'_lab1 = substr(_l1_`z'_lab1, 1, `wraptag') + "`=char(10)'" + substr(_l1_`z'_lab1, `=`wraptag' + 1', .) if _length1 > `wraptag' & _length1!=. 
-				}
-				
-				// layer 2
-				gen _length2 = length(_l1_`z'_lab2) if _l1_`z'_lab2!= ""
-				summ _length2, meanonly		
-				local _wraprounds2 = floor(`r(max)' / `wrap')
-				
-				forval i = 1 / `_wraprounds2' {
-					local wraptag = `wrap' * `i'
-					replace _l1_`z'_lab2 = substr(_l1_`z'_lab2, 1, `wraptag') + "`=char(10)'" + substr(_l1_`z'_lab2, `=`wraptag' + 1', .) if _length2 > `wraptag' & _length2!=. 
-				}			
-				
-				drop _length*
+			if `wrap1' > 0 {
+				rename _l1_`z'_lab0 	_l1_`z'_lab0_temp
+				labsplit _l1_`z'_lab0_temp, wrap(`wrap1') gen(_l1_`z'_lab0)
+				drop *temp			
 			}
-
+			
+			if inlist("`st1'", "bold", "b") 	replace _l1_`z'_lab0 = "{bf:" + _l1_`z'_lab0 + "}"
+			if inlist("`st1'", "italic", "i") 	replace _l1_`z'_lab0 = "{it:" + _l1_`z'_lab0 + "}"
+			
 		}
-		
 	}
 	
 	
@@ -555,65 +546,34 @@ preserve
 				
 				
 				gen  _l2_`z'_`y'_lab0 = ""
-				gen  _l2_`z'_`y'_lab2 = ""
 				
-				if "`novalues'"=="" & "`share'"=="" {
-					replace  _l2_`z'_`y'_lab0 = "{it:" + _l2_`z'_`y'_lab1 + " (" + string(_l2_`z'_`y'_val, "`format'") + ")}" in 1/`item2' if _l2_`z'_`y'_val >= `labcond'  
-					replace  _l2_`z'_`y'_lab2 = string(_l2_`z'_`y'_val, "`format'") in 1/`item2'  if _l2_`z'_`y'_val >= `labcond' 
+				if "`novalues'"=="" {
+					if "`share'"=="" {
+						replace  _l2_`z'_`y'_lab0 = _l2_`z'_`y'_lab1 + " (" + string(_l2_`z'_`y'_val, "`format'") + ")"  if _l2_`z'_`y'_val >= `labcond'
+					}		
+					else {
+						replace  _l2_`z'_`y'_lab0 = _l2_`z'_`y'_lab1 + " (" + string(_l2_`z'_`y'_val, "`format'") + ", " + string(_l2_`z'_`y'_pct, "`format'") + "%)"  if _l2_`z'_`y'_val >= `labcond'
+					}
 				}
-				
-				
-				if "`novalues'"=="" & "`share'"!="" {
-					replace  _l2_`z'_`y'_lab0 = "{it:" + _l2_`z'_`y'_lab1 + " (" + string(_l2_`z'_`y'_val, "`format'") + " ," + string(_l2_`z'_`y'_pct, "`sformat'") + "%)}" in 1/`item2' if _l2_`z'_`y'_val >= `labcond'
-					replace  _l2_`z'_`y'_lab2 = string(_l2_`z'_`y'_val, "`format'") + " (" + string(_l2_`z'_`y'_pct, "`sformat'") + "%)" in 1/`item2'  if _l2_`z'_`y'_val >= `labcond' 
-				}
-				
-				if "`novalues'"!="" & "`share'"!="" {
-					replace  _l2_`z'_`y'_lab0 = "{it:" + _l2_`z'_`y'_lab1 + " (" + string(_l2_`z'_`y'_val, "`sformat'") + "%)}" in 1/`item2' if _l2_`z'_`y'_pct >= `labcond'  
-					replace  _l2_`z'_`y'_lab2 = string(_l2_`z'_`y'_pct, "`sformat'") + "%" in 1/`item2'  if _l2_`z'_`y'_pct >= `labcond' 
-				}
-				
-				if "`novalues'"!="" & "`share'"=="" {
-					replace  _l2_`z'_`y'_lab0 = "{it:" + _l2_`z'_`y'_lab1 + "}" in 1/`item2' if _l2_`z'_`y'_val >= `labcond' 
-				}								
-				
+				else {
+					if "`share'"!="" {
+						replace  _l2_`z'_`y'_lab0 = _l2_`z'_`y'_lab1 + " (" + string(_l2_`z'_`y'_pct, "`format'") + "%)"  if _l2_`z'_`y'_pct >= `labcond'  
+					}
+					else  {
+						replace  _l2_`z'_`y'_lab0 = _l2_`z'_`y'_lab1 if _l2_`z'_`y'_val >= `labcond'  
+					}
+				}					
+
 			
 				// wrap
-				if "`wrap'" != "" {
-					
-					// layer 0
-					gen _length0 = length(_l2_`z'_`y'_lab0) if _l2_`z'_`y'_lab0 != ""
-					summ _length0, meanonly		
-					local _wraprounds0 = floor(`r(max)' / `wrap')
-					
-					forval i = 1 / `_wraprounds0' {
-						local wraptag = `wrap' * `i'
-						replace _l2_`z'_`y'_lab0  = substr(_l2_`z'_`y'_lab0, 1, `wraptag') + "`=char(10)'" + substr(_l2_`z'_`y'_lab0, `=`wraptag' + 1', .) if _length0 > `wraptag' & _length0!=. 
-					}
-					
-					// layer 1
-					gen _length1 = length(_l2_`z'_`y'_lab1) if _l2_`z'_`y'_lab1 != ""
-					summ _length1, meanonly		
-					local _wraprounds0 = floor(`r(max)' / `wrap')
-					
-					forval i = 1 / `_wraprounds0' {
-						local wraptag = `wrap' * `i'
-						replace _l2_`z'_`y'_lab1  = substr(_l2_`z'_`y'_lab1, 1, `wraptag') + "`=char(10)'" + substr(_l2_`z'_`y'_lab1, `=`wraptag' + 1', .) if _length1 > `wraptag' & _length1!=. 
-					}					
-					
-					
-					// layer 2
-					gen _length2 = length(_l2_`z'_`y'_lab2) if _l2_`z'_`y'_lab2!= ""
-					summ _length2, meanonly		
-					local _wraprounds2 = floor(`r(max)' / `wrap')
-					
-					forval i = 1 / `_wraprounds2' {
-						local wraptag = `wrap' * `i'
-						replace _l2_`z'_`y'_lab2 = substr(_l2_`z'_`y'_lab2, 1, `wraptag') + "`=char(10)'" + substr(_l2_`z'_`y'_lab2, `=`wraptag' + 1', .) if _length2 > `wraptag' & _length2!=. 
-					}		
-					
-					drop _length*
+				if `wrap2' > 0 {
+					rename _l2_`z'_`y'_lab0 	_l2_`z'_`y'_lab0_temp
+					labsplit _l2_`z'_`y'_lab0_temp, wrap(`wrap2') gen(_l2_`z'_`y'_lab0)						
+					drop *_temp
 				}
+				
+				if inlist("`st2'", "bold", "b") 	replace _l2_`z'_`y'_lab0 = "{bf:" + _l2_`z'_`y'_lab0 + "}"
+				if inlist("`st2'", "italic", "i") 	replace _l2_`z'_`y'_lab0 = "{it:" + _l2_`z'_`y'_lab0 + "}"				
 				
 			}
 		}		
@@ -625,8 +585,6 @@ preserve
 	//   draw   //
     **************	
 
-
-	
 	if "`palette'" == "" {
 		local palette tableau
 	}
@@ -671,13 +629,11 @@ preserve
 			
 			colorpalette `palette', n(`lvl0') `poptions' nograph 
 			
-			local box0 `box0' (area _l0_y _l0_x if _l0_id==`i', nodropbase fi(`fi0') fc("`r(p`clr0')'") lw(`lw0') lc(`lc0'))  ||
+			local box0 `box0' (area _l0_y _l0_x if _l0_id==`i', nodropbase fi(`fi0') fc("`r(p`clr0')'") lw(`lw0') lc(`lc0')) 
 			
 			local lab0_box `lab0_box' (scatter _l0_ymax _l0_xmax in `i'  if _l0_val >= `labcond', mc(none) mlab(_l0_lab0) mlabpos(4) mlabsize(`labt0') mlabc(black) )
 			
-			local lab0 `lab0'         (scatter _l0_ymid _l0_xmid in `i'  if _l0_val >= `labcond', mc(none) mlab(_l0_lab1) mlabpos(0) mlabsize(`labs0') mlabc(black) ) || 
-			
-			if "`novalues'"=="" | "`share'"!="" local lab0 `lab0' (scatter _l0_ymid _l0_xmid in `i' if _l0_val > `labcond', mc(none) mlab(_l0_lab2) mlabpos(6) mlabsize(`labs0') mlabgap(`labgap') mlabc(black) ) ||
+			local lab0 `lab0'         (scatter _l0_ymid _l0_xmid in `i'  if _l0_val >= `labcond', mc(none) mlab(_l0_lab0) mlabpos(0) mlabsize(`labs0') mlabc(black) ) 
 			
 			***************
 			*** layer 1 ***
@@ -713,14 +669,12 @@ preserve
 					}
 
 							
-					local box1 `box1' (area _l1_`i'_y _l1_`i'_x if _l1_`i'_id==`j', nodropbase fi(`fi1') fc("`clr'") lw(`lw1') lc(`lc1'))  ||   
+					local box1 `box1' (area _l1_`i'_y _l1_`i'_x if _l1_`i'_id==`j', nodropbase fi(`fi1') fc("`clr'") lw(`lw1') lc(`lc1'))  
 					
 					local lab1_box `lab1_box' (scatter _l1_`i'_ymax _l1_`i'_xmax in `j' if _l1_`i'_val >= `labcond', mc(none) mlab(_l1_`i'_lab0) mlabpos(4) mlabsize(`labt1') mlabc(black) )
 					
-					local lab1 `lab1'         (scatter _l1_`i'_ymid _l1_`i'_xmid in `j' if _l1_`i'_val >= `labcond', mc(none) mlab(_l1_`i'_lab1) mlabpos(0) mlabsize(`labs1') mlabc(black) ) || 
+					local lab1 `lab1'         (scatter _l1_`i'_ymid _l1_`i'_xmid in `j' if _l1_`i'_val >= `labcond', mc(none) mlab(_l1_`i'_lab0) mlabpos(0) mlabsize(`labs1') mlabc(black) ) 
 							
-					if "`novalues'"=="" | "`share'"!="" local lab1 `lab1' (scatter _l1_`i'_ymid _l1_`i'_xmid  in `j' if _l1_`i'_val >= `labcond', mc(none) mlab(_l1_`i'_lab2) mlabpos(6) mlabsize(`labs1') mlabgap(`labgap') mlabc(black) ) ||
-					
 					
 					***************
 					*** layer 2 ***
@@ -748,12 +702,10 @@ preserve
 								local clr `r(p`k')'
 							}								
 							
-							local box2 `box2' (area _l2_`i'_`j'_y _l2_`i'_`j'_x if _l2_`i'_`j'_id==`k', nodropbase fi(`fi2') fc("`clr'") lw(`lw2') lc(`lc2'))   ||
+							local box2 `box2' (area _l2_`i'_`j'_y _l2_`i'_`j'_x if _l2_`i'_`j'_id==`k', nodropbase fi(`fi2') fc("`clr'") lw(`lw2') lc(`lc2'))  
 							
-							local lab2 `lab2' (scatter _l2_`i'_`j'_ymid _l2_`i'_`j'_xmid in `k'  if _l2_`i'_`j'_val >= `labcond', mc(none) mlab(_l2_`i'_`j'_lab1) mlabpos(0) mlabsize(`labs2') mlabc(black) ) ||	
+							local lab2 `lab2' (scatter _l2_`i'_`j'_ymid _l2_`i'_`j'_xmid in `k' if _l2_`i'_`j'_val >= `labcond', mc(none) mlab(_l2_`i'_`j'_lab0) mlabpos(0) mlabsize(`labs2') mlabgap(`labgap') mlabc(black) ) 			
 							
-							if "`novalues'"=="" | "`share'"!="" local lab2 `lab2' (scatter _l2_`i'_`j'_ymid _l2_`i'_`j'_xmid in `k', mc(none) mlab(_l2_`i'_`j'_lab2) mlabpos(6) mlabsize(`labs2') mlabgap(`labgap') mlabc(black) ) ||			
-						
 						}
 					}
 				}

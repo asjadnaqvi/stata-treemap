@@ -1,7 +1,7 @@
 {smcl}
-{* 10Jun2024}{...}
+{* 09Oct2024}{...}
 {hi:help treemap}{...}
-{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.55 (GitHub)}}
+{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.6 (GitHub)}}
 
 {hline}
 
@@ -18,12 +18,11 @@ and on the Python's {browse "https://github.com/laserson/squarify":squarify} alg
 {marker syntax}{title:Syntax}
 {p 8 15 2}
 
-{cmd:treemap} {it:numvar} {ifin}, {cmd:by}({it:variables (min=1 max=3})) 
-		{cmd:[} {cmdab:xs:ize}({it:num}) {cmdab:ys:ize}({it:num}) {cmd:format}({it:str}) {cmd:share} {cmd:sformat}({it:str}) {cmd:palette}(it:str) {cmd:colorby}({it:var})
+{cmd:treemap} {it:numvar} {ifin} {weight}, {cmd:by}({it:variables (min=1 max=3})) 
+		{cmd:[} {cmdab:xs:ize}({it:num}) {cmdab:ys:ize}({it:num}) {cmd:format}({it:str}) {cmd:share|percent} {cmd:palette}(it:str) {cmd:colorby}({it:var})
 		  {cmd:pad}({it:list}) {cmdab:labs:ize}({it:list}) {cmdab:linew:idth}({it:list}) {cmdab:linec:olor}({it:list}) {cmd:fi}({it:list}) {cmd:labcond}({it:num})  
-		  {cmdab:addt:itles} {cmdab:noval:ues} {cmdab:nolab:els} {cmdab:labs:ize}({it:num}) {cmd:titlegap}({it:num}) {cmdab:labg:ap}({it:str})
-		  {cmdab:thresh:old}({it:num}) {cmd:fade}({it:num}) {cmd:labprop} {cmd:titleprop} {cmd:labscale}({it:num}) {cmd:colorprop} {cmd:wrap}({it:num})  
-		  {cmd:title}({it:str}) {cmd:subtitle}({it:str}) {cmd:note}({it:str}) {cmd:scheme}({it:str}) {cmd:name}({it:str}) {cmd:saving}({it:str}) {cmd:]} 
+		  {cmdab:noval:ues} {cmdab:nolab:els} {cmdab:labs:ize}({it:num}) {cmdab:labg:ap}({it:str}) {cmdab:addt:itles} {cmd:titlegap}({it:num}) {cmdab:titlesty:les}({it:{ul:b}old|{ul:i}talic})
+		  {cmdab:thresh:old}({it:num}) {cmd:fade}({it:num}) {cmd:labprop} {cmd:titleprop} {cmd:labscale}({it:num}) {cmd:colorprop} {cmd:wrap}({it:numlist}) {cmdab:*} {cmd:]} 
 
 
 {p 4 4 2}
@@ -47,7 +46,7 @@ Note that changing the {opt xsize} and {opt ysize} will change the layout of the
 different treemaps which might make them confusing to compare. The color order is defined by alpha or numeric sorting, so numeric variables are ideal
 for maximum control.{p_end}
 
-{p2coldent : {opt share}}Show percentages as a share of the overall total. Users can also use the undocumented option {opt percent} as a substitute.{p_end}
+{p2coldent : {opt share}, {opt percent}}Show percent as a share of the overall total. Option {opt percent} can also be used as a substitute.{p_end}
 
 {p2coldent : {opt addt:itles}}Add titles to rectangles of higher layers. This adds the name and value in the top left corner of the boxes.{p_end}
 
@@ -62,24 +61,26 @@ for maximum control.{p_end}
 {p2coldent : {opt labcond(value)}}The minimum value for showing the value labels. For example, {opt labcond(20)} will only plot values greater than 20. If {opt noval} is specified
 in combination with {opt percent} then the threshold will use the percentage values.{p_end}
 
-{p2coldent : {opt format(fmt)}}Format the values. The default option is {opt format(%12.0fc)}.{p_end}
+{p2coldent : {opt format(fmt)}}Format the values. The default option is {opt format(%12.0fc)} for actual data and {opt format(%5.2f)} if {opt share} or {opt percent} is specified.{p_end}
 
-{p2coldent : {opt sformat(fmt)}}Format the percentage shares. The default option is {opt sformat(%5.2f)}.{p_end}
-
-{p2coldent : {opt pad(numlist max=3)}}The padding of the boxes, which can be defined as a list. The default values are {opt :pad(0.012 0.01 0.01)} for the three layers. A value of 0 
+{p2coldent : {opt pad(numlist list)}}The padding of the boxes, which can be defined as a list. The default values are {opt :pad(0.012 0.01 0.01)} for the three layers. A value of 0 
 implies no padding. If you change the {opt xsize} and {opt ysize} substantially, then you might also need to update the padding.{p_end}
 
-{p2coldent : {opt wrap(num)}}Wrap the labels after a number of characters. A good starting point for very long labels is {opt wrap(50)}.{p_end}
+{p2coldent : {opt wrap(numlist)}}Wrap the labels after a number of characters. Users need to specify a list, e.g. {opt wrap(0 0 10)} will 
+wrap the 3rd layer after 10 characters. Word boundaries are respected.{p_end}
 
-{p2coldent : {opt labs:ize(string max=3)}}The size of the labels. The default values are {opt labs(1.6 1.6 1.6)}. If only one value is specified, it will passed on to all the layers.{p_end}
+{p2coldent : {opt labs:ize(string list)}}The size of the labels. The default values are {opt labs(1.6 1.6 1.6)}. If only one value is specified, it will passed on to all the layers.{p_end}
 
-{p2coldent : {opt linew:idth(string max=3)}}The line width of the boxes. The default values are {opt linew(0.03 0.03 0.03)}. If only one value is specified, it will passed on to all the layers.{p_end}
+{p2coldent : {opt linew:idth(string list)}}The line width of the boxes. The default values are {opt linew(0.03 0.03 0.03)}. If only one value is specified, it will passed on to all the layers.{p_end}
 
-{p2coldent : {opt linec:olor(string max=3)}}The line color of the boxes. The default values are {opt linec(black black black)}. If only one value is specified, it will passed on to all the layers.{p_end}
+{p2coldent : {opt linec:olor(string list)}}The line color of the boxes. The default values are {opt linec(black black black)}. If only one value is specified, it will passed on to all the layers.{p_end}
 
-{p2coldent : {opt fi(numlist max=3)}}The fill intensity of the layers in the other they are specified. The default values are {opt fi(50 75 100)}.{p_end}
+{p2coldent : {opt fi(numlist list)}}The fill intensity of the layers in the other they are specified. The default values are {opt fi(50 75 100)}.{p_end}
 
 {p2coldent : {opt titlegap(num)}}Change the space between the title text and the boxes. Default value is {opt titlegap(0.1)}.{p_end}
+
+{p2coldent : {opt titlesty:le(str list)}}Define the style of the titles in a list. Options are {ul:b}old and {ul:i}talic. For example, {opt titlesty(b i)} will make the top
+layer header bold and the second layer header italics.{p_end}
 
 {p2coldent : {opt labgap(num)}}Change the space between the box text and the values. Default value is {opt labgap(0.6)}. This option might be use if {opt labelprop} is used which might make
 some labels overlap with each other.{p_end}
@@ -96,11 +97,8 @@ This can be changed using the {opt fade()} described below.{p_end}
 {p2coldent : {opt labscale(num)}}This option changes how the labels are scaled. This is an advanced option and should be used cautiously. Default value is {opt labscale(0.3333)}.
 The formula for scaling is {it:((height x width x area) / sum of values)^labscale}.{p_end}
 
-{p2coldent : {opt title(), subtitle(), note()}}These are standard twoway graph options.{p_end}
 
-{p2coldent : {opt name(), saving()}}These are standard twoway graph options.{p_end}
-
-{p2coldent : {opt scheme(string)}}Load the custom scheme. Above options can be used to fine tune individual elements.{p_end}
+{p2coldent : {opt *}}All other standard twoway options not elsewhere specified.{p_end}
 
 {synoptline}
 {p2colreset}{...}
@@ -108,19 +106,14 @@ The formula for scaling is {it:((height x width x area) / sum of values)^labscal
 
 {title:Dependencies}
 
-The {browse "http://repec.sowi.unibe.ch/stata/palettes/index.html":palette} package (Jann 2018, 2022) is required for {cmd:treemap}:
-
 {stata ssc install palettes, replace}
 {stata ssc install colrspace, replace}
-
-Even if you have these installed, it is highly recommended to check for updates: {stata ado update, update}
+{stata ssc install graphfunctions, replace}
+{stata ssc install carryforward, replace}
 
 {title:Examples}
 
-See {browse "https://github.com/asjadnaqvi/treemap":GitHub} for a comprehensive set of examples.
-
-
-
+See {browse "https://github.com/asjadnaqvi/treemap":GitHub} for examples.
 
 {hline}
 
@@ -130,8 +123,8 @@ Please submit bugs, errors, feature requests on {browse "https://github.com/asja
 
 {title:Package details}
 
-Version      : {bf:treemap} v1.55
-This release : 10 Jun 2024
+Version      : {bf:treemap} v1.6
+This release : 09 Oct 2024
 First release: 08 Sep 2022
 Repository   : {browse "https://github.com/asjadnaqvi/treemap":GitHub}
 Keywords     : Stata, graph, treemap, squarify
@@ -147,14 +140,14 @@ Twitter      : {browse "https://twitter.com/AsjadNaqvi":@AsjadNaqvi}
 
 Suggested citation guidlines for this package:
 
-Naqvi, A. (2024). Stata package "treemap" version 1.55. Release date 10 June 2024. https://github.com/asjadnaqvi/stata-treemap.
+Naqvi, A. (2024). Stata package "treemap" version 1.6. Release date 09 October 2024. https://github.com/asjadnaqvi/stata-treemap.
 
 @software{treemap,
    author = {Naqvi, Asjad},
    title = {Stata package ``treemap''},
    url = {https://github.com/asjadnaqvi/stata-treemap},
-   version = {1.55},
-   date = {2024-06-10}
+   version = {1.6},
+   date = {2024-10-09}
 }
 
 
@@ -169,13 +162,15 @@ Naqvi, A. (2024). Stata package "treemap" version 1.55. Release date 10 June 202
 
 {p 4 8 2}Jann, B. (2022). {browse "https://ideas.repec.org/p/bss/wpaper/43.html":Color palettes for Stata graphics: an update}. University of Bern Social Sciences Working Papers No. 43. 
 
+{p 4 8 2}Kantor D. (2016). "CARRYFORWARD: Stata module to carry forward previous observations," Statistical Software Components S444902, Boston College Department of Economics, revised 12 Feb 2016.
+
 {p 4 8 2}Laserson, U. (2022). {browse "https://github.com/agatheblues/squarify":Python squarify}.
 
 
 {title:Other visualization packages}
 
 {psee}
-    {helpb arcplot}, {helpb alluvial}, {helpb bimap}, {helpb bumparea}, {helpb bumpline}, {helpb circlebar}, {helpb circlepack}, {helpb clipgeo}, {helpb delaunay}, {helpb joyplot}, 
-	{helpb marimekko}, {helpb polarspike}, {helpb sankey}, {helpb schemepack}, {helpb spider}, {helpb streamplot}, {helpb sunburst}, {helpb treecluster}, {helpb treemap}, {helpb waffle}
-	
-or visit {browse "https://github.com/asjadnaqvi":GitHub} for detailed documentation and examples.		
+    {helpb arcplot}, {helpb alluvial}, {helpb bimap}, {helpb bumparea}, {helpb bumpline}, {helpb circlebar}, {helpb circlepack}, {helpb clipgeo}, {helpb delaunay}, {helpb graphfunctions}, {helpb joyplot}, 
+	{helpb marimekko}, {helpb polarspike}, {helpb sankey}, {helpb schemepack}, {helpb spider}, {helpb splinefit}, {helpb streamplot}, {helpb sunburst}, {helpb ternary}, {helpb treecluster}, {helpb treemap}, {helpb trimap}, {helpb waffle}
+
+or visit {browse "https://github.com/asjadnaqvi":GitHub}.	
