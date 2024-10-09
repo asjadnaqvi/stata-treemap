@@ -380,18 +380,18 @@ preserve
 
 		if "`novalues'"=="" {
 			if "`share'"=="" {
-				replace  _l0_lab0 = _l0_lab1 + " (" + string(_l0_val, "`format'") + ")" if _l0_val >= `labcond'
+				replace  _l0_lab0 = _l0_lab1 + " (" + string(_l0_val, "`format'") + ")" if _l0_val >= `labcond' in 1/`item0'
 			}		
 			else {
-				replace  _l0_lab0 = _l0_lab1 + " (" + string(_l0_val, "`format'") + ", " + string(_l0_pct, "`format'") + "%)" if _l0_val >= `labcond'
+				replace  _l0_lab0 = _l0_lab1 + " (" + string(_l0_val, "`format'") + ", " + string(_l0_pct, "`format'") + "%)" if _l0_val >= `labcond' in 1/`item0'
 			}
 		}
 		else {
 			if "`share'"!="" {
-				replace  _l0_lab0 = _l0_lab1 + " (" + string(_l0_pct, "`format'") + "%)" if _l0_pct >= `labcond'  
+				replace  _l0_lab0 = _l0_lab1 + " (" + string(_l0_pct, "`format'") + "%)" if _l0_pct >= `labcond' in 1/`item0'  
 			}
 			else  {
-				replace  _l0_lab0 = _l0_lab1 if _l0_val >= `labcond'  
+				replace  _l0_lab0 = _l0_lab1 if _l0_val >= `labcond' in 1/`item0' 
 			}
 		}
 		
@@ -472,18 +472,18 @@ preserve
 
 			if "`novalues'"=="" {
 				if "`share'"=="" {
-					replace  _l1_`z'_lab0 = _l1_`z'_lab1 + " (" + string(_l1_`z'_val, "`format'") + ")" if _l1_`z'_val >= `labcond'
+					replace  _l1_`z'_lab0 = _l1_`z'_lab1 + " (" + string(_l1_`z'_val, "`format'") + ")" if _l1_`z'_val >= `labcond' in 1/`item1'
 				}		
 				else {
-					replace  _l1_`z'_lab0 = _l1_`z'_lab1 + " (" + string(_l1_`z'_val, "`format'") + ", " + string(_l1_`z'_pct, "`format'") + "%)" if _l1_`z'_val >= `labcond'
+					replace  _l1_`z'_lab0 = _l1_`z'_lab1 + " (" + string(_l1_`z'_val, "`format'") + ", " + string(_l1_`z'_pct, "`format'") + "%)" if _l1_`z'_val >= `labcond' in 1/`item1'
 				}
 			}
 			else {
 				if "`share'"!="" {
-					replace  _l1_`z'_lab0 = _l1_`z'_lab1 + " (" + string(_l1_`z'_pct, "`format'") + "%)" if _l1_`z'_pct >= `labcond'  
+					replace  _l1_`z'_lab0 = _l1_`z'_lab1 + " (" + string(_l1_`z'_pct, "`format'") + "%)" if _l1_`z'_pct >= `labcond' in 1/`item1' 
 				}
 				else  {
-					replace  _l1_`z'_lab0 = _l1_`z'_lab1 if _l1_`z'_val >= `labcond'  
+					replace  _l1_`z'_lab0 = _l1_`z'_lab1 if _l1_`z'_val >= `labcond' in 1/`item1'  
 				}
 			}			
 			
@@ -536,6 +536,9 @@ preserve
 				svmat c2_`z'_`y', n(col)
 					
 				// get the labels	
+				
+				
+				
 				gen  _l2_`z'_`y'_lab1 = ""
 				levelsof var2_o if var0_o==`z' & var1_o==`y', local(l2)
 				local item2 = `r(r)'
@@ -545,22 +548,23 @@ preserve
 				}
 				
 				
+				
 				gen  _l2_`z'_`y'_lab0 = ""
 				
 				if "`novalues'"=="" {
 					if "`share'"=="" {
-						replace  _l2_`z'_`y'_lab0 = _l2_`z'_`y'_lab1 + " (" + string(_l2_`z'_`y'_val, "`format'") + ")"  if _l2_`z'_`y'_val >= `labcond'
+						replace  _l2_`z'_`y'_lab0 = _l2_`z'_`y'_lab1 + " (" + string(_l2_`z'_`y'_val, "`format'") + ")"  if _l2_`z'_`y'_val >= `labcond' in 1/`item2'
 					}		
 					else {
-						replace  _l2_`z'_`y'_lab0 = _l2_`z'_`y'_lab1 + " (" + string(_l2_`z'_`y'_val, "`format'") + ", " + string(_l2_`z'_`y'_pct, "`format'") + "%)"  if _l2_`z'_`y'_val >= `labcond'
+						replace  _l2_`z'_`y'_lab0 = _l2_`z'_`y'_lab1 + " (" + string(_l2_`z'_`y'_val, "`format'") + ", " + string(_l2_`z'_`y'_pct, "`format'") + "%)"  if _l2_`z'_`y'_val >= `labcond' in 1/`item2'
 					}
 				}
 				else {
 					if "`share'"!="" {
-						replace  _l2_`z'_`y'_lab0 = _l2_`z'_`y'_lab1 + " (" + string(_l2_`z'_`y'_pct, "`format'") + "%)"  if _l2_`z'_`y'_pct >= `labcond'  
+						replace  _l2_`z'_`y'_lab0 = _l2_`z'_`y'_lab1 + " (" + string(_l2_`z'_`y'_pct, "`format'") + "%)"  if _l2_`z'_`y'_pct >= `labcond' in 1/`item2' 
 					}
 					else  {
-						replace  _l2_`z'_`y'_lab0 = _l2_`z'_`y'_lab1 if _l2_`z'_`y'_val >= `labcond'  
+						replace  _l2_`z'_`y'_lab0 = _l2_`z'_`y'_lab1 if _l2_`z'_`y'_val >= `labcond' in 1/`item2' 
 					}
 				}					
 
@@ -579,7 +583,6 @@ preserve
 		}		
 	}	
 	
-
 	
 	**************
 	//   draw   //
@@ -624,7 +627,7 @@ preserve
 			local clr0 `i'
 
 			summ var0_c if var0_o==`i', meanonly
-			local clr0 `r(mean)'
+			local clr0 `r(min)'
 
 			
 			colorpalette `palette', n(`lvl0') `poptions' nograph 
@@ -641,7 +644,7 @@ preserve
 			
 			if `length' > 1 {
 			
-				qui levelsof var1_o if var0_o==`i'
+				levelsof var1_o if var0_o==`i'
 				local lvl1 = r(r)
 					
 				forval j = 1/`lvl1' {
@@ -681,7 +684,9 @@ preserve
 					***************
 					
 					if `length' > 2 {
-				
+					
+						
+					
 						qui levelsof var2_o if var0_o==`i' & var1_o==`j'
 						local lvl2 = r(r)
 							
@@ -728,6 +733,8 @@ preserve
 		
 		if "`nolabels'" != "" local mylab
 
+
+		
 		*** Final plot ***
 
 		twoway ///
