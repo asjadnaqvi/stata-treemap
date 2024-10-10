@@ -97,15 +97,15 @@ Software packages take countless hours of programming, testing, and bug fixing. 
    author = {Naqvi, Asjad},
    title = {Stata package ``treemap''},
    url = {https://github.com/asjadnaqvi/stata-treemap},
-   version = {1.55},
-   date = {2024-06-10}
+   version = {1.6},
+   date = {2024-10-09}
 }
 ```
 
 *or simple text*
 
 ```
-Naqvi, A. (2024). Stata package "treemap" version 1.55. Release date 10 June 2024. https://github.com/asjadnaqvi/stata-treemap.
+Naqvi, A. (2024). Stata package "treemap" version 1.6. Release date 09 October 2024. https://github.com/asjadnaqvi/stata-treemap.
 ```
 
 
