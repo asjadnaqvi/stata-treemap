@@ -21,7 +21,7 @@ and on the Python's {browse "https://github.com/laserson/squarify":squarify} alg
 {cmd:treemap} {it:numvar} {ifin} {weight}, {cmd:by}({it:variables (min=1 max=3})) 
 		{cmd:[} {cmdab:xs:ize}({it:num}) {cmdab:ys:ize}({it:num}) {cmd:format}({it:str}) {cmd:share|percent} {cmd:palette}(it:str) {cmd:colorby}({it:var})
 		  {cmd:pad}({it:list}) {cmdab:labs:ize}({it:list}) {cmdab:linew:idth}({it:list}) {cmdab:linec:olor}({it:list}) {cmd:fi}({it:list}) {cmd:labcond}({it:num})  
-		  {cmdab:noval:ues} {cmdab:nolab:els} {cmdab:labs:ize}({it:num}) {cmdab:labg:ap}({it:str}) {cmdab:addt:itles} {cmd:titlegap}({it:num}) {cmdab:titlesty:les}({it:{ul:b}old|{ul:i}talic})
+		  {cmdab:noval:ues} {cmdab:nolab:els} {cmdab:labs:ize}({it:num}) {cmdab:labg:ap}({it:str}) {cmdab:addt:itles} {cmd:titlegap}({it:num}) {cmdab:titlesty:les}({ul:b}old | {ul:i}talic)
 		  {cmdab:thresh:old}({it:num}) {cmd:fade}({it:num}) {cmd:labprop} {cmd:titleprop} {cmd:labscale}({it:num}) {cmd:colorprop} {cmd:wrap}({it:numlist}) {cmdab:*} {cmd:]} 
 
 
@@ -37,8 +37,8 @@ The options are described as follows:
 {p2coldent : {opt by(group vars)}}At least one {it:by()} string variable needs to be specified, and a maximum of three string variables are allowed. These also are used as labels.
 The order is parent layer first followed by child layer or more aggregated layers should be specified first.{p_end}
 
-{p2coldent : {opt xs:ize(num)}, {opt ys:ize(num)}}The width and height of the bounding box. Default values are {it:xsize(5) and ysize(3)}.
-Note that changing the {opt xsize} and {opt ysize} will change the layout of the treemap.{p_end}
+{p2coldent : {opt xs:ize(num)}, {opt ys:ize(num)}}The width and height of the figure. Default values are {opt xsize(5)} and {opt ysize(3)}.
+Note that changing {opt xsize()} and {opt ysize()} will also change the layout of the treemap.{p_end}
 
 {p2coldent : {opt palette(str)}}Here one can use an named color scheme defined in the {stata help colorpalette:colorpalette} package. Default is {stata colorpalette tableau:{it:tableau}}.{p_end}
 
@@ -63,11 +63,11 @@ in combination with {opt percent} then the threshold will use the percentage val
 
 {p2coldent : {opt format(fmt)}}Format the values. The default option is {opt format(%12.0fc)} for actual data and {opt format(%5.2f)} if {opt share} or {opt percent} is specified.{p_end}
 
-{p2coldent : {opt pad(numlist list)}}The padding of the boxes, which can be defined as a list. The default values are {opt :pad(0.012 0.01 0.01)} for the three layers. A value of 0 
-implies no padding. If you change the {opt xsize} and {opt ysize} substantially, then you might also need to update the padding.{p_end}
+{p2coldent : {opt pad(numlist list)}}The padding of the boxes, which can be defined as a list. The default values are {opt pad(0.012 0.01 0.01)} for the three layers. A value of 0 
+implies no padding.{p_end}
 
-{p2coldent : {opt wrap(numlist)}}Wrap the labels after a number of characters. Users need to specify a list, e.g. {opt wrap(0 0 10)} will 
-wrap the 3rd layer after 10 characters. Word boundaries are respected.{p_end}
+{p2coldent : {opt wrap(numlist)}}Wrap the labels after a number of characters. Users need to specify a list, e.g. {opt wrap(0 0 10)} will wrap the 3rd layer after 10 characters.
+Word boundaries are respected.{p_end}
 
 {p2coldent : {opt labs:ize(string list)}}The size of the labels. The default values are {opt labs(1.6 1.6 1.6)}. If only one value is specified, it will passed on to all the layers.{p_end}
 
