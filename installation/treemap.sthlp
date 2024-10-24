@@ -75,15 +75,15 @@ wrap the 3rd layer after 10 characters. Word boundaries are respected.{p_end}
 
 {p2coldent : {opt linec:olor(string list)}}The line color of the boxes. The default values are {opt linec(black black black)}. If only one value is specified, it will passed on to all the layers.{p_end}
 
-{p2coldent : {opt fi(numlist list)}}The fill intensity of the layers in the other they are specified. The default values are {opt fi(50 75 100)}.{p_end}
+{p2coldent : {opt fi(numlist list)}}The fill intensity of the layers in the order they are specified. The default values are {opt fi(50 75 100)}.{p_end}
 
 {p2coldent : {opt titlegap(num)}}Change the space between the title text and the boxes. Default value is {opt titlegap(0.1)}.{p_end}
 
 {p2coldent : {opt titlesty:le(str list)}}Define the style of the titles in a list. Options are {ul:b}old and {ul:i}talic. For example, {opt titlesty(b i)} will make the top
 layer header bold and the second layer header italics.{p_end}
 
-{p2coldent : {opt labgap(num)}}Change the space between the box text and the values. Default value is {opt labgap(0.6)}. This option might be use if {opt labelprop} is used which might make
-some labels overlap with each other.{p_end}
+{p2coldent : {opt labgap(num)}}Change the space between the box text and the values. Default value is {opt labgap(0.6)}. This option might be useful if 
+{opt labelprop} is causing some labels to overlap.{p_end}
 
 {p2coldent : {opt titleprop}}Make the size of the box titles proportional to the area.{p_end}
 
