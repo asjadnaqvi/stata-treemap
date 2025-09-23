@@ -1,7 +1,7 @@
 {smcl}
-{* 09Oct2024}{...}
+{* 23Sep2025}{...}
 {hi:help treemap}{...}
-{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.6 (GitHub)}}
+{right:{browse "https://github.com/asjadnaqvi/stata-treemap":treemap v1.62 (GitHub)}}
 
 {hline}
 
@@ -123,10 +123,10 @@ Please submit bugs, errors, feature requests on {browse "https://github.com/asja
 
 {title:Package details}
 
-Version      : {bf:treemap} v1.6
-This release : 09 Oct 2024
+Version      : {bf:treemap} v1.62
+This release : 23 Sep 2025
 First release: 08 Sep 2022
-Repository   : {browse "https://github.com/asjadnaqvi/treemap":GitHub}
+Repository   : {browse "https://github.com/asjadnaqvi/stata-treemap":GitHub}
 Keywords     : Stata, graph, treemap, squarify
 License      : {browse "https://opensource.org/licenses/MIT":MIT}
 
@@ -138,17 +138,8 @@ Twitter      : {browse "https://twitter.com/AsjadNaqvi":@AsjadNaqvi}
 
 {title:Citation guidelines}
 
-Suggested citation guidlines for this package:
-
-Naqvi, A. (2024). Stata package "treemap" version 1.6. Release date 09 October 2024. https://github.com/asjadnaqvi/stata-treemap.
-
-@software{treemap,
-   author = {Naqvi, Asjad},
-   title = {Stata package ``treemap''},
-   url = {https://github.com/asjadnaqvi/stata-treemap},
-   version = {1.6},
-   date = {2024-10-09}
-}
+See {browse "https://ideas.repec.org/c/boc/bocode/s459123.html"} for the official SSC citation. 
+Please note that the GitHub version might be newer than the SSC version.
 
 
 
@@ -170,7 +161,8 @@ Naqvi, A. (2024). Stata package "treemap" version 1.6. Release date 09 October 2
 {title:Other visualization packages}
 
 {psee}
-    {helpb arcplot}, {helpb alluvial}, {helpb bimap}, {helpb bumparea}, {helpb bumpline}, {helpb circlebar}, {helpb circlepack}, {helpb clipgeo}, {helpb delaunay}, {helpb graphfunctions}, {helpb joyplot}, 
-	{helpb marimekko}, {helpb polarspike}, {helpb sankey}, {helpb schemepack}, {helpb spider}, {helpb splinefit}, {helpb streamplot}, {helpb sunburst}, {helpb ternary}, {helpb treecluster}, {helpb treemap}, {helpb trimap}, {helpb waffle}
+    {helpb arcplot}, {helpb alluvial}, {helpb bimap}, {helpb bumparea}, {helpb bumpline}, {helpb circlebar}, {helpb circlepack}, {helpb clipgeo}, {helpb delaunay}, {helpb graphfunctions},
+	{helpb geoboundary}, {helpb geoflow}, {helpb joyplot}, {helpb marimekko}, {helpb polarspike}, {helpb sankey}, {helpb schemepack}, {helpb spider}, {helpb splinefit}, {helpb streamplot}, 
+	{helpb sunburst}, {helpb ternary}, {helpb tidytuesday}, {helpb treecluster}, {helpb treemap}, {helpb trimap}, {helpb waffle}
 
-or visit {browse "https://github.com/asjadnaqvi":GitHub}.	
+Visit {browse "https://github.com/asjadnaqvi":GitHub} for further information.	

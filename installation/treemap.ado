@@ -1,6 +1,8 @@
-*! treemap v1.6 (08 Oct 2024)
+*! treemap v1.62 (23 Sep 2025)
 *! Asjad Naqvi (asjadnaqvi@gmail.com)
 
+* v1.62 (23 Sep 2025): Minor fixes.
+* v1.61 (21 Oct 2024): Added stat() option.
 * v1.6  (08 Oct 2024): wrap() list integration via graphfunctions. weights allowed. titlestyle(bold italic)
 * v1.55 (10 Jun 2024): wrap() for label wraps.
 * v1.54	(20 Apr 2024): colorby() fixed. Now requires a variable name for the color order.
@@ -32,7 +34,7 @@ prog def treemap, sortpreserve
 		[ LABGap(string) 	] 	   /// 				// v1.3	options
 		[ share THRESHold(numlist max=1 >=0) fade(real 10) percent ] ///	// v1.4, v1.5	options
 		[ colorby(varname) sharevar(varname)  * ] ///
-		[ wrap(numlist >=0 ) TITLESTYle(string) ]
+		[ wrap(numlist >=0 ) TITLESTYle(string) stat(string)  ]  // v1.6 options
 		
 	marksample touse, strok
 
@@ -44,10 +46,20 @@ prog def treemap, sortpreserve
 	if _rc != 0 quietly ssc install graphfunctions, replace	
 
 
+	if "`stat'" != "" & !inlist("`stat'", "mean", "sum") {
+		display as error "Valid options are {bf:stat(mean)} or {bf:stat(sum) [default]}."
+		exit
+	}		
+	
 quietly {	
 preserve	
 	keep if `touse'
+	
 	if "`threshold'"=="" local threshold = 0
+	
+	
+	if "`stat'" == "" local stat sum
+	if "`weight'" != "" local myweight  [`weight' = `exp']	
 	
 	qui summ `varlist', meanonly
 	if r(min) <= 0 noi di in yellow "`varlist' contains zeros or negative values. These values have been dropped."
@@ -82,7 +94,7 @@ preserve
 			replace `var0' = "Rest of `var0'" if `varlist' <= `threshold'
 		}
 		
-		collapse (sum) `varlist', by(`var0') 
+		collapse (`stat') `varlist' `myweight', by(`var0') 
 		
 		gen double var0_v = `varlist'
 		gsort -var0_v `var0'  // stabilize the sort
@@ -100,7 +112,7 @@ preserve
 		
 		if "`weight'" != "" local myweight  [`weight' = `exp']
 		
-		collapse (sum) `varlist' `myweight', by(`var0' `var1') 
+		collapse (`stat') `varlist' `myweight', by(`var0' `var1') 
 		
 		if "`threshold'"!="" {
 			levelsof `var0', local(lvls)
@@ -109,7 +121,7 @@ preserve
 			}
 		}
 		
-		collapse (sum) `varlist', by(`var0' `var1') 
+		collapse (`stat') `varlist' `myweight', by(`var0' `var1') 
 		
 		bysort `var0': egen var0_v = sum(`varlist')
 		gen double var1_v = `varlist'
@@ -136,7 +148,7 @@ preserve
 			}
 		}
 		
-		collapse (sum) `varlist', by(`var0' `var1' `var2')
+		collapse (`stat') `varlist' `myweight', by(`var0' `var1' `var2')
 		
 		bysort `var0': egen var0_v = sum(`varlist')
 		bysort `var0' `var1': egen var1_v = sum(`varlist')
@@ -147,7 +159,7 @@ preserve
 	
 	
 	
-	gen id = _n		
+	gen __id = _n		
 
 	egen var0_t = tag(`var0')
 	gen  double var0_o = sum(`var0' != `var0'[_n-1]) 
@@ -166,18 +178,18 @@ preserve
 		gsort `var0' -var1_t -var1_v 
 		cap drop var1_o
 		bysort `var0': gen var1_o = _n if var1_t==1
-		sort id
+		sort __id
 		carryforward var1_o, replace
 	}
 	
 
 	if `length' > 2 {	
-		sort `var0' `var1' id 
+		sort `var0' `var1' __id 
 		by `var0' `var1': gen var2_o = _n
 		gen var2_t = 1	
 	}
 
-	sort id
+	sort __id
 
 	// set up the base values
 	
@@ -341,7 +353,7 @@ preserve
 			local format "%4.2f"	
 		}
 		else {
-			local format "%12.0fc"	
+			local format "%12.2fc"	
 		}
 	}	
 
@@ -371,7 +383,7 @@ preserve
 	local item0 = `r(r)'
 	foreach i of local lvls {
 	
-		summ id if var0_o==`i' & var0_t==1, meanonly
+		summ __id if var0_o==`i' & var0_t==1, meanonly
 		replace  _l0_lab1 = `var0'[r(mean)] in `i'	
 	}	
 	
@@ -463,7 +475,7 @@ preserve
 			local item1 = `r(r)'
 			
 			foreach i of local l1 {
-				summ id if var0_o==`z' & var1_o==`i' &  var1_t==1 , meanonly
+				summ __id if var0_o==`z' & var1_o==`i' &  var1_t==1 , meanonly
 				replace  _l1_`z'_lab1 = `var1'[r(mean)] in `i'	
 			}
 			
@@ -543,7 +555,7 @@ preserve
 				levelsof var2_o if var0_o==`z' & var1_o==`y', local(l2)
 				local item2 = `r(r)'
 				foreach i of local l2 {
-					summ id if var2_o==`i' & var1_o==`y' & var0_o==`z' & var2_t==1, meanonly
+					summ __id if var2_o==`i' & var1_o==`y' & var0_o==`z' & var2_t==1, meanonly
 					replace  _l2_`z'_`y'_lab1 = `var2'[r(mean)] in `i'						
 				}
 				

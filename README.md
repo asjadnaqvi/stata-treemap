@@ -11,8 +11,8 @@
 
 ---
 
-# treemap v1.6
-(09 Oct 2024)
+# treemap v1.62
+(23 Sep 2025)
 
 This package provides the ability to draw treemaps Stata.
 
@@ -29,7 +29,7 @@ The SSC version (**v1.6**):
 ssc install treemap, replace
 ```
 
-Or it can be installed from GitHub (**v1.6**):
+Or it can be installed from GitHub (**v1.62**):
 
 ```stata
 net install treemap, from("https://raw.githubusercontent.com/asjadnaqvi/stata-treemap/main/installation/") replace
@@ -70,7 +70,6 @@ treemap numvar [if] [in] [weight], by(variables (min=1 max=3))
                   pad(list) labsize(list) linewidth(list) linecolor(list) fi(list) labcond(num)  
                   novalues nolabels labsize(num) labgap(str) addtitles titlegap(num) titlestyles(bold|italic)
                   threshold(num) fade(num) labprop titleprop labscale(num) colorprop wrap(numlist) * ] 
-
 ```
 
 See the help file `help treemap` for details.
@@ -430,6 +429,11 @@ Please open an [issue](https://github.com/asjadnaqvi/stata-treemap/issues) to re
 
 
 ## Change log
+
+**v1.61 and 1.62 (23 Sep 2025)**
+- Added `stat()` option which gives users control on how data should be collapse. Valid options are `stat(sum)` (default) and `stat(mean)`. Ideally data should be prepared before passing it onto `treemap`.
+- Better management of internal variables to minimize conflicts.
+- Minor bug fixes.
 
 **v1.6 (09 Oct 2024)**
 - `wrap()` now takes on a list of each layer and requires `labsplit` from the latest [graphfunctions](https://github.com/asjadnaqvi/stata-graphfunctions) package (requested by Marc Kaulisch).
