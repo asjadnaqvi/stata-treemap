@@ -115,27 +115,26 @@ Naqvi, A. (2024). Stata package "treemap" version 1.6. Release date 09 October 2
 
 ## Examples
 
-Set up the data:
-
 ```stata
 clear
 set scheme white_tableau
 graph set window fontface "Arial Narrow"
-
-use "https://github.com/asjadnaqvi/stata-treemap/blob/main/data/demo_r_pjangrp3_2024.dta?raw=true", clear
-
 ```
 
+Set up the data:
 
-
+```stata
+https://github.com/asjadnaqvi/stata-treemap/raw/refs/heads/main/data/demo_r_pjanaggr3_2024.dta
 ```
+
+```stata
 treemap pop, by(nuts0) labsize(2.5) title("Population of European countries")
 ```
 
 <img src="/figures/treemap1.png" width="100%">
 
 
-```
+```stata
 treemap pop, by(nuts0) labsize(2.5) title("Population of European countries") noval
 ```
 
@@ -153,20 +152,20 @@ treemap pop, by(nuts0) labsize(2) title("Population of European countries") nova
 <img src="/figures/treemap3.png" width="100%">
 
 
-```
+```stata
 treemap pop, by(nuts0) labsize(4) title("Population of European countries") noval xsize(5) ysize(2)
 ```
 
 <img src="/figures/treemap4.png" height="400">
 
 
-```
+```stata
 treemap pop, by(nuts0) labsize(5) title("Population of European countries") noval xsize(6) ysize(1)
 ```
 
 <img src="/figures/treemap5.png" height="100">
 
-```
+```stata
 treemap pop, by(nuts0_id nuts1_id) labsize(2) format(%15.0fc)
 ```
 
@@ -179,7 +178,7 @@ format(%15.0fc) title("Population of Austria at NUTS2 and NUTS3 level")
 
 <img src="/figures/treemap7.png" width="100%">
 
-```
+```stata
 treemap pop if nuts0_id=="NL", by(nuts2 nuts3_id) addtitles labsize(2) ///
 format(%15.0fc) title("Population of Netherlands at NUTS2 and NUTS3 level") 
 ```
@@ -187,21 +186,21 @@ format(%15.0fc) title("Population of Netherlands at NUTS2 and NUTS3 level")
 <img src="/figures/treemap8.png" width="100%">
 
 
-```
+```stata
 treemap pop if nuts0_id=="NL", by(nuts2_id nuts3_id ) addtitles labsize(1.3) format(%15.0fc) ///
 title("Population of Netherlands at NUTS2 and NUTS3 level") palette(CET L07, reverse) xsize(3) ysize(3)
 ```
 
 <img src="/figures/treemap9.png" width="100%">
 
-```
+```stata
 treemap  pop if nuts0_id=="NL", by(nuts2_id nuts3_id)  addtitles noval labsize(1.3) ///
 format(%15.0fc) title("Population of Netherlands at NUTS2 and NUTS3 level") palette(CET L10) xsize(3) ysize(3)
 ```
 
 <img src="/figures/treemap10.png" width="100%">
 
-```
+```stata
 treemap pop if nuts0_id=="NL", by(nuts1 nuts2 nuts3_id)  addtitles noval labsize(1.3) ///
 format(%15.0fc) title("Population of Netherlands at NUTS1-NUTS3 level") palette(CET L10) xsize(3) ysize(3)
 ```
@@ -215,7 +214,7 @@ title("Population of Norway at NUTS2 and NUTS3 level") palette(CET L20) xsize(3)
 
 <img src="/figures/treemap12.png" width="100%">
 
-```
+```stata
 treemap pop if nuts0_id=="NO", by(nuts3_id) addtitles labsize(2) format(%15.0fc) ///
 title("Population of Norway at NUTS3 level") palette(CET L19) xsize(5) ysize(3) scheme(neon)
 ```
@@ -225,46 +224,46 @@ title("Population of Norway at NUTS3 level") palette(CET L19) xsize(5) ysize(3) 
 
 ### v1.1 updates
 
-```
+```stata
 treemap pop, by(nuts0 nuts1_id) addtitles format(%15.0fc) title("Population of European countries")
 ```
 
 <img src="/figures/treemap14.png" width="100%">
 
-```
+```stata
 treemap pop, by(nuts0 nuts1_id) addtitles format(%15.0fc) title("Population of European countries") ///
 labprop linew(0.02 0.1) linec(red blue)
 ```
 
 <img src="/figures/treemap15.png" width="100%">
 
-```
+```stata
 treemap pop, by(nuts0 nuts1_id) addtitles format(%15.0fc) title("Population of European countries") ///
 labprop linew(none 0.1) linec(red black) labs(2)
 ```
 
 <img src="/figures/treemap16.png" width="100%">
 
-```
+```stata
 treemap pop, by(nuts0 nuts1_id) addtitles labsize(1.6 2.5) format(%15.0fc) title("Population of European countries") ///
 labprop colorprop titleprop pad(0.008) 
 ```
 
 <img src="/figures/treemap17.png" width="100%">
 
-```
+```stata
 treemap pop, by(nuts0 nuts1 nuts2  ) format(%15.0fc) title("Population of European countries") nolab
 ```
 
 <img src="/figures/treemap18.png" width="100%">
 
-```
+```stata
 treemap pop, by(nuts0 nuts1 nuts2) format(%15.0fc) title("Population of European countries") nolab pad(0.015 0.015 0.01)
 ```
 
 <img src="/figures/treemap19.png" width="100%">
 
-```
+```stata
 treemap pop, by(nuts0) labsize(2.5) format(%15.0fc) title("Population of European countries") labprop labcond(5000000) 
 ```
 
@@ -301,7 +300,7 @@ labprop colorprop titleprop labcond(2000000) addtitles xsize(5) ysize(4)
 
 ### v1.2 updates
 
-```
+```stata
 treemap pop if nuts0_id=="DE", by(nuts1 nuts2 nuts3_id) linew(none 0.1 none) linec(white black white) labsize(1.4 1.8 2.4) ///
  format(%15.0fc) title("Population of Germany") pad(0.015 0.015 0.01) labprop titleprop palette(CET C6) addtitle noval fi(100 50 20)
 ```
@@ -310,14 +309,14 @@ treemap pop if nuts0_id=="DE", by(nuts1 nuts2 nuts3_id) linew(none 0.1 none) lin
 
 ### v1.3 updates
 
-```
+```stata
 treemap pop if nuts0_id=="DK", by(nuts2 nuts3 ) addtitles labsize(2) ///
 title("Population of Denmark at NUTS2 and NUTS3 level") subtitle("% of total") share
 ```
 
 <img src="/figures/treemap26.png" width="100%">
 
-```
+```stata
 treemap pop if nuts0_id=="DK", by(nuts2 nuts3 ) addtitles labsize(2) title("Population of Denmark at NUTS2 and NUTS3 level") ///
 subtitle("% of total") share noval format(%3.1f) palette(CET C7) labgap(1)
 ```
@@ -326,20 +325,20 @@ subtitle("% of total") share noval format(%3.1f) palette(CET C7) labgap(1)
 
 ### v1.4 updates
 
-```
+```stata
 treemap pop if nuts0_id=="ES", by(nuts1 nuts3_id) addtitles labsize(2) title("Population of Spain at NUTS1 and NUTS3 level")
 ```
 
 <img src="/figures/treemap28.png" width="100%">
 
-```
+```stata
 treemap pop if nuts0_id=="ES", by(nuts1 nuts3 ) addtitles labsize(2) title("Population of Spain at NUTS1 and NUTS3 level") ///
 threshold(200000) labprop colorprop
 ```
 
 <img src="/figures/treemap29.png" width="100%">
 
-```
+```stata
 treemap pop if nuts0_id=="ES", by(nuts1 nuts3 ) addtitles labsize(2) title("Population of Spain at NUTS1 and NUTS3 level") ///
 threshold(200000) labprop colorprop fade(40) 
 ```
@@ -349,37 +348,37 @@ threshold(200000) labprop colorprop fade(40)
 
 ### v1.5 updates (new label options)
 
-```
+```stata
 treemap pop if nuts0_id=="IT", by(nuts1 nuts2) addtitles labsize(2) labprop
 ```
 
 <img src="/figures/treemap31_1.png" width="100%">
 
-```
+```stata
 treemap pop if nuts0_id=="IT", by(nuts1 nuts2) addtitles labsize(2) share labprop
 ```
 
 <img src="/figures/treemap31_2.png" width="100%">
 
-```
+```stata
 treemap pop if nuts0_id=="IT", by(nuts1 nuts2) addtitles labsize(2) share labprop format(%15.2f)
 ```
 
 <img src="/figures/treemap31_3.png" width="100%">
 
-```
+```stata
 treemap pop if nuts0_id=="IT", by(nuts1 nuts2) addtitles labsize(2) share labprop noval format(%7.2f)
 ```
 
 <img src="/figures/treemap31_4.png" width="100%">
 
-```
+```stata
 treemap pop if nuts0_id=="IT", by(nuts1 nuts2) addtitles labsize(2) share labprop noval labcond(5) format(%7.2f)
 ```
 
 <img src="/figures/treemap31_5.png" width="100%">
 
-```
+```stata
 treemap pop if nuts0_id=="IT", by(nuts1 nuts2) addtitles labsize(2) noval
 ```
 
@@ -388,19 +387,19 @@ treemap pop if nuts0_id=="IT", by(nuts1 nuts2) addtitles labsize(2) noval
 
 ### v1.6: better label wrapping and titletyles
 
-```
+```stata
 treemap pop if nuts0_id=="FR", by(nuts1 nuts2) addtitles labsize(2) labprop titleprop
 ```
 
 <img src="/figures/treemap32_1.png" width="100%">
 
-```
+```stata
 treemap pop if nuts0_id=="FR", by(nuts1 nuts2) addtitles labsize(2) labprop titleprop wrap(0 10)
 ```
 
 <img src="/figures/treemap32_2.png" width="100%">
 
-```
+```stata
 treemap pop if nuts0_id=="FR", by(nuts1 nuts2 nuts3) addtitles labsize(1.8) labprop titleprop wrap(0 0 10)
 ```
 
@@ -408,7 +407,7 @@ treemap pop if nuts0_id=="FR", by(nuts1 nuts2 nuts3) addtitles labsize(1.8) labp
 
 Let's get rid of the dashes and plot again:
 
-```
+```stata
 replace nuts3 = subinstr(nuts3, "-", " ", .)
 
 treemap pop if nuts0_id=="FR", by(nuts1 nuts2 nuts3) addtitles labsize(1.4 1.4 1.8) labprop titleprop wrap(0 0 12)
@@ -416,7 +415,7 @@ treemap pop if nuts0_id=="FR", by(nuts1 nuts2 nuts3) addtitles labsize(1.4 1.4 1
 
 <img src="/figures/treemap32_4.png" width="100%">
 
-```
+```stata
 treemap pop if nuts0_id=="FR", by(nuts1 nuts2 nuts3) addtitles labsize(1.4 1.4 1.8) labprop titleprop wrap(0 0 12) titlestyle(bold italic)
 ```
 
