@@ -86,31 +86,7 @@ where `numvar` is a numeric variable, and `by()` is upto three string variables,
 
 
 ## Citation guidelines
-Software packages take countless hours of programming, testing, and bug fixing. If you use this package, then a citation would be highly appreciated. Suggested citations:
-
-
-*in BibTeX*
-
-```
-@software{treemap,
-   author = {Naqvi, Asjad},
-   title = {Stata package ``treemap''},
-   url = {https://github.com/asjadnaqvi/stata-treemap},
-   version = {1.6},
-   date = {2024-10-09}
-}
-```
-
-*or simple text*
-
-```
-Naqvi, A. (2024). Stata package "treemap" version 1.6. Release date 09 October 2024. https://github.com/asjadnaqvi/stata-treemap.
-```
-
-
-*or see [SSC citation](https://ideas.repec.org/c/boc/bocode/s459123.html) (updated once a new version is submitted)*
-
-
+See [SSC citation](https://ideas.repec.org/c/boc/bocode/s459123.html)
 
 
 ## Examples
@@ -126,6 +102,8 @@ Set up the data:
 ```stata
 use "https://github.com/asjadnaqvi/stata-treemap/raw/refs/heads/main/data/demo_r_pjanaggr3_2024.dta", clear
 ```
+
+Draw the first figure:
 
 ```stata
 treemap pop, by(nuts0) labsize(2.5) title("Population of European countries")
