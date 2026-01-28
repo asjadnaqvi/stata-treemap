@@ -124,7 +124,7 @@ graph set window fontface "Arial Narrow"
 Set up the data:
 
 ```stata
-https://github.com/asjadnaqvi/stata-treemap/raw/refs/heads/main/data/demo_r_pjanaggr3_2024.dta
+use "https://github.com/asjadnaqvi/stata-treemap/raw/refs/heads/main/data/demo_r_pjanaggr3_2024.dta", clear
 ```
 
 ```stata
