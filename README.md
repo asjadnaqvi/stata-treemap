@@ -11,8 +11,8 @@
 
 ---
 
-# treemap v1.62
-(23 Sep 2025)
+# treemap v1.7
+(22 Feb 2026)
 
 This package provides the ability to draw treemaps Stata.
 
@@ -23,13 +23,13 @@ It is based on D3's [treemap](https://observablehq.com/@d3/treemap) and Python's
 
 The package can be installed via SSC or GitHub. The GitHub version, *might* be more recent due to bug fixes, feature updates etc, and *may* contain syntax improvements and changes in *default* values. See version numbers below. Eventually the GitHub version is published on SSC.
 
-The SSC version (**v1.6**):
+The SSC version (**v1.62**):
 
 ```stata
 ssc install treemap, replace
 ```
 
-Or it can be installed from GitHub (**v1.62**):
+Or it can be installed from GitHub (**v1.7**):
 
 ```stata
 net install treemap, from("https://raw.githubusercontent.com/asjadnaqvi/stata-treemap/main/installation/") replace
@@ -42,7 +42,7 @@ ssc install palettes, replace
 ssc install colrspace, replace
 ```
 
-Even if you have the package installed, make sure that it is updated `ado update, update`.
+Even if you have the package installed, make sure that it is updated `vcontrol treemap, update`. This requires the `vcontrol` package (`ssc install vcontrol, replace`).
 
 If you want to make a clean figure, then it is advisable to load a clean scheme. These are several available and I personally use the following:
 
@@ -69,7 +69,8 @@ treemap numvar [if] [in] [weight], by(variables (min=1 max=3))
                 [ xsize(num) ysize(num) format(str) share|percent palette(it:str) colorby(var)
                   pad(list) labsize(list) linewidth(list) linecolor(list) fi(list) labcond(num)  
                   novalues nolabels labsize(num) labgap(str) addtitles titlegap(num) titlestyles(bold|italic)
-                  threshold(num) fade(num) labprop titleprop labscale(num) colorprop wrap(numlist) * ] 
+                  threshold(num) fade(num) labprop titleprop labscale(num) colorprop wrap(numlist) 
+                  method(str) ratio(num) labangle(numlist) orient(str) * ] 
 ```
 
 See the help file `help treemap` for details.
@@ -400,12 +401,115 @@ treemap pop if nuts0_id=="FR", by(nuts1 nuts2 nuts3) addtitles labsize(1.4 1.4 1
 <img src="/figures/treemap32_5.png" width="100%">
 
 
+### v1.7: layout algorithms, orientation, and label rotation
+
+Aspect ratios:
+
+```stata
+treemap pop if nuts0_id=="IT", by(nuts1 nuts2) addtitles labsize(2) share labprop wrap(0 12) ///
+	colorprop format(%15.2fc) labcond(5e5) ///
+```
+
+<img src="/figures/treemap33_1.png" width="100%">
+
+```stata
+treemap pop if nuts0_id=="IT", by(nuts1 nuts2) addtitles labsize(2) share labprop wrap(0 12) ///
+	colorprop format(%15.2fc) labcond(5e5) ratio(0.5) ///
+	title("Population of Italian Regions") note("Source: Eurostat")
+```
+
+<img src="/figures/treemap33_2.png" width="100%">
+
+```stata
+treemap pop if nuts0_id=="IT", by(nuts1 nuts2) addtitles labsize(2) share labprop wrap(0 12) ///
+	colorprop format(%15.2fc) labcond(5e5) ratio(2) ///
+	title("Population of Italian Regions") note("Source: Eurostat")
+```
+
+<img src="/figures/treemap33_3.png" width="100%">
+
+
+```stata
+treemap pop if nuts0_id=="IT", by(nuts1 nuts2) addtitles labsize(2) share labprop wrap(0 12) ///
+	colorprop format(%15.2fc) labcond(5e5) ratio(1) xsize(3) ysize(3) ///
+	title("Population of Italian Regions") note("Source: Eurostat")
+```
+
+<img src="/figures/treemap33_4.png" width="100%">
+
+
+Slice versus dice and label rotation:
+
+```stata
+treemap pop if nuts0_id=="IT", by(nuts1 nuts2) addtitles labsize(1.8 1.2) share labprop  ///
+	colorprop format(%15.2fc) labcond(5e5) method(slice) ///
+	title("Population of Italian Regions") note("Source: Eurostat")
+```
+
+<img src="/figures/treemap33_5.png" width="100%">
+
+
+```stata
+treemap pop if nuts0_id=="IT", by(nuts1 nuts2) addtitles labsize(1.8 1.2) share labprop ///
+	colorprop format(%15.2fc) labcond(5e5) method(dice) labangle(0 90) ///
+	title("Population of Italian Regions") note("Source: Eurostat")
+```
+
+<img src="/figures/treemap33_6.png" width="100%">
+
+Drawing orientation
+
+```stata
+treemap pop if nuts0_id=="IT", by(nuts1 nuts2) addtitles labsize(2) share labprop wrap(0 12) ///
+	colorprop format(%15.2fc) labcond(5e5) orient(tr) ///
+	title("Population of Italian Regions") note("Source: Eurostat")
+```
+
+<img src="/figures/treemap34_1.png" width="100%">
+
+
+
+```stata
+treemap pop if nuts0_id=="IT", by(nuts1 nuts2) addtitles labsize(2) share labprop wrap(0 12) ///
+	colorprop format(%15.2fc) labcond(5e5) orient(tl) ///
+	title("Population of Italian Regions") note("Source: Eurostat")
+```
+
+<img src="/figures/treemap34_2.png" width="100%">
+
+
+
+```stata
+treemap pop if nuts0_id=="IT", by(nuts1 nuts2) addtitles labsize(2) share labprop wrap(0 12) ///
+	colorprop format(%15.2fc) labcond(5e5) orient(bl) ///
+	title("Population of Italian Regions") note("Source: Eurostat")
+```
+
+<img src="/figures/treemap34_3.png" width="100%">
+
+```stata
+treemap pop if nuts0_id=="IT", by(nuts1 nuts2) addtitles labsize(1.8 1.2) share labprop ///
+	colorprop format(%15.2fc) labcond(5e5) method(slice) orient(tr) ///
+	title("Population of Italian Regions") note("Source: Eurostat")
+```
+
+<img src="/figures/treemap34_4.png" width="100%">
+
+
 ## Feedback
 
 Please open an [issue](https://github.com/asjadnaqvi/stata-treemap/issues) to report errors, feature enhancements, and/or other requests. 
 
 
 ## Change log
+
+**v1.7 (22 Feb 2026)**
+- Added `method()` option to specify layout algorithm per layer: `squarify` (default), `slice`, or `dice`. Allows mixing algorithms across layers.
+- Added `ratio()` option to control aspect ratio preference for squarify algorithm (default: 1.618034, the golden ratio).
+- Added `labangle()` option to specify label rotation angles in degrees per layer.
+- Added `orient()` option to control box placement orientation: `br` (bottom-right, default), `bl` (bottom-left), `tr` (top-right), or `tl` (top-left).
+- Program now returns `r(version)` and `r(date)` as rclass results.
+- Fixed `colorprop` option bug.
 
 **v1.61 and 1.62 (23 Sep 2025)**
 - Added `stat()` option which gives users control on how data should be collapse. Valid options are `stat(sum)` (default) and `stat(mean)`. Ideally data should be prepared before passing it onto `treemap`.

@@ -1,6 +1,8 @@
-*! treemap v1.62 (23 Sep 2025)
+*! treemap v1.7 (22 Feb 2026)
 *! Asjad Naqvi (asjadnaqvi@gmail.com)
 
+* v1.7 (22 Feb 2026): Added method() option (squarify/slice/dice per layer). Added ratio() to control squarify aspect preference. 
+*                     Added labangle() for label rotation per layer. Added orient() to control box placement (br/bl/tr/tl).
 * v1.62 (23 Sep 2025): Minor fixes.
 * v1.61 (21 Oct 2024): Added stat() option.
 * v1.6  (08 Oct 2024): wrap() list integration via graphfunctions. weights allowed. titlestyle(bold italic)
@@ -21,21 +23,21 @@
 * v1.1  (13 Sep 2022): Label, color, title scaling. More options for controls. More checks. Better defaults.
 * v1.0  (08 Sep 2022): First release.
 
-cap prog drop treemap
+capture program drop treemap
 
-prog def treemap, sortpreserve
+program define treemap, sortpreserve rclass
 
 	version 15
 	
 	syntax varlist(numeric max=1) [if] [in] [aw fw pw iw/], by(varlist min=1 max=3)	 ///   
 		[ XSize(real 5) YSize(real 3) format(str) palette(string) ADDTitles NOVALues NOLABels  ]		///
-		[ pad(numlist max=3) labprop labscale(real 0.3333) labcond(real 0) colorprop titlegap(real 0.1) titleprop LINEWidth(string) LINEColor(string) LABSize(string) ] /// // v1.1 options. labscale is undocumented labprop scaling
-		[ fi(numlist max=3) ] 		///   			// v1.2 options
-		[ LABGap(string) 	] 	   /// 				// v1.3	options
+		[ pad(numlist max=3) labprop labscale(real 0.3333) labcond(real 0) colorprop titlegap(real 0.1) titleprop LINEWidth(string) LINEColor(string) LABSize(string)  ] /// // v1.1 options. labscale is undocumented labprop scaling
+		[ fi(numlist max=3)  LABGap(string)  ] 		///   			// v1.2, v1.3 options
 		[ share THRESHold(numlist max=1 >=0) fade(real 10) percent ] ///	// v1.4, v1.5	options
 		[ colorby(varname) sharevar(varname)  * ] ///
-		[ wrap(numlist >=0 ) TITLESTYle(string) stat(string)  ]  // v1.6 options
-		
+		[ wrap(numlist >=0 ) TITLESTYle(string) stat(string)  ]  /// // v1.6 options
+		[ METHOD(string) RATio(real 1.618034) LABAngle(string) ORIENT(string)  ] /// v1.7 
+
 	marksample touse, strok
 
 	// check for dependencies
@@ -50,6 +52,14 @@ prog def treemap, sortpreserve
 		display as error "Valid options are {bf:stat(mean)} or {bf:stat(sum) [default]}."
 		exit
 	}		
+	
+	if "`method'" == "" local method squarify
+	local method = lower("`method'")
+
+	if `ratio' <= 0 {
+		display as error "ratio() must be greater than 0."
+		exit
+	}
 	
 quietly {	
 preserve	
@@ -288,6 +298,69 @@ preserve
 		local ls2 1.6
 	}	
 	
+	if "`labangle'" != "" {
+		tokenize `labangle'
+		local lalen : word count `labangle'
+		
+		local la0 `1'
+		local la1 `1'
+		local la2 `1'
+
+		if `lalen' > 1 {
+			local la1 `2'
+			local la2 `2'
+		}
+			
+		if `lalen' > 2 {
+			local la1 `2'
+			local la2 `3'
+		}
+	}
+	else {
+		local la0 0
+		local la1 0
+		local la2 0
+	}
+
+	local orient0 `orient'
+	local orient1 `orient'
+	local orient2 `orient'
+
+	if "`orient'" != "" {
+		tokenize `orient'
+		local olen : word count `orient'
+
+		local orient0 `1'
+		local orient1 `1'
+		local orient2 `1'
+
+		if `olen' > 1 {
+			local orient1 `2'
+			local orient2 `2'
+		}
+			
+		if `olen' > 2 {
+			local orient1 `2'
+			local orient2 `3'
+		}
+	}
+	else {
+		local orient0 br
+		local orient1 br
+		local orient2 br
+	}
+
+	foreach o in `orient0' `orient1' `orient2' {
+		if !inlist("`o'", "br", "bl", "tr", "tl", "bottomright", "bottomleft", "topright", "topleft") {
+			display as error "Valid options for orient() are br, bl, tr, tl, bottomright, bottomleft, topright, or topleft."
+			exit
+		}
+	}
+
+	local orient0flag = cond(inlist("`orient0'", "br", "bottomright"), 1, cond(inlist("`orient0'", "bl", "bottomleft"), 2, cond(inlist("`orient0'", "tr", "topright"), 3, 4)))
+	local orient1flag = cond(inlist("`orient1'", "br", "bottomright"), 1, cond(inlist("`orient1'", "bl", "bottomleft"), 2, cond(inlist("`orient1'", "tr", "topright"), 3, 4)))
+	local orient2flag = cond(inlist("`orient2'", "br", "bottomright"), 1, cond(inlist("`orient2'", "bl", "bottomleft"), 2, cond(inlist("`orient2'", "tr", "topright"), 3, 4)))
+	
 	if "`titlestyle'" != "" {
 		tokenize `titlestyle'
 		local stylen : word count `titlestyle'
@@ -342,9 +415,43 @@ preserve
 		}	
 	}		
 
-	local ratio = (1 + sqrt(5)) / 2
+	local method0 `method'
+	local method1 `method'
+	local method2 `method'
+
+	if "`method'" != "" {
+		tokenize `method'
+		local methodlen : word count `method'
+
+		local method0 `1'
+		local method1 `1'
+		local method2 `1'
+
+		if `methodlen' > 1 {
+			local method1 `2'
+			local method2 `2'
+		}
+			
+		if `methodlen' > 2 {
+			local method1 `2'
+			local method2 `3'
+		}
+	}
+
+	foreach m in `method0' `method1' `method2' {
+		if !inlist("`m'", "squarify", "slice", "dice") {
+			display as error "Valid options for method() are squarify, slice, or dice (optionally per layer)."
+			exit
+		}
+	}
+
+	local method0flag = cond("`method0'" == "squarify", 1, cond("`method0'" == "slice", 2, 3))
+	local method1flag = cond("`method1'" == "squarify", 1, cond("`method1'" == "slice", 2, 3))
+	local method2flag = cond("`method2'" == "squarify", 1, cond("`method2'" == "slice", 2, 3))
+
+	local sqratio = `ratio'
 	
-	mata: xmin = 0; xmax = `xsize'; ymin = 0; ymax = `ysize'; dy = ymax - ymin; dx = xmax - xmin; myratio = `ratio'
+	mata: xmin = 0; xmax = `xsize'; ymin = 0; ymax = `ysize'; dy = ymax - ymin; dx = xmax - xmin; myratio = `sqratio'
 
 	
 	*** define format options
@@ -368,7 +475,15 @@ preserve
 	mata: datasum = sum(data[.,1])
 	mata: pad0b = `pad0'; pad0t = `pad0'; pad0l = `pad0'; pad0r = `pad0'
 	
-	mata: normlist = normdata(data, dx, dy); b0 = squarify(normlist, xmin, ymin, dx, dy, myratio), normlist; c0 = getcoords2(data, b0, pad0b, pad0t, pad0l, pad0r, datasum)
+	if "`method0'" == "squarify" {
+		mata: normlist = normdata(data, dx, dy); b0 = squarify(normlist, xmin, ymin, dx, dy, myratio), normlist; b0 = reorient(b0, xmin, ymin, xmax, ymax, `orient0flag'); c0 = getcoords2(data, b0, pad0b, pad0t, pad0l, pad0r, datasum)
+	}
+	else if "`method0'" == "slice" {
+		mata: normlist = normdata(data, dx, dy); b0 = layoutrow(normlist, xmin, ymin, dx, dy), normlist; b0 = reorient(b0, xmin, ymin, xmax, ymax, `orient0flag'); c0 = getcoords2(data, b0, pad0b, pad0t, pad0l, pad0r, datasum)
+	}
+	else {
+		mata: normlist = normdata(data, dx, dy); b0 = layoutcol(normlist, xmin, ymin, dx, dy), normlist; b0 = reorient(b0, xmin, ymin, xmax, ymax, `orient0flag'); c0 = getcoords2(data, b0, pad0b, pad0t, pad0l, pad0r, datasum)
+	}
 	mata: st_matrix("c0", c0)
 
 	local varlist 
@@ -463,7 +578,7 @@ preserve
 				mata: mydata = select(mydata, mydata[.,2] :== `z')		
 				mata: pad1b = `pad1'; pad1t = `pad1'; pad1l = `pad1'; pad1r = `pad1'
 
-				mata: b1_`z' = processchildren(`z', mydata[.,1], b0    , pad0b, pad0t, pad0l, pad0r, myratio)
+				mata: b1_`z' = processchildren(`z', mydata[.,1], b0    , pad0b, pad0t, pad0l, pad0r, myratio, `method1flag', `orient1flag')
 				mata: c1_`z' = getcoords2(          mydata[.,1], b1_`z', pad1b, pad1t, pad1l, pad1r, datasum)
 				mata: st_matrix("c1_`z'", c1_`z')
 
@@ -540,7 +655,7 @@ preserve
 					mata: mydata = select(st_data(., ("var2_v", "var0_o", "var1_o")), st_data(., "var2_t = 1"))
 					mata: mydata = select(mydata, mydata[.,2] :== `z' :& mydata[.,3] :== `y')				
 					mata: pad2b = `pad2'; pad2t = `pad2'; pad2l = `pad2'; pad2r = `pad2'
-					mata: b2_`z'_`y' = processchildren(`y', mydata[.,1], b1_`z', pad2b, pad2t, pad2l, pad2r, myratio)
+					mata: b2_`z'_`y' = processchildren(`y', mydata[.,1], b1_`z', pad2b, pad2t, pad2l, pad2r, myratio, `method2flag', `orient2flag')
 					mata: c2_`z'_`y' = getcoords2(mydata[.,1], b2_`z'_`y', pad2b, pad2t, pad2l, pad2r, datasum)
 					mata: st_matrix("c2_`z'_`y'", c2_`z'_`y')		
 				
@@ -646,9 +761,9 @@ preserve
 			
 			local box0 `box0' (area _l0_y _l0_x if _l0_id==`i', nodropbase fi(`fi0') fc("`r(p`clr0')'") lw(`lw0') lc(`lc0')) 
 			
-			local lab0_box `lab0_box' (scatter _l0_ymax _l0_xmax in `i'  if _l0_val >= `labcond', mc(none) mlab(_l0_lab0) mlabpos(4) mlabsize(`labt0') mlabc(black) )
+			local lab0_box `lab0_box' (scatter _l0_ymax _l0_xmax in `i'  if _l0_val >= `labcond', mc(none) mlab(_l0_lab0) mlabpos(4) mlabsize(`labt0') mlabangle(`la0') mlabc(black) )
 			
-			local lab0 `lab0'         (scatter _l0_ymid _l0_xmid in `i'  if _l0_val >= `labcond', mc(none) mlab(_l0_lab0) mlabpos(0) mlabsize(`labs0') mlabc(black) ) 
+			local lab0 `lab0'         (scatter _l0_ymid _l0_xmid in `i'  if _l0_val >= `labcond', mc(none) mlab(_l0_lab0) mlabpos(0) mlabsize(`labs0') mlabangle(`la0') mlabc(black) ) 
 			
 			***************
 			*** layer 1 ***
@@ -686,9 +801,9 @@ preserve
 							
 					local box1 `box1' (area _l1_`i'_y _l1_`i'_x if _l1_`i'_id==`j', nodropbase fi(`fi1') fc("`clr'") lw(`lw1') lc(`lc1'))  
 					
-					local lab1_box `lab1_box' (scatter _l1_`i'_ymax _l1_`i'_xmax in `j' if _l1_`i'_val >= `labcond', mc(none) mlab(_l1_`i'_lab0) mlabpos(4) mlabsize(`labt1') mlabc(black) )
+					local lab1_box `lab1_box' (scatter _l1_`i'_ymax _l1_`i'_xmax in `j' if _l1_`i'_val >= `labcond', mc(none) mlab(_l1_`i'_lab0) mlabpos(4) mlabsize(`labt1') mlabangle(`la1') mlabc(black) )
 					
-					local lab1 `lab1'         (scatter _l1_`i'_ymid _l1_`i'_xmid in `j' if _l1_`i'_val >= `labcond', mc(none) mlab(_l1_`i'_lab0) mlabpos(0) mlabsize(`labs1') mlabc(black) ) 
+					local lab1 `lab1'         (scatter _l1_`i'_ymid _l1_`i'_xmid in `j' if _l1_`i'_val >= `labcond', mc(none) mlab(_l1_`i'_lab0) mlabpos(0) mlabsize(`labs1') mlabangle(`la1') mlabc(black) ) 
 							
 					
 					***************
@@ -721,7 +836,7 @@ preserve
 							
 							local box2 `box2' (area _l2_`i'_`j'_y _l2_`i'_`j'_x if _l2_`i'_`j'_id==`k', nodropbase fi(`fi2') fc("`clr'") lw(`lw2') lc(`lc2'))  
 							
-							local lab2 `lab2' (scatter _l2_`i'_`j'_ymid _l2_`i'_`j'_xmid in `k' if _l2_`i'_`j'_val >= `labcond', mc(none) mlab(_l2_`i'_`j'_lab0) mlabpos(0) mlabsize(`labs2') mlabgap(`labgap') mlabc(black) ) 			
+							local lab2 `lab2' (scatter _l2_`i'_`j'_ymid _l2_`i'_`j'_xmid in `k' if _l2_`i'_`j'_val >= `labcond', mc(none) mlab(_l2_`i'_`j'_lab0) mlabpos(0) mlabsize(`labs2') mlabgap(`labgap') mlabangle(`la2') mlabc(black) ) 			
 							
 						}
 					}
@@ -768,7 +883,9 @@ restore
 
 // drop the Mata junk
 mata mata drop data datasum dx dy myratio normlist xmax ymax xmin ymin pad* b* c* 
-	
+
+return local version "1.7"
+return local date "20260222"
 
 end
 
@@ -858,6 +975,32 @@ end
 
 
 *************************
+// 	    reorient       //  
+*************************
+
+cap mata mata drop reorient()
+
+mata:
+real matrix reorient(b, xmin, ymin, xmax, ymax, orientflag)
+{
+	if (rows(b) == 0) return (b)
+	if (orientflag == 1) return (b)
+
+	out = b
+	flipx = (orientflag == 2 | orientflag == 4)
+	flipy = (orientflag == 3 | orientflag == 4)
+
+	for (i=1; i<= rows(out); i++) {
+		if (flipx) out[i,1] = xmax - (out[i,1] - xmin) - out[i,3]
+		if (flipy) out[i,2] = ymax - (out[i,2] - ymin) - out[i,4]
+	}
+
+	return (out)
+}
+end
+
+
+*************************
 // 	  leftover row     //  
 *************************
 
@@ -929,7 +1072,13 @@ real scalar worst_ratio(data, x, y, dx, dy, rat)
 	sumval 	  = sum(data) 
 	minval    = sumval
 	maxval    = sumval
-	temp      = layout(data, x, y, dx, dy)
+	
+	dxr = dx
+	dyr = dy
+	if (dx >= dy) dxr = dx * rat
+	else dyr = dy * rat
+	
+	temp      = layout(data, x, y, dxr, dyr)
 	ratiolist = J(rows(temp), 1, .)
 	
 	for (i=1; i<= rows(data); i++) {
@@ -990,7 +1139,7 @@ end
 cap mata mata drop processchildren()
 
 mata:
-	function processchildren(index, data, bounds, padb, padt, padl, padr, myratio) 
+	function processchildren(index, data, bounds, padb, padt, padl, padr, myratio, methodflag, orientflag) 
 	{	
 		xmin  = bounds[index,.][1] + padl
 		ymin  = bounds[index,.][2] + padb 
@@ -998,7 +1147,12 @@ mata:
 		dy 	  = bounds[index,.][4] - padb - padt
 
 		normlist = normdata(data, dx, dy)
-		return (squarify(normlist, xmin, ymin, dx, dy, myratio), normlist)
+		if (methodflag == 1) b = squarify(normlist, xmin, ymin, dx, dy, myratio)
+		else if (methodflag == 2) b = layoutrow(normlist, xmin, ymin, dx, dy)
+		else b = layoutcol(normlist, xmin, ymin, dx, dy)
+		
+		b = reorient(b, xmin, ymin, xmin + dx, ymin + dy, orientflag)
+		return (b, normlist)
 	}
 end
 
