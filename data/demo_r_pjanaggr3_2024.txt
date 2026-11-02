@@ -1,0 +1,1564 @@
+year,nuts0_id,nuts0,nuts1_id,nuts1,nuts2_id,nuts2,nuts3_id,nuts3,pop
+2023,AL,Albania,AL0,Shqipëria,AL01,Veri,AL011,Dibër,106380
+2023,AL,Albania,AL0,Shqipëria,AL01,Veri,AL012,Durrës,289797
+2023,AL,Albania,AL0,Shqipëria,AL01,Veri,AL013,Kukës,71498
+2023,AL,Albania,AL0,Shqipëria,AL01,Veri,AL014,Lezhë,114181
+2023,AL,Albania,AL0,Shqipëria,AL01,Veri,AL015,Shkodër,189164
+2023,AL,Albania,AL0,Shqipëria,AL02,Qender,AL021,Elbasan,252719
+2023,AL,Albania,AL0,Shqipëria,AL02,Qender,AL022,Tiranë,925268
+2023,AL,Albania,AL0,Shqipëria,AL03,Jug,AL031,Berat,111431
+2023,AL,Albania,AL0,Shqipëria,AL03,Jug,AL032,Fier,271672
+2023,AL,Albania,AL0,Shqipëria,AL03,Jug,AL033,Gjirokastër,53314
+2023,AL,Albania,AL0,Shqipëria,AL03,Jug,AL034,Korçë,192925
+2023,AL,Albania,AL0,Shqipëria,AL03,Jug,AL035,Vlorë,183436
+2023,AT,Austria,AT1,Ostösterreich,AT11,Burgenland,AT111,Mittelburgenland,37743
+2023,AT,Austria,AT1,Ostösterreich,AT11,Burgenland,AT112,Nordburgenland,165099
+2023,AT,Austria,AT1,Ostösterreich,AT11,Burgenland,AT113,Südburgenland,98408
+2023,AT,Austria,AT1,Ostösterreich,AT12,Niederösterreich,AT121,Mostviertel-Eisenwurzen,250280
+2023,AT,Austria,AT1,Ostösterreich,AT12,Niederösterreich,AT122,Niederösterreich-Süd,266608
+2023,AT,Austria,AT1,Ostösterreich,AT12,Niederösterreich,AT123,Sankt Pölten,160474
+2023,AT,Austria,AT1,Ostösterreich,AT12,Niederösterreich,AT124,Waldviertel,216454
+2023,AT,Austria,AT1,Ostösterreich,AT12,Niederösterreich,AT125,Weinviertel,127564
+2023,AT,Austria,AT1,Ostösterreich,AT12,Niederösterreich,AT126,Wiener Umland/Nordteil,342995
+2023,AT,Austria,AT1,Ostösterreich,AT12,Niederösterreich,AT127,Wiener Umland/Südteil,353998
+2023,AT,Austria,AT1,Ostösterreich,AT13,Wien,AT130,Wien,1982097
+2023,AT,Austria,AT2,Südösterreich,AT21,Kärnten,AT211,Klagenfurt-Villach,296535
+2023,AT,Austria,AT2,Südösterreich,AT21,Kärnten,AT212,Oberkärnten,124016
+2023,AT,Austria,AT2,Südösterreich,AT21,Kärnten,AT213,Unterkärnten,148433
+2023,AT,Austria,AT2,Südösterreich,AT22,Steiermark,AT221,Graz,460887
+2023,AT,Austria,AT2,Südösterreich,AT22,Steiermark,AT222,Liezen,79831
+2023,AT,Austria,AT2,Südösterreich,AT22,Steiermark,AT223,Östliche Obersteiermark,158478
+2023,AT,Austria,AT2,Südösterreich,AT22,Steiermark,AT224,Oststeiermark,267680
+2023,AT,Austria,AT2,Südösterreich,AT22,Steiermark,AT225,West- und Südsteiermark,199351
+2023,AT,Austria,AT2,Südösterreich,AT22,Steiermark,AT226,Westliche Obersteiermark,98971
+2023,AT,Austria,AT3,Westösterreich,AT31,Oberösterreich,AT311,Innviertel,296756
+2023,AT,Austria,AT3,Westösterreich,AT31,Oberösterreich,AT312,Linz-Wels,609580
+2023,AT,Austria,AT3,Westösterreich,AT31,Oberösterreich,AT313,Mühlviertel,213934
+2023,AT,Austria,AT3,Westösterreich,AT31,Oberösterreich,AT314,Steyr-Kirchdorf,158099
+2023,AT,Austria,AT3,Westösterreich,AT31,Oberösterreich,AT315,Traunviertel,244456
+2023,AT,Austria,AT3,Westösterreich,AT32,Salzburg,AT321,Lungau,20437
+2023,AT,Austria,AT3,Westösterreich,AT32,Salzburg,AT322,Pinzgau-Pongau,172190
+2023,AT,Austria,AT3,Westösterreich,AT32,Salzburg,AT323,Salzburg und Umgebung,375719
+2023,AT,Austria,AT3,Westösterreich,AT33,Tirol,AT331,Außerfern,33607
+2023,AT,Austria,AT3,Westösterreich,AT33,Tirol,AT332,Innsbruck,316099
+2023,AT,Austria,AT3,Westösterreich,AT33,Tirol,AT333,Osttirol,48854
+2023,AT,Austria,AT3,Westösterreich,AT33,Tirol,AT334,Tiroler Oberland,107373
+2023,AT,Austria,AT3,Westösterreich,AT33,Tirol,AT335,Tiroler Unterland,265371
+2023,AT,Austria,AT3,Westösterreich,AT34,Vorarlberg,AT341,Bludenz-Bregenzer Wald,94304
+2023,AT,Austria,AT3,Westösterreich,AT34,Vorarlberg,AT342,Rheintal-Bodenseegebiet,312091
+2023,BE,Belgium,BE1,Région de Bruxelles-Capitale/Brussels Hoofdstedelijk Gewest,BE10,Région de Bruxelles-Capitale/Brussels Hoofdstedelijk Gewest,BE100,Arr. de Bruxelles-Capitale/Arr. Brussel-Hoofdstad,1253178
+2023,BE,Belgium,BE2,Vlaams Gewest,BE21,Prov. Antwerpen,BE211,Arr. Antwerpen,1081771
+2023,BE,Belgium,BE2,Vlaams Gewest,BE21,Prov. Antwerpen,BE212,Arr. Mechelen,357030
+2023,BE,Belgium,BE2,Vlaams Gewest,BE21,Prov. Antwerpen,BE213,Arr. Turnhout,477120
+2020,BE,Belgium,BE2,Vlaams Gewest,BE22,Prov. Limburg (BE),BE221,Arr. Hasselt (NUTS 2016),432163
+2020,BE,Belgium,BE2,Vlaams Gewest,BE22,Prov. Limburg (BE),BE222,Arr. Maaseik (NUTS 2016),243104
+2023,BE,Belgium,BE2,Vlaams Gewest,BE22,Prov. Limburg (BE),BE223,Arr. Tongeren,209283
+2023,BE,Belgium,BE2,Vlaams Gewest,BE22,Prov. Limburg (BE),BE224,Arr. Hasselt,430313
+2023,BE,Belgium,BE2,Vlaams Gewest,BE22,Prov. Limburg (BE),BE225,Arr. Maaseik,259023
+2023,BE,Belgium,BE2,Vlaams Gewest,BE23,Prov. Oost-Vlaanderen,BE231,Arr. Aalst,302438
+2023,BE,Belgium,BE2,Vlaams Gewest,BE23,Prov. Oost-Vlaanderen,BE232,Arr. Dendermonde,206414
+2023,BE,Belgium,BE2,Vlaams Gewest,BE23,Prov. Oost-Vlaanderen,BE233,Arr. Eeklo,88926
+2023,BE,Belgium,BE2,Vlaams Gewest,BE23,Prov. Oost-Vlaanderen,BE234,Arr. Gent,575067
+2023,BE,Belgium,BE2,Vlaams Gewest,BE23,Prov. Oost-Vlaanderen,BE235,Arr. Oudenaarde,127476
+2023,BE,Belgium,BE2,Vlaams Gewest,BE23,Prov. Oost-Vlaanderen,BE236,Arr. Sint-Niklaas,263025
+2023,BE,Belgium,BE2,Vlaams Gewest,BE24,Prov. Vlaams-Brabant,BE241,Arr. Halle-Vilvoorde,664977
+2023,BE,Belgium,BE2,Vlaams Gewest,BE24,Prov. Vlaams-Brabant,BE242,Arr. Leuven,523102
+2023,BE,Belgium,BE2,Vlaams Gewest,BE25,Prov. West-Vlaanderen,BE251,Arr. Brugge,286273
+2023,BE,Belgium,BE2,Vlaams Gewest,BE25,Prov. West-Vlaanderen,BE252,Arr. Diksmuide,52481
+2023,BE,Belgium,BE2,Vlaams Gewest,BE25,Prov. West-Vlaanderen,BE253,Arr. Ieper,108132
+2023,BE,Belgium,BE2,Vlaams Gewest,BE25,Prov. West-Vlaanderen,BE254,Arr. Kortrijk,299959
+2023,BE,Belgium,BE2,Vlaams Gewest,BE25,Prov. West-Vlaanderen,BE255,Arr. Oostende,159568
+2023,BE,Belgium,BE2,Vlaams Gewest,BE25,Prov. West-Vlaanderen,BE256,Arr. Roeselare,158224
+2023,BE,Belgium,BE2,Vlaams Gewest,BE25,Prov. West-Vlaanderen,BE257,Arr. Tielt,95314
+2023,BE,Belgium,BE2,Vlaams Gewest,BE25,Prov. West-Vlaanderen,BE258,Arr. Veurne,62053
+2023,BE,Belgium,BE3,Région wallonne,BE31,Prov. Brabant wallon,BE310,Arr. Nivelles,413959
+2020,BE,Belgium,BE3,Région wallonne,BE32,Prov. Hainaut,BE321,Arr. Ath (NUTS 2016),87388
+2020,BE,Belgium,BE3,Région wallonne,BE32,Prov. Hainaut,BE322,Arr. Charleroi (NUTS 2016),432660
+2023,BE,Belgium,BE3,Région wallonne,BE32,Prov. Hainaut,BE323,Arr. Mons,260958
+2020,BE,Belgium,BE3,Région wallonne,BE32,Prov. Hainaut,BE324,Arr. Mouscron (NUTS 2016),77688
+2020,BE,Belgium,BE3,Région wallonne,BE32,Prov. Hainaut,BE325,Arr. Soignies (NUTS 2016),192708
+2020,BE,Belgium,BE3,Région wallonne,BE32,Prov. Hainaut,BE326,Arr. Thuin (NUTS 2016),152509
+2020,BE,Belgium,BE3,Région wallonne,BE32,Prov. Hainaut,BE327,Arr. Tournai (NUTS 2016),147936
+2023,BE,Belgium,BE3,Région wallonne,BE32,Prov. Hainaut,BE328,Arr. Tournai-Mouscron,226990
+2023,BE,Belgium,BE3,Région wallonne,BE32,Prov. Hainaut,BE329,Arr. La Louvière,142599
+2023,BE,Belgium,BE3,Région wallonne,BE32,Prov. Hainaut,BE32A,Arr. Ath,130236
+2023,BE,Belgium,BE3,Région wallonne,BE32,Prov. Hainaut,BE32B,Arr. Charleroi,399827
+2023,BE,Belgium,BE3,Région wallonne,BE32,Prov. Hainaut,BE32C,Arr. Soignies,107691
+2023,BE,Belgium,BE3,Région wallonne,BE32,Prov. Hainaut,BE32D,Arr. Thuin,92725
+2023,BE,Belgium,BE3,Région wallonne,BE33,Prov. Liège,BE331,Arr. Huy,115896
+2023,BE,Belgium,BE3,Région wallonne,BE33,Prov. Liège,BE332,Arr. Liège,630743
+2023,BE,Belgium,BE3,Région wallonne,BE33,Prov. Liège,BE334,Arr. Waremme,83938
+2023,BE,Belgium,BE3,Région wallonne,BE33,Prov. Liège,BE335,Arr. Verviers — communes francophones,211971
+2023,BE,Belgium,BE3,Région wallonne,BE33,Prov. Liège,BE336,Bezirk Verviers — Deutschsprachige Gemeinschaft,79812
+2023,BE,Belgium,BE3,Région wallonne,BE34,Prov. Luxembourg (BE),BE341,Arr. Arlon,65917
+2023,BE,Belgium,BE3,Région wallonne,BE34,Prov. Luxembourg (BE),BE342,Arr. Bastogne,51653
+2023,BE,Belgium,BE3,Région wallonne,BE34,Prov. Luxembourg (BE),BE343,Arr. Marche-en-Famenne,58725
+2023,BE,Belgium,BE3,Région wallonne,BE34,Prov. Luxembourg (BE),BE344,Arr. Neufchâteau,66150
+2023,BE,Belgium,BE3,Région wallonne,BE34,Prov. Luxembourg (BE),BE345,Arr. Virton,55209
+2023,BE,Belgium,BE3,Région wallonne,BE35,Prov. Namur,BE351,Arr. Dinant,114458
+2023,BE,Belgium,BE3,Région wallonne,BE35,Prov. Namur,BE352,Arr. Namur,324117
+2023,BE,Belgium,BE3,Région wallonne,BE35,Prov. Namur,BE353,Arr. Philippeville,68075
+2023,BG,Bulgaria,BG3,Severna i Yugoiztochna Bulgaria,BG31,Severozapaden,BG311,Vidin,72754
+2023,BG,Bulgaria,BG3,Severna i Yugoiztochna Bulgaria,BG31,Severozapaden,BG312,Montana,116172
+2023,BG,Bulgaria,BG3,Severna i Yugoiztochna Bulgaria,BG31,Severozapaden,BG313,Vratsa,148874
+2023,BG,Bulgaria,BG3,Severna i Yugoiztochna Bulgaria,BG31,Severozapaden,BG314,Pleven,220346
+2023,BG,Bulgaria,BG3,Severna i Yugoiztochna Bulgaria,BG31,Severozapaden,BG315,Lovech,113356
+2023,BG,Bulgaria,BG3,Severna i Yugoiztochna Bulgaria,BG32,Severen tsentralen,BG321,Veliko Tarnovo,204033
+2023,BG,Bulgaria,BG3,Severna i Yugoiztochna Bulgaria,BG32,Severen tsentralen,BG322,Gabrovo,95957
+2023,BG,Bulgaria,BG3,Severna i Yugoiztochna Bulgaria,BG32,Severen tsentralen,BG323,Ruse,189623
+2023,BG,Bulgaria,BG3,Severna i Yugoiztochna Bulgaria,BG32,Severen tsentralen,BG324,Razgrad,101107
+2023,BG,Bulgaria,BG3,Severna i Yugoiztochna Bulgaria,BG32,Severen tsentralen,BG325,Silistra,95614
+2023,BG,Bulgaria,BG3,Severna i Yugoiztochna Bulgaria,BG33,Severoiztochen,BG331,Varna,430847
+2023,BG,Bulgaria,BG3,Severna i Yugoiztochna Bulgaria,BG33,Severoiztochen,BG332,Dobrich,147208
+2023,BG,Bulgaria,BG3,Severna i Yugoiztochna Bulgaria,BG33,Severoiztochen,BG333,Shumen,149628
+2023,BG,Bulgaria,BG3,Severna i Yugoiztochna Bulgaria,BG33,Severoiztochen,BG334,Targovishte,96201
+2023,BG,Bulgaria,BG3,Severna i Yugoiztochna Bulgaria,BG34,Yugoiztochen,BG341,Burgas,378596
+2023,BG,Bulgaria,BG3,Severna i Yugoiztochna Bulgaria,BG34,Yugoiztochen,BG342,Sliven,170583
+2023,BG,Bulgaria,BG3,Severna i Yugoiztochna Bulgaria,BG34,Yugoiztochen,BG343,Yambol,107379
+2023,BG,Bulgaria,BG3,Severna i Yugoiztochna Bulgaria,BG34,Yugoiztochen,BG344,Stara Zagora,291852
+2023,BG,Bulgaria,BG4,Yugozapadna i Yuzhna tsentralna Bulgaria,BG41,Yugozapaden,BG411,Sofia (stolitsa),1280334
+2023,BG,Bulgaria,BG4,Yugozapadna i Yuzhna tsentralna Bulgaria,BG41,Yugozapaden,BG412,Sofia,227610
+2023,BG,Bulgaria,BG4,Yugozapadna i Yuzhna tsentralna Bulgaria,BG41,Yugozapaden,BG413,Blagoevgrad,288161
+2023,BG,Bulgaria,BG4,Yugozapadna i Yuzhna tsentralna Bulgaria,BG41,Yugozapaden,BG414,Pernik,111746
+2023,BG,Bulgaria,BG4,Yugozapadna i Yuzhna tsentralna Bulgaria,BG41,Yugozapaden,BG415,Kyustendil,108703
+2023,BG,Bulgaria,BG4,Yugozapadna i Yuzhna tsentralna Bulgaria,BG42,Yuzhen tsentralen,BG421,Plovdiv,631516
+2023,BG,Bulgaria,BG4,Yugozapadna i Yuzhna tsentralna Bulgaria,BG42,Yuzhen tsentralen,BG422,Haskovo,207439
+2023,BG,Bulgaria,BG4,Yugozapadna i Yuzhna tsentralna Bulgaria,BG42,Yuzhen tsentralen,BG423,Pazardzhik,226209
+2023,BG,Bulgaria,BG4,Yugozapadna i Yuzhna tsentralna Bulgaria,BG42,Yuzhen tsentralen,BG424,Smolyan,93354
+2023,BG,Bulgaria,BG4,Yugozapadna i Yuzhna tsentralna Bulgaria,BG42,Yuzhen tsentralen,BG425,Kardzhali,142508
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH01,Région lémanique,CH011,Vaud,830431
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH01,Région lémanique,CH012,Valais / Wallis,357282
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH01,Région lémanique,CH013,Genève,514114
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH02,Espace Mittelland,CH021,Bern / Berne,1051437
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH02,Espace Mittelland,CH022,Fribourg / Freiburg,334465
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH02,Espace Mittelland,CH023,Solothurn,282408
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH02,Espace Mittelland,CH024,Neuchâtel,176571
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH02,Espace Mittelland,CH025,Jura,73865
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH03,Nordwestschweiz,CH031,Basel-Stadt,196786
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH03,Nordwestschweiz,CH032,Basel-Landschaft,294417
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH03,Nordwestschweiz,CH033,Aargau,711232
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH04,Zürich,CH040,Zürich,1579967
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH05,Ostschweiz,CH051,Glarus,41471
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH05,Ostschweiz,CH052,Schaffhausen,85214
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH05,Ostschweiz,CH053,Appenzell Ausserrhoden,55759
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH05,Ostschweiz,CH054,Appenzell Innerrhoden,16416
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH05,Ostschweiz,CH055,St. Gallen,525967
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH05,Ostschweiz,CH056,Graubünden / Grigioni / Grischun,202538
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH05,Ostschweiz,CH057,Thurgau,289650
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH06,Zentralschweiz,CH061,Luzern,424851
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH06,Zentralschweiz,CH062,Uri,37317
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH06,Zentralschweiz,CH063,Schwyz,164920
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH06,Zentralschweiz,CH064,Obwalden,38700
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH06,Zentralschweiz,CH065,Nidwalden,44420
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH06,Zentralschweiz,CH066,Zug,131164
+2023,CH,Switzerland,CH0,Schweiz/Suisse/Svizzera,CH07,Ticino,CH070,Ticino,354023
+2023,CY,Cyprus,CY0,Kýpros,CY00,Kýpros,CY000,Kýpros,920701
+2023,CZ,Czechia,CZ0,Česko,CZ01,Praha,CZ010,Hlavní město Praha,1357326
+2023,CZ,Czechia,CZ0,Česko,CZ02,Střední Čechy,CZ020,Středočeský kraj,1439391
+2023,CZ,Czechia,CZ0,Česko,CZ03,Jihozápad,CZ031,Jihočeský kraj,652303
+2023,CZ,Czechia,CZ0,Česko,CZ03,Jihozápad,CZ032,Plzeňský kraj,605388
+2023,CZ,Czechia,CZ0,Česko,CZ04,Severozápad,CZ041,Karlovarský kraj,293595
+2023,CZ,Czechia,CZ0,Česko,CZ04,Severozápad,CZ042,Ústecký kraj,812337
+2023,CZ,Czechia,CZ0,Česko,CZ05,Severovýchod,CZ051,Liberecký kraj,449177
+2023,CZ,Czechia,CZ0,Česko,CZ05,Severovýchod,CZ052,Královéhradecký kraj,555267
+2023,CZ,Czechia,CZ0,Česko,CZ05,Severovýchod,CZ053,Pardubický kraj,528761
+2023,CZ,Czechia,CZ0,Česko,CZ06,Jihovýchod,CZ063,Kraj Vysočina,514777
+2023,CZ,Czechia,CZ0,Česko,CZ06,Jihovýchod,CZ064,Jihomoravský kraj,1217200
+2023,CZ,Czechia,CZ0,Česko,CZ07,Střední Morava,CZ071,Olomoucký kraj,631802
+2023,CZ,Czechia,CZ0,Česko,CZ07,Střední Morava,CZ072,Zlínský kraj,580531
+2023,CZ,Czechia,CZ0,Česko,CZ08,Moravskoslezsko,CZ080,Moravskoslezský kraj,1189674
+2023,DE,Germany,DE1,Baden-Württemberg,DE11,Stuttgart,DE111,"Stuttgart, Stadtkreis",632865
+2023,DE,Germany,DE1,Baden-Württemberg,DE11,Stuttgart,DE112,Böblingen,398528
+2023,DE,Germany,DE1,Baden-Württemberg,DE11,Stuttgart,DE113,Esslingen,540226
+2023,DE,Germany,DE1,Baden-Württemberg,DE11,Stuttgart,DE114,Göppingen,261857
+2023,DE,Germany,DE1,Baden-Württemberg,DE11,Stuttgart,DE115,Ludwigsburg,551051
+2023,DE,Germany,DE1,Baden-Württemberg,DE11,Stuttgart,DE116,Rems-Murr-Kreis,432397
+2023,DE,Germany,DE1,Baden-Württemberg,DE11,Stuttgart,DE117,"Heilbronn, Stadtkreis",128334
+2023,DE,Germany,DE1,Baden-Württemberg,DE11,Stuttgart,DE118,"Heilbronn, Landkreis",353283
+2023,DE,Germany,DE1,Baden-Württemberg,DE11,Stuttgart,DE119,Hohenlohekreis,115063
+2023,DE,Germany,DE1,Baden-Württemberg,DE11,Stuttgart,DE11A,Schwäbisch Hall,202834
+2023,DE,Germany,DE1,Baden-Württemberg,DE11,Stuttgart,DE11B,Main-Tauber-Kreis,134745
+2023,DE,Germany,DE1,Baden-Württemberg,DE11,Stuttgart,DE11C,Heidenheim,135035
+2023,DE,Germany,DE1,Baden-Württemberg,DE11,Stuttgart,DE11D,Ostalbkreis,319631
+2023,DE,Germany,DE1,Baden-Württemberg,DE12,Karlsruhe,DE121,"Baden-Baden, Stadtkreis",57025
+2023,DE,Germany,DE1,Baden-Württemberg,DE12,Karlsruhe,DE122,"Karlsruhe, Stadtkreis",308707
+2023,DE,Germany,DE1,Baden-Württemberg,DE12,Karlsruhe,DE123,"Karlsruhe, Landkreis",454613
+2023,DE,Germany,DE1,Baden-Württemberg,DE12,Karlsruhe,DE124,Rastatt,234981
+2023,DE,Germany,DE1,Baden-Württemberg,DE12,Karlsruhe,DE125,"Heidelberg, Stadtkreis",162273
+2023,DE,Germany,DE1,Baden-Württemberg,DE12,Karlsruhe,DE126,"Mannheim, Stadtkreis",315554
+2023,DE,Germany,DE1,Baden-Württemberg,DE12,Karlsruhe,DE127,Neckar-Odenwald-Kreis,145493
+2023,DE,Germany,DE1,Baden-Württemberg,DE12,Karlsruhe,DE128,Rhein-Neckar-Kreis,555352
+2023,DE,Germany,DE1,Baden-Württemberg,DE12,Karlsruhe,DE129,"Pforzheim, Stadtkreis",127849
+2023,DE,Germany,DE1,Baden-Württemberg,DE12,Karlsruhe,DE12A,Calw,162853
+2023,DE,Germany,DE1,Baden-Württemberg,DE12,Karlsruhe,DE12B,Enzkreis,202536
+2023,DE,Germany,DE1,Baden-Württemberg,DE12,Karlsruhe,DE12C,Freudenstadt,121164
+2023,DE,Germany,DE1,Baden-Württemberg,DE13,Freiburg,DE131,"Freiburg im Breisgau, Stadtkreis",236140
+2023,DE,Germany,DE1,Baden-Württemberg,DE13,Freiburg,DE132,Breisgau-Hochschwarzwald,269948
+2023,DE,Germany,DE1,Baden-Württemberg,DE13,Freiburg,DE133,Emmendingen,170996
+2023,DE,Germany,DE1,Baden-Württemberg,DE13,Freiburg,DE134,Ortenaukreis,441885
+2023,DE,Germany,DE1,Baden-Württemberg,DE13,Freiburg,DE135,Rottweil,142593
+2023,DE,Germany,DE1,Baden-Württemberg,DE13,Freiburg,DE136,Schwarzwald-Baar-Kreis,217181
+2023,DE,Germany,DE1,Baden-Württemberg,DE13,Freiburg,DE137,Tuttlingen,144891
+2023,DE,Germany,DE1,Baden-Württemberg,DE13,Freiburg,DE138,Konstanz,292568
+2023,DE,Germany,DE1,Baden-Württemberg,DE13,Freiburg,DE139,Lörrach,233027
+2023,DE,Germany,DE1,Baden-Württemberg,DE13,Freiburg,DE13A,Waldshut,173460
+2023,DE,Germany,DE1,Baden-Württemberg,DE14,Tübingen,DE141,Reutlingen,291696
+2023,DE,Germany,DE1,Baden-Württemberg,DE14,Tübingen,DE142,"Tübingen, Landkreis",232803
+2023,DE,Germany,DE1,Baden-Württemberg,DE14,Tübingen,DE143,Zollernalbkreis,193235
+2023,DE,Germany,DE1,Baden-Württemberg,DE14,Tübingen,DE144,"Ulm, Stadtkreis",128928
+2023,DE,Germany,DE1,Baden-Württemberg,DE14,Tübingen,DE145,Alb-Donau-Kreis,202476
+2023,DE,Germany,DE1,Baden-Württemberg,DE14,Tübingen,DE146,Biberach,206513
+2023,DE,Germany,DE1,Baden-Württemberg,DE14,Tübingen,DE147,Bodenseekreis,222712
+2023,DE,Germany,DE1,Baden-Württemberg,DE14,Tübingen,DE148,Ravensburg,290911
+2023,DE,Germany,DE1,Baden-Württemberg,DE14,Tübingen,DE149,Sigmaringen,134045
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE211,"Ingolstadt, Kreisfreie Stadt",141029
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE212,"München, Kreisfreie Stadt",1512491
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE213,"Rosenheim, Kreisfreie Stadt",64403
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE214,Altötting,113798
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE215,Berchtesgadener Land,107667
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE216,Bad Tölz-Wolfratshausen,129511
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE217,Dachau,156982
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE218,Ebersberg,146830
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE219,Eichstätt,135591
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE21A,Erding,141680
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE21B,Freising,184433
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE21C,Fürstenfeldbruck,221612
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE21D,Garmisch-Partenkirchen,88840
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE21E,Landsberg am Lech,123032
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE21F,Miesbach,101346
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE21G,Mühldorf a. Inn,119878
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE21H,"München, Landkreis",355890
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE21I,Neuburg-Schrobenhausen,99957
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE21J,Pfaffenhofen a. d. Ilm,132082
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE21K,"Rosenheim, Landkreis",266945
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE21L,Starnberg,138785
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE21M,Traunstein,180779
+2023,DE,Germany,DE2,Bayern,DE21,Oberbayern,DE21N,Weilheim-Schongau,138208
+2023,DE,Germany,DE2,Bayern,DE22,Niederbayern,DE221,"Landshut, Kreisfreie Stadt",75457
+2023,DE,Germany,DE2,Bayern,DE22,Niederbayern,DE222,"Passau, Kreisfreie Stadt",53907
+2023,DE,Germany,DE2,Bayern,DE22,Niederbayern,DE223,"Straubing, Kreisfreie Stadt",49164
+2023,DE,Germany,DE2,Bayern,DE22,Niederbayern,DE224,Deggendorf,122121
+2023,DE,Germany,DE2,Bayern,DE22,Niederbayern,DE225,Freyung-Grafenau,79286
+2023,DE,Germany,DE2,Bayern,DE22,Niederbayern,DE226,Kelheim,125701
+2023,DE,Germany,DE2,Bayern,DE22,Niederbayern,DE227,"Landshut, Landkreis",164773
+2023,DE,Germany,DE2,Bayern,DE22,Niederbayern,DE228,"Passau, Landkreis",196963
+2023,DE,Germany,DE2,Bayern,DE22,Niederbayern,DE229,Regen,78035
+2023,DE,Germany,DE2,Bayern,DE22,Niederbayern,DE22A,Rottal-Inn,124436
+2023,DE,Germany,DE2,Bayern,DE22,Niederbayern,DE22B,Straubing-Bogen,103806
+2023,DE,Germany,DE2,Bayern,DE22,Niederbayern,DE22C,Dingolfing-Landau,100306
+2023,DE,Germany,DE2,Bayern,DE23,Oberpfalz,DE231,"Amberg, Kreisfreie Stadt",42534
+2023,DE,Germany,DE2,Bayern,DE23,Oberpfalz,DE232,"Regensburg, Kreisfreie Stadt",157443
+2023,DE,Germany,DE2,Bayern,DE23,Oberpfalz,DE233,"Weiden i. d. Opf, Kreisfreie Stadt",43052
+2023,DE,Germany,DE2,Bayern,DE23,Oberpfalz,DE234,Amberg-Sulzbach,104436
+2023,DE,Germany,DE2,Bayern,DE23,Oberpfalz,DE235,Cham,130193
+2023,DE,Germany,DE2,Bayern,DE23,Oberpfalz,DE236,Neumarkt i. d. OPf.,138086
+2023,DE,Germany,DE2,Bayern,DE23,Oberpfalz,DE237,Neustadt a. d. Waldnaab,95954
+2023,DE,Germany,DE2,Bayern,DE23,Oberpfalz,DE238,"Regensburg, Landkreis",198160
+2023,DE,Germany,DE2,Bayern,DE23,Oberpfalz,DE239,Schwandorf,151711
+2023,DE,Germany,DE2,Bayern,DE23,Oberpfalz,DE23A,Tirschenreuth,72172
+2023,DE,Germany,DE2,Bayern,DE24,Oberfranken,DE241,"Bamberg, Kreisfreie Stadt",79935
+2023,DE,Germany,DE2,Bayern,DE24,Oberfranken,DE242,"Bayreuth, Kreisfreie Stadt",74506
+2023,DE,Germany,DE2,Bayern,DE24,Oberfranken,DE243,"Coburg, Kreisfreie Stadt",41842
+2023,DE,Germany,DE2,Bayern,DE24,Oberfranken,DE244,"Hof, Kreisfreie Stadt",46656
+2023,DE,Germany,DE2,Bayern,DE24,Oberfranken,DE245,"Bamberg, Landkreis",149122
+2023,DE,Germany,DE2,Bayern,DE24,Oberfranken,DE246,"Bayreuth, Landkreis",104702
+2023,DE,Germany,DE2,Bayern,DE24,Oberfranken,DE247,"Coburg, Landkreis",87103
+2023,DE,Germany,DE2,Bayern,DE24,Oberfranken,DE248,Forchheim,117948
+2023,DE,Germany,DE2,Bayern,DE24,Oberfranken,DE249,"Hof, Landkreis",94589
+2023,DE,Germany,DE2,Bayern,DE24,Oberfranken,DE24A,Kronach,66393
+2023,DE,Germany,DE2,Bayern,DE24,Oberfranken,DE24B,Kulmbach,71653
+2023,DE,Germany,DE2,Bayern,DE24,Oberfranken,DE24C,Lichtenfels,67328
+2023,DE,Germany,DE2,Bayern,DE24,Oberfranken,DE24D,Wunsiedel i. Fichtelgebirge,72006
+2023,DE,Germany,DE2,Bayern,DE25,Mittelfranken,DE251,"Ansbach, Kreisfreie Stadt",42221
+2023,DE,Germany,DE2,Bayern,DE25,Mittelfranken,DE252,"Erlangen, Kreisfreie Stadt",116562
+2023,DE,Germany,DE2,Bayern,DE25,Mittelfranken,DE253,"Fürth, Kreisfreie Stadt",131433
+2023,DE,Germany,DE2,Bayern,DE25,Mittelfranken,DE254,"Nürnberg, Kreisfreie Stadt",523026
+2023,DE,Germany,DE2,Bayern,DE25,Mittelfranken,DE255,"Schwabach, Kreisfreie Stadt",41227
+2023,DE,Germany,DE2,Bayern,DE25,Mittelfranken,DE256,"Ansbach, Landkreis",188623
+2023,DE,Germany,DE2,Bayern,DE25,Mittelfranken,DE257,Erlangen-Höchstadt,140994
+2023,DE,Germany,DE2,Bayern,DE25,Mittelfranken,DE258,"Fürth, Landkreis",119923
+2023,DE,Germany,DE2,Bayern,DE25,Mittelfranken,DE259,Nürnberger Land,172665
+2023,DE,Germany,DE2,Bayern,DE25,Mittelfranken,DE25A,Neustadt a. d. Aisch-Bad Windsheim,103303
+2023,DE,Germany,DE2,Bayern,DE25,Mittelfranken,DE25B,Roth,128694
+2023,DE,Germany,DE2,Bayern,DE25,Mittelfranken,DE25C,Weißenburg-Gunzenhausen,97120
+2023,DE,Germany,DE2,Bayern,DE26,Unterfranken,DE261,"Aschaffenburg, Kreisfreie Stadt",72444
+2023,DE,Germany,DE2,Bayern,DE26,Unterfranken,DE262,"Schweinfurt, Kreisfreie Stadt",54675
+2023,DE,Germany,DE2,Bayern,DE26,Unterfranken,DE263,"Würzburg, Kreisfreie Stadt",127810
+2023,DE,Germany,DE2,Bayern,DE26,Unterfranken,DE264,"Aschaffenburg, Landkreis",176958
+2023,DE,Germany,DE2,Bayern,DE26,Unterfranken,DE265,Bad Kissingen,104567
+2023,DE,Germany,DE2,Bayern,DE26,Unterfranken,DE266,Rhön-Grabfeld,80341
+2023,DE,Germany,DE2,Bayern,DE26,Unterfranken,DE267,Haßberge,84984
+2023,DE,Germany,DE2,Bayern,DE26,Unterfranken,DE268,Kitzingen,93247
+2023,DE,Germany,DE2,Bayern,DE26,Unterfranken,DE269,Miltenberg,129835
+2023,DE,Germany,DE2,Bayern,DE26,Unterfranken,DE26A,Main-Spessart,127132
+2023,DE,Germany,DE2,Bayern,DE26,Unterfranken,DE26B,"Schweinfurt, Landkreis",117044
+2023,DE,Germany,DE2,Bayern,DE26,Unterfranken,DE26C,"Würzburg, Landkreis",165339
+2023,DE,Germany,DE2,Bayern,DE27,Schwaben,DE271,"Augsburg, Kreisfreie Stadt",301033
+2023,DE,Germany,DE2,Bayern,DE27,Schwaben,DE272,"Kaufbeuren, Kreisfreie Stadt",45792
+2023,DE,Germany,DE2,Bayern,DE27,Schwaben,DE273,"Kempten (Allgäu), Kreisfreie Stadt",70056
+2023,DE,Germany,DE2,Bayern,DE27,Schwaben,DE274,"Memmingen, Kreisfreie Stadt",45857
+2023,DE,Germany,DE2,Bayern,DE27,Schwaben,DE275,Aichach-Friedberg,137334
+2023,DE,Germany,DE2,Bayern,DE27,Schwaben,DE276,"Augsburg, Landkreis",261342
+2023,DE,Germany,DE2,Bayern,DE27,Schwaben,DE277,Dillingen a.d. Donau,99109
+2023,DE,Germany,DE2,Bayern,DE27,Schwaben,DE278,Günzburg,130112
+2023,DE,Germany,DE2,Bayern,DE27,Schwaben,DE279,Neu-Ulm,180425
+2023,DE,Germany,DE2,Bayern,DE27,Schwaben,DE27A,Lindau (Bodensee),83393
+2023,DE,Germany,DE2,Bayern,DE27,Schwaben,DE27B,Ostallgäu,145378
+2023,DE,Germany,DE2,Bayern,DE27,Schwaben,DE27C,Unterallgäu,150068
+2023,DE,Germany,DE2,Bayern,DE27,Schwaben,DE27D,Donau-Ries,137137
+2023,DE,Germany,DE2,Bayern,DE27,Schwaben,DE27E,Oberallgäu,158942
+2023,DE,Germany,DE3,Berlin,DE30,Berlin,DE300,Berlin,3755251
+2023,DE,Germany,DE4,Brandenburg,DE40,Brandenburg,DE401,"Brandenburg an der Havel, Kreisfreie Stadt",73609
+2023,DE,Germany,DE4,Brandenburg,DE40,Brandenburg,DE402,"Cottbus, Kreisfreie Stadt",99515
+2023,DE,Germany,DE4,Brandenburg,DE40,Brandenburg,DE403,"Frankfurt (Oder), Kreisfreie Stadt",58230
+2023,DE,Germany,DE4,Brandenburg,DE40,Brandenburg,DE404,"Potsdam, Kreisfreie Stadt",185750
+2023,DE,Germany,DE4,Brandenburg,DE40,Brandenburg,DE405,Barnim,191849
+2023,DE,Germany,DE4,Brandenburg,DE40,Brandenburg,DE406,Dahme-Spreewald,178967
+2023,DE,Germany,DE4,Brandenburg,DE40,Brandenburg,DE407,Elbe-Elster,100902
+2023,DE,Germany,DE4,Brandenburg,DE40,Brandenburg,DE408,Havelland,169334
+2023,DE,Germany,DE4,Brandenburg,DE40,Brandenburg,DE409,Märkisch-Oderland,200292
+2023,DE,Germany,DE4,Brandenburg,DE40,Brandenburg,DE40A,Oberhavel,218551
+2023,DE,Germany,DE4,Brandenburg,DE40,Brandenburg,DE40B,Oberspreewald-Lausitz,108263
+2023,DE,Germany,DE4,Brandenburg,DE40,Brandenburg,DE40C,Oder-Spree,182401
+2023,DE,Germany,DE4,Brandenburg,DE40,Brandenburg,DE40D,Ostprignitz-Ruppin,99871
+2023,DE,Germany,DE4,Brandenburg,DE40,Brandenburg,DE40E,Potsdam-Mittelmark,222570
+2023,DE,Germany,DE4,Brandenburg,DE40,Brandenburg,DE40F,Prignitz,76045
+2023,DE,Germany,DE4,Brandenburg,DE40,Brandenburg,DE40G,Spree-Neiße,112493
+2023,DE,Germany,DE4,Brandenburg,DE40,Brandenburg,DE40H,Teltow-Fläming,176648
+2023,DE,Germany,DE4,Brandenburg,DE40,Brandenburg,DE40I,Uckermark,117845
+2023,DE,Germany,DE5,Bremen,DE50,Bremen,DE501,"Bremen, Kreisfreie Stadt",569396
+2023,DE,Germany,DE5,Bremen,DE50,Bremen,DE502,"Bremerhaven, Kreisfreie Stadt",115468
+2023,DE,Germany,DE6,Hamburg,DE60,Hamburg,DE600,Hamburg,1892122
+2023,DE,Germany,DE7,Hessen,DE71,Darmstadt,DE711,"Darmstadt, Kreisfreie Stadt",162243
+2023,DE,Germany,DE7,Hessen,DE71,Darmstadt,DE712,"Frankfurt am Main, Kreisfreie Stadt",773068
+2023,DE,Germany,DE7,Hessen,DE71,Darmstadt,DE713,"Offenbach am Main, Kreisfreie Stadt",134170
+2023,DE,Germany,DE7,Hessen,DE71,Darmstadt,DE714,"Wiesbaden, Kreisfreie Stadt",283083
+2023,DE,Germany,DE7,Hessen,DE71,Darmstadt,DE715,Bergstraße,275205
+2023,DE,Germany,DE7,Hessen,DE71,Darmstadt,DE716,Darmstadt-Dieburg,300658
+2023,DE,Germany,DE7,Hessen,DE71,Darmstadt,DE717,Groß-Gerau,280308
+2023,DE,Germany,DE7,Hessen,DE71,Darmstadt,DE718,Hochtaunuskreis,239488
+2023,DE,Germany,DE7,Hessen,DE71,Darmstadt,DE719,Main-Kinzig-Kreis,430838
+2023,DE,Germany,DE7,Hessen,DE71,Darmstadt,DE71A,Main-Taunus-Kreis,242420
+2023,DE,Germany,DE7,Hessen,DE71,Darmstadt,DE71B,Odenwaldkreis,97577
+2023,DE,Germany,DE7,Hessen,DE71,Darmstadt,DE71C,"Offenbach, Landkreis",362137
+2023,DE,Germany,DE7,Hessen,DE71,Darmstadt,DE71D,Rheingau-Taunus-Kreis,189614
+2023,DE,Germany,DE7,Hessen,DE71,Darmstadt,DE71E,Wetteraukreis,317298
+2023,DE,Germany,DE7,Hessen,DE72,Gießen,DE721,"Gießen, Landkreis",278664
+2023,DE,Germany,DE7,Hessen,DE72,Gießen,DE722,Lahn-Dill-Kreis,257289
+2023,DE,Germany,DE7,Hessen,DE72,Gießen,DE723,Limburg-Weilburg,174884
+2023,DE,Germany,DE7,Hessen,DE72,Gießen,DE724,Marburg-Biedenkopf,249684
+2023,DE,Germany,DE7,Hessen,DE72,Gießen,DE725,Vogelsbergkreis,106833
+2023,DE,Germany,DE7,Hessen,DE73,Kassel,DE731,"Kassel, Kreisfreie Stadt",204202
+2023,DE,Germany,DE7,Hessen,DE73,Kassel,DE732,Fulda,227456
+2023,DE,Germany,DE7,Hessen,DE73,Kassel,DE733,Hersfeld-Rotenburg,121566
+2023,DE,Germany,DE7,Hessen,DE73,Kassel,DE734,"Kassel, Landkreis",240718
+2023,DE,Germany,DE7,Hessen,DE73,Kassel,DE735,Schwalm-Eder-Kreis,182595
+2023,DE,Germany,DE7,Hessen,DE73,Kassel,DE736,Waldeck-Frankenberg,159154
+2023,DE,Germany,DE7,Hessen,DE73,Kassel,DE737,Werra-Meißner-Kreis,100208
+2023,DE,Germany,DE8,Mecklenburg-Vorpommern,DE80,Mecklenburg-Vorpommern,DE803,"Rostock, Kreisfreie Stadt",209920
+2023,DE,Germany,DE8,Mecklenburg-Vorpommern,DE80,Mecklenburg-Vorpommern,DE804,"Schwerin, Kreisfreie Stadt",98596
+2023,DE,Germany,DE8,Mecklenburg-Vorpommern,DE80,Mecklenburg-Vorpommern,DE80J,Mecklenburgische Seenplatte,259568
+2023,DE,Germany,DE8,Mecklenburg-Vorpommern,DE80,Mecklenburg-Vorpommern,DE80K,Landkreis Rostock,220807
+2023,DE,Germany,DE8,Mecklenburg-Vorpommern,DE80,Mecklenburg-Vorpommern,DE80L,Vorpommern-Rügen,227683
+2023,DE,Germany,DE8,Mecklenburg-Vorpommern,DE80,Mecklenburg-Vorpommern,DE80M,Nordwestmecklenburg,160288
+2023,DE,Germany,DE8,Mecklenburg-Vorpommern,DE80,Mecklenburg-Vorpommern,DE80N,Vorpommern-Greifswald,237355
+2023,DE,Germany,DE8,Mecklenburg-Vorpommern,DE80,Mecklenburg-Vorpommern,DE80O,Ludwigslust-Parchim,214161
+2023,DE,Germany,DE9,Niedersachsen,DE91,Braunschweig,DE911,"Braunschweig, Kreisfreie Stadt",251804
+2023,DE,Germany,DE9,Niedersachsen,DE91,Braunschweig,DE912,"Salzgitter, Kreisfreie Stadt",104548
+2023,DE,Germany,DE9,Niedersachsen,DE91,Braunschweig,DE913,"Wolfsburg, Kreisfreie Stadt",125961
+2023,DE,Germany,DE9,Niedersachsen,DE91,Braunschweig,DE914,Gifhorn,180232
+2023,DE,Germany,DE9,Niedersachsen,DE91,Braunschweig,DE916,Goslar,134672
+2023,DE,Germany,DE9,Niedersachsen,DE91,Braunschweig,DE917,Helmstedt,92470
+2023,DE,Germany,DE9,Niedersachsen,DE91,Braunschweig,DE918,Northeim,133258
+2023,DE,Germany,DE9,Niedersachsen,DE91,Braunschweig,DE91A,Peine,138931
+2023,DE,Germany,DE9,Niedersachsen,DE91,Braunschweig,DE91B,Wolfenbüttel,120531
+2023,DE,Germany,DE9,Niedersachsen,DE91,Braunschweig,DE91C,Göttingen,328458
+2023,DE,Germany,DE9,Niedersachsen,DE92,Hannover,DE922,Diepholz,222816
+2023,DE,Germany,DE9,Niedersachsen,DE92,Hannover,DE923,Hameln-Pyrmont,150640
+2023,DE,Germany,DE9,Niedersachsen,DE92,Hannover,DE925,Hildesheim,278371
+2023,DE,Germany,DE9,Niedersachsen,DE92,Hannover,DE926,Holzminden,70911
+2023,DE,Germany,DE9,Niedersachsen,DE92,Hannover,DE927,Nienburg (Weser),123469
+2023,DE,Germany,DE9,Niedersachsen,DE92,Hannover,DE928,Schaumburg,159960
+2023,DE,Germany,DE9,Niedersachsen,DE92,Hannover,DE929,Region Hannover,1173891
+2023,DE,Germany,DE9,Niedersachsen,DE93,Lüneburg,DE931,Celle,181994
+2023,DE,Germany,DE9,Niedersachsen,DE93,Lüneburg,DE932,Cuxhaven,201413
+2023,DE,Germany,DE9,Niedersachsen,DE93,Lüneburg,DE933,Harburg,261890
+2023,DE,Germany,DE9,Niedersachsen,DE93,Lüneburg,DE934,Lüchow-Dannenberg,49178
+2023,DE,Germany,DE9,Niedersachsen,DE93,Lüneburg,DE935,"Lüneburg, Landkreis",187552
+2023,DE,Germany,DE9,Niedersachsen,DE93,Lüneburg,DE936,Osterholz,116551
+2023,DE,Germany,DE9,Niedersachsen,DE93,Lüneburg,DE937,Rotenburg (Wümme),167604
+2023,DE,Germany,DE9,Niedersachsen,DE93,Lüneburg,DE938,Heidekreis,145394
+2023,DE,Germany,DE9,Niedersachsen,DE93,Lüneburg,DE939,Stade,210306
+2023,DE,Germany,DE9,Niedersachsen,DE93,Lüneburg,DE93A,Uelzen,94362
+2023,DE,Germany,DE9,Niedersachsen,DE93,Lüneburg,DE93B,Verden,140913
+2023,DE,Germany,DE9,Niedersachsen,DE94,Weser-Ems,DE941,"Delmenhorst, Kreisfreie Stadt",78385
+2023,DE,Germany,DE9,Niedersachsen,DE94,Weser-Ems,DE942,"Emden, Kreisfreie Stadt",50535
+2023,DE,Germany,DE9,Niedersachsen,DE94,Weser-Ems,DE943,"Oldenburg (Oldenburg), Kreisfreie Stadt",172830
+2023,DE,Germany,DE9,Niedersachsen,DE94,Weser-Ems,DE944,"Osnabrück, Kreisfreie Stadt",167366
+2023,DE,Germany,DE9,Niedersachsen,DE94,Weser-Ems,DE945,"Wilhelmshaven, Kreisfreie Stadt",76089
+2023,DE,Germany,DE9,Niedersachsen,DE94,Weser-Ems,DE946,Ammerland,128253
+2023,DE,Germany,DE9,Niedersachsen,DE94,Weser-Ems,DE947,Aurich,192072
+2023,DE,Germany,DE9,Niedersachsen,DE94,Weser-Ems,DE948,Cloppenburg,177701
+2023,DE,Germany,DE9,Niedersachsen,DE94,Weser-Ems,DE949,Emsland,338052
+2023,DE,Germany,DE9,Niedersachsen,DE94,Weser-Ems,DE94A,Friesland (DE),100277
+2023,DE,Germany,DE9,Niedersachsen,DE94,Weser-Ems,DE94B,Grafschaft Bentheim,141269
+2023,DE,Germany,DE9,Niedersachsen,DE94,Weser-Ems,DE94C,Leer,174348
+2023,DE,Germany,DE9,Niedersachsen,DE94,Weser-Ems,DE94D,"Oldenburg, Landkreis",133913
+2023,DE,Germany,DE9,Niedersachsen,DE94,Weser-Ems,DE94E,"Osnabrück, Landkreis",366221
+2023,DE,Germany,DE9,Niedersachsen,DE94,Weser-Ems,DE94F,Vechta,146924
+2023,DE,Germany,DE9,Niedersachsen,DE94,Weser-Ems,DE94G,Wesermarsch,89568
+2023,DE,Germany,DE9,Niedersachsen,DE94,Weser-Ems,DE94H,Wittmund,58359
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA1,Düsseldorf,DEA11,"Düsseldorf, Kreisfreie Stadt",629047
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA1,Düsseldorf,DEA12,"Duisburg, Kreisfreie Stadt",502211
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA1,Düsseldorf,DEA13,"Essen, Kreisfreie Stadt",584580
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA1,Düsseldorf,DEA14,"Krefeld, Kreisfreie Stadt",228426
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA1,Düsseldorf,DEA15,"Mönchengladbach, Kreisfreie Stadt",268465
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA1,Düsseldorf,DEA16,"Mülheim an der Ruhr, Kreisfreie Stadt",172404
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA1,Düsseldorf,DEA17,"Oberhausen, Kreisfreie Stadt",210824
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA1,Düsseldorf,DEA18,"Remscheid, Kreisfreie Stadt",112613
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA1,Düsseldorf,DEA19,"Solingen, Kreisfreie Stadt",160643
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA1,Düsseldorf,DEA1A,"Wuppertal, Kreisfreie Stadt",358876
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA1,Düsseldorf,DEA1B,Kleve,319290
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA1,Düsseldorf,DEA1C,Mettmann,489794
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA1,Düsseldorf,DEA1D,Rhein-Kreis Neuss,457264
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA1,Düsseldorf,DEA1E,Viersen,300882
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA1,Düsseldorf,DEA1F,Wesel,465838
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA2,Köln,DEA22,"Bonn, Kreisfreie Stadt",336465
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA2,Köln,DEA23,"Köln, Kreisfreie Stadt",1084831
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA2,Köln,DEA24,"Leverkusen, Kreisfreie Stadt",165748
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA2,Köln,DEA26,Düren,270833
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA2,Köln,DEA27,Rhein-Erft-Kreis,478126
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA2,Köln,DEA28,Euskirchen,197247
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA2,Köln,DEA29,Heinsberg,261833
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA2,Köln,DEA2A,Oberbergischer Kreis,275404
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA2,Köln,DEA2B,Rheinisch-Bergischer Kreis,286213
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA2,Köln,DEA2C,Rhein-Sieg-Kreis,608335
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA2,Köln,DEA2D,Städteregion Aachen,562559
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA3,Münster,DEA31,"Bottrop, Kreisfreie Stadt",118113
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA3,Münster,DEA32,"Gelsenkirchen, Kreisfreie Stadt",263000
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA3,Münster,DEA33,"Münster, Kreisfreie Stadt",320946
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA3,Münster,DEA34,Borken,379070
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA3,Münster,DEA35,Coesfeld,224692
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA3,Münster,DEA36,Recklinghausen,619732
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA3,Münster,DEA37,Steinfurt,456464
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA3,Münster,DEA38,Warendorf,282263
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA4,Detmold,DEA41,"Bielefeld, Kreisfreie Stadt",338332
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA4,Detmold,DEA42,Gütersloh,371309
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA4,Detmold,DEA43,Herford,253551
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA4,Detmold,DEA44,Höxter,141819
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA4,Detmold,DEA45,Lippe,350588
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA4,Detmold,DEA46,Minden-Lübbecke,315974
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA4,Detmold,DEA47,Paderborn,313758
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA5,Arnsberg,DEA51,"Bochum, Kreisfreie Stadt",365742
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA5,Arnsberg,DEA52,"Dortmund, Kreisfreie Stadt",593317
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA5,Arnsberg,DEA53,"Hagen, Kreisfreie Stadt",189783
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA5,Arnsberg,DEA54,"Hamm, Kreisfreie Stadt",180849
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA5,Arnsberg,DEA55,"Herne, Kreisfreie Stadt",157368
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA5,Arnsberg,DEA56,Ennepe-Ruhr-Kreis,325193
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA5,Arnsberg,DEA57,Hochsauerlandkreis,261647
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA5,Arnsberg,DEA58,Märkischer Kreis,410346
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA5,Arnsberg,DEA59,Olpe,134439
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA5,Arnsberg,DEA5A,Siegen-Wittgenstein,277136
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA5,Arnsberg,DEA5B,Soest,306068
+2023,DE,Germany,DEA,Nordrhein-Westfalen,DEA5,Arnsberg,DEA5C,Unna,398866
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB1,Koblenz,DEB11,"Koblenz, Kreisfreie Stadt",115268
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB1,Koblenz,DEB12,Ahrweiler,128161
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB1,Koblenz,DEB13,Altenkirchen (Westerwald),131467
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB1,Koblenz,DEB14,Bad Kreuznach,161307
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB1,Koblenz,DEB15,Birkenfeld,81760
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB1,Koblenz,DEB17,Mayen-Koblenz,218210
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB1,Koblenz,DEB18,Neuwied,187440
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB1,Koblenz,DEB1A,Rhein-Lahn-Kreis,124381
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB1,Koblenz,DEB1B,Westerwaldkreis,206282
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB1,Koblenz,DEB1C,Cochem-Zell,62666
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB1,Koblenz,DEB1D,Rhein-Hunsrück-Kreis,105566
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB2,Trier,DEB21,"Trier, Kreisfreie Stadt",112195
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB2,Trier,DEB22,Bernkastel-Wittlich,115099
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB2,Trier,DEB23,Eifelkreis Bitburg-Prüm,103642
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB2,Trier,DEB24,Vulkaneifel,61769
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB2,Trier,DEB25,Trier-Saarburg,153860
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB31,"Frankenthal (Pfalz), Kreisfreie Stadt",49051
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB32,"Kaiserslautern, Kreisfreie Stadt",101228
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB33,"Landau in der Pfalz, Kreisfreie Stadt",47610
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB34,"Ludwigshafen am Rhein, Kreisfreie Stadt",174265
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB35,"Mainz, Kreisfreie Stadt",220552
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB36,"Neustadt an der Weinstraße, Kreisfreie Stadt",53981
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB37,"Pirmasens, Kreisfreie Stadt",40682
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB38,"Speyer, Kreisfreie Stadt",51368
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB39,"Worms, Kreisfreie Stadt",84646
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB3A,"Zweibrücken, Kreisfreie Stadt",34534
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB3B,Alzey-Worms,132536
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB3C,Bad Dürkheim,134546
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB3D,Donnersbergkreis,76208
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB3E,Germersheim,130793
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB3F,"Kaiserslautern, Landkreis",108216
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB3G,Kusel,71462
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB3H,Südliche Weinstraße,112631
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB3I,Rhein-Pfalz-Kreis,155921
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB3J,Mainz-Bingen,214948
+2023,DE,Germany,DEB,Rheinland-Pfalz,DEB3,Rheinhessen-Pfalz,DEB3K,Südwestpfalz,94899
+2023,DE,Germany,DEC,Saarland,DEC0,Saarland,DEC01,Regionalverband Saarbrücken,330848
+2023,DE,Germany,DEC,Saarland,DEC0,Saarland,DEC02,Merzig-Wadern,104425
+2023,DE,Germany,DEC,Saarland,DEC0,Saarland,DEC03,Neunkirchen,132283
+2023,DE,Germany,DEC,Saarland,DEC0,Saarland,DEC04,Saarlouis,195749
+2023,DE,Germany,DEC,Saarland,DEC0,Saarland,DEC05,Saarpfalz-Kreis,142419
+2023,DE,Germany,DEC,Saarland,DEC0,Saarland,DEC06,St. Wendel,86942
+2023,DE,Germany,DED,Sachsen,DED2,Dresden,DED21,"Dresden, Kreisfreie Stadt",563311
+2023,DE,Germany,DED,Sachsen,DED2,Dresden,DED2C,Bautzen,297711
+2023,DE,Germany,DED,Sachsen,DED2,Dresden,DED2D,Görlitz,249681
+2023,DE,Germany,DED,Sachsen,DED2,Dresden,DED2E,Meißen,241343
+2023,DE,Germany,DED,Sachsen,DED2,Dresden,DED2F,Sächsische Schweiz-Osterzgebirge,246204
+2023,DE,Germany,DED,Sachsen,DED4,Chemnitz,DED41,"Chemnitz, Kreisfreie Stadt",248563
+2023,DE,Germany,DED,Sachsen,DED4,Chemnitz,DED42,Erzgebirgskreis,328850
+2023,DE,Germany,DED,Sachsen,DED4,Chemnitz,DED43,Mittelsachsen,300639
+2023,DE,Germany,DED,Sachsen,DED4,Chemnitz,DED44,Vogtlandkreis,222666
+2023,DE,Germany,DED,Sachsen,DED4,Chemnitz,DED45,Zwickau,310838
+2023,DE,Germany,DED,Sachsen,DED5,Leipzig,DED51,"Leipzig, Kreisfreie Stadt",616093
+2023,DE,Germany,DED,Sachsen,DED5,Leipzig,DED52,Leipzig,260429
+2023,DE,Germany,DED,Sachsen,DED5,Leipzig,DED53,Nordsachsen,199824
+2023,DE,Germany,DEE,Sachsen-Anhalt,DEE0,Sachsen-Anhalt,DEE01,"Dessau-Roßlau, Kreisfreie Stadt",79655
+2023,DE,Germany,DEE,Sachsen-Anhalt,DEE0,Sachsen-Anhalt,DEE02,"Halle (Saale), Kreisfreie Stadt",242083
+2023,DE,Germany,DEE,Sachsen-Anhalt,DEE0,Sachsen-Anhalt,DEE03,"Magdeburg, Kreisfreie Stadt",239364
+2023,DE,Germany,DEE,Sachsen-Anhalt,DEE0,Sachsen-Anhalt,DEE04,Altmarkkreis Salzwedel,82457
+2023,DE,Germany,DEE,Sachsen-Anhalt,DEE0,Sachsen-Anhalt,DEE05,Anhalt-Bitterfeld,157235
+2023,DE,Germany,DEE,Sachsen-Anhalt,DEE0,Sachsen-Anhalt,DEE06,Jerichower Land,90256
+2023,DE,Germany,DEE,Sachsen-Anhalt,DEE0,Sachsen-Anhalt,DEE07,Börde,171393
+2023,DE,Germany,DEE,Sachsen-Anhalt,DEE0,Sachsen-Anhalt,DEE08,Burgenlandkreis,177212
+2023,DE,Germany,DEE,Sachsen-Anhalt,DEE0,Sachsen-Anhalt,DEE09,Harz,210381
+2023,DE,Germany,DEE,Sachsen-Anhalt,DEE0,Sachsen-Anhalt,DEE0A,Mansfeld-Südharz,132034
+2023,DE,Germany,DEE,Sachsen-Anhalt,DEE0,Sachsen-Anhalt,DEE0B,Saalekreis,183974
+2023,DE,Germany,DEE,Sachsen-Anhalt,DEE0,Sachsen-Anhalt,DEE0C,Salzlandkreis,186420
+2023,DE,Germany,DEE,Sachsen-Anhalt,DEE0,Sachsen-Anhalt,DEE0D,Stendal,110291
+2023,DE,Germany,DEE,Sachsen-Anhalt,DEE0,Sachsen-Anhalt,DEE0E,Wittenberg,123888
+2023,DE,Germany,DEF,Schleswig-Holstein,DEF0,Schleswig-Holstein,DEF01,"Flensburg, Kreisfreie Stadt",92550
+2023,DE,Germany,DEF,Schleswig-Holstein,DEF0,Schleswig-Holstein,DEF02,"Kiel, Kreisfreie Stadt",247717
+2023,DE,Germany,DEF,Schleswig-Holstein,DEF0,Schleswig-Holstein,DEF03,"Lübeck, Kreisfreie Stadt",218095
+2023,DE,Germany,DEF,Schleswig-Holstein,DEF0,Schleswig-Holstein,DEF04,"Neumünster, Kreisfreie Stadt",79502
+2023,DE,Germany,DEF,Schleswig-Holstein,DEF0,Schleswig-Holstein,DEF05,Dithmarschen,135252
+2023,DE,Germany,DEF,Schleswig-Holstein,DEF0,Schleswig-Holstein,DEF06,Herzogtum Lauenburg,203712
+2023,DE,Germany,DEF,Schleswig-Holstein,DEF0,Schleswig-Holstein,DEF07,Nordfriesland,169043
+2023,DE,Germany,DEF,Schleswig-Holstein,DEF0,Schleswig-Holstein,DEF08,Ostholstein,203606
+2023,DE,Germany,DEF,Schleswig-Holstein,DEF0,Schleswig-Holstein,DEF09,Pinneberg,322130
+2023,DE,Germany,DEF,Schleswig-Holstein,DEF0,Schleswig-Holstein,DEF0A,Plön,131266
+2023,DE,Germany,DEF,Schleswig-Holstein,DEF0,Schleswig-Holstein,DEF0B,Rendsburg-Eckernförde,278979
+2023,DE,Germany,DEF,Schleswig-Holstein,DEF0,Schleswig-Holstein,DEF0C,Schleswig-Flensburg,206038
+2023,DE,Germany,DEF,Schleswig-Holstein,DEF0,Schleswig-Holstein,DEF0D,Segeberg,284988
+2023,DE,Germany,DEF,Schleswig-Holstein,DEF0,Schleswig-Holstein,DEF0E,Steinburg,132419
+2023,DE,Germany,DEF,Schleswig-Holstein,DEF0,Schleswig-Holstein,DEF0F,Stormarn,247973
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG01,"Erfurt, Kreisfreie Stadt",214969
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG02,"Gera, Kreisfreie Stadt",93634
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG03,"Jena, Kreisfreie Stadt",111191
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG04,"Suhl, Kreisfreie Stadt (NUTS 2021)",37009
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG05,"Weimar, Kreisfreie Stadt",65620
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG06,Eichsfeld,100091
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG07,Nordhausen,82444
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG09,Unstrut-Hainich-Kreis,102256
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG0A,Kyffhäuserkreis,73690
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG0B,Schmalkalden-Meiningen (NUTS 2021),123939
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG0C,Gotha,134941
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG0D,Sömmerda,69646
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG0E,Hildburghausen,61926
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG0F,Ilm-Kreis (NUTS 2021),106776
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG0G,Weimarer Land,83179
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG0H,Sonneberg (NUTS 2021),56922
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG0I,Saalfeld-Rudolstadt (NUTS 2021),101494
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG0J,Saale-Holzland-Kreis,83234
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG0K,Saale-Orla-Kreis,79178
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG0L,Greiz,96381
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG0M,Altenburger Land,88787
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG0N,"Eisenach, Kreisfreie Stadt (NUTS 2021)",42408
+2023,DE,Germany,DEG,Thüringen,DEG0,Thüringen,DEG0P,Wartburgkreis (NUTS 2021),117131
+2023,DK,Denmark,DK0,Danmark,DK01,Hovedstaden,DK011,Byen København,815979
+2023,DK,Denmark,DK0,Danmark,DK01,Hovedstaden,DK012,Københavns omegn,562572
+2023,DK,Denmark,DK0,Danmark,DK01,Hovedstaden,DK013,Nordsjælland,473625
+2023,DK,Denmark,DK0,Danmark,DK01,Hovedstaden,DK014,Bornholm,39695
+2023,DK,Denmark,DK0,Danmark,DK02,Sjælland,DK021,Østsjælland,257557
+2023,DK,Denmark,DK0,Danmark,DK02,Sjælland,DK022,Vest- og Sydsjælland,592300
+2023,DK,Denmark,DK0,Danmark,DK03,Syddanmark,DK031,Fyn,505026
+2023,DK,Denmark,DK0,Danmark,DK03,Syddanmark,DK032,Sydjylland,732387
+2023,DK,Denmark,DK0,Danmark,DK04,Midtjylland,DK041,Vestjylland,430783
+2023,DK,Denmark,DK0,Danmark,DK04,Midtjylland,DK042,Østjylland,928096
+2023,DK,Denmark,DK0,Danmark,DK05,Nordjylland,DK050,Nordjylland,594634
+2023,EE,Estonia,EE0,Eesti,EE00,Eesti,EE001,Põhja-Eesti,638076
+2023,EE,Estonia,EE0,Eesti,EE00,Eesti,EE004,Lääne-Eesti,148499
+2020,EE,Estonia,EE0,Eesti,EE00,Eesti,EE006,Kesk-Eesti (NUTS 2016),122318
+2020,EE,Estonia,EE0,Eesti,EE00,Eesti,EE007,Kirde-Eesti (NUTS 2016),134259
+2023,EE,Estonia,EE0,Eesti,EE00,Eesti,EE008,Lõuna-Eesti,322233
+2023,EE,Estonia,EE0,Eesti,EE00,Eesti,EE009,Kesk-Eesti,123718
+2023,EE,Estonia,EE0,Eesti,EE00,Eesti,EE00A,Kirde-Eesti,133358
+2023,EL,Greece,EL3,Attiki,EL30,Attiki,EL301,Voreios Tomeas Athinon,600614
+2023,EL,Greece,EL3,Attiki,EL30,Attiki,EL302,Dytikos Tomeas Athinon,472724
+2023,EL,Greece,EL3,Attiki,EL30,Attiki,EL303,Kentrikos Tomeas Athinon,991210
+2023,EL,Greece,EL3,Attiki,EL30,Attiki,EL304,Notios Tomeas Athinon,525591
+2023,EL,Greece,EL3,Attiki,EL30,Attiki,EL305,Anatoliki Attiki,522068
+2023,EL,Greece,EL3,Attiki,EL30,Attiki,EL306,Dytiki Attiki,164626
+2023,EL,Greece,EL3,Attiki,EL30,Attiki,EL307,"Peiraias, Nisoi",514009
+2023,EL,Greece,EL4,"Nisia Aigaiou, Kriti",EL41,Voreio Aigaio,EL411,"Lesvos, Limnos",101427
+2023,EL,Greece,EL4,"Nisia Aigaiou, Kriti",EL41,Voreio Aigaio,EL412,"Ikaria, Samos",42591
+2023,EL,Greece,EL4,"Nisia Aigaiou, Kriti",EL41,Voreio Aigaio,EL413,Chios,51491
+2023,EL,Greece,EL4,"Nisia Aigaiou, Kriti",EL42,Notio Aigaio,EL421,"Kalymnos, Karpathos – Iroiki Nisos Kasos, Kos, Rodos",207750
+2023,EL,Greece,EL4,"Nisia Aigaiou, Kriti",EL42,Notio Aigaio,EL422,"Andros, Thira, Kea, Milos, Mykonos, Naxos, Paros, Syros, Tinos",119195
+2023,EL,Greece,EL4,"Nisia Aigaiou, Kriti",EL43,Kriti,EL431,Irakleio,303769
+2023,EL,Greece,EL4,"Nisia Aigaiou, Kriti",EL43,Kriti,EL432,Lasithi,77495
+2023,EL,Greece,EL4,"Nisia Aigaiou, Kriti",EL43,Kriti,EL433,Rethymni,85161
+2023,EL,Greece,EL4,"Nisia Aigaiou, Kriti",EL43,Kriti,EL434,Chania,156484
+2023,EL,Greece,EL5,Voreia Elláda,EL51,"Anatoliki Makedonia, Thraki",EL511,Evros,133467
+2023,EL,Greece,EL5,Voreia Elláda,EL51,"Anatoliki Makedonia, Thraki",EL512,Xanthi,107686
+2023,EL,Greece,EL5,Voreia Elláda,EL51,"Anatoliki Makedonia, Thraki",EL513,Rodopi,104948
+2023,EL,Greece,EL5,Voreia Elláda,EL51,"Anatoliki Makedonia, Thraki",EL514,Drama,86084
+2023,EL,Greece,EL5,Voreia Elláda,EL51,"Anatoliki Makedonia, Thraki",EL515,"Thasos, Kavala",127545
+2023,EL,Greece,EL5,Voreia Elláda,EL52,Kentriki Makedonia,EL521,Imathia,129337
+2023,EL,Greece,EL5,Voreia Elláda,EL52,Kentriki Makedonia,EL522,Thessaloniki,1089819
+2023,EL,Greece,EL5,Voreia Elláda,EL52,Kentriki Makedonia,EL523,Kilkis,69462
+2023,EL,Greece,EL5,Voreia Elláda,EL52,Kentriki Makedonia,EL524,Pella,124256
+2023,EL,Greece,EL5,Voreia Elláda,EL52,Kentriki Makedonia,EL525,Pieria,117587
+2023,EL,Greece,EL5,Voreia Elláda,EL52,Kentriki Makedonia,EL526,Serres,149623
+2023,EL,Greece,EL5,Voreia Elláda,EL52,Kentriki Makedonia,EL527,Chalkidiki,102546
+2023,EL,Greece,EL5,Voreia Elláda,EL53,Dytiki Makedonia,EL531,"Grevena, Kozani",161201
+2023,EL,Greece,EL5,Voreia Elláda,EL53,Dytiki Makedonia,EL532,Kastoria,45146
+2023,EL,Greece,EL5,Voreia Elláda,EL53,Dytiki Makedonia,EL533,Florina,44106
+2023,EL,Greece,EL5,Voreia Elláda,EL54,Ipeiros,EL541,"Arta, Preveza",117005
+2023,EL,Greece,EL5,Voreia Elláda,EL54,Ipeiros,EL542,Thesprotia,40430
+2023,EL,Greece,EL5,Voreia Elláda,EL54,Ipeiros,EL543,Ioannina,161455
+2023,EL,Greece,EL6,Kentriki Elláda,EL61,Thessalia,EL611,"Karditsa, Trikala",225970
+2023,EL,Greece,EL6,Kentriki Elláda,EL61,Thessalia,EL612,Larisa,266814
+2023,EL,Greece,EL6,Kentriki Elláda,EL61,Thessalia,EL613,"Magnisia, Sporades",189405
+2023,EL,Greece,EL6,Kentriki Elláda,EL62,Ionia Nisia,EL621,Zakynthos,40820
+2023,EL,Greece,EL6,Kentriki Elláda,EL62,Ionia Nisia,EL622,Kerkyra,100071
+2023,EL,Greece,EL6,Kentriki Elláda,EL62,Ionia Nisia,EL623,"Ithaki, Kefallinia",38734
+2023,EL,Greece,EL6,Kentriki Elláda,EL62,Ionia Nisia,EL624,Lefkada,22560
+2023,EL,Greece,EL6,Kentriki Elláda,EL63,Dytiki Elláda,EL631,Aitoloakarnania,189287
+2023,EL,Greece,EL6,Kentriki Elláda,EL63,Dytiki Elláda,EL632,Achaia,303493
+2023,EL,Greece,EL6,Kentriki Elláda,EL63,Dytiki Elláda,EL633,Ileia,150408
+2023,EL,Greece,EL6,Kentriki Elláda,EL64,Sterea Elláda,EL641,Voiotia,105472
+2023,EL,Greece,EL6,Kentriki Elláda,EL64,Sterea Elláda,EL642,Evvoia,209022
+2023,EL,Greece,EL6,Kentriki Elláda,EL64,Sterea Elláda,EL643,Evrytania,17445
+2023,EL,Greece,EL6,Kentriki Elláda,EL64,Sterea Elláda,EL644,Fthiotida,135798
+2023,EL,Greece,EL6,Kentriki Elláda,EL64,Sterea Elláda,EL645,Fokida,36430
+2023,EL,Greece,EL6,Kentriki Elláda,EL65,Peloponnisos,EL651,"Argolida, Arkadia",168859
+2023,EL,Greece,EL6,Kentriki Elláda,EL65,Peloponnisos,EL652,Korinthia,136827
+2023,EL,Greece,EL6,Kentriki Elláda,EL65,Peloponnisos,EL653,"Lakonia, Messinia",228659
+2023,ES,Spain,ES1,Noroeste,ES11,Galicia,ES111,A Coruña,1123884
+2023,ES,Spain,ES1,Noroeste,ES11,Galicia,ES112,Lugo,324267
+2023,ES,Spain,ES1,Noroeste,ES11,Galicia,ES113,Ourense,304563
+2023,ES,Spain,ES1,Noroeste,ES11,Galicia,ES114,Pontevedra,946710
+2023,ES,Spain,ES1,Noroeste,ES12,Principado de Asturias,ES120,Asturias,1006060
+2023,ES,Spain,ES1,Noroeste,ES13,Cantabria,ES130,Cantabria,588387
+2023,ES,Spain,ES2,Noreste,ES21,País Vasco,ES211,Araba/Álava,336308
+2023,ES,Spain,ES2,Noreste,ES21,País Vasco,ES212,Gipuzkoa,726712
+2023,ES,Spain,ES2,Noreste,ES21,País Vasco,ES213,Bizkaia,1153282
+2023,ES,Spain,ES2,Noreste,ES22,Comunidad Foral de Navarra,ES220,Navarra,672155
+2023,ES,Spain,ES2,Noreste,ES23,La Rioja,ES230,La Rioja,322282
+2023,ES,Spain,ES2,Noreste,ES24,Aragón,ES241,Huesca,226878
+2023,ES,Spain,ES2,Noreste,ES24,Aragón,ES242,Teruel,135046
+2023,ES,Spain,ES2,Noreste,ES24,Aragón,ES243,Zaragoza,979365
+2023,ES,Spain,ES3,Comunidad de Madrid,ES30,Comunidad de Madrid,ES300,Madrid,6871903
+2023,ES,Spain,ES4,Centro (ES),ES41,Castilla y León,ES411,Ávila,159764
+2023,ES,Spain,ES4,Centro (ES),ES41,Castilla y León,ES412,Burgos,357370
+2023,ES,Spain,ES4,Centro (ES),ES41,Castilla y León,ES413,León,448573
+2023,ES,Spain,ES4,Centro (ES),ES41,Castilla y León,ES414,Palencia,157787
+2023,ES,Spain,ES4,Centro (ES),ES41,Castilla y León,ES415,Salamanca,327089
+2023,ES,Spain,ES4,Centro (ES),ES41,Castilla y León,ES416,Segovia,155332
+2023,ES,Spain,ES4,Centro (ES),ES41,Castilla y León,ES417,Soria,89528
+2023,ES,Spain,ES4,Centro (ES),ES41,Castilla y León,ES418,Valladolid,521333
+2023,ES,Spain,ES4,Centro (ES),ES41,Castilla y León,ES419,Zamora,166927
+2023,ES,Spain,ES4,Centro (ES),ES42,Castilla-La Mancha,ES421,Albacete,387529
+2023,ES,Spain,ES4,Centro (ES),ES42,Castilla-La Mancha,ES422,Ciudad Real,491927
+2023,ES,Spain,ES4,Centro (ES),ES42,Castilla-La Mancha,ES423,Cuenca,198436
+2023,ES,Spain,ES4,Centro (ES),ES42,Castilla-La Mancha,ES424,Guadalajara,275082
+2023,ES,Spain,ES4,Centro (ES),ES42,Castilla-La Mancha,ES425,Toledo,731112
+2023,ES,Spain,ES4,Centro (ES),ES43,Extremadura,ES431,Badajoz,666049
+2023,ES,Spain,ES4,Centro (ES),ES43,Extremadura,ES432,Cáceres,388257
+2023,ES,Spain,ES5,Este,ES51,Cataluña,ES511,Barcelona,5797356
+2023,ES,Spain,ES5,Este,ES51,Cataluña,ES512,Girona,808672
+2023,ES,Spain,ES5,Este,ES51,Cataluña,ES513,Lleida,447343
+2023,ES,Spain,ES5,Este,ES51,Cataluña,ES514,Tarragona,848592
+2023,ES,Spain,ES5,Este,ES52,Comunitat Valenciana,ES521,Alicante/Alacant,1955268
+2023,ES,Spain,ES5,Este,ES52,Comunitat Valenciana,ES522,Castellón/Castelló,604086
+2023,ES,Spain,ES5,Este,ES52,Comunitat Valenciana,ES523,Valencia/València,2656841
+2023,ES,Spain,ES5,Este,ES53,Illes Balears,ES531,Eivissa y Formentera,170569
+2023,ES,Spain,ES5,Este,ES53,Illes Balears,ES532,Mallorca,940332
+2023,ES,Spain,ES5,Este,ES53,Illes Balears,ES533,Menorca,99005
+2023,ES,Spain,ES6,Sur,ES61,Andalucía,ES611,Almería,753364
+2023,ES,Spain,ES6,Sur,ES61,Andalucía,ES612,Cádiz,1254866
+2023,ES,Spain,ES6,Sur,ES61,Andalucía,ES613,Córdoba,775002
+2023,ES,Spain,ES6,Sur,ES61,Andalucía,ES614,Granada,934072
+2023,ES,Spain,ES6,Sur,ES61,Andalucía,ES615,Huelva,534084
+2023,ES,Spain,ES6,Sur,ES61,Andalucía,ES616,Jaén,620637
+2023,ES,Spain,ES6,Sur,ES61,Andalucía,ES617,Málaga,1752728
+2023,ES,Spain,ES6,Sur,ES61,Andalucía,ES618,Sevilla,1959394
+2023,ES,Spain,ES6,Sur,ES62,Región de Murcia,ES620,Murcia,1551692
+2023,ES,Spain,ES6,Sur,ES63,Ciudad de Ceuta,ES630,Ceuta,83052
+2023,ES,Spain,ES6,Sur,ES64,Ciudad de Melilla,ES640,Melilla,85493
+2023,ES,Spain,ES7,Canarias,ES70,Canarias,ES703,El Hierro,11659
+2023,ES,Spain,ES7,Canarias,ES70,Canarias,ES704,Fuerteventura,124152
+2023,ES,Spain,ES7,Canarias,ES70,Canarias,ES705,Gran Canaria,862893
+2023,ES,Spain,ES7,Canarias,ES70,Canarias,ES706,La Gomera,22361
+2023,ES,Spain,ES7,Canarias,ES70,Canarias,ES707,La Palma,84338
+2023,ES,Spain,ES7,Canarias,ES70,Canarias,ES708,Lanzarote,158798
+2023,ES,Spain,ES7,Canarias,ES70,Canarias,ES709,Tenerife,948815
+2023,FI,Finland,FI1,Manner-Suomi,FI19,Länsi-Suomi,FI193,Keski-Suomi (NUTS 2021),274556
+2023,FI,Finland,FI1,Manner-Suomi,FI19,Länsi-Suomi,FI194,Etelä-Pohjanmaa (NUTS 2021),186368
+2023,FI,Finland,FI1,Manner-Suomi,FI19,Länsi-Suomi,FI195,Pohjanmaa (NUTS 2021),180729
+2023,FI,Finland,FI1,Manner-Suomi,FI19,Länsi-Suomi,FI196,Satakunta,212556
+2023,FI,Finland,FI1,Manner-Suomi,FI19,Länsi-Suomi,FI197,Pirkanmaa (NUTS 2021),530552
+2023,FI,Finland,FI1,Manner-Suomi,FI1B,Helsinki-Uusimaa,FI1B1,Helsinki-Uusimaa,1733033
+2023,FI,Finland,FI1,Manner-Suomi,FI1C,Etelä-Suomi,FI1C1,Varsinais-Suomi,485567
+2023,FI,Finland,FI1,Manner-Suomi,FI1C,Etelä-Suomi,FI1C2,Kanta-Häme,169537
+2023,FI,Finland,FI1,Manner-Suomi,FI1C,Etelä-Suomi,FI1C3,Päijät-Häme (NUTS 2021),198024
+2023,FI,Finland,FI1,Manner-Suomi,FI1C,Etelä-Suomi,FI1C4,Kymenlaakso (NUTS 2021),165992
+2023,FI,Finland,FI1,Manner-Suomi,FI1C,Etelä-Suomi,FI1C5,Etelä-Karjala,125353
+2023,FI,Finland,FI1,Manner-Suomi,FI1D,Pohjois- ja Itä-Suomi,FI1D1,Etelä-Savo (NUTS 2021),138052
+2023,FI,Finland,FI1,Manner-Suomi,FI1D,Pohjois- ja Itä-Suomi,FI1D2,Pohjois-Savo (NUTS 2021),243149
+2023,FI,Finland,FI1,Manner-Suomi,FI1D,Pohjois- ja Itä-Suomi,FI1D3,Pohjois-Karjala (NUTS 2021),159479
+2023,FI,Finland,FI1,Manner-Suomi,FI1D,Pohjois- ja Itä-Suomi,FI1D5,Keski-Pohjanmaa,67805
+2023,FI,Finland,FI1,Manner-Suomi,FI1D,Pohjois- ja Itä-Suomi,FI1D7,Lappi,175795
+2023,FI,Finland,FI1,Manner-Suomi,FI1D,Pohjois- ja Itä-Suomi,FI1D8,Kainuu,70521
+2023,FI,Finland,FI1,Manner-Suomi,FI1D,Pohjois- ja Itä-Suomi,FI1D9,Pohjois-Pohjanmaa,416543
+2023,FI,Finland,FI2,Åland,FI20,Åland,FI200,Åland,30359
+2023,FR,France,FR1,Ile de France,FR10,Ile de France,FR101,Paris,2104154
+2023,FR,France,FR1,Ile de France,FR10,Ile de France,FR102,Seine-et-Marne,1455820
+2023,FR,France,FR1,Ile de France,FR10,Ile de France,FR103,Yvelines,1467834
+2023,FR,France,FR1,Ile de France,FR10,Ile de France,FR104,Essonne,1325925
+2023,FR,France,FR1,Ile de France,FR10,Ile de France,FR105,Hauts-de-Seine,1646445
+2023,FR,France,FR1,Ile de France,FR10,Ile de France,FR106,Seine-Saint-Denis,1690411
+2023,FR,France,FR1,Ile de France,FR10,Ile de France,FR107,Val-de-Marne,1428073
+2023,FR,France,FR1,Ile de France,FR10,Ile de France,FR108,Val-d'Oise,1269726
+2023,FR,France,FRB,Centre — Val de Loire,FRB0,Centre — Val de Loire,FRB01,Cher,297074
+2023,FR,France,FRB,Centre — Val de Loire,FRB0,Centre — Val de Loire,FRB02,Eure-et-Loir,430622
+2023,FR,France,FRB,Centre — Val de Loire,FRB0,Centre — Val de Loire,FRB03,Indre,214881
+2023,FR,France,FRB,Centre — Val de Loire,FRB0,Centre — Val de Loire,FRB04,Indre-et-Loire,615086
+2023,FR,France,FRB,Centre — Val de Loire,FRB0,Centre — Val de Loire,FRB05,Loir-et-Cher,327263
+2023,FR,France,FRB,Centre — Val de Loire,FRB0,Centre — Val de Loire,FRB06,Loiret,687809
+2023,FR,France,FRC,Bourgogne-Franche-Comté,FRC1,Bourgogne,FRC11,Côte-d’Or,537103
+2023,FR,France,FRC,Bourgogne-Franche-Comté,FRC1,Bourgogne,FRC12,Nièvre,199983
+2023,FR,France,FRC,Bourgogne-Franche-Comté,FRC1,Bourgogne,FRC13,Saône-et-Loire,547407
+2023,FR,France,FRC,Bourgogne-Franche-Comté,FRC1,Bourgogne,FRC14,Yonne,330087
+2023,FR,France,FRC,Bourgogne-Franche-Comté,FRC2,Franche-Comté,FRC21,Doubs,550624
+2023,FR,France,FRC,Bourgogne-Franche-Comté,FRC2,Franche-Comté,FRC22,Jura,257691
+2023,FR,France,FRC,Bourgogne-Franche-Comté,FRC2,Franche-Comté,FRC23,Haute-Saône,233073
+2023,FR,France,FRC,Bourgogne-Franche-Comté,FRC2,Franche-Comté,FRC24,Territoire de Belfort,138000
+2023,FR,France,FRD,Normandie,FRD1,Basse-Normandie,FRD11,Calvados,704339
+2023,FR,France,FRD,Normandie,FRD1,Basse-Normandie,FRD12,Manche,494487
+2023,FR,France,FRD,Normandie,FRD1,Basse-Normandie,FRD13,Orne,273666
+2023,FR,France,FRD,Normandie,FRD2,Haute-Normandie,FRD21,Eure,598332
+2023,FR,France,FRD,Normandie,FRD2,Haute-Normandie,FRD22,Seine-Maritime,1255751
+2023,FR,France,FRE,Hauts-de-France,FRE1,Nord-Pas de Calais,FRE11,Nord,2612965
+2023,FR,France,FRE,Hauts-de-France,FRE1,Nord-Pas de Calais,FRE12,Pas-de-Calais,1457146
+2023,FR,France,FRE,Hauts-de-France,FRE2,Picardie,FRE21,Aisne,523308
+2023,FR,France,FRE,Hauts-de-France,FRE2,Picardie,FRE22,Oise,829717
+2023,FR,France,FRE,Hauts-de-France,FRE2,Picardie,FRE23,Somme,563328
+2023,FR,France,FRF,Grand Est,FRF1,Alsace,FRF11,Bas-Rhin,1164485
+2023,FR,France,FRF,Grand Est,FRF1,Alsace,FRF12,Haut-Rhin,768372
+2023,FR,France,FRF,Grand Est,FRF2,Champagne-Ardenne,FRF21,Ardennes,266663
+2023,FR,France,FRF,Grand Est,FRF2,Champagne-Ardenne,FRF22,Aube,312178
+2023,FR,France,FRF,Grand Est,FRF2,Champagne-Ardenne,FRF23,Marne,563752
+2023,FR,France,FRF,Grand Est,FRF2,Champagne-Ardenne,FRF24,Haute-Marne,168976
+2023,FR,France,FRF,Grand Est,FRF3,Lorraine,FRF31,Meurthe-et-Moselle,731123
+2023,FR,France,FRF,Grand Est,FRF3,Lorraine,FRF32,Meuse,179608
+2023,FR,France,FRF,Grand Est,FRF3,Lorraine,FRF33,Moselle,1053214
+2023,FR,France,FRF,Grand Est,FRF3,Lorraine,FRF34,Vosges,356911
+2023,FR,France,FRG,Pays de la Loire,FRG0,Pays de la Loire,FRG01,Loire-Atlantique,1488876
+2023,FR,France,FRG,Pays de la Loire,FRG0,Pays de la Loire,FRG02,Maine-et-Loire,830933
+2023,FR,France,FRG,Pays de la Loire,FRG0,Pays de la Loire,FRG03,Mayenne,305196
+2023,FR,France,FRG,Pays de la Loire,FRG0,Pays de la Loire,FRG04,Sarthe,565765
+2023,FR,France,FRG,Pays de la Loire,FRG0,Pays de la Loire,FRG05,Vendée,711345
+2023,FR,France,FRH,Bretagne,FRH0,Bretagne,FRH01,Côtes-d’Armor,609490
+2023,FR,France,FRH,Bretagne,FRH0,Bretagne,FRH02,Finistère,928190
+2023,FR,France,FRH,Bretagne,FRH0,Bretagne,FRH03,Ille-et-Vilaine,1117574
+2023,FR,France,FRH,Bretagne,FRH0,Bretagne,FRH04,Morbihan,777647
+2023,FR,France,FRI,Nouvelle-Aquitaine,FRI1,Aquitaine,FRI11,Dordogne,413070
+2023,FR,France,FRI,Nouvelle-Aquitaine,FRI1,Aquitaine,FRI12,Gironde,1690231
+2023,FR,France,FRI,Nouvelle-Aquitaine,FRI1,Aquitaine,FRI13,Landes,431158
+2023,FR,France,FRI,Nouvelle-Aquitaine,FRI1,Aquitaine,FRI14,Lot-et-Garonne,330395
+2023,FR,France,FRI,Nouvelle-Aquitaine,FRI1,Aquitaine,FRI15,Pyrénées-Atlantiques,701974
+2023,FR,France,FRI,Nouvelle-Aquitaine,FRI2,Limousin,FRI21,Corrèze,239179
+2023,FR,France,FRI,Nouvelle-Aquitaine,FRI2,Limousin,FRI22,Creuse,114361
+2023,FR,France,FRI,Nouvelle-Aquitaine,FRI2,Limousin,FRI23,Haute-Vienne,370641
+2023,FR,France,FRI,Nouvelle-Aquitaine,FRI3,Poitou-Charentes,FRI31,Charente,350037
+2023,FR,France,FRI,Nouvelle-Aquitaine,FRI3,Poitou-Charentes,FRI32,Charente-Maritime,669933
+2023,FR,France,FRI,Nouvelle-Aquitaine,FRI3,Poitou-Charentes,FRI33,Deux-Sèvres,373789
+2023,FR,France,FRI,Nouvelle-Aquitaine,FRI3,Poitou-Charentes,FRI34,Vienne,440321
+2023,FR,France,FRJ,Occitanie,FRJ1,Languedoc-Roussillon,FRJ11,Aude,377755
+2023,FR,France,FRJ,Occitanie,FRJ1,Languedoc-Roussillon,FRJ12,Gard,763311
+2023,FR,France,FRJ,Occitanie,FRJ1,Languedoc-Roussillon,FRJ13,Hérault,1229558
+2023,FR,France,FRJ,Occitanie,FRJ1,Languedoc-Roussillon,FRJ14,Lozère,76541
+2023,FR,France,FRJ,Occitanie,FRJ1,Languedoc-Roussillon,FRJ15,Pyrénées-Orientales,494044
+2023,FR,France,FRJ,Occitanie,FRJ2,Midi-Pyrénées,FRJ21,Ariège,155377
+2023,FR,France,FRJ,Occitanie,FRJ2,Midi-Pyrénées,FRJ22,Aveyron,279536
+2023,FR,France,FRJ,Occitanie,FRJ2,Midi-Pyrénées,FRJ23,Haute-Garonne,1470355
+2023,FR,France,FRJ,Occitanie,FRJ2,Midi-Pyrénées,FRJ24,Gers,193269
+2023,FR,France,FRJ,Occitanie,FRJ2,Midi-Pyrénées,FRJ25,Lot,175513
+2023,FR,France,FRJ,Occitanie,FRJ2,Midi-Pyrénées,FRJ26,Hautes-Pyrénées,231800
+2023,FR,France,FRJ,Occitanie,FRJ2,Midi-Pyrénées,FRJ27,Tarn,396832
+2023,FR,France,FRJ,Occitanie,FRJ2,Midi-Pyrénées,FRJ28,Tarn-et-Garonne,266208
+2023,FR,France,FRK,Auvergne-Rhône-Alpes,FRK1,Auvergne,FRK11,Allier,333355
+2023,FR,France,FRK,Auvergne-Rhône-Alpes,FRK1,Auvergne,FRK12,Cantal,143720
+2023,FR,France,FRK,Auvergne-Rhône-Alpes,FRK1,Auvergne,FRK13,Haute-Loire,226987
+2023,FR,France,FRK,Auvergne-Rhône-Alpes,FRK1,Auvergne,FRK14,Puy-de-Dôme,664157
+2023,FR,France,FRK,Auvergne-Rhône-Alpes,FRK2,Rhône-Alpes,FRK21,Ain,674071
+2023,FR,France,FRK,Auvergne-Rhône-Alpes,FRK2,Rhône-Alpes,FRK22,Ardèche,334707
+2023,FR,France,FRK,Auvergne-Rhône-Alpes,FRK2,Rhône-Alpes,FRK23,Drôme,522535
+2023,FR,France,FRK,Auvergne-Rhône-Alpes,FRK2,Rhône-Alpes,FRK24,Isère,1299578
+2023,FR,France,FRK,Auvergne-Rhône-Alpes,FRK2,Rhône-Alpes,FRK25,Loire,772981
+2023,FR,France,FRK,Auvergne-Rhône-Alpes,FRK2,Rhône-Alpes,FRK26,Rhône,1916293
+2023,FR,France,FRK,Auvergne-Rhône-Alpes,FRK2,Rhône-Alpes,FRK27,Savoie,448853
+2023,FR,France,FRK,Auvergne-Rhône-Alpes,FRK2,Rhône-Alpes,FRK28,Haute-Savoie,858305
+2023,FR,France,FRL,Provence-Alpes-Côte d’Azur,FRL0,Provence-Alpes-Côte d’Azur,FRL01,Alpes-de-Haute-Provence,167334
+2023,FR,France,FRL,Provence-Alpes-Côte d’Azur,FRL0,Provence-Alpes-Côte d’Azur,FRL02,Hautes-Alpes,141438
+2023,FR,France,FRL,Provence-Alpes-Côte d’Azur,FRL0,Provence-Alpes-Côte d’Azur,FRL03,Alpes-Maritimes,1114308
+2023,FR,France,FRL,Provence-Alpes-Côte d’Azur,FRL0,Provence-Alpes-Côte d’Azur,FRL04,Bouches-du-Rhône,2071055
+2023,FR,France,FRL,Provence-Alpes-Côte d’Azur,FRL0,Provence-Alpes-Côte d’Azur,FRL05,Var,1112421
+2023,FR,France,FRL,Provence-Alpes-Côte d’Azur,FRL0,Provence-Alpes-Côte d’Azur,FRL06,Vaucluse,567396
+2023,FR,France,FRM,Corse,FRM0,Corse,FRM01,Corse-du-Sud,166078
+2023,FR,France,FRM,Corse,FRM0,Corse,FRM02,Haute-Corse,186773
+2023,FR,France,FRY,RUP FR — Régions Ultrapériphériques Françaises,FRY1,Guadeloupe,FRY10,Guadeloupe,410013
+2023,FR,France,FRY,RUP FR — Régions Ultrapériphériques Françaises,FRY2,Martinique,FRY20,Martinique,353444
+2023,FR,France,FRY,RUP FR — Régions Ultrapériphériques Françaises,FRY3,Guyane,FRY30,Guyane,292892
+2023,FR,France,FRY,RUP FR — Régions Ultrapériphériques Françaises,FRY4,La Réunion,FRY40,La Réunion,880766
+2023,FR,France,FRY,RUP FR — Régions Ultrapériphériques Françaises,FRY5,Mayotte,FRY50,Mayotte,309901
+2023,HR,Croatia,HR0,Hrvatska,HR02,Panonska Hrvatska,HR021,Bjelovarsko-bilogorska županija,99813
+2023,HR,Croatia,HR0,Hrvatska,HR02,Panonska Hrvatska,HR022,Virovitičko-podravska županija,68808
+2023,HR,Croatia,HR0,Hrvatska,HR02,Panonska Hrvatska,HR023,Požeško-slavonska županija,62451
+2023,HR,Croatia,HR0,Hrvatska,HR02,Panonska Hrvatska,HR024,Brodsko-posavska županija,127464
+2023,HR,Croatia,HR0,Hrvatska,HR02,Panonska Hrvatska,HR025,Osječko-baranjska županija,253824
+2023,HR,Croatia,HR0,Hrvatska,HR02,Panonska Hrvatska,HR026,Vukovarsko-srijemska županija,139841
+2023,HR,Croatia,HR0,Hrvatska,HR02,Panonska Hrvatska,HR027,Karlovačka županija,110483
+2023,HR,Croatia,HR0,Hrvatska,HR02,Panonska Hrvatska,HR028,Sisačko-moslavačka županija,136422
+2023,HR,Croatia,HR0,Hrvatska,HR03,Jadranska Hrvatska,HR031,Primorsko-goranska županija,263938
+2023,HR,Croatia,HR0,Hrvatska,HR03,Jadranska Hrvatska,HR032,Ličko-senjska županija,42469
+2023,HR,Croatia,HR0,Hrvatska,HR03,Jadranska Hrvatska,HR033,Zadarska županija,160558
+2023,HR,Croatia,HR0,Hrvatska,HR03,Jadranska Hrvatska,HR034,Šibensko-kninska županija,95441
+2023,HR,Croatia,HR0,Hrvatska,HR03,Jadranska Hrvatska,HR035,Splitsko-dalmatinska županija,423845
+2023,HR,Croatia,HR0,Hrvatska,HR03,Jadranska Hrvatska,HR036,Istarska županija,196867
+2023,HR,Croatia,HR0,Hrvatska,HR03,Jadranska Hrvatska,HR037,Dubrovačko-neretvanska županija,114869
+2020,HR,Croatia,HR0,Hrvatska,HR04,Kontinentalna Hrvatska (NUTS 2016),HR041,Grad Zagreb (NUTS 2016),809235
+2020,HR,Croatia,HR0,Hrvatska,HR04,Kontinentalna Hrvatska (NUTS 2016),HR042,Zagrebacka zupanija (NUTS 2016),309611
+2020,HR,Croatia,HR0,Hrvatska,HR04,Kontinentalna Hrvatska (NUTS 2016),HR043,Krapinsko-zagorska zupanija (NUTS 2016),124407
+2020,HR,Croatia,HR0,Hrvatska,HR04,Kontinentalna Hrvatska (NUTS 2016),HR044,Varazdinska zupanija (NUTS 2016),165885
+2020,HR,Croatia,HR0,Hrvatska,HR04,Kontinentalna Hrvatska (NUTS 2016),HR045,Koprivnicko-krizevacka zupanija (NUTS 2016),105886
+2020,HR,Croatia,HR0,Hrvatska,HR04,Kontinentalna Hrvatska (NUTS 2016),HR046,Medimurska zupanija (NUTS 2016),109130
+2020,HR,Croatia,HR0,Hrvatska,HR04,Kontinentalna Hrvatska (NUTS 2016),HR047,Bjelovarsko-bilogorska zupanija (NUTS 2016),105554
+2020,HR,Croatia,HR0,Hrvatska,HR04,Kontinentalna Hrvatska (NUTS 2016),HR048,Viroviticko-podravska zupanija (NUTS 2016),72843
+2020,HR,Croatia,HR0,Hrvatska,HR04,Kontinentalna Hrvatska (NUTS 2016),HR049,Pozesko-slavonska zupanija (NUTS 2016),65614
+2020,HR,Croatia,HR0,Hrvatska,HR04,Kontinentalna Hrvatska (NUTS 2016),HR04A,Brodsko-posavska zupanija (NUTS 2016),136429
+2020,HR,Croatia,HR0,Hrvatska,HR04,Kontinentalna Hrvatska (NUTS 2016),HR04B,Osjecko-baranjska zupanija (NUTS 2016),270877
+2020,HR,Croatia,HR0,Hrvatska,HR04,Kontinentalna Hrvatska (NUTS 2016),HR04C,Vukovarsko-srijemska zupanija (NUTS 2016),149489
+2020,HR,Croatia,HR0,Hrvatska,HR04,Kontinentalna Hrvatska (NUTS 2016),HR04D,Karlovacka zupanija (NUTS 2016),114804
+2020,HR,Croatia,HR0,Hrvatska,HR04,Kontinentalna Hrvatska (NUTS 2016),HR04E,Sisacko-moslavacka zupanija (NUTS 2016),144599
+2023,HR,Croatia,HR0,Hrvatska,HR05,Grad Zagreb,HR050,Grad Zagreb,768624
+2023,HR,Croatia,HR0,Hrvatska,HR06,Sjeverna Hrvatska,HR061,Međimurska županija,104737
+2023,HR,Croatia,HR0,Hrvatska,HR06,Sjeverna Hrvatska,HR062,Varaždinska županija,158446
+2023,HR,Croatia,HR0,Hrvatska,HR06,Sjeverna Hrvatska,HR063,Koprivničko-križevačka županija,99925
+2023,HR,Croatia,HR0,Hrvatska,HR06,Sjeverna Hrvatska,HR064,Krapinsko-zagorska županija,119409
+2023,HR,Croatia,HR0,Hrvatska,HR06,Sjeverna Hrvatska,HR065,Zagrebačka županija,302660
+2023,HU,Hungary,HU1,Közép-Magyarország,HU11,Budapest,HU110,Budapest,1671004
+2023,HU,Hungary,HU1,Közép-Magyarország,HU12,Pest,HU120,Pest,1328790
+2023,HU,Hungary,HU2,Dunántúl,HU21,Közép-Dunántúl,HU211,Fejér,419565
+2023,HU,Hungary,HU2,Dunántúl,HU21,Közép-Dunántúl,HU212,Komárom-Esztergom,301492
+2023,HU,Hungary,HU2,Dunántúl,HU21,Közép-Dunántúl,HU213,Veszprém,338342
+2023,HU,Hungary,HU2,Dunántúl,HU22,Nyugat-Dunántúl,HU221,Győr-Moson-Sopron,471309
+2023,HU,Hungary,HU2,Dunántúl,HU22,Nyugat-Dunántúl,HU222,Vas,249812
+2023,HU,Hungary,HU2,Dunántúl,HU22,Nyugat-Dunántúl,HU223,Zala,261803
+2023,HU,Hungary,HU2,Dunántúl,HU23,Dél-Dunántúl,HU231,Baranya,355315
+2023,HU,Hungary,HU2,Dunántúl,HU23,Dél-Dunántúl,HU232,Somogy,295316
+2023,HU,Hungary,HU2,Dunántúl,HU23,Dél-Dunántúl,HU233,Tolna,208044
+2023,HU,Hungary,HU3,Alföld és Észak,HU31,Észak-Magyarország,HU311,Borsod-Abaúj-Zemplén,624219
+2023,HU,Hungary,HU3,Alföld és Észak,HU31,Észak-Magyarország,HU312,Heves,287533
+2023,HU,Hungary,HU3,Alföld és Észak,HU31,Észak-Magyarország,HU313,Nógrád,182038
+2023,HU,Hungary,HU3,Alföld és Észak,HU32,Észak-Alföld,HU321,Hajdú-Bihar,520656
+2023,HU,Hungary,HU3,Alföld és Észak,HU32,Észak-Alföld,HU322,Jász-Nagykun-Szolnok,356388
+2023,HU,Hungary,HU3,Alföld és Észak,HU32,Észak-Alföld,HU323,Szabolcs-Szatmár-Bereg,527968
+2023,HU,Hungary,HU3,Alföld és Észak,HU33,Dél-Alföld,HU331,Bács-Kiskun,494563
+2023,HU,Hungary,HU3,Alföld és Észak,HU33,Dél-Alföld,HU332,Békés,314380
+2023,HU,Hungary,HU3,Alföld és Észak,HU33,Dél-Alföld,HU333,Csongrád-Csanád,391207
+2023,IE,Ireland,IE0,Ireland,IE04,Northern and Western,IE041,Border,430893
+2023,IE,Ireland,IE0,Ireland,IE04,Northern and Western,IE042,West,499315
+2023,IE,Ireland,IE0,Ireland,IE05,Southern,IE051,Mid-West,517337
+2023,IE,Ireland,IE0,Ireland,IE05,Southern,IE052,South-East,467589
+2023,IE,Ireland,IE0,Ireland,IE05,Southern,IE053,South-West,756254
+2023,IE,Ireland,IE0,Ireland,IE06,Eastern and Midland,IE061,Dublin,1499179
+2023,IE,Ireland,IE0,Ireland,IE06,Eastern and Midland,IE062,Mid-East,776202
+2023,IE,Ireland,IE0,Ireland,IE06,Eastern and Midland,IE063,Midland,324626
+2023,IS,Iceland,IS0,Ísland,IS00,Ísland,IS001,Höfuðborgarsvæði,247533
+2023,IS,Iceland,IS0,Ísland,IS00,Ísland,IS002,Landsbyggð,140225
+2023,IT,Italy,ITC,Nord-Ovest,ITC1,Piemonte,ITC11,Torino,2204632
+2023,IT,Italy,ITC,Nord-Ovest,ITC1,Piemonte,ITC12,Vercelli,165892
+2023,IT,Italy,ITC,Nord-Ovest,ITC1,Piemonte,ITC13,Biella,169106
+2023,IT,Italy,ITC,Nord-Ovest,ITC1,Piemonte,ITC14,Verbano-Cusio-Ossola,154038
+2023,IT,Italy,ITC,Nord-Ovest,ITC1,Piemonte,ITC15,Novara,362502
+2023,IT,Italy,ITC,Nord-Ovest,ITC1,Piemonte,ITC16,Cuneo,580736
+2023,IT,Italy,ITC,Nord-Ovest,ITC1,Piemonte,ITC17,Asti,207951
+2023,IT,Italy,ITC,Nord-Ovest,ITC1,Piemonte,ITC18,Alessandria,406494
+2023,IT,Italy,ITC,Nord-Ovest,ITC2,Valle d’Aosta/Vallée d’Aoste,ITC20,Valle d’Aosta/Vallée d’Aoste,123130
+2023,IT,Italy,ITC,Nord-Ovest,ITC3,Liguria,ITC31,Imperia,208792
+2023,IT,Italy,ITC,Nord-Ovest,ITC3,Liguria,ITC32,Savona,267366
+2023,IT,Italy,ITC,Nord-Ovest,ITC3,Liguria,ITC33,Genova,816606
+2023,IT,Italy,ITC,Nord-Ovest,ITC3,Liguria,ITC34,La Spezia,214872
+2023,IT,Italy,ITC,Nord-Ovest,ITC4,Lombardia,ITC41,Varese,879731
+2023,IT,Italy,ITC,Nord-Ovest,ITC4,Lombardia,ITC42,Como,597117
+2023,IT,Italy,ITC,Nord-Ovest,ITC4,Lombardia,ITC43,Lecco,332775
+2023,IT,Italy,ITC,Nord-Ovest,ITC4,Lombardia,ITC44,Sondrio,178795
+2023,IT,Italy,ITC,Nord-Ovest,ITC4,Lombardia,ITC46,Bergamo,1106303
+2023,IT,Italy,ITC,Nord-Ovest,ITC4,Lombardia,ITC47,Brescia,1257326
+2023,IT,Italy,ITC,Nord-Ovest,ITC4,Lombardia,ITC48,Pavia,536406
+2023,IT,Italy,ITC,Nord-Ovest,ITC4,Lombardia,ITC49,Lodi,228136
+2023,IT,Italy,ITC,Nord-Ovest,ITC4,Lombardia,ITC4A,Cremona,352189
+2023,IT,Italy,ITC,Nord-Ovest,ITC4,Lombardia,ITC4B,Mantova,406119
+2023,IT,Italy,ITC,Nord-Ovest,ITC4,Lombardia,ITC4C,Milano,3228006
+2023,IT,Italy,ITC,Nord-Ovest,ITC4,Lombardia,ITC4D,Monza e della Brianza,873606
+2023,IT,Italy,ITF,Sud,ITF1,Abruzzo,ITF11,L’Aquila,287806
+2023,IT,Italy,ITF,Sud,ITF1,Abruzzo,ITF12,Teramo,299071
+2023,IT,Italy,ITF,Sud,ITF1,Abruzzo,ITF13,Pescara,313110
+2023,IT,Italy,ITF,Sud,ITF1,Abruzzo,ITF14,Chieti,372640
+2023,IT,Italy,ITF,Sud,ITF2,Molise,ITF21,Isernia,79912
+2023,IT,Italy,ITF,Sud,ITF2,Molise,ITF22,Campobasso,210724
+2023,IT,Italy,ITF,Sud,ITF3,Campania,ITF31,Caserta,906074
+2023,IT,Italy,ITF,Sud,ITF3,Campania,ITF32,Benevento,263125
+2023,IT,Italy,ITF,Sud,ITF3,Campania,ITF33,Napoli,2980338
+2023,IT,Italy,ITF,Sud,ITF3,Campania,ITF34,Avellino,398932
+2023,IT,Italy,ITF,Sud,ITF3,Campania,ITF35,Salerno,1061067
+2023,IT,Italy,ITF,Sud,ITF4,Puglia,ITF43,Taranto,556692
+2023,IT,Italy,ITF,Sud,ITF4,Puglia,ITF44,Brindisi,379522
+2023,IT,Italy,ITF,Sud,ITF4,Puglia,ITF45,Lecce,771230
+2023,IT,Italy,ITF,Sud,ITF4,Puglia,ITF46,Foggia,595682
+2023,IT,Italy,ITF,Sud,ITF4,Puglia,ITF47,Bari,1225048
+2023,IT,Italy,ITF,Sud,ITF4,Puglia,ITF48,Barletta-Andria-Trani,379509
+2023,IT,Italy,ITF,Sud,ITF5,Basilicata,ITF51,Potenza,346475
+2023,IT,Italy,ITF,Sud,ITF5,Basilicata,ITF52,Matera,191102
+2023,IT,Italy,ITF,Sud,ITF6,Calabria,ITF61,Cosenza,672432
+2023,IT,Italy,ITF,Sud,ITF6,Calabria,ITF62,Crotone,162749
+2023,IT,Italy,ITF,Sud,ITF6,Calabria,ITF63,Catanzaro,342021
+2023,IT,Italy,ITF,Sud,ITF6,Calabria,ITF64,Vibo Valentia,150709
+2023,IT,Italy,ITF,Sud,ITF6,Calabria,ITF65,Reggio Calabria,518699
+2023,IT,Italy,ITG,Isole,ITG1,Sicilia,ITG11,Trapani,415006
+2023,IT,Italy,ITG,Isole,ITG1,Sicilia,ITG12,Palermo,1204189
+2023,IT,Italy,ITG,Isole,ITG1,Sicilia,ITG13,Messina,600180
+2023,IT,Italy,ITG,Isole,ITG1,Sicilia,ITG14,Agrigento,413177
+2023,IT,Italy,ITG,Isole,ITG1,Sicilia,ITG15,Caltanissetta,249431
+2023,IT,Italy,ITG,Isole,ITG1,Sicilia,ITG16,Enna,154940
+2023,IT,Italy,ITG,Isole,ITG1,Sicilia,ITG17,Catania,1074434
+2023,IT,Italy,ITG,Isole,ITG1,Sicilia,ITG18,Ragusa,317793
+2023,IT,Italy,ITG,Isole,ITG1,Sicilia,ITG19,Siracusa,384866
+2020,IT,Italy,ITG,Isole,ITG2,Sardegna,ITG25,Sassari (NUTS 2016),325288
+2020,IT,Italy,ITG,Isole,ITG2,Sardegna,ITG26,Nuoro (NUTS 2016),150913
+2020,IT,Italy,ITG,Isole,ITG2,Sardegna,ITG27,Cagliari (NUTS 2016),548917
+2020,IT,Italy,ITG,Isole,ITG2,Sardegna,ITG28,Oristano (NUTS 2016),155764
+2020,IT,Italy,ITG,Isole,ITG2,Sardegna,ITG29,Olbia-Tempio (NUTS 2016),159119
+2020,IT,Italy,ITG,Isole,ITG2,Sardegna,ITG2A,Ogliastra (NUTS 2016),55535
+2020,IT,Italy,ITG,Isole,ITG2,Sardegna,ITG2B,Medio Campidano (NUTS 2016),94988
+2020,IT,Italy,ITG,Isole,ITG2,Sardegna,ITG2C,Carbonia-Iglesias (NUTS 2016),121097
+2023,IT,Italy,ITG,Isole,ITG2,Sardegna,ITG2D,Sassari,474739
+2023,IT,Italy,ITG,Isole,ITG2,Sardegna,ITG2E,Nuoro,198520
+2023,IT,Italy,ITG,Isole,ITG2,Sardegna,ITG2F,Cagliari,420364
+2023,IT,Italy,ITG,Isole,ITG2,Sardegna,ITG2G,Oristano,150325
+2023,IT,Italy,ITG,Isole,ITG2,Sardegna,ITG2H,Sud Sardegna,334198
+2023,IT,Italy,ITH,Nord-Est,ITH1,Provincia Autonoma di Bolzano/Bozen,ITH10,Bolzano-Bozen,534147
+2023,IT,Italy,ITH,Nord-Est,ITH2,Provincia Autonoma di Trento,ITH20,Trento,542996
+2023,IT,Italy,ITH,Nord-Est,ITH3,Veneto,ITH31,Verona,925656
+2023,IT,Italy,ITH,Nord-Est,ITH3,Veneto,ITH32,Vicenza,852779
+2023,IT,Italy,ITH,Nord-Est,ITH3,Veneto,ITH33,Belluno,198105
+2023,IT,Italy,ITH,Nord-Est,ITH3,Veneto,ITH34,Treviso,878828
+2023,IT,Italy,ITH,Nord-Est,ITH3,Veneto,ITH35,Venezia,835895
+2023,IT,Italy,ITH,Nord-Est,ITH3,Veneto,ITH36,Padova,930349
+2023,IT,Italy,ITH,Nord-Est,ITH3,Veneto,ITH37,Rovigo,227941
+2023,IT,Italy,ITH,Nord-Est,ITH4,Friuli-Venezia Giulia,ITH41,Pordenone,310133
+2023,IT,Italy,ITH,Nord-Est,ITH4,Friuli-Venezia Giulia,ITH42,Udine,517376
+2023,IT,Italy,ITH,Nord-Est,ITH4,Friuli-Venezia Giulia,ITH43,Gorizia,138034
+2023,IT,Italy,ITH,Nord-Est,ITH4,Friuli-Venezia Giulia,ITH44,Trieste,228705
+2023,IT,Italy,ITH,Nord-Est,ITH5,Emilia-Romagna,ITH51,Piacenza,284220
+2023,IT,Italy,ITH,Nord-Est,ITH5,Emilia-Romagna,ITH52,Parma,451688
+2023,IT,Italy,ITH,Nord-Est,ITH5,Emilia-Romagna,ITH53,Reggio nell’Emilia,526990
+2023,IT,Italy,ITH,Nord-Est,ITH5,Emilia-Romagna,ITH54,Modena,704332
+2023,IT,Italy,ITH,Nord-Est,ITH5,Emilia-Romagna,ITH55,Bologna,1014124
+2023,IT,Italy,ITH,Nord-Est,ITH5,Emilia-Romagna,ITH56,Ferrara,339287
+2023,IT,Italy,ITH,Nord-Est,ITH5,Emilia-Romagna,ITH57,Ravenna,386355
+2023,IT,Italy,ITH,Nord-Est,ITH5,Emilia-Romagna,ITH58,Forlì-Cesena,391648
+2023,IT,Italy,ITH,Nord-Est,ITH5,Emilia-Romagna,ITH59,Rimini,338934
+2023,IT,Italy,ITI,Centro (IT),ITI1,Toscana,ITI11,Massa-Carrara,187583
+2023,IT,Italy,ITI,Centro (IT),ITI1,Toscana,ITI12,Lucca,382184
+2023,IT,Italy,ITI,Centro (IT),ITI1,Toscana,ITI13,Pistoia,289759
+2023,IT,Italy,ITI,Centro (IT),ITI1,Toscana,ITI14,Firenze,988194
+2023,IT,Italy,ITI,Centro (IT),ITI1,Toscana,ITI15,Prato,259244
+2023,IT,Italy,ITI,Centro (IT),ITI1,Toscana,ITI16,Livorno,326605
+2023,IT,Italy,ITI,Centro (IT),ITI1,Toscana,ITI17,Pisa,417170
+2023,IT,Italy,ITI,Centro (IT),ITI1,Toscana,ITI18,Arezzo,334052
+2023,IT,Italy,ITI,Centro (IT),ITI1,Toscana,ITI19,Siena,260557
+2023,IT,Italy,ITI,Centro (IT),ITI1,Toscana,ITI1A,Grosseto,216633
+2023,IT,Italy,ITI,Centro (IT),ITI2,Umbria,ITI21,Perugia,639224
+2023,IT,Italy,ITI,Centro (IT),ITI2,Umbria,ITI22,Terni,217183
+2023,IT,Italy,ITI,Centro (IT),ITI3,Marche,ITI31,Pesaro e Urbino,349529
+2023,IT,Italy,ITI,Centro (IT),ITI3,Marche,ITI32,Ancona,461655
+2023,IT,Italy,ITI,Centro (IT),ITI3,Marche,ITI33,Macerata,303828
+2023,IT,Italy,ITI,Centro (IT),ITI3,Marche,ITI34,Ascoli Piceno,201462
+2023,IT,Italy,ITI,Centro (IT),ITI3,Marche,ITI35,Fermo,167824
+2023,IT,Italy,ITI,Centro (IT),ITI4,Lazio,ITI41,Viterbo,308158
+2023,IT,Italy,ITI,Centro (IT),ITI4,Lazio,ITI42,Rieti,150457
+2023,IT,Italy,ITI,Centro (IT),ITI4,Lazio,ITI43,Roma,4227059
+2023,IT,Italy,ITI,Centro (IT),ITI4,Lazio,ITI44,Latina,566996
+2023,IT,Italy,ITI,Centro (IT),ITI4,Lazio,ITI45,Frosinone,467866
+2023,LI,Liechtenstein,LI0,Liechtenstein,LI00,Liechtenstein,LI000,Liechtenstein,39677
+2023,LT,Lithuania,LT0,Lietuva,LT01,Sostinės regionas,LT011,Vilniaus apskritis,848724
+2023,LT,Lithuania,LT0,Lietuva,LT02,Vidurio ir vakarų Lietuvos regionas,LT021,Alytaus apskritis,135620
+2023,LT,Lithuania,LT0,Lietuva,LT02,Vidurio ir vakarų Lietuvos regionas,LT022,Kauno apskritis,579903
+2023,LT,Lithuania,LT0,Lietuva,LT02,Vidurio ir vakarų Lietuvos regionas,LT023,Klaipėdos apskritis,334281
+2023,LT,Lithuania,LT0,Lietuva,LT02,Vidurio ir vakarų Lietuvos regionas,LT024,Marijampolės apskritis,135787
+2023,LT,Lithuania,LT0,Lietuva,LT02,Vidurio ir vakarų Lietuvos regionas,LT025,Panevėžio apskritis,211377
+2023,LT,Lithuania,LT0,Lietuva,LT02,Vidurio ir vakarų Lietuvos regionas,LT026,Šiaulių apskritis,264056
+2023,LT,Lithuania,LT0,Lietuva,LT02,Vidurio ir vakarų Lietuvos regionas,LT027,Tauragės apskritis,90617
+2023,LT,Lithuania,LT0,Lietuva,LT02,Vidurio ir vakarų Lietuvos regionas,LT028,Telšių apskritis,131447
+2023,LT,Lithuania,LT0,Lietuva,LT02,Vidurio ir vakarų Lietuvos regionas,LT029,Utenos apskritis,125467
+2023,LU,Luxembourg,LU0,Luxembourg,LU00,Luxembourg,LU000,Luxembourg,660809
+2023,LV,Latvia,LV0,Latvija,LV00,Latvija,LV003,Kurzeme (NUTS 2021),232312
+2023,LV,Latvia,LV0,Latvija,LV00,Latvija,LV005,Latgale,245053
+2023,LV,Latvia,LV0,Latvija,LV00,Latvija,LV006,Rīga (NUTS 2021),609489
+2023,LV,Latvia,LV0,Latvija,LV00,Latvija,LV007,Pieriga (NUTS 2021),390676
+2023,LV,Latvia,LV0,Latvija,LV00,Latvija,LV008,Vidzeme (NUTS 2021),180431
+2023,LV,Latvia,LV0,Latvija,LV00,Latvija,LV009,Zemgale,225047
+2023,ME,Montenegro,ME0,Crna Gora,ME00,Crna Gora,ME000,Crna Gora,616695
+2023,MK,North Macedonia,MK0,Severna Makedonija,MK00,Severna Makedonija,MK001,Vardarski,137645
+2023,MK,North Macedonia,MK0,Severna Makedonija,MK00,Severna Makedonija,MK002,Istočen,148671
+2023,MK,North Macedonia,MK0,Severna Makedonija,MK00,Severna Makedonija,MK003,Jugozapaden,176610
+2023,MK,North Macedonia,MK0,Severna Makedonija,MK00,Severna Makedonija,MK004,Jugoistočen,147272
+2023,MK,North Macedonia,MK0,Severna Makedonija,MK00,Severna Makedonija,MK005,Pelagoniski,208552
+2023,MK,North Macedonia,MK0,Severna Makedonija,MK00,Severna Makedonija,MK006,Pološki,251922
+2023,MK,North Macedonia,MK0,Severna Makedonija,MK00,Severna Makedonija,MK007,Severoistočen,152405
+2023,MK,North Macedonia,MK0,Severna Makedonija,MK00,Severna Makedonija,MK008,Skopski,606877
+2020,MK,North Macedonia,MKX,Not regionalised/Unknown level 1,MKXX,Not regionalised/Unknown level 2,MKXXX,Not regionalised/Unknown level 3,168
+2023,MT,Malta,MT0,Malta,MT00,Malta,MT001,Malta,501860
+2023,MT,Malta,MT0,Malta,MT00,Malta,MT002,Gozo and Comino/Għawdex u Kemmuna,40191
+2023,NL,Netherlands,NL1,Noord-Nederland,NL11,Groningen,NL111,Oost-Groningen (NUTS 2021),137736
+2023,NL,Netherlands,NL1,Noord-Nederland,NL11,Groningen,NL112,Delfzijl en omgeving,45394
+2023,NL,Netherlands,NL1,Noord-Nederland,NL11,Groningen,NL113,Overig Groningen (NUTS 2021),412945
+2023,NL,Netherlands,NL1,Noord-Nederland,NL12,Friesland (NL),NL124,Noord-Friesland (NUTS 2021),326583
+2023,NL,Netherlands,NL1,Noord-Nederland,NL12,Friesland (NL),NL125,Zuidwest-Friesland (NUTS 2021),142875
+2023,NL,Netherlands,NL1,Noord-Nederland,NL12,Friesland (NL),NL126,Zuidoost-Friesland,190093
+2023,NL,Netherlands,NL1,Noord-Nederland,NL13,Drenthe,NL131,Noord-Drenthe,195308
+2023,NL,Netherlands,NL1,Noord-Nederland,NL13,Drenthe,NL132,Zuidoost-Drenthe,170384
+2023,NL,Netherlands,NL1,Noord-Nederland,NL13,Drenthe,NL133,Zuidwest-Drenthe,136359
+2023,NL,Netherlands,NL2,Oost-Nederland,NL21,Overijssel,NL211,Noord-Overijssel,385473
+2023,NL,Netherlands,NL2,Oost-Nederland,NL21,Overijssel,NL212,Zuidwest-Overijssel,159963
+2023,NL,Netherlands,NL2,Oost-Nederland,NL21,Overijssel,NL213,Twente,638897
+2023,NL,Netherlands,NL2,Oost-Nederland,NL22,Gelderland,NL221,Veluwe,715792
+2023,NL,Netherlands,NL2,Oost-Nederland,NL22,Gelderland,NL224,Zuidwest-Gelderland,254660
+2023,NL,Netherlands,NL2,Oost-Nederland,NL22,Gelderland,NL225,Achterhoek,406261
+2023,NL,Netherlands,NL2,Oost-Nederland,NL22,Gelderland,NL226,Arnhem/Nijmegen,756995
+2023,NL,Netherlands,NL2,Oost-Nederland,NL23,Flevoland,NL230,Flevoland,444701
+2023,NL,Netherlands,NL3,West-Nederland,NL31,Utrecht (NUTS 2021),NL310,Utrecht (NUTS 2021),1387643
+2023,NL,Netherlands,NL3,West-Nederland,NL32,Noord-Holland,NL321,Kop van Noord-Holland,385743
+2023,NL,Netherlands,NL3,West-Nederland,NL32,Noord-Holland,NL323,IJmond,200749
+2023,NL,Netherlands,NL3,West-Nederland,NL32,Noord-Holland,NL324,Agglomeratie Haarlem (NUTS 2021),234638
+2023,NL,Netherlands,NL3,West-Nederland,NL32,Noord-Holland,NL325,Zaanstreek,176230
+2023,NL,Netherlands,NL3,West-Nederland,NL32,Noord-Holland,NL327,Het Gooi en Vechtstreek,243799
+2023,NL,Netherlands,NL3,West-Nederland,NL32,Noord-Holland,NL328,Alkmaar en omgeving,255276
+2023,NL,Netherlands,NL3,West-Nederland,NL32,Noord-Holland,NL329,Groot-Amsterdam (NUTS 2021),1456187
+2023,NL,Netherlands,NL3,West-Nederland,NL33,Zuid-Holland (NUTS 2021),NL332,Agglomeratie 's-Gravenhage (NUTS 2021),910352
+2023,NL,Netherlands,NL3,West-Nederland,NL33,Zuid-Holland (NUTS 2021),NL333,Delft en Westland (NUTS 2021),240445
+2023,NL,Netherlands,NL3,West-Nederland,NL33,Zuid-Holland (NUTS 2021),NL337,Agglomeratie Leiden en Bollenstreek (NUTS 2021),440312
+2023,NL,Netherlands,NL3,West-Nederland,NL33,Zuid-Holland (NUTS 2021),NL33A,Zuidoost-Zuid-Holland (NUTS 2021),379752
+2023,NL,Netherlands,NL3,West-Nederland,NL33,Zuid-Holland (NUTS 2021),NL33B,Oost-Zuid-Holland (NUTS 2021),345570
+2023,NL,Netherlands,NL3,West-Nederland,NL33,Zuid-Holland (NUTS 2021),NL33C,Groot-Rijnmond (NUTS 2021),1488475
+2023,NL,Netherlands,NL3,West-Nederland,NL34,Zeeland,NL341,Zeeuwsch-Vlaanderen,105832
+2023,NL,Netherlands,NL3,West-Nederland,NL34,Zeeland,NL342,Overig Zeeland,285292
+2023,NL,Netherlands,NL4,Zuid-Nederland,NL41,Noord-Brabant,NL411,West-Noord-Brabant,646718
+2023,NL,Netherlands,NL4,Zuid-Nederland,NL41,Noord-Brabant,NL412,Midden-Noord-Brabant (NUTS 2021),503798
+2023,NL,Netherlands,NL4,Zuid-Nederland,NL41,Noord-Brabant,NL413,Noordoost-Noord-Brabant (NUTS 2021),672514
+2023,NL,Netherlands,NL4,Zuid-Nederland,NL41,Noord-Brabant,NL414,Zuidoost-Noord-Brabant,803180
+2023,NL,Netherlands,NL4,Zuid-Nederland,NL42,Limburg (NL),NL421,Noord-Limburg,289248
+2023,NL,Netherlands,NL4,Zuid-Nederland,NL42,Limburg (NL),NL422,Midden-Limburg,241467
+2023,NL,Netherlands,NL4,Zuid-Nederland,NL42,Limburg (NL),NL423,Zuid-Limburg,597652
+2020,NO,Norway,NO0,Norge,NO01,Oslo og Akershus (statistical region 2016),NO011,Oslo (statistical region 2016),693494
+2020,NO,Norway,NO0,Norge,NO01,Oslo og Akershus (statistical region 2016),NO012,Akershus (statistical region 2016),633188
+2023,NO,Norway,NO0,Norge,NO02,Innlandet,NO020,Innlandet,373628
+2020,NO,Norway,NO0,Norge,NO02,Innlandet,NO021,Hedmark (statistical region 2016),197920
+2020,NO,Norway,NO0,Norge,NO02,Innlandet,NO022,Oppland (statistical region 2016),189365
+2020,NO,Norway,NO0,Norge,NO03,Sør-Østlandet (statistical region 2016),NO031,Østfold (statistical region 2016),300112
+2020,NO,Norway,NO0,Norge,NO03,Sør-Østlandet (statistical region 2016),NO032,Buskerud (statistical region 2016),285336
+2020,NO,Norway,NO0,Norge,NO03,Sør-Østlandet (statistical region 2016),NO033,Vestfold (statistical region 2016),252669
+2020,NO,Norway,NO0,Norge,NO03,Sør-Østlandet (statistical region 2016),NO034,Telemark (statistical region 2016),173355
+2020,NO,Norway,NO0,Norge,NO04,Agder og Rogaland (statistical region 2016),NO041,Aust-Agder (statistical region 2016),118273
+2020,NO,Norway,NO0,Norge,NO04,Agder og Rogaland (statistical region 2016),NO042,Vest-Agder (statistical region 2016),188959
+2020,NO,Norway,NO0,Norge,NO04,Agder og Rogaland (statistical region 2016),NO043,Rogaland (statistical region 2016),479891
+2020,NO,Norway,NO0,Norge,NO05,Vestlandet (statistical region 2016),NO051,Hordaland (statistical region 2016),528127
+2020,NO,Norway,NO0,Norge,NO05,Vestlandet (statistical region 2016),NO052,Sogn og Fjordane (statistical region 2016),109566
+2020,NO,Norway,NO0,Norge,NO05,Vestlandet (statistical region 2016),NO053,Møre og Romsdal (statistical region 2016),267642
+2023,NO,Norway,NO0,Norge,NO06,Trøndelag,NO060,Trøndelag/Trööndelage,478470
+2018,NO,Norway,NO0,Norge,NO06,Trøndelag,NO061,Sør-Trøndelag (statistical region 2016),320884
+2018,NO,Norway,NO0,Norge,NO06,Trøndelag,NO062,Nord-Trøndelag (statistical region 2016),137858
+2023,NO,Norway,NO0,Norge,NO07,Nord-Norge,NO071,Nordland/Nordlánnda,241084
+2020,NO,Norway,NO0,Norge,NO07,Nord-Norge,NO072,Troms (statistical region 2016),166602
+2020,NO,Norway,NO0,Norge,NO07,Nord-Norge,NO073,Finnmark (statistical region 2016),75472
+2023,NO,Norway,NO0,Norge,NO07,Nord-Norge,NO074,Troms og Finnmark/Romsa ja Finnmárku/Tromssa ja Finmarkku,242452
+2023,NO,Norway,NO0,Norge,NO08,Oslo og Viken,NO081,Oslo,709037
+2023,NO,Norway,NO0,Norge,NO08,Oslo og Viken,NO082,Viken,1292241
+2023,NO,Norway,NO0,Norge,NO09,Agder og Sør-Østlandet,NO091,Vestfold og Telemark,429101
+2023,NO,Norway,NO0,Norge,NO09,Agder og Sør-Østlandet,NO092,Agder,316051
+2023,NO,Norway,NO0,Norge,NO0A,Vestlandet,NO0A1,Rogaland,492350
+2023,NO,Norway,NO0,Norge,NO0A,Vestlandet,NO0A2,Vestland,646205
+2023,NO,Norway,NO0,Norge,NO0A,Vestlandet,NO0A3,Møre og Romsdal,268365
+2023,PL,Poland,PL2,Makroregion południowy,PL21,Małopolskie,PL213,Miasto Kraków,792655
+2023,PL,Poland,PL2,Makroregion południowy,PL21,Małopolskie,PL214,Krakowski,751069
+2023,PL,Poland,PL2,Makroregion południowy,PL21,Małopolskie,PL217,Tarnowski,424550
+2023,PL,Poland,PL2,Makroregion południowy,PL21,Małopolskie,PL218,Nowosądecki,512612
+2023,PL,Poland,PL2,Makroregion południowy,PL21,Małopolskie,PL219,Nowotarski,319601
+2023,PL,Poland,PL2,Makroregion południowy,PL21,Małopolskie,PL21A,Oświęcimski,518818
+2023,PL,Poland,PL2,Makroregion południowy,PL22,Śląskie,PL224,Częstochowski,478804
+2023,PL,Poland,PL2,Makroregion południowy,PL22,Śląskie,PL225,Bielski,643512
+2023,PL,Poland,PL2,Makroregion południowy,PL22,Śląskie,PL227,Rybnicki,587613
+2023,PL,Poland,PL2,Makroregion południowy,PL22,Śląskie,PL228,Bytomski,403345
+2023,PL,Poland,PL2,Makroregion południowy,PL22,Śląskie,PL229,Gliwicki,428209
+2023,PL,Poland,PL2,Makroregion południowy,PL22,Śląskie,PL22A,Katowicki,682224
+2023,PL,Poland,PL2,Makroregion południowy,PL22,Śląskie,PL22B,Sosnowiecki,636142
+2023,PL,Poland,PL2,Makroregion południowy,PL22,Śląskie,PL22C,Tyski,385434
+2023,PL,Poland,PL4,Makroregion północno-zachodni,PL41,Wielkopolskie,PL411,Pilski,384414
+2023,PL,Poland,PL4,Makroregion północno-zachodni,PL41,Wielkopolskie,PL414,Koniński,623516
+2023,PL,Poland,PL4,Makroregion północno-zachodni,PL41,Wielkopolskie,PL415,Miasto Poznań,537063
+2023,PL,Poland,PL4,Makroregion północno-zachodni,PL41,Wielkopolskie,PL416,Kaliski,643465
+2023,PL,Poland,PL4,Makroregion północno-zachodni,PL41,Wielkopolskie,PL417,Leszczyński,543338
+2023,PL,Poland,PL4,Makroregion północno-zachodni,PL41,Wielkopolskie,PL418,Poznański,712432
+2023,PL,Poland,PL4,Makroregion północno-zachodni,PL42,Zachodniopomorskie,PL424,Miasto Szczecin,386597
+2023,PL,Poland,PL4,Makroregion północno-zachodni,PL42,Zachodniopomorskie,PL426,Koszaliński,333412
+2023,PL,Poland,PL4,Makroregion północno-zachodni,PL42,Zachodniopomorskie,PL427,Szczecinecko-pyrzycki,380926
+2023,PL,Poland,PL4,Makroregion północno-zachodni,PL42,Zachodniopomorskie,PL428,Szczeciński,488114
+2023,PL,Poland,PL4,Makroregion północno-zachodni,PL43,Lubuskie,PL431,Gorzowski,362428
+2023,PL,Poland,PL4,Makroregion północno-zachodni,PL43,Lubuskie,PL432,Zielonogórski,590365
+2023,PL,Poland,PL5,Makroregion południowo-zachodni,PL51,Dolnośląskie,PL514,Miasto Wrocław,671206
+2023,PL,Poland,PL5,Makroregion południowo-zachodni,PL51,Dolnośląskie,PL515,Jeleniogórski,512700
+2023,PL,Poland,PL5,Makroregion południowo-zachodni,PL51,Dolnośląskie,PL516,Legnicko-głogowski,420225
+2023,PL,Poland,PL5,Makroregion południowo-zachodni,PL51,Dolnośląskie,PL517,Wałbrzyski,583214
+2023,PL,Poland,PL5,Makroregion południowo-zachodni,PL51,Dolnośląskie,PL518,Wrocławski,626574
+2023,PL,Poland,PL5,Makroregion południowo-zachodni,PL52,Opolskie,PL523,Nyski,335827
+2023,PL,Poland,PL5,Makroregion południowo-zachodni,PL52,Opolskie,PL524,Opolski,560543
+2023,PL,Poland,PL6,Makroregion północny,PL61,Kujawsko-pomorskie,PL613,Bydgosko-toruński,744334
+2023,PL,Poland,PL6,Makroregion północny,PL61,Kujawsko-pomorskie,PL616,Grudziądzki,361017
+2023,PL,Poland,PL6,Makroregion północny,PL61,Kujawsko-pomorskie,PL617,Inowrocławski,335149
+2023,PL,Poland,PL6,Makroregion północny,PL61,Kujawsko-pomorskie,PL618,Świecki,174147
+2023,PL,Poland,PL6,Makroregion północny,PL61,Kujawsko-pomorskie,PL619,Włocławski,328550
+2023,PL,Poland,PL6,Makroregion północny,PL62,Warmińsko-mazurskie,PL621,Elbląski,479660
+2023,PL,Poland,PL6,Makroregion północny,PL62,Warmińsko-mazurskie,PL622,Olsztyński,565651
+2023,PL,Poland,PL6,Makroregion północny,PL62,Warmińsko-mazurskie,PL623,Ełcki,258069
+2023,PL,Poland,PL6,Makroregion północny,PL63,Pomorskie,PL633,Trójmiejski,744814
+2023,PL,Poland,PL6,Makroregion północny,PL63,Pomorskie,PL634,Gdański,623591
+2023,PL,Poland,PL6,Makroregion północny,PL63,Pomorskie,PL636,Słupski,312145
+2023,PL,Poland,PL6,Makroregion północny,PL63,Pomorskie,PL637,Chojnicki,214254
+2023,PL,Poland,PL6,Makroregion północny,PL63,Pomorskie,PL638,Starogardzki,400941
+2023,PL,Poland,PL7,Makroregion centralny,PL71,Łódzkie,PL711,Miasto Łódź,652983
+2023,PL,Poland,PL7,Makroregion centralny,PL71,Łódzkie,PL712,Łódzki,385278
+2023,PL,Poland,PL7,Makroregion centralny,PL71,Łódzkie,PL713,Piotrkowski,546039
+2023,PL,Poland,PL7,Makroregion centralny,PL71,Łódzkie,PL714,Sieradzki,419701
+2023,PL,Poland,PL7,Makroregion centralny,PL71,Łódzkie,PL715,Skierniewicki,339020
+2023,PL,Poland,PL7,Makroregion centralny,PL72,Świętokrzyskie,PL721,Kielecki,696408
+2023,PL,Poland,PL7,Makroregion centralny,PL72,Świętokrzyskie,PL722,Sandomiersko-jędrzejowski,436689
+2023,PL,Poland,PL8,Makroregion wschodni,PL81,Lubelskie,PL811,Bialski,274914
+2023,PL,Poland,PL8,Makroregion wschodni,PL81,Lubelskie,PL812,Chełmsko-zamojski,555496
+2023,PL,Poland,PL8,Makroregion wschodni,PL81,Lubelskie,PL814,Lubelski,682886
+2023,PL,Poland,PL8,Makroregion wschodni,PL81,Lubelskie,PL815,Puławski,435104
+2023,PL,Poland,PL8,Makroregion wschodni,PL82,Podkarpackie,PL821,Krośnieński,436569
+2023,PL,Poland,PL8,Makroregion wschodni,PL82,Podkarpackie,PL822,Przemyski,351769
+2023,PL,Poland,PL8,Makroregion wschodni,PL82,Podkarpackie,PL823,Rzeszowski,617969
+2023,PL,Poland,PL8,Makroregion wschodni,PL82,Podkarpackie,PL824,Tarnobrzeski,556025
+2023,PL,Poland,PL8,Makroregion wschodni,PL84,Podlaskie,PL841,Białostocki,487613
+2023,PL,Poland,PL8,Makroregion wschodni,PL84,Podlaskie,PL842,Łomżyński,351876
+2023,PL,Poland,PL8,Makroregion wschodni,PL84,Podlaskie,PL843,Suwalski,244365
+2023,PL,Poland,PL9,Makroregion województwo mazowieckie,PL91,Warszawski stołeczny,PL911,Miasto Warszawa,1869188
+2023,PL,Poland,PL9,Makroregion województwo mazowieckie,PL91,Warszawski stołeczny,PL912,Warszawski wschodni,687379
+2023,PL,Poland,PL9,Makroregion województwo mazowieckie,PL91,Warszawski stołeczny,PL913,Warszawski zachodni,712943
+2023,PL,Poland,PL9,Makroregion województwo mazowieckie,PL92,Mazowiecki regionalny,PL921,Radomski,565683
+2023,PL,Poland,PL9,Makroregion województwo mazowieckie,PL92,Mazowiecki regionalny,PL922,Ciechanowski,321941
+2023,PL,Poland,PL9,Makroregion województwo mazowieckie,PL92,Mazowiecki regionalny,PL923,Płocki,306505
+2023,PL,Poland,PL9,Makroregion województwo mazowieckie,PL92,Mazowiecki regionalny,PL924,Ostrołęcki,361537
+2023,PL,Poland,PL9,Makroregion województwo mazowieckie,PL92,Mazowiecki regionalny,PL925,Siedlecki,399123
+2023,PL,Poland,PL9,Makroregion województwo mazowieckie,PL92,Mazowiecki regionalny,PL926,Żyrardowski,255464
+2023,PT,Portugal,PT1,Continente,PT11,Norte,PT111,Alto Minho,232674
+2023,PT,Portugal,PT1,Continente,PT11,Norte,PT112,Cávado,424505
+2023,PT,Portugal,PT1,Continente,PT11,Norte,PT119,Ave,420418
+2023,PT,Portugal,PT1,Continente,PT11,Norte,PT11A,Área Metropolitana do Porto,1779994
+2023,PT,Portugal,PT1,Continente,PT11,Norte,PT11B,Alto Tâmega e Barroso,83510
+2023,PT,Portugal,PT1,Continente,PT11,Norte,PT11C,Tâmega e Sousa,408425
+2023,PT,Portugal,PT1,Continente,PT11,Norte,PT11D,Douro,183705
+2023,PT,Portugal,PT1,Continente,PT11,Norte,PT11E,Terras de Trás-os-Montes,107063
+2023,PT,Portugal,PT1,Continente,PT15,Algarve,PT150,Algarve,478618
+2023,PT,Portugal,PT1,Continente,PT16,Centro (PT) (NUTS 2021),PT16B,Oeste (NUTS 2021),379085
+2023,PT,Portugal,PT1,Continente,PT16,Centro (PT) (NUTS 2021),PT16D,Região de Aveiro (NUTS 2021),376760
+2023,PT,Portugal,PT1,Continente,PT16,Centro (PT) (NUTS 2021),PT16E,Região de Coimbra (NUTS 2021),441446
+2023,PT,Portugal,PT1,Continente,PT16,Centro (PT) (NUTS 2021),PT16F,Região de Leiria (NUTS 2021),292139
+2023,PT,Portugal,PT1,Continente,PT16,Centro (PT) (NUTS 2021),PT16G,Viseu Dão Lafões (NUTS 2021),253638
+2023,PT,Portugal,PT1,Continente,PT16,Centro (PT) (NUTS 2021),PT16H,Beira Baixa (NUTS 2021),81101
+2023,PT,Portugal,PT1,Continente,PT16,Centro (PT) (NUTS 2021),PT16I,Médio Tejo (NUTS 2021),231874
+2023,PT,Portugal,PT1,Continente,PT16,Centro (PT) (NUTS 2021),PT16J,Beiras e Serra da Estrela (NUTS 2021),208913
+2023,PT,Portugal,PT1,Continente,PT17,Área Metropolitana de Lisboa (NUTS 2021),PT170,Área Metropolitana de Lisboa (NUTS 2021),2921564
+2023,PT,Portugal,PT1,Continente,PT18,Alentejo (NUTS 2021),PT181,Alentejo Litoral (NUTS 2021),99763
+2023,PT,Portugal,PT1,Continente,PT18,Alentejo (NUTS 2021),PT184,Baixo Alentejo (NUTS 2021),115513
+2023,PT,Portugal,PT1,Continente,PT18,Alentejo (NUTS 2021),PT185,Lezíria do Tejo (NUTS 2021),244259
+2023,PT,Portugal,PT1,Continente,PT18,Alentejo (NUTS 2021),PT186,Alto Alentejo (NUTS 2021),104304
+2023,PT,Portugal,PT1,Continente,PT18,Alentejo (NUTS 2021),PT187,Alentejo Central (NUTS 2021),153155
+2023,PT,Portugal,PT2,Região Autónoma dos Açores,PT20,Região Autónoma dos Açores,PT200,Região Autónoma dos Açores,240125
+2023,PT,Portugal,PT3,Região Autónoma da Madeira,PT30,Região Autónoma da Madeira,PT300,Região Autónoma da Madeira,254070
+2023,RO,Romania,RO1,Macroregiunea Unu,RO11,Nord-Vest,RO111,Bihor,553963
+2023,RO,Romania,RO1,Macroregiunea Unu,RO11,Nord-Vest,RO112,Bistriţa-Năsăud,296183
+2023,RO,Romania,RO1,Macroregiunea Unu,RO11,Nord-Vest,RO113,Cluj,688930
+2023,RO,Romania,RO1,Macroregiunea Unu,RO11,Nord-Vest,RO114,Maramureş,451622
+2023,RO,Romania,RO1,Macroregiunea Unu,RO11,Nord-Vest,RO115,Satu Mare,330554
+2023,RO,Romania,RO1,Macroregiunea Unu,RO11,Nord-Vest,RO116,Sălaj,210661
+2023,RO,Romania,RO1,Macroregiunea Unu,RO12,Centru,RO121,Alba,325776
+2023,RO,Romania,RO1,Macroregiunea Unu,RO12,Centru,RO122,Braşov,552793
+2023,RO,Romania,RO1,Macroregiunea Unu,RO12,Centru,RO123,Covasna,199769
+2023,RO,Romania,RO1,Macroregiunea Unu,RO12,Centru,RO124,Harghita,291761
+2023,RO,Romania,RO1,Macroregiunea Unu,RO12,Centru,RO125,Mureş,519344
+2023,RO,Romania,RO1,Macroregiunea Unu,RO12,Centru,RO126,Sibiu,391413
+2023,RO,Romania,RO2,Macroregiunea Doi,RO21,Nord-Est,RO211,Bacău,597583
+2023,RO,Romania,RO2,Macroregiunea Doi,RO21,Nord-Est,RO212,Botoşani,389513
+2023,RO,Romania,RO2,Macroregiunea Doi,RO21,Nord-Est,RO213,Iaşi,774025
+2023,RO,Romania,RO2,Macroregiunea Doi,RO21,Nord-Est,RO214,Neamţ,449335
+2023,RO,Romania,RO2,Macroregiunea Doi,RO21,Nord-Est,RO215,Suceava,642165
+2023,RO,Romania,RO2,Macroregiunea Doi,RO21,Nord-Est,RO216,Vaslui,371592
+2023,RO,Romania,RO2,Macroregiunea Doi,RO22,Sud-Est,RO221,Brăila,277005
+2023,RO,Romania,RO2,Macroregiunea Doi,RO22,Sud-Est,RO222,Buzău,400744
+2023,RO,Romania,RO2,Macroregiunea Doi,RO22,Sud-Est,RO223,Constanţa,657060
+2023,RO,Romania,RO2,Macroregiunea Doi,RO22,Sud-Est,RO224,Galaţi,494323
+2023,RO,Romania,RO2,Macroregiunea Doi,RO22,Sud-Est,RO225,Tulcea,190998
+2023,RO,Romania,RO2,Macroregiunea Doi,RO22,Sud-Est,RO226,Vrancea,333032
+2023,RO,Romania,RO3,Macroregiunea Trei,RO31,Sud-Muntenia,RO311,Argeş,565643
+2023,RO,Romania,RO3,Macroregiunea Trei,RO31,Sud-Muntenia,RO312,Călăraşi,280478
+2023,RO,Romania,RO3,Macroregiunea Trei,RO31,Sud-Muntenia,RO313,Dâmboviţa,477214
+2023,RO,Romania,RO3,Macroregiunea Trei,RO31,Sud-Muntenia,RO314,Giurgiu,258714
+2023,RO,Romania,RO3,Macroregiunea Trei,RO31,Sud-Muntenia,RO315,Ialomiţa,249865
+2023,RO,Romania,RO3,Macroregiunea Trei,RO31,Sud-Muntenia,RO316,Prahova,691202
+2023,RO,Romania,RO3,Macroregiunea Trei,RO31,Sud-Muntenia,RO317,Teleorman,318023
+2023,RO,Romania,RO3,Macroregiunea Trei,RO32,Bucureşti-Ilfov,RO321,Bucureşti,1725271
+2023,RO,Romania,RO3,Macroregiunea Trei,RO32,Bucureşti-Ilfov,RO322,Ilfov,564854
+2023,RO,Romania,RO4,Macroregiunea Patru,RO41,Sud-Vest Oltenia,RO411,Dolj,599567
+2023,RO,Romania,RO4,Macroregiunea Patru,RO41,Sud-Vest Oltenia,RO412,Gorj,311298
+2023,RO,Romania,RO4,Macroregiunea Patru,RO41,Sud-Vest Oltenia,RO413,Mehedinţi,231407
+2023,RO,Romania,RO4,Macroregiunea Patru,RO41,Sud-Vest Oltenia,RO414,Olt,378533
+2023,RO,Romania,RO4,Macroregiunea Patru,RO41,Sud-Vest Oltenia,RO415,Vâlcea,340875
+2023,RO,Romania,RO4,Macroregiunea Patru,RO42,Vest,RO421,Arad,410414
+2023,RO,Romania,RO4,Macroregiunea Patru,RO42,Vest,RO422,Caraş-Severin,244885
+2023,RO,Romania,RO4,Macroregiunea Patru,RO42,Vest,RO423,Hunedoara,357554
+2023,RO,Romania,RO4,Macroregiunea Patru,RO42,Vest,RO424,Timiş,658607
+2023,RS,Serbia,RS1,Srbija - sever,RS11,Beogradski region,RS110,Beogradska oblast,1683033
+2023,RS,Serbia,RS1,Srbija - sever,RS12,Region Vojvodine,RS121,Zapadnobacka oblast,154072
+2023,RS,Serbia,RS1,Srbija - sever,RS12,Region Vojvodine,RS122,Juznobanatska oblast,259767
+2023,RS,Serbia,RS1,Srbija - sever,RS12,Region Vojvodine,RS123,Juznobacka oblast,607662
+2023,RS,Serbia,RS1,Srbija - sever,RS12,Region Vojvodine,RS124,Severnobanatska oblast,117600
+2023,RS,Serbia,RS1,Srbija - sever,RS12,Region Vojvodine,RS125,Severnobacka oblast,159934
+2023,RS,Serbia,RS1,Srbija - sever,RS12,Region Vojvodine,RS126,Srednjobanatska oblast,157379
+2023,RS,Serbia,RS1,Srbija - sever,RS12,Region Vojvodine,RS127,Sremska oblast,282237
+2023,RS,Serbia,RS2,Srbija - jug,RS21,Region Sumadije i Zapadne Srbije,RS211,Zlatiborska oblast,254167
+2023,RS,Serbia,RS2,Srbija - jug,RS21,Region Sumadije i Zapadne Srbije,RS212,Kolubarska oblast,154107
+2023,RS,Serbia,RS2,Srbija - jug,RS21,Region Sumadije i Zapadne Srbije,RS213,Macvanska oblast,264891
+2023,RS,Serbia,RS2,Srbija - jug,RS21,Region Sumadije i Zapadne Srbije,RS214,Moravicka oblast,188935
+2023,RS,Serbia,RS2,Srbija - jug,RS21,Region Sumadije i Zapadne Srbije,RS215,Pomoravska oblast,181625
+2023,RS,Serbia,RS2,Srbija - jug,RS21,Region Sumadije i Zapadne Srbije,RS216,Rasinska oblast,206591
+2023,RS,Serbia,RS2,Srbija - jug,RS21,Region Sumadije i Zapadne Srbije,RS217,Raska oblast,296875
+2023,RS,Serbia,RS2,Srbija - jug,RS21,Region Sumadije i Zapadne Srbije,RS218,Sumadijska oblast,269258
+2023,RS,Serbia,RS2,Srbija - jug,RS22,Region Juzne i Istocne Srbije,RS221,Borska oblast,100711
+2023,RS,Serbia,RS2,Srbija - jug,RS22,Region Juzne i Istocne Srbije,RS222,Branicevska oblast,155892
+2023,RS,Serbia,RS2,Srbija - jug,RS22,Region Juzne i Istocne Srbije,RS223,Zajecarska oblast,96365
+2023,RS,Serbia,RS2,Srbija - jug,RS22,Region Juzne i Istocne Srbije,RS224,Jablanicka oblast,184142
+2023,RS,Serbia,RS2,Srbija - jug,RS22,Region Juzne i Istocne Srbije,RS225,Nisavska oblast,343648
+2023,RS,Serbia,RS2,Srbija - jug,RS22,Region Juzne i Istocne Srbije,RS226,Pirotska oblast,76430
+2023,RS,Serbia,RS2,Srbija - jug,RS22,Region Juzne i Istocne Srbije,RS227,Podunavska oblast,175290
+2023,RS,Serbia,RS2,Srbija - jug,RS22,Region Juzne i Istocne Srbije,RS228,Pcinjska oblast,193454
+2023,RS,Serbia,RS2,Srbija - jug,RS22,Region Juzne i Istocne Srbije,RS229,Toplicka oblast,77132
+2023,SE,Sweden,SE1,Östra Sverige,SE11,Stockholm,SE110,Stockholms län,2440027
+2023,SE,Sweden,SE1,Östra Sverige,SE12,Östra Mellansverige,SE121,Uppsala län,400682
+2023,SE,Sweden,SE1,Östra Sverige,SE12,Östra Mellansverige,SE122,Södermanlands län,302566
+2023,SE,Sweden,SE1,Östra Sverige,SE12,Östra Mellansverige,SE123,Östergötlands län,471912
+2023,SE,Sweden,SE1,Östra Sverige,SE12,Östra Mellansverige,SE124,Örebro län,307772
+2023,SE,Sweden,SE1,Östra Sverige,SE12,Östra Mellansverige,SE125,Västmanlands län,280713
+2023,SE,Sweden,SE2,Södra Sverige,SE21,Småland med öarna,SE211,Jönköpings län,369113
+2023,SE,Sweden,SE2,Södra Sverige,SE21,Småland med öarna,SE212,Kronobergs län,204335
+2023,SE,Sweden,SE2,Södra Sverige,SE21,Småland med öarna,SE213,Kalmar län,247711
+2023,SE,Sweden,SE2,Södra Sverige,SE21,Småland med öarna,SE214,Gotlands län,61173
+2023,SE,Sweden,SE2,Södra Sverige,SE22,Sydsverige,SE221,Blekinge län,158740
+2023,SE,Sweden,SE2,Södra Sverige,SE22,Sydsverige,SE224,Skåne län,1414324
+2023,SE,Sweden,SE2,Södra Sverige,SE23,Västsverige,SE231,Hallands län,342805
+2023,SE,Sweden,SE2,Södra Sverige,SE23,Västsverige,SE232,Västra Götalands län,1758656
+2023,SE,Sweden,SE3,Norra Sverige,SE31,Norra Mellansverige,SE311,Värmlands län,283976
+2023,SE,Sweden,SE3,Norra Sverige,SE31,Norra Mellansverige,SE312,Dalarnas län,288310
+2023,SE,Sweden,SE3,Norra Sverige,SE31,Norra Mellansverige,SE313,Gävleborgs län,287334
+2023,SE,Sweden,SE3,Norra Sverige,SE32,Mellersta Norrland,SE321,Västernorrlands län,243265
+2023,SE,Sweden,SE3,Norra Sverige,SE32,Mellersta Norrland,SE322,Jämtlands län,132670
+2023,SE,Sweden,SE3,Norra Sverige,SE33,Övre Norrland,SE331,Västerbottens län,276295
+2023,SE,Sweden,SE3,Norra Sverige,SE33,Övre Norrland,SE332,Norrbottens län,249177
+2023,SI,Slovenia,SI0,Slovenija,SI03,Vzhodna Slovenija,SI031,Pomurska,114104
+2023,SI,Slovenia,SI0,Slovenija,SI03,Vzhodna Slovenija,SI032,Podravska,329014
+2023,SI,Slovenia,SI0,Slovenija,SI03,Vzhodna Slovenija,SI033,Koroška,70718
+2023,SI,Slovenia,SI0,Slovenija,SI03,Vzhodna Slovenija,SI034,Savinjska,260132
+2023,SI,Slovenia,SI0,Slovenija,SI03,Vzhodna Slovenija,SI035,Zasavska,57091
+2023,SI,Slovenia,SI0,Slovenija,SI03,Vzhodna Slovenija,SI036,Posavska,75987
+2023,SI,Slovenia,SI0,Slovenija,SI03,Vzhodna Slovenija,SI037,Jugovzhodna Slovenija,147088
+2023,SI,Slovenia,SI0,Slovenija,SI03,Vzhodna Slovenija,SI038,Primorsko-notranjska,53751
+2023,SI,Slovenia,SI0,Slovenija,SI04,Zahodna Slovenija,SI041,Osrednjeslovenska,561407
+2023,SI,Slovenia,SI0,Slovenija,SI04,Zahodna Slovenija,SI042,Gorenjska,210188
+2023,SI,Slovenia,SI0,Slovenija,SI04,Zahodna Slovenija,SI043,Goriška,118436
+2023,SI,Slovenia,SI0,Slovenija,SI04,Zahodna Slovenija,SI044,Obalno-kraška,119056
+2023,SK,Slovakia,SK0,Slovensko,SK01,Bratislavský kraj,SK010,Bratislavský kraj,728370
+2023,SK,Slovakia,SK0,Slovensko,SK02,Západné Slovensko,SK021,Trnavský kraj,565573
+2023,SK,Slovakia,SK0,Slovensko,SK02,Západné Slovensko,SK022,Trenčiansky kraj,570675
+2023,SK,Slovakia,SK0,Slovensko,SK02,Západné Slovensko,SK023,Nitriansky kraj,670696
+2023,SK,Slovakia,SK0,Slovensko,SK03,Stredné Slovensko,SK031,Žilinský kraj,688106
+2023,SK,Slovakia,SK0,Slovensko,SK03,Stredné Slovensko,SK032,Banskobystrický kraj,617777
+2023,SK,Slovakia,SK0,Slovensko,SK04,Východné Slovensko,SK041,Prešovský kraj,808090
+2023,SK,Slovakia,SK0,Slovensko,SK04,Východné Slovensko,SK042,Košický kraj,779505
+2023,TR,Türkiye,TR1,İstanbul,TR10,İstanbul,TR100,İstanbul,15907951
+2023,TR,Türkiye,TR2,Batı Marmara,TR21,"Tekirdağ, Edirne, Kırklareli",TR211,Tekirdağ,1142451
+2023,TR,Türkiye,TR2,Batı Marmara,TR21,"Tekirdağ, Edirne, Kırklareli",TR212,Edirne,414714
+2023,TR,Türkiye,TR2,Batı Marmara,TR21,"Tekirdağ, Edirne, Kırklareli",TR213,Kırklareli,369347
+2023,TR,Türkiye,TR2,Batı Marmara,TR22,"Balıkesir, Çanakkale",TR221,Balıkesir,1257590
+2023,TR,Türkiye,TR2,Batı Marmara,TR22,"Balıkesir, Çanakkale",TR222,Çanakkale,559383
+2023,TR,Türkiye,TR3,Ege,TR31,İzmir,TR310,İzmir,4462056
+2023,TR,Türkiye,TR3,Ege,TR32,"Aydın, Denizli, Muğla",TR321,Aydın,1148241
+2023,TR,Türkiye,TR3,Ege,TR32,"Aydın, Denizli, Muğla",TR322,Denizli,1056332
+2023,TR,Türkiye,TR3,Ege,TR32,"Aydın, Denizli, Muğla",TR323,Muğla,1048185
+2023,TR,Türkiye,TR3,Ege,TR33,"Manisa, Afyonkarahisar, Kütahya, Uşak",TR331,Manisa,1468279
+2023,TR,Türkiye,TR3,Ege,TR33,"Manisa, Afyonkarahisar, Kütahya, Uşak",TR332,Afyonkarahisar,747555
+2023,TR,Türkiye,TR3,Ege,TR33,"Manisa, Afyonkarahisar, Kütahya, Uşak",TR333,Kütahya,580701
+2023,TR,Türkiye,TR3,Ege,TR33,"Manisa, Afyonkarahisar, Kütahya, Uşak",TR334,Uşak,375454
+2023,TR,Türkiye,TR4,Doğu Marmara,TR41,"Bursa, Eskişehir, Bilecik",TR411,Bursa,3194720
+2023,TR,Türkiye,TR4,Doğu Marmara,TR41,"Bursa, Eskişehir, Bilecik",TR412,Eskişehir,906617
+2023,TR,Türkiye,TR4,Doğu Marmara,TR41,"Bursa, Eskişehir, Bilecik",TR413,Bilecik,228673
+2023,TR,Türkiye,TR4,Doğu Marmara,TR42,"Kocaeli, Sakarya, Düzce, Bolu, Yalova",TR421,Kocaeli,2079072
+2023,TR,Türkiye,TR4,Doğu Marmara,TR42,"Kocaeli, Sakarya, Düzce, Bolu, Yalova",TR422,Sakarya,1080080
+2023,TR,Türkiye,TR4,Doğu Marmara,TR42,"Kocaeli, Sakarya, Düzce, Bolu, Yalova",TR423,Düzce,405131
+2023,TR,Türkiye,TR4,Doğu Marmara,TR42,"Kocaeli, Sakarya, Düzce, Bolu, Yalova",TR424,Bolu,320824
+2023,TR,Türkiye,TR4,Doğu Marmara,TR42,"Kocaeli, Sakarya, Düzce, Bolu, Yalova",TR425,Yalova,296333
+2023,TR,Türkiye,TR5,Batı Anadolu,TR51,Ankara,TR510,Ankara,5782285
+2023,TR,Türkiye,TR5,Batı Anadolu,TR52,"Konya, Karaman",TR521,Konya,2296347
+2023,TR,Türkiye,TR5,Batı Anadolu,TR52,"Konya, Karaman",TR522,Karaman,260838
+2023,TR,Türkiye,TR6,Akdeniz,TR61,"Antalya, Isparta, Burdur",TR611,Antalya,2688004
+2023,TR,Türkiye,TR6,Akdeniz,TR61,"Antalya, Isparta, Burdur",TR612,Isparta,445325
+2023,TR,Türkiye,TR6,Akdeniz,TR61,"Antalya, Isparta, Burdur",TR613,Burdur,273799
+2023,TR,Türkiye,TR6,Akdeniz,TR62,"Adana, Mersin",TR621,Adana,2274106
+2023,TR,Türkiye,TR6,Akdeniz,TR62,"Adana, Mersin",TR622,Mersin,1916432
+2023,TR,Türkiye,TR6,Akdeniz,TR63,"Hatay, Kahramanmaraş, Osmaniye",TR631,Hatay,1686043
+2023,TR,Türkiye,TR6,Akdeniz,TR63,"Hatay, Kahramanmaraş, Osmaniye",TR632,Kahramanmaraş,1177436
+2023,TR,Türkiye,TR6,Akdeniz,TR63,"Hatay, Kahramanmaraş, Osmaniye",TR633,Osmaniye,559405
+2023,TR,Türkiye,TR7,Orta Anadolu,TR71,"Kırıkkale, Aksaray, Niğde, Nevşehir, Kırşehir",TR711,Kırıkkale,277046
+2023,TR,Türkiye,TR7,Orta Anadolu,TR71,"Kırıkkale, Aksaray, Niğde, Nevşehir, Kırşehir",TR712,Aksaray,433055
+2023,TR,Türkiye,TR7,Orta Anadolu,TR71,"Kırıkkale, Aksaray, Niğde, Nevşehir, Kırşehir",TR713,Niğde,365419
+2023,TR,Türkiye,TR7,Orta Anadolu,TR71,"Kırıkkale, Aksaray, Niğde, Nevşehir, Kırşehir",TR714,Nevşehir,310011
+2023,TR,Türkiye,TR7,Orta Anadolu,TR71,"Kırıkkale, Aksaray, Niğde, Nevşehir, Kırşehir",TR715,Kırşehir,244519
+2023,TR,Türkiye,TR7,Orta Anadolu,TR72,"Kayseri, Sivas, Yozgat",TR721,Kayseri,1441523
+2023,TR,Türkiye,TR7,Orta Anadolu,TR72,"Kayseri, Sivas, Yozgat",TR722,Sivas,634924
+2023,TR,Türkiye,TR7,Orta Anadolu,TR72,"Kayseri, Sivas, Yozgat",TR723,Yozgat,418442
+2023,TR,Türkiye,TR8,Batı Karadeniz,TR81,"Zonguldak, Karabük, Bartın",TR811,Zonguldak,588510
+2023,TR,Türkiye,TR8,Batı Karadeniz,TR81,"Zonguldak, Karabük, Bartın",TR812,Karabük,252058
+2023,TR,Türkiye,TR8,Batı Karadeniz,TR81,"Zonguldak, Karabük, Bartın",TR813,Bartın,203351
+2023,TR,Türkiye,TR8,Batı Karadeniz,TR82,"Kastamonu, Çankırı, Sinop",TR821,Kastamonu,378115
+2023,TR,Türkiye,TR8,Batı Karadeniz,TR82,"Kastamonu, Çankırı, Sinop",TR822,Çankırı,195766
+2023,TR,Türkiye,TR8,Batı Karadeniz,TR82,"Kastamonu, Çankırı, Sinop",TR823,Sinop,220799
+2023,TR,Türkiye,TR8,Batı Karadeniz,TR83,"Samsun, Tokat, Çorum, Amasya",TR831,Samsun,1368488
+2023,TR,Türkiye,TR8,Batı Karadeniz,TR83,"Samsun, Tokat, Çorum, Amasya",TR832,Tokat,596454
+2023,TR,Türkiye,TR8,Batı Karadeniz,TR83,"Samsun, Tokat, Çorum, Amasya",TR833,Çorum,524130
+2023,TR,Türkiye,TR8,Batı Karadeniz,TR83,"Samsun, Tokat, Çorum, Amasya",TR834,Amasya,338267
+2023,TR,Türkiye,TR9,Doğu Karadeniz,TR90,"Trabzon, Ordu, Giresun, Rize, Artvin, Gümüşhane",TR901,Trabzon,818023
+2023,TR,Türkiye,TR9,Doğu Karadeniz,TR90,"Trabzon, Ordu, Giresun, Rize, Artvin, Gümüşhane",TR902,Ordu,763190
+2023,TR,Türkiye,TR9,Doğu Karadeniz,TR90,"Trabzon, Ordu, Giresun, Rize, Artvin, Gümüşhane",TR903,Giresun,450862
+2023,TR,Türkiye,TR9,Doğu Karadeniz,TR90,"Trabzon, Ordu, Giresun, Rize, Artvin, Gümüşhane",TR904,Rize,344016
+2023,TR,Türkiye,TR9,Doğu Karadeniz,TR90,"Trabzon, Ordu, Giresun, Rize, Artvin, Gümüşhane",TR905,Artvin,169403
+2023,TR,Türkiye,TR9,Doğu Karadeniz,TR90,"Trabzon, Ordu, Giresun, Rize, Artvin, Gümüşhane",TR906,Gümüşhane,144544
+2023,TR,Türkiye,TRA,Kuzeydoğu Anadolu,TRA1,"Erzurum, Erzincan, Bayburt",TRA11,Erzurum,749754
+2023,TR,Türkiye,TRA,Kuzeydoğu Anadolu,TRA1,"Erzurum, Erzincan, Bayburt",TRA12,Erzincan,239223
+2023,TR,Türkiye,TRA,Kuzeydoğu Anadolu,TRA1,"Erzurum, Erzincan, Bayburt",TRA13,Bayburt,84241
+2023,TR,Türkiye,TRA,Kuzeydoğu Anadolu,TRA2,"Ağrı, Kars, Iğdır, Ardahan",TRA21,Ağrı,510626
+2023,TR,Türkiye,TRA,Kuzeydoğu Anadolu,TRA2,"Ağrı, Kars, Iğdır, Ardahan",TRA22,Kars,274829
+2023,TR,Türkiye,TRA,Kuzeydoğu Anadolu,TRA2,"Ağrı, Kars, Iğdır, Ardahan",TRA23,Iğdır,203594
+2023,TR,Türkiye,TRA,Kuzeydoğu Anadolu,TRA2,"Ağrı, Kars, Iğdır, Ardahan",TRA24,Ardahan,92481
+2023,TR,Türkiye,TRB,Ortadoğu Anadolu,TRB1,"Malatya, Elazığ, Bingöl, Tunceli",TRB11,Malatya,812580
+2023,TR,Türkiye,TRB,Ortadoğu Anadolu,TRB1,"Malatya, Elazığ, Bingöl, Tunceli",TRB12,Elazığ,591497
+2023,TR,Türkiye,TRB,Ortadoğu Anadolu,TRB1,"Malatya, Elazığ, Bingöl, Tunceli",TRB13,Bingöl,282556
+2023,TR,Türkiye,TRB,Ortadoğu Anadolu,TRB1,"Malatya, Elazığ, Bingöl, Tunceli",TRB14,Tunceli,84366
+2023,TR,Türkiye,TRB,Ortadoğu Anadolu,TRB2,"Van, Muş, Bitlis, Hakkari",TRB21,Van,1128749
+2023,TR,Türkiye,TRB,Ortadoğu Anadolu,TRB2,"Van, Muş, Bitlis, Hakkari",TRB22,Muş,399202
+2023,TR,Türkiye,TRB,Ortadoğu Anadolu,TRB2,"Van, Muş, Bitlis, Hakkari",TRB23,Bitlis,353988
+2023,TR,Türkiye,TRB,Ortadoğu Anadolu,TRB2,"Van, Muş, Bitlis, Hakkari",TRB24,Hakkari,275333
+2023,TR,Türkiye,TRC,Güneydoğu Anadolu,TRC1,"Gaziantep, Adıyaman, Kilis",TRC11,Gaziantep,2154051
+2023,TR,Türkiye,TRC,Güneydoğu Anadolu,TRC1,"Gaziantep, Adıyaman, Kilis",TRC12,Adıyaman,635169
+2023,TR,Türkiye,TRC,Güneydoğu Anadolu,TRC1,"Gaziantep, Adıyaman, Kilis",TRC13,Kilis,147919
+2023,TR,Türkiye,TRC,Güneydoğu Anadolu,TRC2,"Şanlıurfa, Diyarbakır",TRC21,Şanlıurfa,2170110
+2023,TR,Türkiye,TRC,Güneydoğu Anadolu,TRC2,"Şanlıurfa, Diyarbakır",TRC22,Diyarbakır,1804880
+2023,TR,Türkiye,TRC,Güneydoğu Anadolu,TRC3,"Mardin, Batman, Şırnak, Siirt",TRC31,Mardin,870374
+2023,TR,Türkiye,TRC,Güneydoğu Anadolu,TRC3,"Mardin, Batman, Şırnak, Siirt",TRC32,Batman,634491
+2023,TR,Türkiye,TRC,Güneydoğu Anadolu,TRC3,"Mardin, Batman, Şırnak, Siirt",TRC33,Şırnak,557605
+2023,TR,Türkiye,TRC,Güneydoğu Anadolu,TRC3,"Mardin, Batman, Şırnak, Siirt",TRC34,Siirt,331311
+2019,UK,United Kingdom,UKC,North East (UK) (NUTS 2021),UKC1,Tees Valley and Durham (NUTS 2021),UKC11,Hartlepool and Stockton-on-Tees (NUTS 2021),290998
+2019,UK,United Kingdom,UKC,North East (UK) (NUTS 2021),UKC1,Tees Valley and Durham (NUTS 2021),UKC12,South Teesside (NUTS 2021),276988
+2019,UK,United Kingdom,UKC,North East (UK) (NUTS 2021),UKC1,Tees Valley and Durham (NUTS 2021),UKC13,Darlington (NUTS 2021),106522
+2019,UK,United Kingdom,UKC,North East (UK) (NUTS 2021),UKC1,Tees Valley and Durham (NUTS 2021),UKC14,Durham CC (NUTS 2021),527035
+2019,UK,United Kingdom,UKC,North East (UK) (NUTS 2021),UKC2,Northumberland and Tyne and Wear (NUTS 2021),UKC21,Northumberland (NUTS 2021),319010
+2019,UK,United Kingdom,UKC,North East (UK) (NUTS 2021),UKC2,Northumberland and Tyne and Wear (NUTS 2021),UKC22,Tyneside (NUTS 2021),858694
+2019,UK,United Kingdom,UKC,North East (UK) (NUTS 2021),UKC2,Northumberland and Tyne and Wear (NUTS 2021),UKC23,Sunderland (NUTS 2021),277733
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD1,Cumbria (NUTS 2021),UKD11,West Cumbria (NUTS 2021),232618
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD1,Cumbria (NUTS 2021),UKD12,East Cumbria (NUTS 2021),265465
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD3,Greater Manchester (NUTS 2021),UKD33,Manchester (NUTS 2021),553230
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD3,Greater Manchester (NUTS 2021),UKD34,Greater Manchester South West (NUTS 2021),492658
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD3,Greater Manchester (NUTS 2021),UKD35,Greater Manchester South East (NUTS 2021),517992
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD3,Greater Manchester (NUTS 2021),UKD36,Greater Manchester North West (NUTS 2021),612383
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD3,Greater Manchester (NUTS 2021),UKD37,Greater Manchester North East (NUTS 2021),645740
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD4,Lancashire (NUTS 2021),UKD41,Blackburn with Darwen (NUTS 2021),148753
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD4,Lancashire (NUTS 2021),UKD42,Blackpool (NUTS 2021),139098
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD4,Lancashire (NUTS 2021),UKD44,Lancaster & Wyre (NUTS 2021),254791
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD4,Lancashire (NUTS 2021),UKD45,Mid Lancashire (NUTS 2021),391144
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD4,Lancashire (NUTS 2021),UKD46,East Lancashire (NUTS 2021),330381
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD4,Lancashire (NUTS 2021),UKD47,Chorley & West Lancashire (NUTS 2021),231151
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD6,Cheshire (NUTS 2021),UKD61,Warrington (NUTS 2021),210829
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD6,Cheshire (NUTS 2021),UKD62,Cheshire East (NUTS 2021),380694
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD6,Cheshire (NUTS 2021),UKD63,Cheshire West and Chester (NUTS 2021),339824
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD7,Merseyside (NUTS 2021),UKD71,East Merseyside (NUTS 2021),457712
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD7,Merseyside (NUTS 2021),UKD72,Liverpool (NUTS 2021),496784
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD7,Merseyside (NUTS 2021),UKD73,Sefton (NUTS 2021),275562
+2019,UK,United Kingdom,UKD,North West (UK) (NUTS 2021),UKD7,Merseyside (NUTS 2021),UKD74,Wirral (NUTS 2021),323266
+2019,UK,United Kingdom,UKE,Yorkshire and The Humber (NUTS 2021),UKE1,East Yorkshire and Northern Lincolnshire (NUTS 2021),UKE11,"Kingston upon Hull, City of (NUTS 2021)",261149
+2019,UK,United Kingdom,UKE,Yorkshire and The Humber (NUTS 2021),UKE1,East Yorkshire and Northern Lincolnshire (NUTS 2021),UKE12,East Riding of Yorkshire (NUTS 2021),339625
+2019,UK,United Kingdom,UKE,Yorkshire and The Humber (NUTS 2021),UKE1,East Yorkshire and Northern Lincolnshire (NUTS 2021),UKE13,North and North East Lincolnshire (NUTS 2021),331871
+2019,UK,United Kingdom,UKE,Yorkshire and The Humber (NUTS 2021),UKE2,North Yorkshire (NUTS 2021),UKE21,York (NUTS 2021),210235
+2019,UK,United Kingdom,UKE,Yorkshire and The Humber (NUTS 2021),UKE2,North Yorkshire (NUTS 2021),UKE22,North Yorkshire CC (NUTS 2021),613819
+2019,UK,United Kingdom,UKE,Yorkshire and The Humber (NUTS 2021),UKE3,South Yorkshire (NUTS 2021),UKE31,"Barnsley, Doncaster and Rotherham (NUTS 2021)",820943
+2019,UK,United Kingdom,UKE,Yorkshire and The Humber (NUTS 2021),UKE3,South Yorkshire (NUTS 2021),UKE32,Sheffield (NUTS 2021),584028
+2019,UK,United Kingdom,UKE,Yorkshire and The Humber (NUTS 2021),UKE4,West Yorkshire (NUTS 2021),UKE41,Bradford (NUTS 2021),536986
+2019,UK,United Kingdom,UKE,Yorkshire and The Humber (NUTS 2021),UKE4,West Yorkshire (NUTS 2021),UKE42,Leeds (NUTS 2021),792525
+2019,UK,United Kingdom,UKE,Yorkshire and The Humber (NUTS 2021),UKE4,West Yorkshire (NUTS 2021),UKE44,Calderdale and Kirklees (NUTS 2021),651117
+2019,UK,United Kingdom,UKE,Yorkshire and The Humber (NUTS 2021),UKE4,West Yorkshire (NUTS 2021),UKE45,Wakefield (NUTS 2021),343932
+2019,UK,United Kingdom,UKF,East Midlands (UK) (NUTS 2021),UKF1,Derbyshire and Nottinghamshire (NUTS 2021),UKF11,Derby (NUTS 2021),258746
+2019,UK,United Kingdom,UKF,East Midlands (UK) (NUTS 2021),UKF1,Derbyshire and Nottinghamshire (NUTS 2021),UKF12,East Derbyshire (NUTS 2021),285393
+2019,UK,United Kingdom,UKF,East Midlands (UK) (NUTS 2021),UKF1,Derbyshire and Nottinghamshire (NUTS 2021),UKF13,South and West Derbyshire (NUTS 2021),510300
+2019,UK,United Kingdom,UKF,East Midlands (UK) (NUTS 2021),UKF1,Derbyshire and Nottinghamshire (NUTS 2021),UKF14,Nottingham (NUTS 2021),331297
+2019,UK,United Kingdom,UKF,East Midlands (UK) (NUTS 2021),UKF1,Derbyshire and Nottinghamshire (NUTS 2021),UKF15,North Nottinghamshire (NUTS 2021),475079
+2019,UK,United Kingdom,UKF,East Midlands (UK) (NUTS 2021),UKF1,Derbyshire and Nottinghamshire (NUTS 2021),UKF16,South Nottinghamshire (NUTS 2021),349566
+2019,UK,United Kingdom,UKF,East Midlands (UK) (NUTS 2021),UKF2,"Leicestershire, Rutland and Northamptonshire (NUTS 2021)",UKF21,Leicester (NUTS 2021),357394
+2019,UK,United Kingdom,UKF,East Midlands (UK) (NUTS 2021),UKF2,"Leicestershire, Rutland and Northamptonshire (NUTS 2021)",UKF22,Leicestershire CC and Rutland (NUTS 2021),736439
+2019,UK,United Kingdom,UKF,East Midlands (UK) (NUTS 2021),UKF2,"Leicestershire, Rutland and Northamptonshire (NUTS 2021)",UKF24,West Northamptonshire (NUTS 2021),403687
+2019,UK,United Kingdom,UKF,East Midlands (UK) (NUTS 2021),UKF2,"Leicestershire, Rutland and Northamptonshire (NUTS 2021)",UKF25,North Northamptonshire (NUTS 2021),346244
+2019,UK,United Kingdom,UKF,East Midlands (UK) (NUTS 2021),UKF3,Lincolnshire (NUTS 2021),UKF30,Lincolnshire (NUTS 2021),756920
+2019,UK,United Kingdom,UKG,West Midlands (UK) (NUTS 2021),UKG1,"Herefordshire, Worcestershire and Warwickshire (NUTS 2021)",UKG11,"Herefordshire, County of (NUTS 2021)",192214
+2019,UK,United Kingdom,UKG,West Midlands (UK) (NUTS 2021),UKG1,"Herefordshire, Worcestershire and Warwickshire (NUTS 2021)",UKG12,Worcestershire (NUTS 2021),592158
+2019,UK,United Kingdom,UKG,West Midlands (UK) (NUTS 2021),UKG1,"Herefordshire, Worcestershire and Warwickshire (NUTS 2021)",UKG13,Warwickshire (NUTS 2021),568167
+2019,UK,United Kingdom,UKG,West Midlands (UK) (NUTS 2021),UKG2,Shropshire and Staffordshire (NUTS 2021),UKG21,Telford and Wrekin (NUTS 2021),177450
+2019,UK,United Kingdom,UKG,West Midlands (UK) (NUTS 2021),UKG2,Shropshire and Staffordshire (NUTS 2021),UKG22,Shropshire CC (NUTS 2021),319189
+2019,UK,United Kingdom,UKG,West Midlands (UK) (NUTS 2021),UKG2,Shropshire and Staffordshire (NUTS 2021),UKG23,Stoke-on-Trent (NUTS 2021),256127
+2019,UK,United Kingdom,UKG,West Midlands (UK) (NUTS 2021),UKG2,Shropshire and Staffordshire (NUTS 2021),UKG24,Staffordshire CC (NUTS 2021),874190
+2019,UK,United Kingdom,UKG,West Midlands (UK) (NUTS 2021),UKG3,West Midlands (NUTS 2021),UKG31,Birmingham (NUTS 2021),1148862
+2019,UK,United Kingdom,UKG,West Midlands (UK) (NUTS 2021),UKG3,West Midlands (NUTS 2021),UKG32,Solihull (NUTS 2021),215055
+2019,UK,United Kingdom,UKG,West Midlands (UK) (NUTS 2021),UKG3,West Midlands (NUTS 2021),UKG33,Coventry (NUTS 2021),369461
+2019,UK,United Kingdom,UKG,West Midlands (UK) (NUTS 2021),UKG3,West Midlands (NUTS 2021),UKG36,Dudley (NUTS 2021),320320
+2019,UK,United Kingdom,UKG,West Midlands (UK) (NUTS 2021),UKG3,West Midlands (NUTS 2021),UKG37,Sandwell (NUTS 2021),328774
+2019,UK,United Kingdom,UKG,West Midlands (UK) (NUTS 2021),UKG3,West Midlands (NUTS 2021),UKG38,Walsall (NUTS 2021),283663
+2019,UK,United Kingdom,UKG,West Midlands (UK) (NUTS 2021),UKG3,West Midlands (NUTS 2021),UKG39,Wolverhampton (NUTS 2021),262242
+2019,UK,United Kingdom,UKH,East of England (NUTS 2021),UKH1,East Anglia (NUTS 2021),UKH11,Peterborough (NUTS 2021),201799
+2019,UK,United Kingdom,UKH,East of England (NUTS 2021),UKH1,East Anglia (NUTS 2021),UKH12,Cambridgeshire CC (NUTS 2021),653412
+2019,UK,United Kingdom,UKH,East of England (NUTS 2021),UKH1,East Anglia (NUTS 2021),UKH14,Suffolk (NUTS 2021),760472
+2019,UK,United Kingdom,UKH,East of England (NUTS 2021),UKH1,East Anglia (NUTS 2021),UKH15,Norwich & East Norfolk (NUTS 2021),370822
+2019,UK,United Kingdom,UKH,East of England (NUTS 2021),UKH1,East Anglia (NUTS 2021),UKH16,North & West Norfolk (NUTS 2021),257538
+2019,UK,United Kingdom,UKH,East of England (NUTS 2021),UKH1,East Anglia (NUTS 2021),UKH17,Breckland & South Norfolk (NUTS 2021),277633
+2019,UK,United Kingdom,UKH,East of England (NUTS 2021),UKH2,Bedfordshire and Hertfordshire (NUTS 2021),UKH21,Luton (NUTS 2021),218045
+2019,UK,United Kingdom,UKH,East of England (NUTS 2021),UKH2,Bedfordshire and Hertfordshire (NUTS 2021),UKH23,Hertfordshire (NUTS 2021),1194634
+2019,UK,United Kingdom,UKH,East of England (NUTS 2021),UKH2,Bedfordshire and Hertfordshire (NUTS 2021),UKH24,Bedford (NUTS 2021),173237
+2019,UK,United Kingdom,UKH,East of England (NUTS 2021),UKH2,Bedfordshire and Hertfordshire (NUTS 2021),UKH25,Central Bedfordshire (NUTS 2021),285931
+2019,UK,United Kingdom,UKH,East of England (NUTS 2021),UKH3,Essex (NUTS 2021),UKH31,Southend-on-Sea (NUTS 2021),183453
+2019,UK,United Kingdom,UKH,East of England (NUTS 2021),UKH3,Essex (NUTS 2021),UKH32,Thurrock (NUTS 2021),173405
+2019,UK,United Kingdom,UKH,East of England (NUTS 2021),UKH3,Essex (NUTS 2021),UKH34,Essex Haven Gateway (NUTS 2021),492514
+2019,UK,United Kingdom,UKH,East of England (NUTS 2021),UKH3,Essex (NUTS 2021),UKH35,West Essex (NUTS 2021),308522
+2019,UK,United Kingdom,UKH,East of England (NUTS 2021),UKH3,Essex (NUTS 2021),UKH36,Heart of Essex (NUTS 2021),319145
+2019,UK,United Kingdom,UKH,East of England (NUTS 2021),UKH3,Essex (NUTS 2021),UKH37,Essex Thames Gateway (NUTS 2021),364848
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI3,Inner London - West (NUTS 2021),UKI31,Camden & City of London (NUTS 2021),270016
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI3,Inner London - West (NUTS 2021),UKI32,Westminster (NUTS 2021),253137
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI3,Inner London - West (NUTS 2021),UKI33,Kensington and Chelsea & Hammersmith and Fulham (NUTS 2021),339909
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI3,Inner London - West (NUTS 2021),UKI34,Wandsworth (NUTS 2021),327451
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI4,Inner London - East (NUTS 2021),UKI41,Hackney & Newham (NUTS 2021),638859
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI4,Inner London - East (NUTS 2021),UKI42,Tower Hamlets (NUTS 2021),319821
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI4,Inner London - East (NUTS 2021),UKI43,Haringey & Islington (NUTS 2021),516586
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI4,Inner London - East (NUTS 2021),UKI44,Lewisham & Southwark (NUTS 2021),627380
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI4,Inner London - East (NUTS 2021),UKI45,Lambeth (NUTS 2021),328244
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI5,Outer London - East and North East (NUTS 2021),UKI51,Bexley & Greenwich (NUTS 2021),538801
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI5,Outer London - East and North East (NUTS 2021),UKI52,Barking & Dagenham and Havering (NUTS 2021),476061
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI5,Outer London - East and North East (NUTS 2021),UKI53,Redbridge & Waltham Forest (NUTS 2021),587575
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI5,Outer London - East and North East (NUTS 2021),UKI54,Enfield (NUTS 2021),338201
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI6,Outer London - South (NUTS 2021),UKI61,Bromley (NUTS 2021),334536
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI6,Outer London - South (NUTS 2021),UKI62,Croydon (NUTS 2021),389473
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI6,Outer London - South (NUTS 2021),UKI63,"Merton, Kingston upon Thames & Sutton (NUTS 2021)",592763
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI7,Outer London - West and North West (NUTS 2021),UKI71,Barnet (NUTS 2021),395839
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI7,Outer London - West and North West (NUTS 2021),UKI72,Brent (NUTS 2021),331616
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI7,Outer London - West and North West (NUTS 2021),UKI73,Ealing (NUTS 2021),344837
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI7,Outer London - West and North West (NUTS 2021),UKI74,Harrow & Hillingdon (NUTS 2021),559903
+2019,UK,United Kingdom,UKI,London (NUTS 2021),UKI7,Outer London - West and North West (NUTS 2021),UKI75,Hounslow & Richmond upon Thames (NUTS 2021),471248
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ1,"Berkshire, Buckinghamshire and Oxfordshire (NUTS 2021)",UKJ11,Berkshire (NUTS 2021),915157
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ1,"Berkshire, Buckinghamshire and Oxfordshire (NUTS 2021)",UKJ12,Milton Keynes (NUTS 2021),271677
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ1,"Berkshire, Buckinghamshire and Oxfordshire (NUTS 2021)",UKJ13,Buckinghamshire CC (NUTS 2021),543128
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ1,"Berkshire, Buckinghamshire and Oxfordshire (NUTS 2021)",UKJ14,Oxfordshire (NUTS 2021),687466
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ2,"Surrey, East and West Sussex (NUTS 2021)",UKJ21,Brighton and Hove (NUTS 2021),292169
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ2,"Surrey, East and West Sussex (NUTS 2021)",UKJ22,East Sussex CC (NUTS 2021),558626
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ2,"Surrey, East and West Sussex (NUTS 2021)",UKJ25,West Surrey (NUTS 2021),791570
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ2,"Surrey, East and West Sussex (NUTS 2021)",UKJ26,East Surrey (NUTS 2021),404293
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ2,"Surrey, East and West Sussex (NUTS 2021)",UKJ27,West Sussex (South West) (NUTS 2021),457549
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ2,"Surrey, East and West Sussex (NUTS 2021)",UKJ28,West Sussex (North East) (NUTS 2021),405631
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ3,Hampshire and Isle of Wight (NUTS 2021),UKJ31,Portsmouth (NUTS 2021),216023
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ3,Hampshire and Isle of Wight (NUTS 2021),UKJ32,Southampton (NUTS 2021),254361
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ3,Hampshire and Isle of Wight (NUTS 2021),UKJ34,Isle of Wight (NUTS 2021),141606
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ3,Hampshire and Isle of Wight (NUTS 2021),UKJ35,South Hampshire (NUTS 2021),460523
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ3,Hampshire and Isle of Wight (NUTS 2021),UKJ36,Central Hampshire (NUTS 2021),551640
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ3,Hampshire and Isle of Wight (NUTS 2021),UKJ37,North Hampshire (NUTS 2021),368897
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ4,Kent (NUTS 2021),UKJ41,Medway (NUTS 2021),280894
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ4,Kent (NUTS 2021),UKJ43,Kent Thames Gateway (NUTS 2021),366135
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ4,Kent (NUTS 2021),UKJ44,East Kent (NUTS 2021),538428
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ4,Kent (NUTS 2021),UKJ45,Mid Kent (NUTS 2021),300082
+2019,UK,United Kingdom,UKJ,South East (UK) (NUTS 2021),UKJ4,Kent (NUTS 2021),UKJ46,West Kent (NUTS 2021),369178
+2019,UK,United Kingdom,UKK,South West (UK) (NUTS 2021),UKK1,"Gloucestershire, Wiltshire and Bristol/Bath area (NUTS 2021)",UKK11,"Bristol, City of (NUTS 2021)",467099
+2019,UK,United Kingdom,UKK,South West (UK) (NUTS 2021),UKK1,"Gloucestershire, Wiltshire and Bristol/Bath area (NUTS 2021)",UKK12,"Bath and North East Somerset, North Somerset and South Gloucestershire (NUTS 2021)",690838
+2019,UK,United Kingdom,UKK,South West (UK) (NUTS 2021),UKK1,"Gloucestershire, Wiltshire and Bristol/Bath area (NUTS 2021)",UKK13,Gloucestershire (NUTS 2021),635249
+2019,UK,United Kingdom,UKK,South West (UK) (NUTS 2021),UKK1,"Gloucestershire, Wiltshire and Bristol/Bath area (NUTS 2021)",UKK14,Swindon (NUTS 2021),222517
+2019,UK,United Kingdom,UKK,South West (UK) (NUTS 2021),UKK1,"Gloucestershire, Wiltshire and Bristol/Bath area (NUTS 2021)",UKK15,Wiltshire CC (NUTS 2021),500865
+2019,UK,United Kingdom,UKK,South West (UK) (NUTS 2021),UKK2,Dorset and Somerset (NUTS 2021),UKK21,Bournemouth and Poole (NUTS 2016),348309
+2019,UK,United Kingdom,UKK,South West (UK) (NUTS 2021),UKK2,Dorset and Somerset (NUTS 2021),UKK22,Dorset CC (NUTS 2016),427063
+2019,UK,United Kingdom,UKK,South West (UK) (NUTS 2021),UKK2,Dorset and Somerset (NUTS 2021),UKK23,Somerset (NUTS 2021),560631
+2019,UK,United Kingdom,UKK,South West (UK) (NUTS 2021),UKK3,Cornwall and Isles of Scilly (NUTS 2021),UKK30,Cornwall and Isles of Scilly (NUTS 2021),568612
+2019,UK,United Kingdom,UKK,South West (UK) (NUTS 2021),UKK4,Devon (NUTS 2021),UKK41,Plymouth (NUTS 2021),264135
+2019,UK,United Kingdom,UKK,South West (UK) (NUTS 2021),UKK4,Devon (NUTS 2021),UKK42,Torbay (NUTS 2021),136051
+2019,UK,United Kingdom,UKK,South West (UK) (NUTS 2021),UKK4,Devon (NUTS 2021),UKK43,Devon CC (NUTS 2021),795012
+2019,UK,United Kingdom,UKL,Wales (NUTS 2021),UKL1,West Wales and The Valleys (NUTS 2021),UKL11,Isle of Anglesey (NUTS 2021),70073
+2019,UK,United Kingdom,UKL,Wales (NUTS 2021),UKL1,West Wales and The Valleys (NUTS 2021),UKL12,Gwynedd (NUTS 2021),124147
+2019,UK,United Kingdom,UKL,Wales (NUTS 2021),UKL1,West Wales and The Valleys (NUTS 2021),UKL13,Conwy and Denbighshire (NUTS 2021),212675
+2019,UK,United Kingdom,UKL,Wales (NUTS 2021),UKL1,West Wales and The Valleys (NUTS 2021),UKL14,South West Wales (NUTS 2021),386480
+2019,UK,United Kingdom,UKL,Wales (NUTS 2021),UKL1,West Wales and The Valleys (NUTS 2021),UKL15,Central Valleys (NUTS 2021),299239
+2019,UK,United Kingdom,UKL,Wales (NUTS 2021),UKL1,West Wales and The Valleys (NUTS 2021),UKL16,Gwent Valleys (NUTS 2021),343280
+2019,UK,United Kingdom,UKL,Wales (NUTS 2021),UKL1,West Wales and The Valleys (NUTS 2021),UKL17,Bridgend and Neath Port Talbot (NUTS 2021),286272
+2019,UK,United Kingdom,UKL,Wales (NUTS 2021),UKL1,West Wales and The Valleys (NUTS 2021),UKL18,Swansea (NUTS 2021),246217
+2019,UK,United Kingdom,UKL,Wales (NUTS 2021),UKL2,East Wales (NUTS 2021),UKL21,Monmouthshire and Newport (NUTS 2021),244891
+2019,UK,United Kingdom,UKL,Wales (NUTS 2021),UKL2,East Wales (NUTS 2021),UKL22,Cardiff and Vale of Glamorgan (NUTS 2021),497646
+2019,UK,United Kingdom,UKL,Wales (NUTS 2021),UKL2,East Wales (NUTS 2021),UKL23,Flintshire and Wrexham (NUTS 2021),293370
+2019,UK,United Kingdom,UKL,Wales (NUTS 2021),UKL2,East Wales (NUTS 2021),UKL24,Powys (NUTS 2021),132093
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM5,North Eastern Scotland (NUTS 2021),UKM50,Aberdeen City and Aberdeenshire (NUTS 2021),495365
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM6,Highlands and Islands (NUTS 2021),UKM61,Caithness & Sutherland and Ross & Cromarty (NUTS 2021),94917
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM6,Highlands and Islands (NUTS 2021),UKM62,"Inverness & Nairn and Moray, Badenoch & Strathspey (NUTS 2021)",204193
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM6,Highlands and Islands (NUTS 2021),UKM63,"Lochaber, Skye & Lochalsh, Arran & Cumbrae and Argyll & Bute (NUTS 2021)",100012
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM6,Highlands and Islands (NUTS 2021),UKM64,Eilean Siar (Western Isles) (NUTS 2021),26688
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM6,Highlands and Islands (NUTS 2021),UKM65,Orkney Islands (NUTS 2021),22055
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM6,Highlands and Islands (NUTS 2021),UKM66,Shetland Islands (NUTS 2021),23125
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM7,Eastern Scotland (NUTS 2021),UKM71,Angus and Dundee City (NUTS 2021),265465
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM7,Eastern Scotland (NUTS 2021),UKM72,Clackmannanshire and Fife (NUTS 2021),423970
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM7,Eastern Scotland (NUTS 2021),UKM73,East Lothian and Midlothian (NUTS 2021),197947
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM7,Eastern Scotland (NUTS 2021),UKM75,"Edinburgh, City of (NUTS 2021)",520483
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM7,Eastern Scotland (NUTS 2021),UKM76,Falkirk (NUTS 2021),161029
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM7,Eastern Scotland (NUTS 2021),UKM77,Perth & Kinross and Stirling (NUTS 2021),246780
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM7,Eastern Scotland (NUTS 2021),UKM78,West Lothian (NUTS 2021),183025
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM8,West Central Scotland (NUTS 2021),UKM81,"East Dunbartonshire, West Dunbartonshire and Helensburgh & Lomond (NUTS 2021)",223516
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM8,West Central Scotland (NUTS 2021),UKM82,Glasgow City (NUTS 2021),627479
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM8,West Central Scotland (NUTS 2021),UKM83,"Inverclyde, East Renfrewshire and Renfrewshire (NUTS 2021)",351257
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM8,West Central Scotland (NUTS 2021),UKM84,North Lanarkshire (NUTS 2021),339746
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM9,Southern Scotland (NUTS 2021),UKM91,Scottish Borders (NUTS 2021),115230
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM9,Southern Scotland (NUTS 2021),UKM92,Dumfries & Galloway (NUTS 2021),148871
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM9,Southern Scotland (NUTS 2021),UKM93,East Ayrshire and North Ayrshire mainland (NUTS 2021),251307
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM9,Southern Scotland (NUTS 2021),UKM94,South Ayrshire (NUTS 2021),112461
+2019,UK,United Kingdom,UKM,Scotland (NUTS 2021),UKM9,Southern Scotland (NUTS 2021),UKM95,South Lanarkshire (NUTS 2021),319317
+2019,UK,United Kingdom,UKN,Northern Ireland (UK) (NUTS 2021),UKN0,Northern Ireland (UK) (NUTS 2021),UKN06,Belfast (NUTS 2021),341506
+2019,UK,United Kingdom,UKN,Northern Ireland (UK) (NUTS 2021),UKN0,Northern Ireland (UK) (NUTS 2021),UKN07,"Armagh City, Banbridge and Craigavon (NUTS 2021)",215246
+2019,UK,United Kingdom,UKN,Northern Ireland (UK) (NUTS 2021),UKN0,Northern Ireland (UK) (NUTS 2021),UKN08,"Newry, Mourne and Down (NUTS 2021)",180825
+2019,UK,United Kingdom,UKN,Northern Ireland (UK) (NUTS 2021),UKN0,Northern Ireland (UK) (NUTS 2021),UKN09,Ards and North Down (NUTS 2021),160975
+2019,UK,United Kingdom,UKN,Northern Ireland (UK) (NUTS 2021),UKN0,Northern Ireland (UK) (NUTS 2021),UKN10,Derry City and Strabane (NUTS 2016),150557
+2019,UK,United Kingdom,UKN,Northern Ireland (UK) (NUTS 2021),UKN0,Northern Ireland (UK) (NUTS 2021),UKN11,Mid Ulster (NUTS 2016),148378
+2019,UK,United Kingdom,UKN,Northern Ireland (UK) (NUTS 2021),UKN0,Northern Ireland (UK) (NUTS 2021),UKN12,Causeway Coast and Glens (NUTS 2016),144367
+2019,UK,United Kingdom,UKN,Northern Ireland (UK) (NUTS 2021),UKN0,Northern Ireland (UK) (NUTS 2021),UKN13,Antrim and Newtownabbey (NUTS 2016),142565
+2019,UK,United Kingdom,UKN,Northern Ireland (UK) (NUTS 2021),UKN0,Northern Ireland (UK) (NUTS 2021),UKN14,Lisburn and Castlereagh (NUTS 2016),144771
+2019,UK,United Kingdom,UKN,Northern Ireland (UK) (NUTS 2021),UKN0,Northern Ireland (UK) (NUTS 2021),UKN15,Mid and East Antrim (NUTS 2016),138948
+2019,UK,United Kingdom,UKN,Northern Ireland (UK) (NUTS 2021),UKN0,Northern Ireland (UK) (NUTS 2021),UKN16,Fermanagh and Omagh (NUTS 2016),117051

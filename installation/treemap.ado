@@ -1,1201 +1,527 @@
-*! treemap v1.7 (22 Feb 2026)
+*! treemap v1.8 (02 Nov 2026)
 *! Asjad Naqvi (asjadnaqvi@gmail.com)
 
-* v1.7 (22 Feb 2026): Added method() option (squarify/slice/dice per layer). Added ratio() to control squarify aspect preference. 
-*                     Added labangle() for label rotation per layer. Added orient() to control box placement (br/bl/tr/tl).
+* v1.8 (02 Nov 2026): Use one arbitrary-depth engine for all hierarchies. Streamline layout and coordinate calculations.
+* v1.71 (02 Nov 2026): Preserve double precision in aggregation and matrix-to-variable conversions.
+* v1.7 (22 Feb 2026): Added method(), ratio(), labangle(), and orient().
 * v1.62 (23 Sep 2025): Minor fixes.
 * v1.61 (21 Oct 2024): Added stat() option.
-* v1.6  (08 Oct 2024): wrap() list integration via graphfunctions. weights allowed. titlestyle(bold italic)
+* v1.6 (08 Oct 2024): wrap() list integration via graphfunctions. Weights allowed. titlestyle(bold italic).
 * v1.55 (10 Jun 2024): wrap() for label wraps.
-* v1.54	(20 Apr 2024): colorby() fixed. Now requires a variable name for the color order.
-* v1.53	(10 Apr 2024): Critical bug fix which was messing up the drawings if a third layer was defined.
-* v1.52	(20 Jan 2024): If by() variables had empty rows, the program was giving an error. These are now dropped by default.
-* v1.51 (24 Oct 2023): further stabilized the sort for categories with same totals that was causing a crash.
-* v1.5  (22 Jul 2023): saving() added. Option to specify both values and shares. performat() added. noval + share defaults labcond to percent values only.
+* v1.54 (20 Apr 2024): colorby() fixed. Requires a variable name for the color order.
+* v1.53 (10 Apr 2024): Fixed drawings when a third layer was defined.
+* v1.52 (20 Jan 2024): Empty by() rows dropped by default.
+* v1.51 (24 Oct 2023): Stabilized sorting for categories with equal totals.
+* v1.5 (22 Jul 2023): saving(), values and shares, performat(), noval + share defaults labcond to percent.
 * v1.42 (15 May 2023): Help file fix. Minor corrections.
 * v1.41 (15 Feb 2023): "Rest of ..." fix.
-* v1.4  (22 Jan 2023): added threshold option, order is now larger to smaller. percent renamed to share to align it with other hierarchy packages.
-*					   labelgap default improved. fix a bug where was not respecting the boundary of the parent. colorprop fixed. 
-*					    fade() option added to control color scales. fixed string checks. colorby(name) added. threshold added for collapsing datasets
-* v1.3  (14 Dec 2022): fixed formatting of labels. Added percent option. Add labgap option.
-* v1.21 (22 Nov 2022): fixed a bug where duplicate values were causing categories to be dropped.
-* v1.2  (22 Sep 2022): Negative values check. Control over fill intensity.
-* v1.1  (13 Sep 2022): Label, color, title scaling. More options for controls. More checks. Better defaults.
-* v1.0  (08 Sep 2022): First release.
+* v1.4 (22 Jan 2023): threshold(), descending order, share, fade(), colorby(), padding fixes.
+* v1.3 (14 Dec 2022): Label formatting, percent, labgap().
+* v1.21 (22 Nov 2022): Fixed dropping categories with duplicate values.
+* v1.2 (22 Sep 2022): Negative values check and fill intensity.
+* v1.1 (13 Sep 2022): Label, color, title scaling and additional controls.
+* v1.0 (08 Sep 2022): First release.
 
 capture program drop treemap
-
 program define treemap, sortpreserve rclass
-
 	version 15
-	
-	syntax varlist(numeric max=1) [if] [in] [aw fw pw iw/], by(varlist min=1 max=3)	 ///   
-		[ XSize(real 5) YSize(real 3) format(str) palette(string) ADDTitles NOVALues NOLABels  ]		///
-		[ pad(numlist max=3) labprop labscale(real 0.3333) labcond(real 0) colorprop titlegap(real 0.1) titleprop LINEWidth(string) LINEColor(string) LABSize(string)  ] /// // v1.1 options. labscale is undocumented labprop scaling
-		[ fi(numlist max=3)  LABGap(string)  ] 		///   			// v1.2, v1.3 options
-		[ share THRESHold(numlist max=1 >=0) fade(real 10) percent ] ///	// v1.4, v1.5	options
-		[ colorby(varname) sharevar(varname)  * ] ///
-		[ wrap(numlist >=0 ) TITLESTYle(string) stat(string)  ]  /// // v1.6 options
-		[ METHOD(string) RATio(real 1.618034) LABAngle(string) ORIENT(string)  ] /// v1.7 
+	syntax varlist(numeric max=1) [if] [in] [aw fw pw iw/], by(varlist min=1) ///
+		[ XSize(real 5) YSize(real 3) format(str) palette(string) NOTitles NOVALues NOLABels ] ///
+		[ pad(numlist >=0) labprop titleprop labscale(real 0.3333) labcond(real 0) colorprop titlegap(real 0.1) ///
+		  LINEWidth(string) LINEColor(string) LABSize(string) fi(numlist >=0 <=100) LABGap(string) ] ///
+		[ share THRESHold(numlist max=1 >=0) fade(real 10) percent colorby(varname) sharevar(varname) * ] ///
+		[ wrap(numlist >=0) TITLESTYle(string) stat(string) METHOD(string) RATio(real 1.618034) ///
+		  LABAngle(numlist) ORIENT(string) ]
+
+	if "`stat'" == "" local stat sum
+	if !inlist("`stat'", "mean", "sum") {
+		display as error "Valid options are {bf:stat(mean)} or {bf:stat(sum) [default]}."
+		exit 198
+	}
+	if missing(`ratio') | `ratio' <= 0 {
+		display as error "ratio() must be greater than 0."
+		exit 198
+	}
+	if missing(`xsize', `ysize', `titlegap') | `xsize' <= 0 | `ysize' <= 0 | `titlegap' < 0 {
+		display as error "xsize() and ysize() must be positive; titlegap() must be nonnegative."
+		exit 198
+	}
+	if "`threshold'" == "" local threshold 0
+	if "`method'" == "" local method squarify
+	if "`orient'" == "" local orient br
+	if "`pad'" == "" local pad 0.01
+	if "`linewidth'" == "" local linewidth 0.03
+	if "`linecolor'" == "" local linecolor black
+	if "`labsize'" == "" local labsize 1.6
+	if "`labangle'" == "" local labangle 0
+	if "`wrap'" == "" local wrap 0
+	if "`labgap'" == "" local labgap 0.2
+	if "`format'" == "" {
+		local format "%12.2fc"
+		if "`share'`percent'" != "" local format "%4.2f"
+	}
+	local depth : word count `by'
+	local firstby : word 1 of `by'
+	tempname tm_params
+	matrix `tm_params' = J(`depth', 3, .)
+	foreach opt in method orient pad fi linewidth linecolor labsize labangle wrap titlestyle {
+		local `opt'count : word count ``opt''
+	}
+	forvalues d = 1/`depth' {
+		foreach opt in method orient pad linewidth linecolor labsize labangle wrap {
+			local ix = min(`d', ``opt'count')
+			local `opt'`d' : word `ix' of ``opt''
+		}
+		local md = lower("`method`d''")
+		if !inlist("`md'", "squarify", "slice", "dice") {
+			display as error "Valid options for method() are squarify, slice, or dice."
+			exit 198
+		}
+		local od = lower("`orient`d''")
+		if !inlist("`od'", "br", "bl", "tr", "tl", "bottomright", "bottomleft", "topright", "topleft") {
+			display as error "Valid options for orient() are br, bl, tr, tl, bottomright, bottomleft, topright, or topleft."
+			exit 198
+		}
+		local mf = cond("`md'" == "squarify", 1, cond("`md'" == "slice", 2, 3))
+		local of = cond(inlist("`od'", "br", "bottomright"), 1, ///
+			cond(inlist("`od'", "bl", "bottomleft"), 2, cond(inlist("`od'", "tr", "topright"), 3, 4)))
+		matrix `tm_params'[`d', 1] = `pad`d''
+		matrix `tm_params'[`d', 2] = `mf'
+		matrix `tm_params'[`d', 3] = `of'
+		local fi`d' 100
+		if `depth' == 2 local fi`d' = cond(`d' == 1, 60, 90)
+		if `depth' >= 3 local fi`d' = 50 + 50 * (`d' - 1) / (`depth' - 1)
+		if `ficount' > 0 {
+			local ix = min(`d', `ficount')
+			local fi`d' : word `ix' of `fi'
+		}
+		if `titlestylecount' > 0 {
+			local ix = min(`d', `titlestylecount')
+			local style`d' : word `ix' of `titlestyle'
+			if !inlist("`style`d''", "bold", "b", "italic", "i") {
+				display as error "Valid options for titlestyle() are bold or italic."
+				exit 198
+			}
+		}
+	}
+	local needwrap 0
+	foreach wr of numlist `wrap' {
+		if `wr' > 0 local needwrap 1
+	}
+	if `needwrap' {
+		capture findfile labsplit.ado
+		if _rc != 0 quietly ssc install graphfunctions, replace
+	}
 
 	marksample touse, strok
-
-	// check for dependencies
-	cap findfile carryforward.ado
-	if _rc != 0 quietly ssc install carryforward, replace
-	
-	cap findfile labsplit.ado
-	if _rc != 0 quietly ssc install graphfunctions, replace	
-
-
-	if "`stat'" != "" & !inlist("`stat'", "mean", "sum") {
-		display as error "Valid options are {bf:stat(mean)} or {bf:stat(sum) [default]}."
-		exit
-	}		
-	
-	if "`method'" == "" local method squarify
-	local method = lower("`method'")
-
-	if `ratio' <= 0 {
-		display as error "ratio() must be greater than 0."
-		exit
-	}
-	
-quietly {	
-preserve	
-	keep if `touse'
-	
-	if "`threshold'"=="" local threshold = 0
-	
-	
-	if "`stat'" == "" local stat sum
-	if "`weight'" != "" local myweight  [`weight' = `exp']	
-	
-	qui summ `varlist', meanonly
-	if r(min) <= 0 noi di in yellow "`varlist' contains zeros or negative values. These values have been dropped."
-	drop if `varlist' <= 0
-	drop if missing(`varlist')
-	
-	local length : word count `by'
-	
-	// do the string check
-	foreach v of local by {
-		if substr("`: type `v''",1,3) != "str" {
-			if "`: value label `v' '" != "" { 	// has value label
-				decode `v', gen(`v'_temp)
-				drop `v'
-				ren `v'_temp `v'
-			}
-			else {								// has no value label
-				gen `v'_temp = string(`v')
-				drop `v'
-				ren `v'_temp `v'
-			}
+	preserve
+	quietly {
+		keep if `touse'
+		summarize `varlist', meanonly
+		if r(min) <= 0 noisily display as text "`varlist' contains zeros or negative values. These values have been dropped."
+		drop if `varlist' <= 0 | missing(`varlist')
+		tempvar inputvalue inputweight colororder
+		generate double `inputvalue' = `varlist'
+		if "`weight'" != "" {
+			generate double `inputweight' = `exp'
+			local myweight [`weight' = `inputweight']
+			local weightvar `inputweight'
 		}
-	}	
-	
-
-	if `length' == 1 {
-		local var0 `by'
-		
-		drop if `var0' == ""
-		
-		if "`threshold'"!="" {
-			replace `var0' = "Rest of `var0'" if `varlist' <= `threshold'
+		if "`colorby'" != "" {
+			egen long `colororder' = group(`colorby')
 		}
-		
-		collapse (`stat') `varlist' `myweight', by(`var0') 
-		
-		gen double var0_v = `varlist'
-		gsort -var0_v `var0'  // stabilize the sort
+		else generate long `colororder' = 1
+		local groups
+		foreach v of local by {
+			tempvar group
+			capture confirm string variable `v'
+			if !_rc generate `group' = `v'
+			else {
+				if "`: value label `v''" != "" decode `v', generate(`group')
+				else generate `group' = string(`v')
+				drop if missing(`v')
+			}
+			drop if `group' == ""
+			local groups `groups' `group'
+		}
+		count
+		if r(N) == 0 {
+			noisily display as error "no positive, nonmissing observations with complete by() values"
+			exit 2000
+		}
+		keep `inputvalue' `groups' `colororder' `weightvar'
+		rename `inputvalue' __tm_input
+		rename `colororder' __tm_colorby
+		local by
+		forvalues d = 1/`depth' {
+			local v : word `d' of `groups'
+			rename `v' __tm_group`d'
+			local by `by' __tm_group`d'
+		}
+		collapse (`stat') __tm_input (min) __tm_colorby `myweight', by(`by')
+		if `threshold' > 0 {
+			if `depth' > 1 {
+				local prev = `depth' - 1
+				local rest `" "Rest of " + __tm_group`prev' "'
+			}
+			if `depth' == 1 {
+				replace __tm_group1 = "Rest of `firstby'" if __tm_input <= `threshold'
+			}
+			else replace __tm_group`depth' = `rest' if __tm_input <= `threshold'
+			collapse (`stat') __tm_input (min) __tm_colorby, by(`by')
+		}
 
-	}
-	
-	
-	if `length' == 2 {
-		tokenize `by'
-		local var0 `1'
-		local var1 `2'
-		
-		drop if `var0' == ""
-		drop if `var1' == ""
-		
-		if "`weight'" != "" local myweight  [`weight' = `exp']
-		
-		collapse (`stat') `varlist' `myweight', by(`var0' `var1') 
-		
-		if "`threshold'"!="" {
-			levelsof `var0', local(lvls)
-			foreach x of local lvls {
-				replace `var1' = "Rest of `x'" if `varlist' <= `threshold' & `var0'=="`x'"
+		local prefix
+		forvalues d = 1/`depth' {
+			local v __tm_group`d'
+			local prefix `prefix' `v'
+			egen long __tm_id`d' = group(`prefix')
+			if `d' == 1 generate long __tm_parent`d' = 0
+			else {
+				local prev = `d' - 1
+				generate long __tm_parent`d' = __tm_id`prev'
+			}
+			bysort `prefix': egen double __tm_value`d' = total(__tm_input)
+			egen byte __tm_tag`d' = tag(`prefix')
+			bysort `prefix': egen long __tm_color`d' = min(__tm_colorby)
+			gsort __tm_parent`d' -__tm_value`d' `v'
+			by __tm_parent`d': generate long __tm_order`d' = sum(__tm_tag`d')
+		}
+
+		tempfile tm_nodes
+		tempname tm_post
+		postfile `tm_post' long __depth __id __parent double __value ///
+			long __order __colororder str2045 __tm_name using `tm_nodes', replace
+		forvalues d = 1/`depth' {
+			forvalues obs = 1/`=_N' {
+				if __tm_tag`d'[`obs'] {
+					post `tm_post' (`d') (__tm_id`d'[`obs']) (__tm_parent`d'[`obs']) ///
+						(__tm_value`d'[`obs']) (__tm_order`d'[`obs']) ///
+						(__tm_color`d'[`obs']) (__tm_group`d'[`obs'])
+				}
 			}
 		}
-		
-		collapse (`stat') `varlist' `myweight', by(`var0' `var1') 
-		
-		bysort `var0': egen var0_v = sum(`varlist')
-		gen double var1_v = `varlist'
-		
-		gsort -var0_v `var0' -var1_v `var1'
-	}	
-	
-	
-	
-	if `length' == 3 {
-		tokenize `by'
-		local var0 `1'
-		local var1 `2'
-		local var2 `3'
-		
-		drop if `var0' == ""
-		drop if `var1' == ""		
-		drop if `var2' == ""
-		
-		if "`threshold'"!="" {
-			levelsof `var1', local(lvls)
-			foreach x of local lvls {
-				replace `var2' = "Rest of `x'" if `varlist' <= `threshold' & `var1'=="`x'"
+		postclose `tm_post'
+		use `tm_nodes', clear
+
+		foreach v in x y depth node parent value weight pct cx cy tx ty root order colororder {
+			generate double __tm_`v' = .
+		}
+		local nnode = _N
+		local addtitleflag = ("`notitles'" == "" & "`nolabels'" == "")
+		mata: treemap_layout_any(`xsize', `ysize', `addtitleflag', `titlegap', `ratio', "`tm_params'")
+		drop in 1/`nnode'
+		drop __depth __id __parent __value __order __colororder
+		generate str2045 __tm_lab = ""
+		if "`novalues'" != "" {
+			if "`share'`percent'" != "" {
+				replace __tm_lab = __tm_name + " (" + string(__tm_pct, "`format'") + "%)" ///
+					if __tm_pct >= `labcond'
 			}
-		}
-		
-		collapse (`stat') `varlist' `myweight', by(`var0' `var1' `var2')
-		
-		bysort `var0': egen var0_v = sum(`varlist')
-		bysort `var0' `var1': egen var1_v = sum(`varlist')
-		gen double var2_v = `varlist'
-		
-		gsort -var0_v `var0' -var1_v `var1' -var2_v `var2'
-	}
-	
-	
-	
-	gen __id = _n		
-
-	egen var0_t = tag(`var0')
-	gen  double var0_o = sum(`var0' != `var0'[_n-1]) 
-	
-	if "`colorby'" != "" {
-		egen var0_c = group(`colorby') // namewise color ordering	
-	}
-	else {
-		gen  var0_c = var0_o
-	}
-	
-		
-	if `length' > 1 {
-		cap drop var1_t
-		egen var1_t = tag(`var0' `var1')
-		gsort `var0' -var1_t -var1_v 
-		cap drop var1_o
-		bysort `var0': gen var1_o = _n if var1_t==1
-		sort __id
-		carryforward var1_o, replace
-	}
-	
-
-	if `length' > 2 {	
-		sort `var0' `var1' __id 
-		by `var0' `var1': gen var2_o = _n
-		gen var2_t = 1	
-	}
-
-	sort __id
-
-	// set up the base values
-	
-	if "`pad'" != "" {
-		tokenize `pad'
-		local plen : word count `pad'
-			local pad0 = `1'
-			local pad1 = `1'
-			local pad2 = `1'
-
-			if `plen' > 1 {
-				local pad1 = `2' 
-				local pad2 = `2'
-			}
-			
-			if `plen' > 2 {
-				local pad1 = `2' 
-				local pad2 = `3' 
-			}
-	}
-	else {
-		local pad0 0.01
-		local pad1 0.01
-		local pad2 0.01
-	}
-	
-	if "`linewidth'" != "" {
-		tokenize `linewidth'
-		local lwlen : word count `linewidth'
-		
-		local lw0 `1'
-		local lw1 `1'
-		local lw2 `1'
-
-		if `lwlen' > 1 {
-			local lw1 `2'
-			local lw2 `2'
-		}
-			
-		if `lwlen' > 2 {
-			local lw1 `2'
-			local lw2 `3'
-		}
-	}
-	else {
-		local lw0 0.03
-		local lw1 0.03
-		local lw2 0.03
-	}
-	
-	if "`linecolor'" != "" {
-		tokenize `linecolor'
-		local lclen : word count `linecolor'
-		
-		local lc0 `1'
-		local lc1 `1'
-		local lc2 `1'
-
-		if `lclen' > 1 {
-			local lc1 `2'
-			local lc2 `2'
-		}
-			
-		if `lclen' > 2 {
-			local lc1 `2'
-			local lc2 `3'
-		}
-	}
-	else {
-		local lc0 black
-		local lc1 black
-		local lc2 black
-	}
-
-	if "`labsize'" != "" {
-		tokenize `labsize'
-		local lslen : word count `labsize'
-		
-		local ls0 `1'
-		local ls1 `1'
-		local ls2 `1'
-
-		if `lslen' > 1 {
-			local ls1 `2'
-			local ls2 `2'
-		}
-			
-		if `lslen' > 2 {
-			local ls1 `2'
-			local ls2 `3'
-		}
-	}
-	else {
-		local ls0 1.6
-		local ls1 1.6
-		local ls2 1.6
-	}	
-	
-	if "`labangle'" != "" {
-		tokenize `labangle'
-		local lalen : word count `labangle'
-		
-		local la0 `1'
-		local la1 `1'
-		local la2 `1'
-
-		if `lalen' > 1 {
-			local la1 `2'
-			local la2 `2'
-		}
-			
-		if `lalen' > 2 {
-			local la1 `2'
-			local la2 `3'
-		}
-	}
-	else {
-		local la0 0
-		local la1 0
-		local la2 0
-	}
-
-	local orient0 `orient'
-	local orient1 `orient'
-	local orient2 `orient'
-
-	if "`orient'" != "" {
-		tokenize `orient'
-		local olen : word count `orient'
-
-		local orient0 `1'
-		local orient1 `1'
-		local orient2 `1'
-
-		if `olen' > 1 {
-			local orient1 `2'
-			local orient2 `2'
-		}
-			
-		if `olen' > 2 {
-			local orient1 `2'
-			local orient2 `3'
-		}
-	}
-	else {
-		local orient0 br
-		local orient1 br
-		local orient2 br
-	}
-
-	foreach o in `orient0' `orient1' `orient2' {
-		if !inlist("`o'", "br", "bl", "tr", "tl", "bottomright", "bottomleft", "topright", "topleft") {
-			display as error "Valid options for orient() are br, bl, tr, tl, bottomright, bottomleft, topright, or topleft."
-			exit
-		}
-	}
-
-	local orient0flag = cond(inlist("`orient0'", "br", "bottomright"), 1, cond(inlist("`orient0'", "bl", "bottomleft"), 2, cond(inlist("`orient0'", "tr", "topright"), 3, 4)))
-	local orient1flag = cond(inlist("`orient1'", "br", "bottomright"), 1, cond(inlist("`orient1'", "bl", "bottomleft"), 2, cond(inlist("`orient1'", "tr", "topright"), 3, 4)))
-	local orient2flag = cond(inlist("`orient2'", "br", "bottomright"), 1, cond(inlist("`orient2'", "bl", "bottomleft"), 2, cond(inlist("`orient2'", "tr", "topright"), 3, 4)))
-	
-	if "`titlestyle'" != "" {
-		tokenize `titlestyle'
-		local stylen : word count `titlestyle'
-		
-		if `stylen' == 1 {
-			local st0 `1'
-		}
-
-		if `stylen' == 2 {
-			local st0 `1'
-			local st1 `2'
-		}
-			
-		if `stylen' == 3 {
-			local st0 `1'
-			local st1 `2'
-			local st2 `3'
-		}
-	}
-
-	
-	if "`fi'" != "" {
-		tokenize `fi'
-		local filen : word count `fi'
-		
-		local fi0 `1'
-		local fi1 `1'
-		local fi2 `1'
-
-		if `filen' > 1 {
-			local fi1 `2'
-			local fi2 `2'
-		}
-			
-		if `filen' > 2 {
-			local fi1 `2'
-			local fi2 `3'
-		}
-	}
-	else {
-		local fi0 100
-		
-		if `length' == 2 {
-			local fi0 = 60
-			local fi1 = 90
-		}	
-		
-		if `length' == 3 {
-			local fi0 = 50
-			local fi1 = 75
-			local fi2 = 100
-		}	
-	}		
-
-	local method0 `method'
-	local method1 `method'
-	local method2 `method'
-
-	if "`method'" != "" {
-		tokenize `method'
-		local methodlen : word count `method'
-
-		local method0 `1'
-		local method1 `1'
-		local method2 `1'
-
-		if `methodlen' > 1 {
-			local method1 `2'
-			local method2 `2'
-		}
-			
-		if `methodlen' > 2 {
-			local method1 `2'
-			local method2 `3'
-		}
-	}
-
-	foreach m in `method0' `method1' `method2' {
-		if !inlist("`m'", "squarify", "slice", "dice") {
-			display as error "Valid options for method() are squarify, slice, or dice (optionally per layer)."
-			exit
-		}
-	}
-
-	local method0flag = cond("`method0'" == "squarify", 1, cond("`method0'" == "slice", 2, 3))
-	local method1flag = cond("`method1'" == "squarify", 1, cond("`method1'" == "slice", 2, 3))
-	local method2flag = cond("`method2'" == "squarify", 1, cond("`method2'" == "slice", 2, 3))
-
-	local sqratio = `ratio'
-	
-	mata: xmin = 0; xmax = `xsize'; ymin = 0; ymax = `ysize'; dy = ymax - ymin; dx = xmax - xmin; myratio = `sqratio'
-
-	
-	*** define format options
-	if "`format'" == "" {
-		if "`shares'"!="" | "`percent'"!="" {
-			local format "%4.2f"	
+			else replace __tm_lab = __tm_name if __tm_value >= `labcond'
 		}
 		else {
-			local format "%12.2fc"	
+			if "`share'`percent'" != "" {
+				replace __tm_lab = __tm_name + " (" + string(__tm_value, "`format'") + ", " + ///
+					string(__tm_pct, "`format'") + "%)" if __tm_value >= `labcond'
+			}
+			else replace __tm_lab = __tm_name + " (" + string(__tm_value, "`format'") + ")" ///
+				if __tm_value >= `labcond'
 		}
-	}	
-
-	if "`percent'" != "" local share pewpew
-	
-	**************
-	**  layer0  **
-    **************
-	
-	
-	mata: data = select(st_data(., ("var0_v")), st_data(., "var0_t=1"))
-	mata: datasum = sum(data[.,1])
-	mata: pad0b = `pad0'; pad0t = `pad0'; pad0l = `pad0'; pad0r = `pad0'
-	
-	if "`method0'" == "squarify" {
-		mata: normlist = normdata(data, dx, dy); b0 = squarify(normlist, xmin, ymin, dx, dy, myratio), normlist; b0 = reorient(b0, xmin, ymin, xmax, ymax, `orient0flag'); c0 = getcoords2(data, b0, pad0b, pad0t, pad0l, pad0r, datasum)
-	}
-	else if "`method0'" == "slice" {
-		mata: normlist = normdata(data, dx, dy); b0 = layoutrow(normlist, xmin, ymin, dx, dy), normlist; b0 = reorient(b0, xmin, ymin, xmax, ymax, `orient0flag'); c0 = getcoords2(data, b0, pad0b, pad0t, pad0l, pad0r, datasum)
-	}
-	else {
-		mata: normlist = normdata(data, dx, dy); b0 = layoutcol(normlist, xmin, ymin, dx, dy), normlist; b0 = reorient(b0, xmin, ymin, xmax, ymax, `orient0flag'); c0 = getcoords2(data, b0, pad0b, pad0t, pad0l, pad0r, datasum)
-	}
-	mata: st_matrix("c0", c0)
-
-	local varlist 
-	
-	mat colnames c0 = "_l0_x" "_l0_y" "_l0_id" "_l0_val" "_l0_xmid" "_l0_ymid" "_l0_xmax" "_l0_ymax" "_l0_wgt" "_l0_pct"
-	
-	svmat c0, n(col)
-
-	gen _l0_lab1 = ""
-
-	levelsof var0_o, local(lvls)
-	local item0 = `r(r)'
-	foreach i of local lvls {
-	
-		summ __id if var0_o==`i' & var0_t==1, meanonly
-		replace  _l0_lab1 = `var0'[r(mean)] in `i'	
-	}	
-	
-
-		gen  _l0_lab0 = ""		
-
-		if "`novalues'"=="" {
-			if "`share'"=="" {
-				replace  _l0_lab0 = _l0_lab1 + " (" + string(_l0_val, "`format'") + ")" if _l0_val >= `labcond' in 1/`item0'
-			}		
-			else {
-				replace  _l0_lab0 = _l0_lab1 + " (" + string(_l0_val, "`format'") + ", " + string(_l0_pct, "`format'") + "%)" if _l0_val >= `labcond' in 1/`item0'
+		forvalues d = 1/`depth' {
+			if `wrap`d'' > 0 {
+				tempvar wrapped
+				labsplit __tm_lab, wrap(`wrap`d'') gen(`wrapped')
+				replace __tm_lab = `wrapped' if __tm_depth == `d'
+				drop `wrapped'
 			}
+			if inlist("`style`d''", "bold", "b") ///
+				replace __tm_lab = "{bf:" + __tm_lab + "}" if __tm_depth == `d' & __tm_lab != ""
+			if inlist("`style`d''", "italic", "i") ///
+				replace __tm_lab = "{it:" + __tm_lab + "}" if __tm_depth == `d' & __tm_lab != ""
 		}
-		else {
-			if "`share'"!="" {
-				replace  _l0_lab0 = _l0_lab1 + " (" + string(_l0_pct, "`format'") + "%)" if _l0_pct >= `labcond' in 1/`item0'  
-			}
-			else  {
-				replace  _l0_lab0 = _l0_lab1 if _l0_val >= `labcond' in 1/`item0' 
-			}
+
+		generate long __tm_row = _n
+		generate str80 __tm_color = ""
+		levelsof __tm_node if __tm_depth == 1, local(roots)
+		local nroot : word count `roots'
+		if "`colorby'" != "" egen long __tm_colorrank = group(__tm_colororder) if __tm_depth == 1
+		if "`palette'" == "" local palette tableau
+		local poptions
+		if strpos("`palette'", ",") {
+			tokenize "`palette'", p(",")
+			local palette `1'
+			local poptions `3'
 		}
-		
-	
-		// wrap
-		
-		local wrap0 = 0
-		local wrap1 = 0
-		local wrap2 = 0
-		
-		if "`wrap'" != "" {
-			tokenize `wrap'
-			local wraplen : word count `wrap'
-			
-			local wrap0 `1'
-			local wrap1 `1'
-			local wrap2 `1'
-
-			if `wraplen' > 1 {
-				local wrap1 `2'
-				local wrap2 `2'
-			}
-				
-			if `wraplen' > 2 {
-				local wrap1 `2'
-				local wrap2 `3'
-			}
+		colorpalette `palette', n(`nroot') `poptions' nograph
+		forvalues ord = 1/`nroot' {
+			local rootcolor`ord' `"`r(p`ord')'"'
 		}
-	
-		
-		if `wrap0' > 0 {
-			rename _l0_lab0 _l0_lab0_temp
-			labsplit _l0_lab0_temp, wrap(`wrap0') gen(_l0_lab0)		
-			drop *_temp
-		}	
-		
-		if inlist("`st0'", "bold", "b") 	replace _l0_lab0 = "{bf:" + _l0_lab0 + "}"
-		if inlist("`st0'", "italic", "i") 	replace _l0_lab0 = "{it:" + _l0_lab0 + "}"
-		
-		
-	**************
-	**  layer1  **
-    **************	
-
-	if `length' > 1 {
-		
-		if "`addtitles'" != "" mata b0[.,4] = b0[.,4] :- (`titlegap' :* (b0[.,4]  :> `titlegap' * 2.5))
-		
-		local l0
-		local l1
-		
-		levelsof var0_o, local(l0)
-
-		foreach z of local l0 {
-				
-				mata: mydata = select(st_data(., ("var1_v", "var0_o")), st_data(., "var1_t = 1"))
-				mata: mydata = select(mydata, mydata[.,2] :== `z')		
-				mata: pad1b = `pad1'; pad1t = `pad1'; pad1l = `pad1'; pad1r = `pad1'
-
-				mata: b1_`z' = processchildren(`z', mydata[.,1], b0    , pad0b, pad0t, pad0l, pad0r, myratio, `method1flag', `orient1flag')
-				mata: c1_`z' = getcoords2(          mydata[.,1], b1_`z', pad1b, pad1t, pad1l, pad1r, datasum)
-				mata: st_matrix("c1_`z'", c1_`z')
-
-			mat colnames c1_`z' = "_l1_`z'_x" "_l1_`z'_y" "_l1_`z'_id" "_l1_`z'_val" "_l1_`z'_xmid" "_l1_`z'_ymid" "_l1_`z'_xmax" "_l1_`z'_ymax" "_l1_`z'_wgt" "_l1_`z'_pct"		
-			svmat c1_`z', n(col)
-
-			gen _l1_`z'_lab1  = ""
-			levelsof var1_o if var0_o==`z', local(l1)
-			local item1 = `r(r)'
-			
-			foreach i of local l1 {
-				summ __id if var0_o==`z' & var1_o==`i' &  var1_t==1 , meanonly
-				replace  _l1_`z'_lab1 = `var1'[r(mean)] in `i'	
-			}
-			
-			
-			gen  _l1_`z'_lab0 = ""		
-
-			if "`novalues'"=="" {
-				if "`share'"=="" {
-					replace  _l1_`z'_lab0 = _l1_`z'_lab1 + " (" + string(_l1_`z'_val, "`format'") + ")" if _l1_`z'_val >= `labcond' in 1/`item1'
-				}		
-				else {
-					replace  _l1_`z'_lab0 = _l1_`z'_lab1 + " (" + string(_l1_`z'_val, "`format'") + ", " + string(_l1_`z'_pct, "`format'") + "%)" if _l1_`z'_val >= `labcond' in 1/`item1'
-				}
-			}
-			else {
-				if "`share'"!="" {
-					replace  _l1_`z'_lab0 = _l1_`z'_lab1 + " (" + string(_l1_`z'_pct, "`format'") + "%)" if _l1_`z'_pct >= `labcond' in 1/`item1' 
-				}
-				else  {
-					replace  _l1_`z'_lab0 = _l1_`z'_lab1 if _l1_`z'_val >= `labcond' in 1/`item1'  
-				}
-			}			
-			
-			
-			
-			// wrap
-			if `wrap1' > 0 {
-				rename _l1_`z'_lab0 	_l1_`z'_lab0_temp
-				labsplit _l1_`z'_lab0_temp, wrap(`wrap1') gen(_l1_`z'_lab0)
-				drop *temp			
-			}
-			
-			if inlist("`st1'", "bold", "b") 	replace _l1_`z'_lab0 = "{bf:" + _l1_`z'_lab0 + "}"
-			if inlist("`st1'", "italic", "i") 	replace _l1_`z'_lab0 = "{it:" + _l1_`z'_lab0 + "}"
-			
+		foreach node of local roots {
+			local sortcolor __tm_order
+			if "`colorby'" != "" local sortcolor __tm_colorrank
+			summarize `sortcolor' if __tm_depth == 1 & __tm_node == `node', meanonly
+			local ord = r(min)
+			replace __tm_color = `"`rootcolor`ord''"' if __tm_root == `node'
 		}
-	}
-	
-	
-	**************
-	**  layer2  **
-    **************		
-		
-	if `length' > 2 {	
-		
-		local l0
-		local l1
-		local l2
-
-		levelsof var0_o, local(l0)
-
-		foreach z of local l0 {
-			
-			if "`addtitles'" != "" {
-				
-				mata b1_`z'[.,4] = b1_`z'[.,4] :- (`titlegap' :* (b1_`z'[.,4] :> `titlegap' * 2.5))
-			}
-			
-			levelsof var1_o if var0_o==`z', local(l1)
-			foreach y of local l1 {
-				
-					mata: mydata = select(st_data(., ("var2_v", "var0_o", "var1_o")), st_data(., "var2_t = 1"))
-					mata: mydata = select(mydata, mydata[.,2] :== `z' :& mydata[.,3] :== `y')				
-					mata: pad2b = `pad2'; pad2t = `pad2'; pad2l = `pad2'; pad2r = `pad2'
-					mata: b2_`z'_`y' = processchildren(`y', mydata[.,1], b1_`z', pad2b, pad2t, pad2l, pad2r, myratio, `method2flag', `orient2flag')
-					mata: c2_`z'_`y' = getcoords2(mydata[.,1], b2_`z'_`y', pad2b, pad2t, pad2l, pad2r, datasum)
-					mata: st_matrix("c2_`z'_`y'", c2_`z'_`y')		
-				
-				mat colnames c2_`z'_`y' = "_l2_`z'_`y'_x" "_l2_`z'_`y'_y" "_l2_`z'_`y'_id" "_l2_`z'_`y'_val" "_l2_`z'_`y'_xmid" "_l2_`z'_`y'_ymid" "_l2_`z'_`y'_xmax" "_l2_`z'_`y'_ymax" "_l2_`z'_`y'_wgt"  "_l2_`z'_`y'_pct"
-				svmat c2_`z'_`y', n(col)
-					
-				// get the labels	
-				
-				
-				
-				gen  _l2_`z'_`y'_lab1 = ""
-				levelsof var2_o if var0_o==`z' & var1_o==`y', local(l2)
-				local item2 = `r(r)'
-				foreach i of local l2 {
-					summ __id if var2_o==`i' & var1_o==`y' & var0_o==`z' & var2_t==1, meanonly
-					replace  _l2_`z'_`y'_lab1 = `var2'[r(mean)] in `i'						
+		if "`colorprop'" != "" & `depth' > 1 {
+			levelsof __tm_parent if __tm_depth == `depth', local(parents)
+			foreach par of local parents {
+				levelsof __tm_node if __tm_depth == `depth' & __tm_parent == `par', local(children)
+				local nchild : word count `children'
+				summarize __tm_row if __tm_depth == `depth' & __tm_parent == `par', meanonly
+				local parentcolor = __tm_color[r(min)]
+				colorpalette `"`parentcolor'"' `"`parentcolor'%`fade'"', n(`nchild') `poptions' nograph
+				forvalues ord = 1/`nchild' {
+					local gradient`ord' `"`r(p`ord')'"'
 				}
-				
-				
-				
-				gen  _l2_`z'_`y'_lab0 = ""
-				
-				if "`novalues'"=="" {
-					if "`share'"=="" {
-						replace  _l2_`z'_`y'_lab0 = _l2_`z'_`y'_lab1 + " (" + string(_l2_`z'_`y'_val, "`format'") + ")"  if _l2_`z'_`y'_val >= `labcond' in 1/`item2'
-					}		
-					else {
-						replace  _l2_`z'_`y'_lab0 = _l2_`z'_`y'_lab1 + " (" + string(_l2_`z'_`y'_val, "`format'") + ", " + string(_l2_`z'_`y'_pct, "`format'") + "%)"  if _l2_`z'_`y'_val >= `labcond' in 1/`item2'
-					}
-				}
-				else {
-					if "`share'"!="" {
-						replace  _l2_`z'_`y'_lab0 = _l2_`z'_`y'_lab1 + " (" + string(_l2_`z'_`y'_pct, "`format'") + "%)"  if _l2_`z'_`y'_pct >= `labcond' in 1/`item2' 
-					}
-					else  {
-						replace  _l2_`z'_`y'_lab0 = _l2_`z'_`y'_lab1 if _l2_`z'_`y'_val >= `labcond' in 1/`item2' 
-					}
-				}					
-
-			
-				// wrap
-				if `wrap2' > 0 {
-					rename _l2_`z'_`y'_lab0 	_l2_`z'_`y'_lab0_temp
-					labsplit _l2_`z'_`y'_lab0_temp, wrap(`wrap2') gen(_l2_`z'_`y'_lab0)						
-					drop *_temp
-				}
-				
-				if inlist("`st2'", "bold", "b") 	replace _l2_`z'_`y'_lab0 = "{bf:" + _l2_`z'_`y'_lab0 + "}"
-				if inlist("`st2'", "italic", "i") 	replace _l2_`z'_`y'_lab0 = "{it:" + _l2_`z'_`y'_lab0 + "}"				
-				
-			}
-		}		
-	}	
-	
-	
-	**************
-	//   draw   //
-    **************	
-
-	if "`palette'" == "" {
-		local palette tableau
-	}
-	else {
-		tokenize "`palette'", p(",")
-		local palette  `1'
-		local poptions `3'
-	}
-	
-	if "`labgap'" == "" local labgap 0.2
-
-	
-	***************
-	*** layer 0 ***
-	***************
-	
-	levelsof var0_o
-	local lvl0 = `r(r)'
-	
-		forval i = 1/`lvl0' {
-			
-			if "`titleprop'" != "" {
-				local labt0 = max((`ls0' * _l0_wgt[`i']^`labscale'),0)
-			}
-			else {
-				local labt0 = `ls0'
-			}	
-			
-			if "`labprop'" != "" {
-				local labs0 = (`ls0' * _l0_wgt[`i']^`labscale')
-			}
-			else {
-				local labs0 = `ls0'
-			}
-			
-						
-			local clr0 `i'
-
-			summ var0_c if var0_o==`i', meanonly
-			local clr0 `r(min)'
-
-			
-			colorpalette `palette', n(`lvl0') `poptions' nograph 
-			
-			local box0 `box0' (area _l0_y _l0_x if _l0_id==`i', nodropbase fi(`fi0') fc("`r(p`clr0')'") lw(`lw0') lc(`lc0')) 
-			
-			local lab0_box `lab0_box' (scatter _l0_ymax _l0_xmax in `i'  if _l0_val >= `labcond', mc(none) mlab(_l0_lab0) mlabpos(4) mlabsize(`labt0') mlabangle(`la0') mlabc(black) )
-			
-			local lab0 `lab0'         (scatter _l0_ymid _l0_xmid in `i'  if _l0_val >= `labcond', mc(none) mlab(_l0_lab0) mlabpos(0) mlabsize(`labs0') mlabangle(`la0') mlabc(black) ) 
-			
-			***************
-			*** layer 1 ***
-			***************
-			
-			if `length' > 1 {
-			
-				levelsof var1_o if var0_o==`i'
-				local lvl1 = r(r)
-					
-				forval j = 1/`lvl1' {
-
-					if "`titleprop'" != "" {
-						local labt1 = max((`ls1' * _l1_`i'_wgt[`j']^`labscale'),0)
-					}
-					else {
-						local labt1 = `ls1'
-					}				
-							
-					if "`labprop'" != "" {
-						local labs1 = max((`ls1' * _l1_`i'_wgt[`j']^`labscale'),0)
-					}
-					else {
-						local labs1 = `ls1'
-					}
-						
-					colorpalette `palette', n(`lvl0') `poptions' nograph
-					local clr `r(p`clr0')'
-					
-					if "`colorprop'" != "" & `length'==2 {			
-						colorpalette "`r(p`clr0')'" "`r(p`clr0')'%`fade'", n(`lvl1') `poptions' nograph  
-						local clr `r(p`j')'
-					}
-
-							
-					local box1 `box1' (area _l1_`i'_y _l1_`i'_x if _l1_`i'_id==`j', nodropbase fi(`fi1') fc("`clr'") lw(`lw1') lc(`lc1'))  
-					
-					local lab1_box `lab1_box' (scatter _l1_`i'_ymax _l1_`i'_xmax in `j' if _l1_`i'_val >= `labcond', mc(none) mlab(_l1_`i'_lab0) mlabpos(4) mlabsize(`labt1') mlabangle(`la1') mlabc(black) )
-					
-					local lab1 `lab1'         (scatter _l1_`i'_ymid _l1_`i'_xmid in `j' if _l1_`i'_val >= `labcond', mc(none) mlab(_l1_`i'_lab0) mlabpos(0) mlabsize(`labs1') mlabangle(`la1') mlabc(black) ) 
-							
-					
-					***************
-					*** layer 2 ***
-					***************
-					
-					if `length' > 2 {
-					
-						
-					
-						qui levelsof var2_o if var0_o==`i' & var1_o==`j'
-						local lvl2 = r(r)
-							
-						forval k = 1/`lvl2' {
-	
-							if "`labprop'" != "" {
-								local labs2 = max((`ls2' * _l2_`i'_`j'_wgt[`k']^`labscale'),0)
-							}
-							else {
-								local labs2 = `ls2'
-							}						
-						
-							colorpalette `palette', n(`lvl0') `poptions' nograph
-							local clr `r(p`clr0')'
-							
-							if "`colorprop'" != "" {			
-								colorpalette "`r(p`clr0')'" "`r(p`clr0')'%`fade'", n(`lvl2') `poptions' nograph 	
-								local clr `r(p`k')'
-							}								
-							
-							local box2 `box2' (area _l2_`i'_`j'_y _l2_`i'_`j'_x if _l2_`i'_`j'_id==`k', nodropbase fi(`fi2') fc("`clr'") lw(`lw2') lc(`lc2'))  
-							
-							local lab2 `lab2' (scatter _l2_`i'_`j'_ymid _l2_`i'_`j'_xmid in `k' if _l2_`i'_`j'_val >= `labcond', mc(none) mlab(_l2_`i'_`j'_lab0) mlabpos(0) mlabsize(`labs2') mlabgap(`labgap') mlabangle(`la2') mlabc(black) ) 			
-							
-						}
-					}
+				foreach node of local children {
+					summarize __tm_order if __tm_depth == `depth' & __tm_node == `node', meanonly
+					local ord = r(min)
+					replace __tm_color = `"`gradient`ord''"' if __tm_depth == `depth' & __tm_node == `node'
 				}
 			}
 		}
 
-
-		if `length' == 3 {
-			local mylab  `lab2'	
-			if "`addtitles'" != "" local boxlab `lab1_box' || `lab0_box'
-		} 
-			else if `length' == 2 {
-				local mylab  `lab1'
-				if "`addtitles'" != "" local boxlab `lab0_box'
-			}
-				else {
-					local mylab  `lab0'
-					local boxlab
+		local plots
+		local labels
+		forvalues d = 1/`depth' {
+			levelsof __tm_node if __tm_depth == `d', local(ids)
+			foreach node of local ids {
+				summarize __tm_row if __tm_depth == `d' & __tm_node == `node', meanonly
+				local row = r(min)
+				local clr = __tm_color[`row']
+				local plots `"`plots' (area __tm_y __tm_x if __tm_depth == `d' & __tm_node == `node', nodropbase fi(`fi`d'') fc("`clr'") lw(`linewidth`d'') lc(`linecolor`d''))"'
+				if "`nolabels'" == "" & (`d' == `depth' | "`notitles'" == "") {
+					local size `labsize`d''
+					if (`d' == `depth' & "`labprop'" != "") | (`d' < `depth' & "`titleprop'" != "") {
+						local size = `labsize`d'' * __tm_weight[`row']^`labscale'
+					}
+					local x __tm_cx
+					local y __tm_cy
+					local pos 0
+					if `d' < `depth' {
+						local x __tm_tx
+						local y __tm_ty
+						local pos 4
+					}
+					local labels `"`labels' (scatter `y' `x' in `row', mc(none) mlab(__tm_lab) mlabpos(`pos') mlabsize(`size') mlabgap(`labgap') mlabangle(`labangle`d'') mlabc(black))"'
 				}
-		
-		if "`nolabels'" != "" local mylab
-
-
-		
-		*** Final plot ***
-
-		twoway ///
-			`box0' ///
-			`box1' ///
-			`box2' ///
-			`mylab' ///
-			`boxlab' ///
-				, ///
-				legend(off)  ///
-				xscale(off) yscale(off) ///
-				xlabel(, nogrid) ylabel(, nogrid) ///
-				xsize(`xsize') ysize(`ysize')	///
-				`options'
-		
-	*/	
-restore		
-}		
-
-// drop the Mata junk
-mata mata drop data datasum dx dy myratio normlist xmax ymax xmin ymin pad* b* c* 
-
-return local version "1.7"
-return local date "20260222"
-
+			}
+		}
+		noisily twoway `plots' `labels', legend(off) xscale(off) yscale(off) ///
+			xlabel(, nogrid) ylabel(, nogrid) xsize(`xsize') ysize(`ysize') `options'
+		restore
+	}
+	return local version "1.8"
+	return local date "20261102"
 end
 
-
-***************************
-*** Mata sub-routines   ***
-***************************
-
-
-
-*********************
-// 	  normdata     //  
-*********************
-
-cap mata mata drop normdata()
+capture mata mata drop normdata()
+capture mata mata drop layoutrow()
+capture mata mata drop layoutcol()
+capture mata mata drop layout()
+capture mata mata drop reorient()
+capture mata mata drop worst_ratio()
+capture mata mata drop squarify()
+capture mata mata drop treemap_layout_any()
 
 mata:
-	real matrix normdata(data, dx, dy)
-	{
-		return (data :* (dx * dy) :/ sum(data))
-	}
-end
-
-
-*********************
-// 	  layoutrow    //  slice
-*********************
-
-cap mata mata drop layoutrow()
-
-mata:
-real matrix layoutrow(data, x, y, dx, dy)
-	{
-		area = sum(data)
-		width = area / dy
-		slices = J(rows(data), 4, .)  // x, y, dx, dy
-		
-		for (i=1; i<= rows(data); i++) {		
-			slices[i, .] = (x, y, width, data[i] / width)	
-			if (i > 1) slices[i, 2] = slices[i-1, 2] + data[i-1] / width
-		}
-		return (slices)
-	}
-end
-
-
-*********************
-// 	  layoutcol    //  
-*********************
-
-cap mata mata drop layoutcol()
-
-mata:
-real matrix layoutcol(data, x, y, dx, dy)
-	{
-		area = sum(data)
-		height = area / dx
-		slices = J(rows(data), 4, .)  // x, y, dx, dy
-				
-		for (i=1; i<= rows(data); i++) {
-			slices[i, .] = (x , y, data[i] / height, height)
-			if (i > 1) slices[i, 1] = slices[i-1, 1] +  data[i-1] / height			
-		}
-		return (slices)
-	}
-end
-
-
-
-*********************
-// 	    layout     //  
-*********************
-
-cap mata mata drop layout()
-
-mata:
-real matrix layout(data, x, y, dx, dy)
-	{
-		if (dx >= dy) {
-			return (layoutrow(data, x, y, dx, dy))
-		}
-		else {
-			return (layoutcol(data, x, y, dx, dy))
-		}
-	}
-end
-
-
-*************************
-// 	    reorient       //  
-*************************
-
-cap mata mata drop reorient()
-
-mata:
-real matrix reorient(b, xmin, ymin, xmax, ymax, orientflag)
+real matrix normdata(real colvector data, real scalar dx, real scalar dy)
 {
-	if (rows(b) == 0) return (b)
-	if (orientflag == 1) return (b)
-
-	out = b
-	flipx = (orientflag == 2 | orientflag == 4)
-	flipy = (orientflag == 3 | orientflag == 4)
-
-	for (i=1; i<= rows(out); i++) {
-		if (flipx) out[i,1] = xmax - (out[i,1] - xmin) - out[i,3]
-		if (flipy) out[i,2] = ymax - (out[i,2] - ymin) - out[i,4]
-	}
-
-	return (out)
+	return(data :* (dx * dy) :/ sum(data))
 }
-end
 
-
-*************************
-// 	  leftover row     //  
-*************************
-
-cap mata mata drop leftoverrow()
-
-mata:
-real matrix leftoverrow(data, x, y, dx, dy)
-	{
-		covered_area = sum(data)
-		width        = covered_area / dy
-		leftover_x   = x  + width
-		leftover_y   = y
-		leftover_dx  = dx - width
-		leftover_dy  = dy
-		return (leftover_x, leftover_y, leftover_dx, leftover_dy)
+real matrix layoutrow(real colvector data, real scalar x, real scalar y,
+	real scalar dx, real scalar dy)
+{
+	real scalar width, i, offset
+	real matrix slices
+	width = sum(data) / dy
+	slices = J(rows(data), 4, .)
+	offset = y
+	for (i = 1; i <= rows(data); i++) {
+		slices[i, .] = (x, offset, width, data[i] / width)
+		offset = offset + data[i] / width
 	}
-end
+	return(slices)
+}
 
-
-*************************
-// 	  leftover col     //  
-*************************
-
-cap mata mata drop leftovercol()
-
-mata:
-real matrix leftovercol(data, x, y, dx, dy)
-	{
-		covered_area = sum(data)
-		height       = covered_area / dx
-		leftover_x   = x
-		leftover_y   = y  + height
-		leftover_dx  = dx
-		leftover_dy  = dy - height
-		return (leftover_x, leftover_y, leftover_dx, leftover_dy)
+real matrix layoutcol(real colvector data, real scalar x, real scalar y,
+	real scalar dx, real scalar dy)
+{
+	real scalar height, i, offset
+	real matrix slices
+	height = sum(data) / dx
+	slices = J(rows(data), 4, .)
+	offset = x
+	for (i = 1; i <= rows(data); i++) {
+		slices[i, .] = (offset, y, data[i] / height, height)
+		offset = offset + data[i] / height
 	}
+	return(slices)
+}
 
-end
+real matrix layout(real colvector data, real scalar x, real scalar y,
+	real scalar dx, real scalar dy)
+{
+	if (dx >= dy) return(layoutrow(data, x, y, dx, dy))
+	return(layoutcol(data, x, y, dx, dy))
+}
 
-*************************
-// 	    leftover       //  
-*************************
+real matrix reorient(real matrix b, real scalar xmin, real scalar ymin,
+	real scalar xmax, real scalar ymax, real scalar orientflag)
+{
+	if (orientflag == 2 | orientflag == 4) b[,1] = xmax :- (b[,1] :- xmin) :- b[,3]
+	if (orientflag == 3 | orientflag == 4) b[,2] = ymax :- (b[,2] :- ymin) :- b[,4]
+	return(b)
+}
 
-cap mata mata drop leftover()
-
-mata:
-real matrix leftover(data, x, y, dx, dy)
-	{
-		if (dx >= dy) {
-			return (leftoverrow(data, x, y, dx, dy))
-		}
-		else {
-			return (leftovercol(data, x, y, dx, dy))
-		}
-	}
-end
-
-
-
-*************************
-// 	  worst_ratio      //  
-*************************
-
-cap mata mata drop worst_ratio()
-
-mata:
-real scalar worst_ratio(data, x, y, dx, dy, rat)
-	{
-	sumval 	  = sum(data) 
-	minval    = sumval
-	maxval    = sumval
-	
+real scalar worst_ratio(real colvector data, real scalar dx, real scalar dy, real scalar rat)
+{
+	real scalar side, area, dxr, dyr
 	dxr = dx
 	dyr = dy
 	if (dx >= dy) dxr = dx * rat
 	else dyr = dy * rat
-	
-	temp      = layout(data, x, y, dxr, dyr)
-	ratiolist = J(rows(temp), 1, .)
-	
-	for (i=1; i<= rows(data); i++) {
-		ratiolist[i] = max((temp[i,3] :/ temp[i,4], temp[i,4] :/ temp[i,3])) 
-		
-		if (data[i] < minval) minval = data[i]
-		if (data[i] > maxval) maxval = data[i]	
-	}
-	
-	// alph = max(ratiolist) 
-	// beta = sumval :* sumval :* alph
-	// return (max((maxval / beta, beta / minval)))
-	
-	 return (max(ratiolist))
+	side = min((dxr, dyr))
+	area = sum(data)
+	return(max((area^2 / (side^2 * min(data)), side^2 * max(data) / area^2)))
 }
-end
 
-
-
-*************************
-// 	    squarify       //  
-*************************
-
-cap mata mata drop squarify()
-
-mata:
-function squarify(data, x, y, dx, dy, myratio)
+real matrix squarify(real colvector data, real scalar xinput, real scalar yinput,
+	real scalar dxinput, real scalar dyinput, real scalar ratio)
 {
-	if (rows(data) == 1) return (layout(data, x, y, dx, dy))
-
-	leftover_x = .
-  	leftover_y = .
-	leftover_dx = .
-	leftover_dy = .
-	
-	i = 1
-
-	while ((i < rows(data)) & (worst_ratio(data[1 .. i], x, y, dx, dy, myratio) >= worst_ratio(data[1 .. i + 1], x, y, dx, dy, myratio))) i = i + 1	
-		
-	current 	= data[1   ..          i]
-	remaining 	= data[i+1 .. rows(data)]
-
-	leftover_x  = leftover(current, x, y, dx, dy)[1]
-	leftover_y  = leftover(current, x, y, dx, dy)[2]
-	leftover_dx = leftover(current, x, y, dx, dy)[3]
-	leftover_dy = leftover(current, x, y, dx, dy)[4]
-	 
-	return (layout(current, x, y, dx, dy) \ squarify(remaining, leftover_x, leftover_y, leftover_dx, leftover_dy, myratio)) 
-}	
-
-end
-
-*************************
-// 	  processchildren  //  
-*************************
-
-
-cap mata mata drop processchildren()
-
-mata:
-	function processchildren(index, data, bounds, padb, padt, padl, padr, myratio, methodflag, orientflag) 
-	{	
-		xmin  = bounds[index,.][1] + padl
-		ymin  = bounds[index,.][2] + padb 
-		dx 	  = bounds[index,.][3] - padl - padr
-		dy 	  = bounds[index,.][4] - padb - padt
-
-		normlist = normdata(data, dx, dy)
-		if (methodflag == 1) b = squarify(normlist, xmin, ymin, dx, dy, myratio)
-		else if (methodflag == 2) b = layoutrow(normlist, xmin, ymin, dx, dy)
-		else b = layoutcol(normlist, xmin, ymin, dx, dy)
-		
-		b = reorient(b, xmin, ymin, xmin + dx, ymin + dy, orientflag)
-		return (b, normlist)
-	}
-end
-
-
-
-*************************
-// 	    getcoords2     //   
-*************************
-
-
-cap mata mata drop getcoords2()
-
-mata:
-	real matrix getcoords2(data, b2, padb, padt, padl, padr, mysum) // data, bounds, padding
-	{
-	coords = J(5 * rows(b2), 10, .)  // rows = 4x coordinates + 1 empty, 8 cols = x,y,index, value, xmean, ymean, xmax, ymax, weight, percentage
-	
-		for (i=1; i<= rows(b2); i++) {	
-			
-			y = i * 5
-			x = y - 4		
-			tt = (b2[i,1] + padl, b2[i,2] + padb \ b2[i,1] + padl, b2[i,2] + b2[i,4] - padt \ b2[i,1] + b2[i,3] - padr, b2[i,2] + b2[i,4] - padt \ b2[i,1] + b2[i,3] - padr, b2[i,2] + padb \ ., .)		
-				coords[x::y, 1..2] = tt   
-				coords[x::y, 3] = J(5,1,i)
-				coords[i, 4] = data[i]
-				coords[i, 5] = mean(select(coords[.,1], coords[.,3] :== i))
-				coords[i, 6] = mean(select(coords[.,2], coords[.,3] :== i))
-				coords[i, 7] =  min(select(coords[.,1], coords[.,3] :== i)) 
-				coords[i, 8] =  max(select(coords[.,2], coords[.,3] :== i))	
-				coords[i, 9] = b2[i,5]
-				coords[i,10] = (data[i] / mysum) * 100
+	real matrix result, strip
+	real colvector current
+	real scalar first, last, n, score, candidate, area, x, y, dx, dy
+	x = xinput
+	y = yinput
+	dx = dxinput
+	dy = dyinput
+	n = rows(data)
+	result = J(n, 4, .)
+	first = 1
+	while (first <= n) {
+		last = first
+		score = worst_ratio(data[|first \ last|], dx, dy, ratio)
+		while (last < n) {
+			candidate = worst_ratio(data[|first \ last+1|], dx, dy, ratio)
+			if (candidate > score) break
+			score = candidate
+			last++
 		}
+		current = data[|first \ last|]
+		strip = layout(current, x, y, dx, dy)
+		result[|first,1 \ last,4|] = strip
+		area = sum(current)
+		if (dx >= dy) {
+			x = x + area / dy
+			dx = dx - area / dy
+		}
+		else {
+			y = y + area / dx
+			dy = dy - area / dx
+		}
+		first = last + 1
+	}
+	return(result)
+}
 
-	return (coords)		
+void treemap_layout_any(real scalar xsize, real scalar ysize,
+	real scalar addtitles, real scalar titlegap, real scalar ratio, string scalar paramsname)
+{
+	real matrix nodes, params, bounds, out, b, corners, panel
+	real colvector indices, roots, seq, values, ndata
+	real scalar n, d, first, last, j, row, off, pad, dx, dy, xmin, ymin, parentrow, total
+	real scalar method, orient, root, cellpad
+	string colvector names, outnames
+
+	nodes = st_data(., ("__depth", "__id", "__parent", "__value", "__order", "__colororder"))
+	names = st_sdata(., "__tm_name")
+	indices = order(nodes, (1, 3, 5))
+	nodes = nodes[indices, .]
+	names = names[indices]
+	params = st_matrix(paramsname)
+	n = rows(nodes)
+	bounds = J(n, 6, .)
+	roots = J(n, 1, .)
+	out = J(5*n, 15, .)
+	outnames = J(5*n, 1, "")
+	// IDs are contiguous within each depth; this maps parent IDs directly to rows.
+	panel = J(max(nodes[,1]), max(nodes[,2]), .)
+	for (row = 1; row <= n; row++) panel[nodes[row,1], nodes[row,2]] = row
+	total = sum(select(nodes[,4], nodes[,1] :== 1))
+
+	first = 1
+	while (first <= n) {
+		d = nodes[first,1]
+		last = first
+		while (last < n) {
+			if (nodes[last+1,1] != d | nodes[last+1,3] != nodes[first,3]) break
+			last++
+		}
+		if (d == 1) {
+			xmin = 0
+			ymin = 0
+			dx = xsize
+			dy = ysize
+		}
+		else {
+			parentrow = panel[d-1, nodes[first,3]]
+			pad = bounds[parentrow,6]
+			xmin = bounds[parentrow,1] + pad
+			ymin = bounds[parentrow,2] + pad
+			dx = bounds[parentrow,3] - 2*pad
+			dy = bounds[parentrow,4] - 2*pad
+			if (addtitles & bounds[parentrow,4] > titlegap*2.5) dy = dy - titlegap
+		}
+		pad = params[d,1]
+		if (dx >= . | dy >= . | dx <= 0 | dy <= 0) {
+			errprintf("insufficient space at hierarchy level %g; reduce pad() or titlegap(), or increase xsize()/ysize()\n", d)
+			_error(198)
+		}
+		values = nodes[|first,4 \ last,4|]
+		ndata = normdata(values, dx, dy)
+		method = params[d,2]
+		orient = params[d,3]
+		if (method == 1) b = squarify(ndata, xmin, ymin, dx, dy, ratio)
+		else if (method == 2) b = layoutrow(ndata, xmin, ymin, dx, dy)
+		else b = layoutcol(ndata, xmin, ymin, dx, dy)
+		b = reorient(b, xmin, ymin, xmin+dx, ymin+dy, orient), ndata
+		for (row = first; row <= last; row++) {
+			j = row - first + 1
+			if (b[j,3] >= . | b[j,4] >= . | b[j,3] <= 0 | b[j,4] <= 0) {
+				errprintf("nonpositive or missing rectangle size at hierarchy level %g\n", d)
+				_error(198)
+			}
+			cellpad = min((pad, b[j,3]/4, b[j,4]/4))
+			bounds[row,.] = (b[j,.], cellpad)
+			if (d == 1) root = nodes[row,2]
+			else root = roots[parentrow]
+			roots[row] = root
+			off = 5*(row-1)
+			corners = (b[j,1]+cellpad, b[j,2]+cellpad \
+				b[j,1]+cellpad, b[j,2]+b[j,4]-cellpad \
+				b[j,1]+b[j,3]-cellpad, b[j,2]+b[j,4]-cellpad \
+				b[j,1]+b[j,3]-cellpad, b[j,2]+cellpad \ ., .)
+			out[|off+1,1 \ off+5,2|] = corners
+			out[|off+1,3 \ off+5,8|] = J(5,1,1) *
+				(d, nodes[row,2], nodes[row,3], nodes[row,4], b[j,5], 100*nodes[row,4]/total)
+			out[off+1,9] = (corners[1,1] + corners[3,1])/2
+			out[off+1,10] = (corners[1,2] + corners[3,2])/2
+			out[off+1,11] = corners[1,1]
+			out[off+1,12] = corners[3,2]
+			out[|off+1,13 \ off+5,15|] = J(5,1,1) * (root, nodes[row,5], nodes[row,6])
+			outnames[|off+1 \ off+5|] = J(5,1,names[row])
+		}
+		first = last + 1
+	}
+	st_addobs(5*n)
+	seq = (n+1)::(6*n)
+	st_store(seq, ("__tm_x", "__tm_y", "__tm_depth", "__tm_node", "__tm_parent",
+		"__tm_value", "__tm_weight", "__tm_pct", "__tm_cx", "__tm_cy", "__tm_tx",
+		"__tm_ty", "__tm_root", "__tm_order", "__tm_colororder"), out)
+	st_sstore(seq, "__tm_name", outnames)
 }
 end
-
-
-
-*******************
-*******************
-***		        ***
-***		END     ***
-***		        ***
-*******************
-*******************

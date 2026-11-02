@@ -1,4 +1,4 @@
-v 1.7
+v 1.8
 d {bf:TREEMAP}: A Stata package for treemaps
 d
 d Requires: Stata version 15 or higher.
@@ -8,9 +8,9 @@ d KW: graphs
 d KW: treemap
 d KW: squarify
 d
-d Distribution-Date: 20260222
+d Distribution-Date: 20261102
 d
-d This  version: 22 Feb 2026
+d This  version: 02 Nov 2026
 d First version: 08 Sep 2022
 d License: MIT
 d
@@ -18,8 +18,5 @@ d Author: Asjad Naqvi (asjadnaqvi@gmail.com)
 d
 f treemap.ado
 f treemap.sthlp
-
-
-
 
 
